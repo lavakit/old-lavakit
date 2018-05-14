@@ -160,11 +160,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
         /*
-         * Laravel IDE helper
-         * @packages barryvdh/laravel-ide-helper
+         * LUCKY SERVICES
          */
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Inspire\Base\Providers\BaseServiceProvider::class,
 
     ],
 

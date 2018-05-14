@@ -1,0 +1,11 @@
+{
+    "alias": "acl",
+    "name": "Inspire acl",
+    "author": "hoatq",
+    "description": "ACL",
+    "namespace": "Inspire\\Acl",
+    "version": "1.0",
+    "autoload": "psr-4",
+    "enabled": true,
+    "installed": true
+}
