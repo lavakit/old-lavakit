@@ -12,3 +12,8 @@
 */
 
 Route::get('posts', 'PostsController@index');
+Route::get('posts/config', function (){
+    echo config('base.admin_dir');
+    echo '<br/>';
+    return config_path('base.php');
+});

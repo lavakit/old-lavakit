@@ -16,9 +16,12 @@ class PostsController extends Controller
 
     public function index()
     {
-        $posts = $this->postsRepository->getAll()->toArray();
-        echo'<pre>';
-        print_r($posts);
-        echo'</pre>';
+        pageTitle()->setTitle('Posts');
+        return view('posts::posts.index');
+
+//        $posts = $this->postsRepository->getAll()->toArray();
+//        echo'<pre>';
+//        print_r($posts);
+//        echo'</pre>';
     }
 }
