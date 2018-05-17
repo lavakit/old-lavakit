@@ -1,0 +1,10 @@
+{
+    "alias": "base",
+    "name": "Inspire base",
+    "author": "hoatq",
+    "description": "Base",
+    "namespace": "Inspire\\Base",
+    "version": "1.0",
+    "autoload": "psr-4",
+    "enabled": true
+}

@@ -87,7 +87,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Session Cache Store
+    | Session Eloquent Store
     |--------------------------------------------------------------------------
     |
     | When using the "apc" or "memcached" session drivers, you may specify a

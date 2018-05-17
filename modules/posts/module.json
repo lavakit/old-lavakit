@@ -1,0 +1,11 @@
+{
+    "alias": "posts",
+    "name": "Posts",
+    "author": "hoatq",
+    "description": "Posts module",
+    "namespace": "Inspire\\Posts",
+    "version": "1.0",
+    "autoload": "psr-4",
+    "enabled": true,
+    "installed": true
+}
