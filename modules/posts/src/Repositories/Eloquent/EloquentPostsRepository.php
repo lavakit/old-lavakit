@@ -5,7 +5,6 @@ namespace Inspire\Posts\Repositories\Eloquent;
 use Inspire\Base\Repositories\Eloquent\EloquentBaseRepositories;
 use Inspire\Posts\Repositories\PostsRepository;
 
-
 class EloquentPostsRepository extends EloquentBaseRepositories implements PostsRepository
 {
     /**

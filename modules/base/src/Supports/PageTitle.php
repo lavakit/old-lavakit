@@ -9,31 +9,32 @@ class PageTitle
      */
     protected $title;
 
+
     /**
      * Set a Title for page
      *
      * @param string $title
+     * @param bool $full
      */
-    public function setTitle($title)
+    public function setTitle($title = null, $full = true)
     {
-        $this->title = $title;
+        $this->title    = $title;
+
+        if ($full) {
+            $this->title .= ' - ' . config('base.app_name');
+        }
     }
 
     /**
      * Get a Title for page
-     *
-     * @param bool $origin
+     * @return string Title
      */
-    public function getTitle($origin = true)
+    public function getTitle()
     {
         if (empty($this->title)) {
             return config('base.app_name');
         }
 
-        if (! $origin) {
-            return $this->title;
-        }
-
-        return $this->title . ' | ' . config('base.app_name');
+        return $this->title;
     }
 }
