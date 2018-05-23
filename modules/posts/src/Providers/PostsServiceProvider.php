@@ -21,10 +21,7 @@ class PostsServiceProvider extends ServiceProvider
         if (app()->runningInConsole()) {
             /*Load migrations*/
             $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
-            $this->publishes([
-                __DIR__ . '/../../resources/assets' => resource_path('assets'),
-                __DIR__ . '/../../resources/public' => public_path(),
-            ], 'assets');
+            $this->publishes([__DIR__ . '/../../resources/assets' => resource_path('assets'),], 'assets');
             $this->publishes([__DIR__ . '/../../resources/views' => config('view.paths')[0] . '/vendor/posts',], 'views');
             $this->publishes([__DIR__ . '/../../resources/lang' => base_path('resources/lang/vendor/posts'),], 'lang');
             $this->publishes([__DIR__ . '/../../database' => base_path('database'),], 'migrations');

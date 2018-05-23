@@ -18,6 +18,12 @@ class PostsController extends Controller
     {
         pageTitle()->setTitle('Posts');
 
+        $posts = $this->postsRepository->all();
+
+        echo'<pre>';
+            print_r($posts->toArray());
+        echo'</pre>';
+
         return view('posts::posts.index');
     }
 }

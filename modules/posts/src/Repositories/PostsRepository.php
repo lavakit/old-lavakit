@@ -2,21 +2,9 @@
 
 namespace Inspire\Posts\Repositories;
 
-use Inspire\Base\Repositories\BaseReponsitory;
+use Inspire\Base\Repositories\BaseRepository;
 
-interface PostsRepository extends BaseReponsitory
+interface PostsRepository extends BaseRepository
 {
-    /**
-     * Get all Published
-     *
-     * @return mixed
-     */
-    public function getAllIsPublished();
 
-    /**
-     * Get all has not Published;
-     *
-     * @return mixed
-     */
-    public function getAllIsNotPublished();
 }
