@@ -1,7 +1,9 @@
 <?php namespace Inspire\Posts\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Inspire\Base\Services\Caches\Cache;
 use Inspire\Posts\Models\Posts;
+use Inspire\Posts\Repositories\Caches\PostCacheDecorator;
 use Inspire\Posts\Repositories\Eloquent\EloquentPostsRepository;
 use Inspire\Posts\Repositories\PostsRepository;
 
@@ -26,8 +28,14 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(PostsRepository::class,function () {
-            return new EloquentPostsRepository(new Posts());
-        });
+        if (env('CACHE_ENABLE',false)) {
+            $this->app->singleton(PostsRepository::class, function (){
+                return new PostCacheDecorator(new EloquentPostsRepository(new Posts()), new Cache($this->app['cache'],__CLASS__));
+            });
+        } else {
+            $this->app->singleton(PostsRepository::class,function () {
+                return new EloquentPostsRepository(new Posts());
+            });
+        }
     }
 }
