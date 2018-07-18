@@ -1,0 +1,10 @@
+{
+    "alias": "page",
+    "name": "Inspired page",
+    "author": "hoatq",
+    "description": "Page",
+    "namespace": "Inspire\\Page",
+    "version": "1.0",
+    "autoload": "psr-4",
+    "enabled": true
+}
