@@ -13,7 +13,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        /*
+       |--------------------------------------------------------------------------------------------
+       | Import when environment local
+       |--------------------------------------------------------------------------------------------
+       */
+        if ($this->app->environment() == 'local') {
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+        }
     }
 
     /**

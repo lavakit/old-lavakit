@@ -1,0 +1,9 @@
+{
+    "alias": "dashboard",
+    "name": "Inspired dashboard",
+    "author": "hoatq",
+    "description": "Dashboard",
+    "namespace": "Inspire\\Dashboard",
+    "version": "1.0",
+    "autoload": "psr-4"
+}

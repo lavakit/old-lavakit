@@ -7,7 +7,9 @@ use Illuminate\Support\ServiceProvider;
 use Inspire\Base\Facades\PageTitleFacade;
 use Inspire\Acl\Providers\AclServiceProvider;
 use Inspire\Base\Traits\CanPublishConfiguration;
-use Inspire\Posts\Providers\PostsServiceProvider;
+use Inspire\Dashboard\Providers\DashboardProvider;
+use Inspire\Page\Providers\PageServiceProvider;
+use Inspire\Post\Providers\PostServiceProvider;
 
 class BaseServiceProvider extends ServiceProvider
 {
@@ -27,22 +29,20 @@ class BaseServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        /*Load Services on Lucky*/
-        $this->app->register(AclServiceProvider::class);
-        $this->app->register(PostsServiceProvider::class);
-
-
-        //Enviroment local
-        if ($this->app->environment() == 'local') {
-            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
-        }
 
         /*Load Config*/
         $this->publishConfig('base', 'base');
         $this->publishConfig('base', 'cache');
 
+        /*Load Services on Lucky*/
+        $this->app->register(AclServiceProvider::class);
+        $this->app->register(PostServiceProvider::class);
+        $this->app->register(PageServiceProvider::class);
+        $this->app->register(DashboardProvider::class);
+
         /*Load views*/
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'base');
+
         /*Load translations*/
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'base');
 
@@ -56,7 +56,6 @@ class BaseServiceProvider extends ServiceProvider
             $this->publishes([__DIR__ . '/../../resources/views' => config('view.paths')[0] . '/vendor/base',], 'views');
             $this->publishes([__DIR__ . '/../../resources/lang' => base_path('resources/lang/vendor/base'),], 'lang');
             $this->publishes([__DIR__ . '/../../database' => base_path('database'),], 'migrations');
-            $this->publishes([__DIR__ . '/../../config/base.php' => config_path('base.php')], 'config');
         }
     }
 
@@ -73,7 +72,6 @@ class BaseServiceProvider extends ServiceProvider
         //Register aliases
         $this->registerFacadeAliases();
 
-        $this->app->register(RouteServiceProvider::class);
         $this->app->register(RepositoryServiceProvider::class);
         $this->app->register(BootstrapModuleServiceProvider::class);
 
@@ -94,6 +92,8 @@ class BaseServiceProvider extends ServiceProvider
 
     /**
      * Load additional Aliases
+     *
+     * @return void
      */
     public function registerFacadeAliases() {
         $loader = AliasLoader::getInstance();
