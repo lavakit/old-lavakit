@@ -1,0 +1,9 @@
+{
+    "alias": "theme",
+    "name": "Inspire theme",
+    "author": "hoatq",
+    "description": "Theme",
+    "namespace": "Inspire\\Theme",
+    "version": "1.0",
+    "autoload": "psr-4"
+}

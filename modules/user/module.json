@@ -1,0 +1,9 @@
+{
+    "alias": "user",
+    "name": "Inspire user",
+    "author": "hoatq",
+    "description": "User",
+    "namespace": "Inspire\\User",
+    "version": "1.0",
+    "autoload": "psr-4"
+}

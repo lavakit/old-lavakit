@@ -7,9 +7,11 @@ use Illuminate\Support\ServiceProvider;
 use Inspire\Base\Facades\PageTitleFacade;
 use Inspire\Acl\Providers\AclServiceProvider;
 use Inspire\Base\Traits\CanPublishConfiguration;
-use Inspire\Dashboard\Providers\DashboardProvider;
+use Inspire\Dashboard\Providers\DashboardServiceProvider;
 use Inspire\Page\Providers\PageServiceProvider;
 use Inspire\Post\Providers\PostServiceProvider;
+use Inspire\Theme\Providers\ThemeServiceProvider;
+use Inspire\User\Providers\UserServiceProvider;
 
 class BaseServiceProvider extends ServiceProvider
 {
@@ -38,7 +40,9 @@ class BaseServiceProvider extends ServiceProvider
         $this->app->register(AclServiceProvider::class);
         $this->app->register(PostServiceProvider::class);
         $this->app->register(PageServiceProvider::class);
-        $this->app->register(DashboardProvider::class);
+        $this->app->register(DashboardServiceProvider::class);
+        $this->app->register(UserServiceProvider::class);
+        $this->app->register(ThemeServiceProvider::class);
 
         /*Load views*/
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'base');

@@ -1,32 +1,37 @@
-<?php
+<?php namespace Inspire\Theme\Providers;
 
-namespace Inspire\Page\Providers;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
-use Inspire\Base\Providers\RoutingServiceProvider as BaseRoutingServiceProvider;
-
-class RouteServiceProvider extends BaseRoutingServiceProvider
+class RouteServiceProvider extends ServiceProvider
 {
-    protected $namespace = 'Inspire\Page\Http\Controllers';
+    protected $namespace = 'Inspire\Theme\Http\Controllers';
 
-    protected function getFrontendRoute()
+
+    /**
+     * Define your route model bindings, pattern filters, etc.
+     *
+     * @return void
+     */
+    public function boot()
     {
-        require __DIR__ . '/../../routes/web.php';
+        //
+
+        parent::boot();
     }
 
     /**
-     * @return string
+     * Define the routes for the application.
+     *
+     * @return void
      */
-    protected function getBackendRoute()
+    public function map()
     {
-        require __DIR__ . '/../../routes/web.php';
-    }
+        $this->mapApiRoutes();
 
-    /**
-     * @return string
-     */
-    protected function getApiRoute()
-    {
-        require __DIR__ . '/../../routes/api.php';
+        $this->mapWebRoutes();
+
+        //
     }
 
     /**
@@ -36,19 +41,15 @@ class RouteServiceProvider extends BaseRoutingServiceProvider
      *
      * @return void
      */
-
-    /*
     protected function mapWebRoutes()
     {
         Route::group([
-            'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'web'],
-            'namespace' => $this->namespace,
-            'prefix' => LaravelLocalization::setLocale(),
+             'middleware' => 'web',
+             'namespace' => $this->namespace,
         ], function ($router) {
             require __DIR__ . '/../../routes/web.php';
         });
     }
-    */
 
     /**
      * Define the "api" routes for the application.
@@ -57,7 +58,6 @@ class RouteServiceProvider extends BaseRoutingServiceProvider
      *
      * @return void
      */
-    /*
     protected function mapApiRoutes()
     {
         Route::group([
@@ -68,5 +68,4 @@ class RouteServiceProvider extends BaseRoutingServiceProvider
             require __DIR__ . '/../../routes/api.php';
         });
     }
-    */
 }
