@@ -2,7 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 
-class DashboardProvider extends ServiceProvider
+class DashboardServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
