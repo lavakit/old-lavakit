@@ -178,7 +178,7 @@ class ThemeManager implements ThemeContract
         $themeInfo =  $this->getThemeInfo($themeName);
 
         if ($this->config['theme.symlink']) {
-            $themePath = $this->config['theme.folders.root'].'/' . $themeName . '/';
+            $themePath = 'Themes/' . $themeName . '/';
         } else {
             $themePath = str_replace(base_path('public') . '/', '', $themeInfo->get('path')) . '/';
         }

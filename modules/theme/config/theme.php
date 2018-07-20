@@ -81,7 +81,6 @@ return [
     |
     */
     'folders'    => [
-        'root'      => 'Themes',
         'assets'    => 'assets',
         'views'     => 'views',
         'lang'      => 'lang',
@@ -100,7 +99,7 @@ return [
     |
     */
     'stubs'      => [
-        'path'  => base_path('vendor/shipu/themevel/src/Console/stubs'),
+        'path'  => base_path('modules/theme/src/Console/stubs'),
         'files' => [
             'css'    => 'assets/css/app.css',
             'layout' => 'views/layouts/master.blade.php',
