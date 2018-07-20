@@ -81,14 +81,15 @@ return [
     |
     */
     'folders'    => [
-        'assets'  => 'assets',
-        'views'   => 'views',
-        'lang'    => 'lang',
-        'lang/en' => 'lang/en',
-        'css' => 'assets/css',
-        'js'  => 'assets/js',
-        'img' => 'assets/img',
-        'layouts' => 'views/layouts',
+        'root'      => 'Themes',
+        'assets'    => 'assets',
+        'views'     => 'views',
+        'lang'      => 'lang',
+        'lang/en'   => 'lang/en',
+        'css'       => 'assets/css',
+        'js'        => 'assets/js',
+        'img'       => 'assets/img',
+        'layouts'   => 'views/layouts',
     ],
     /*
     |--------------------------------------------------------------------------
