@@ -1,12 +1,32 @@
-<?php namespace Inspire\Theme\Providers;
+<?php
 
+namespace Inspire\Theme\Providers;
+
+use App;
+use File;
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Inspire\Base\Traits\CanPublishConfiguration;
+use Inspire\Theme\Console\ThemeGeneratorCommand;
+use Inspire\Theme\Console\ThemeListCommand;
 use Inspire\Theme\Contracts\ThemeContract;
+use Inspire\Theme\Managers\ThemeManager;
+use Inspire\Theme\Facades\ThemeFacade;
 
 class ThemeServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+
+    const THEME_CREATE_COMMAND  = 'theme.create';
+    const THEME_LIST_COMMAND    = 'theme.list';
+
+    /**
+     * @var array Facade Aliases
+     */
+    protected $facadeAliases = [
+        'Theme' => ThemeFacade::class
+    ];
+
     /**
      * Bootstrap the application services.
      *
@@ -14,28 +34,9 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        /*Load views*/
-        //$this->loadViewsFrom(__DIR__ . '/../../resources/views', 'theme');
-        /*Load translations*/
-        //$this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'theme');
-
-        //if (app()->runningInConsole()) {
-            /*Load migrations*/
-        //    $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
-
-        //    $this->publishes([
-        //        __DIR__ . '/../../resources/assets' => resource_path('assets')
-        //    ], 'assets');
-        //    $this->publishes([
-        //        __DIR__ . '/../../resources/views' => config('view.paths')[0] . '/vendor/theme',
-        //    ], 'views');
-        //    $this->publishes([
-        //        __DIR__ . '/../../resources/lang' => base_path('resources/lang/vendor/theme'),
-        //    ], 'lang');
-        //    $this->publishes([
-        //        __DIR__ . '/../../database' => base_path('database'),
-        //    ], 'migrations');
-        //}
+        if (!File::exists(public_path('Themes')) && config('theme.symlink') && File::exists(config('theme.theme_path'))) {
+            App::make('files')->link(config('theme.theme_path'), public_path('Themes'));
+        }
     }
 
     /**
@@ -46,10 +47,31 @@ class ThemeServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerConfig();
+        $this->registerTheme();
         $this->loadHelpers();
+        $this->consoleCommand();
+        $this->registerMiddleware();
 
-        $this->app->register(RouteServiceProvider::class);
-        $this->app->register(RepositoryServiceProvider::class);
+        //Register aliases
+        $this->registerFacadeAliases();
+
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'theme');
+    }
+
+
+    /**
+     * Add Theme Types Middleware.
+     *
+     * @return void
+     */
+    public function registerMiddleware()
+    {
+        if (config('theme.types.enable')) {
+            $themeTypes = config('theme.types.middleware');
+            foreach ($themeTypes as $middleware => $themeName) {
+                $this->app['router']->aliasMiddleware($middleware, '\Inspire\Theme\Middleware\RouteMiddleware:' .$themeName);
+            }
+        }
     }
 
     /**
@@ -79,7 +101,69 @@ class ThemeServiceProvider extends ServiceProvider
     protected function registerTheme()
     {
         $this->app->singleton(ThemeContract::class, function ($app) {
+            $theme = new ThemeManager($app, $this->app['view']->getFinder(), $this->app['config'], $this->app['translator']);
 
+            return $theme;
         });
+    }
+
+    /**
+     * Add Commands.
+     *
+     * @return void
+     */
+    public function consoleCommand()
+    {
+        $this->registerThemeGeneratorCommand();
+        $this->registerThemeListCommand();
+        // Assign commands.
+        $this->commands(
+            self::THEME_CREATE_COMMAND,
+            self::THEME_LIST_COMMAND
+        );
+    }
+
+    /**
+     * Register generator command.
+     *
+     * @return void
+     */
+    public function registerThemeGeneratorCommand()
+    {
+        $this->app->singleton(self::THEME_CREATE_COMMAND, function ($app) {
+            return new ThemeGeneratorCommand($app['config'], $app['files']);
+        });
+    }
+
+    /**
+     * Register theme list command.
+     *
+     * @return void
+     */
+    public function registerThemeListCommand()
+    {
+        $this->app->singleton(self::THEME_LIST_COMMAND, ThemeListCommand::class);
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [];
+    }
+
+    /**
+     * Load additional Aliases
+     *
+     * @return void
+     */
+    protected function registerFacadeAliases() {
+        $loader = AliasLoader::getInstance();
+        foreach ($this->facadeAliases as $alias => $facade) {
+            $loader->alias($alias, $facade);
+        }
     }
 }

@@ -10,7 +10,7 @@ use Noodlehaus\Config;
 use Inspire\Theme\Contracts\ThemeContract;
 use Inspire\Theme\Exceptions\ThemeNotFoundExceptions;
 
-class Theme implements ThemeContract
+class ThemeManager implements ThemeContract
 {
     /**
      * Theme Root Path
@@ -114,7 +114,7 @@ class Theme implements ThemeContract
      */
     public function getThemeInfo($themeName)
     {
-        return $this->themes[$themeName] ?? null;
+        return isset($this->themes[$themeName]) ? $this->themes[$themeName] : null;
     }
 
     /**
@@ -154,6 +154,76 @@ class Theme implements ThemeContract
     }
 
     /**
+     * Find asset file for theme asset.
+     *
+     * @param string    $path
+     * @param null|bool $secure
+     *
+     * @return string
+     */
+    public function assets($path, $secure = null)
+    {
+        $splitThemeAndPath = explode(':', $path);
+        if (count(splitThemeAndPath) > 1) {
+            if (is_null(splitThemeAndPath[1])) {
+                return;
+            }
+            $themeName = splitThemeAndPath[0];
+            $path = splitThemeAndPath[1];
+        } else {
+            $themeName = $this->activeTheme;
+            $path = $splitThemeAndPath[0];
+        }
+
+        $themeInfo =  $this->getThemeInfo($themeName);
+
+        if ($this->config['theme.symlink']) {
+            $themePath = 'Themes/' . $themeName . '/';
+        } else {
+            $themePath = str_replace(base_path('public') . '/', '', $themeInfo->get('path')) . '/';
+        }
+
+        $assetPath = $this->config['theme.folders.assets'].'/';
+        $fullPath = $themePath.$assetPath.$path;
+
+        if (!file_exists($fullPath) && $themeInfo->has('parent') && !empty($themeInfo->get('parent'))) {
+            $themePath = str_replace(base_path().'/', '', $this->getThemeInfo($themeInfo->get('parent'))->get('path') ).'/';
+            $fullPath = $themePath.$assetPath.$path;
+
+            return $this->app['url']->asset($fullPath, $secure);
+        }
+
+        return $this->app['url']->asset($fullPath, $secure);
+    }
+
+    /**
+     * Get lang content from current theme.
+     *
+     * @param string $fallback
+     *
+     * @return \Illuminate\Contracts\Translation\Translator|string
+     */
+    public function lang($fallback)
+    {
+        $splitLang = explode('::', $fallback);
+
+        if (count($splitLang) > 1) {
+            if (is_null($splitLang[0])) {
+                $fallback = $splitLang[1];
+            } else {
+                $fallback = $splitLang[0].'::'.$splitLang[1];
+            }
+        } else {
+            $fallback = $this->current().'::'.$splitLang[0];
+            if (!$this->lang->has($fallback)) {
+                $fallback = $this->getThemeInfo($this->current())->get('parent').'::'.$splitLang[0];
+            }
+        }
+
+        return trans($fallback);
+    }
+
+    /**
      * Scan for all available themes.
      *
      * @return void
@@ -172,11 +242,11 @@ class Theme implements ThemeContract
                 $themeConfig['path'] = $themePath;
 
                 if ($themeConfig->has('name')) {
-                    $theme[$themeConfig->get('name')] = $themeConfig;
+                    $themes[$themeConfig->get('name')] = $themeConfig;
                 }
             }
         }
-        $this->themes = $theme;
+        $this->themes = $themes;
     }
 
     /**
@@ -202,6 +272,11 @@ class Theme implements ThemeContract
         $langPath = $themeInfo->get('path') . '/' . $this->config['theme.folders.lang'];
 
         $this->finder->prependLocation($themeInfo->get('path'));
+        $this->finder->prependLocation($viewPath);
+        $this->finder->prependNamespace($themeInfo->get('name'), $viewPath);
+        if ($themeInfo->has('type') && !empty($themeInfo->get('type'))) {
+            $this->finder->prependNamespace($themeInfo->get('type'), $viewPath);
+        }
+        $this->lang->addNamespace($themeInfo->get('name'), $langPath);
     }
-
 }

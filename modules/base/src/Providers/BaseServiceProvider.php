@@ -99,7 +99,7 @@ class BaseServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function registerFacadeAliases() {
+    protected function registerFacadeAliases() {
         $loader = AliasLoader::getInstance();
         foreach ($this->facadeAliases as $alias => $facade) {
             $loader->alias($alias, $facade);

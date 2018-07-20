@@ -81,14 +81,14 @@ return [
     |
     */
     'folders'    => [
-        'assets'  => 'assets',
-        'views'   => 'views',
-        'lang'    => 'lang',
-        'lang/en' => 'lang/en',
-        'css' => 'assets/css',
-        'js'  => 'assets/js',
-        'img' => 'assets/img',
-        'layouts' => 'views/layouts',
+        'assets'    => 'assets',
+        'views'     => 'views',
+        'lang'      => 'lang',
+        'lang/en'   => 'lang/en',
+        'css'       => 'assets/css',
+        'js'        => 'assets/js',
+        'img'       => 'assets/img',
+        'layouts'   => 'views/layouts',
     ],
     /*
     |--------------------------------------------------------------------------
@@ -99,7 +99,7 @@ return [
     |
     */
     'stubs'      => [
-        'path'  => base_path('vendor/shipu/themevel/src/Console/stubs'),
+        'path'  => base_path('modules/theme/src/Console/stubs'),
         'files' => [
             'css'    => 'assets/css/app.css',
             'layout' => 'views/layouts/master.blade.php',
