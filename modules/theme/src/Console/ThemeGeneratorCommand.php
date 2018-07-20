@@ -90,7 +90,7 @@ class ThemeGeneratorCommand extends  Command
         $createdThemePath = $this->themePath.'/'.$this->theme['name'];
 
         if ($this->files->isDirectory($createdThemePath)) {
-            return $this->error('Sorry Boss '.ucfirst($this->theme['name']).' Theme Folder Already Exist !!!');
+            return $this->error('Sorry '.ucfirst($this->theme['name']).' Theme Folder Already Exist !!!');
         }
 
         $this->consoleAsk();
