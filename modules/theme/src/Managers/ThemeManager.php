@@ -75,7 +75,7 @@ class ThemeManager implements ThemeContract
         $this->app      = $app;
         $this->finder   = $finder;
         $this->lang     = $lang;
-        $this->basePath = $this->config['theme.theme_path'];
+        $this->basePath = $this->config['theme.frontend_path'];
 
         $this->scanThemes();
     }

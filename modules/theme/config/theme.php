@@ -22,22 +22,23 @@ return [
     | automatically to list of scanned folders.
     |
     */
-    'theme_path' => base_path('Themes'),
+    'frontend_path' => base_path('Themes/frontend'),
+    'backend_path'  => base_path('Themes/backend'),
 
     /*
     |--------------------------------------------------------------------------
     | Symbolic link
     |--------------------------------------------------------------------------
     |
-    | If you theme_path is not in public folder then symlink must be true
-    | otherwise theme assets not working. If your theme_path under public folder
+    | If you frontend_path and backend_path is not in public folder then symlink must be true
+    | otherwise theme assets not working. If your frontend_path and backend_path under public folder
     | then symlink can be false or true as your wish.
     |
     */
     'symlink'    => true,
     /*
     |--------------------------------------------------------------------------
-    | Các loại chủ đề mà bạn có thể đặt chủ đề mặc định cho phần mềm trung gian cụ thể.
+    | Theme types where you can set default theme for particular middleware.
     |--------------------------------------------------------------------------
     | 'types'     => [
     |       'enable' => true or false,
@@ -107,5 +108,15 @@ return [
             'lang'   => 'lang/en/content.php',
         ],
     ],
+
+    /*
+   |--------------------------------------------------------------------------
+   | Author theme
+   |--------------------------------------------------------------------------
+   |
+   | Default theme create.
+   |
+   */
+    'author' => 'HOATQ',
 
 ];
