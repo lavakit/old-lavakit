@@ -242,11 +242,11 @@ class Theme implements ThemeContract
                 $themeConfig['path'] = $themePath;
 
                 if ($themeConfig->has('name')) {
-                    $theme[$themeConfig->get('name')] = $themeConfig;
+                    $themes[$themeConfig->get('name')] = $themeConfig;
                 }
             }
         }
-        $this->themes = $theme;
+        $this->themes = $themes;
     }
 
     /**
