@@ -10,7 +10,7 @@ use Noodlehaus\Config;
 use Inspire\Theme\Contracts\ThemeContract;
 use Inspire\Theme\Exceptions\ThemeNotFoundExceptions;
 
-class Theme implements ThemeContract
+class ThemeManager implements ThemeContract
 {
     /**
      * Theme Root Path

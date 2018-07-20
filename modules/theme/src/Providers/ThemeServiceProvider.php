@@ -10,7 +10,7 @@ use Inspire\Base\Traits\CanPublishConfiguration;
 use Inspire\Theme\Console\ThemeGeneratorCommand;
 use Inspire\Theme\Console\ThemeListCommand;
 use Inspire\Theme\Contracts\ThemeContract;
-use Inspire\Theme\Managers\Theme;
+use Inspire\Theme\Managers\ThemeManager;
 use Inspire\Theme\Facades\ThemeFacade;
 
 class ThemeServiceProvider extends ServiceProvider
@@ -101,7 +101,7 @@ class ThemeServiceProvider extends ServiceProvider
     protected function registerTheme()
     {
         $this->app->singleton(ThemeContract::class, function ($app) {
-            $theme = new Theme($app, $this->app['view']->getFinder(), $this->app['config'], $this->app['translator']);
+            $theme = new ThemeManager($app, $this->app['view']->getFinder(), $this->app['config'], $this->app['translator']);
 
             return $theme;
         });
