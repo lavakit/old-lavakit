@@ -4,12 +4,14 @@ namespace Inspire\Theme\Providers;
 
 use App;
 use File;
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Inspire\Base\Traits\CanPublishConfiguration;
 use Inspire\Theme\Console\ThemeGeneratorCommand;
 use Inspire\Theme\Console\ThemeListCommand;
 use Inspire\Theme\Contracts\ThemeContract;
 use Inspire\Theme\Managers\Theme;
+use Inspire\Theme\Facades\ThemeFacade;
 
 class ThemeServiceProvider extends ServiceProvider
 {
@@ -17,6 +19,13 @@ class ThemeServiceProvider extends ServiceProvider
 
     const THEME_CREATE_COMMAND  = 'theme.create';
     const THEME_LIST_COMMAND    = 'theme.list';
+
+    /**
+     * @var array Facade Aliases
+     */
+    protected $facadeAliases = [
+        'Theme' => ThemeFacade::class
+    ];
 
     /**
      * Bootstrap the application services.
@@ -42,6 +51,9 @@ class ThemeServiceProvider extends ServiceProvider
         $this->loadHelpers();
         $this->consoleCommand();
         $this->registerMiddleware();
+
+        //Register aliases
+        $this->registerFacadeAliases();
 
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'theme');
     }
@@ -141,5 +153,17 @@ class ThemeServiceProvider extends ServiceProvider
     public function provides()
     {
         return [];
+    }
+
+    /**
+     * Load additional Aliases
+     *
+     * @return void
+     */
+    protected function registerFacadeAliases() {
+        $loader = AliasLoader::getInstance();
+        foreach ($this->facadeAliases as $alias => $facade) {
+            $loader->alias($alias, $facade);
+        }
     }
 }
