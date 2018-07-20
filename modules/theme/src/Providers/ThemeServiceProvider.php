@@ -34,8 +34,8 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (!File::exists(public_path('Themes')) && config('theme.symlink') && File::exists(config('theme.theme_path'))) {
-            App::make('files')->link(config('theme.theme_path'), public_path('Themes'));
+        if (!File::exists(public_path('Themes')) && config('theme.symlink') && File::exists(config('theme.frontend_path'))) {
+            //App::make('files')->link(config('theme.frontend_path'), public_path('Themes'));
         }
     }
 
