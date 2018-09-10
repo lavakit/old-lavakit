@@ -18,7 +18,6 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
     }
 
     /**
@@ -29,11 +28,17 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         if (config('base.cache_enable')) {
-            $this->app->singleton(PostRepository::class, function (){
-                return new PostCacheDecorator(new EloquentPostRepository(new Post()), new Cache($this->app['cache'],__CLASS__));
-            });
+            $this->app->singleton(PostRepository::class, function () {
+                return new PostCacheDecorator(
+                        new EloquentPostRepository(
+                                new Post()
+                        ), new Cache(
+                                $this->app['cache'], __CLASS__
+                        )
+                );
+        });
         } else {
-            $this->app->singleton(PostRepository::class,function () {
+            $this->app->singleton(PostRepository::class, function () {
                 return new EloquentPostRepository(new Post());
             });
         }

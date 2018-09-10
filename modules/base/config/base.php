@@ -19,7 +19,9 @@ return [
         'acl',
         'post',
         'page',
-        'dashboard'
+        'dashboard',
+        'theme',
+        'user'
     ],
 
     /*
@@ -39,9 +41,10 @@ return [
    */
     'middleware' => [
         'backend' => [
-            'auth',
+
         ],
         'frontend' => [
+
         ],
         'api' => [
             'api',

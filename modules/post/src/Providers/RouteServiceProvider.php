@@ -1,74 +1,38 @@
-<?php namespace Inspire\Post\Providers;
+<?php
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+namespace Inspire\Post\Providers;
 
-class RouteServiceProvider extends ServiceProvider
+use Inspire\Base\Providers\RoutingServiceProvider as BaseRoutingServiceProvider;
+
+class RouteServiceProvider extends BaseRoutingServiceProvider
 {
+    /**
+     * The root namespace to assume when generating URLs to actions.
+     * @var string
+     */
     protected $namespace = 'Inspire\Post\Http\Controllers';
 
-
     /**
-     * Define your route model bindings, pattern filters, etc.
-     *
-     * @return void
+     * @return string
      */
-    public function boot()
+    protected function getFrontendRoute()
     {
-        //
-
-        parent::boot();
+        return __DIR__ . '/../../routes/frontendRoutes.php';
     }
 
     /**
-     * Define the routes for the application.
-     *
-     * @return void
+     * @return string
      */
-    public function map()
+    protected function getBackendRoute()
     {
-        $this->mapApiRoutes();
-
-        $this->mapWebRoutes();
-
-        //
+        return __DIR__ . '/../../routes/backendRoutes.php';
     }
 
     /**
-     * Define the "web" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     *
-     * @return void
+     * @return string
      */
-    protected function mapWebRoutes()
+    protected function getApiRoute()
     {
-        Route::group([
-            'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'web'],
-            'namespace' => $this->namespace,
-            'prefix' => LaravelLocalization::setLocale(),
-        ], function ($router) {
-
-            require __DIR__ . '/../../routes/web.php';
-        });
-    }
-
-    /**
-     * Define the "api" routes for the application.
-     *
-     * These routes are typically stateless.
-     *
-     * @return void
-     */
-    protected function mapApiRoutes()
-    {
-        Route::group([
-             'middleware' => 'api',
-             'namespace' => $this->namespace,
-             'prefix' => 'api'
-         ], function ($router) {
-            require __DIR__ . '/../../routes/api.php';
-        });
+        return __DIR__ . '/../../routes/apiRoutes.php';
     }
 }

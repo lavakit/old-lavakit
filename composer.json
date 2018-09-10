@@ -50,15 +50,16 @@
             "Inspire\\Post\\": "modules/post/src",
             "Inspire\\Page\\": "modules/page/src",
             "Inspire\\Dashboard\\": "modules/dashboard/src",
-            "Inspire\\User\\":"modules/user/src",
-            "Inspire\\Theme\\":"modules/theme/src"
+            "Inspire\\User\\": "modules/user/src",
+            "Inspire\\Theme\\": "modules/theme/src",
+            "Inspire\\Menu\\": "modules/menu/src"
         }
     },
     "autoload-dev": {
-    "psr-4": {
-        "Tests\\": "tests/"
-    }
-},
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "extra": {
         "laravel": {
             "dont-discover": []

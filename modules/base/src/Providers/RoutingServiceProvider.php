@@ -28,7 +28,7 @@ abstract class RoutingServiceProvider extends ServiceProvider
     /**
      * @return string
      */
-    abstract protected function getFrontEndRoute();
+    abstract protected function getFrontendRoute();
 
     /**
      * @return string

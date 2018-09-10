@@ -3,6 +3,7 @@
 namespace Inspire\Theme\Middleware;
 
 use Closure;
+use Inspire\Theme\Facades\Theme;
 
 class WebMiddleware
 {
@@ -16,7 +17,7 @@ class WebMiddleware
      */
     public function handle($request, Closure $next)
     {
-        \Theme::set(config('theme.active'));
+        Theme::set(config('theme.active'));
 
         return $next($request);
     }

@@ -1,71 +1,37 @@
 <?php namespace Inspire\User\Providers;
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
-class RouteServiceProvider extends ServiceProvider
+use Inspire\Base\Providers\RoutingServiceProvider as BaseRoutingServiceProvider;
+
+class RouteServiceProvider extends BaseRoutingServiceProvider
 {
+    /**
+     * The root namespace to assume when generating URLs to actions.
+     * @var string
+     */
     protected $namespace = 'Inspire\User\Http\Controllers';
 
-
     /**
-     * Define your route model bindings, pattern filters, etc.
-     *
-     * @return void
+     * @return bool|string
      */
-    public function boot()
+    protected function getFrontendRoute()
     {
-        //
-
-        parent::boot();
+        return false;
     }
 
     /**
-     * Define the routes for the application.
-     *
-     * @return void
+     * @return string
      */
-    public function map()
+    protected function getBackendRoute()
     {
-        $this->mapApiRoutes();
-
-        $this->mapWebRoutes();
-
-        //
+        return __DIR__ . '/../../routes/backendRoutes.php';
     }
 
     /**
-     * Define the "web" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     *
-     * @return void
+     * @return string
      */
-    protected function mapWebRoutes()
+    protected function getApiRoute()
     {
-        Route::group([
-             'middleware' => 'web',
-             'namespace' => $this->namespace,
-        ], function ($router) {
-            require __DIR__ . '/../../routes/web.php';
-        });
-    }
-
-    /**
-     * Define the "api" routes for the application.
-     *
-     * These routes are typically stateless.
-     *
-     * @return void
-     */
-    protected function mapApiRoutes()
-    {
-        Route::group([
-             'middleware' => 'api',
-             'namespace' => $this->namespace,
-             'prefix' => 'api'
-         ], function ($router) {
-            require __DIR__ . '/../../routes/api.php';
-        });
+        return __DIR__ . '/../../routes/apiRoutes.php';
     }
 }

@@ -3,6 +3,7 @@
 namespace Inspire\Theme\Middleware;
 
 use Closure;
+use Inspire\Theme\Facades\Theme;
 
 class RouteMiddleware
 {
@@ -17,7 +18,7 @@ class RouteMiddleware
      */
     public function handle($request, Closure $next, $themeName)
     {
-        \Theme::set($themeName);
+        Theme::set($themeName);
 
         return $next($request);
     }

@@ -3,9 +3,12 @@
 namespace Inspire\Page\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Inspire\Base\Traits\CanPublishConfiguration;
 
 class PageServiceProvider extends ServiceProvider
 {
+    use CanPublishConfiguration;
+
     /**
      * Bootstrap the application services.
      *
@@ -23,8 +26,8 @@ class PageServiceProvider extends ServiceProvider
             $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
 
             $this->publishes([__DIR__ . '/../../resources/assets' => resource_path('assets')], 'assets');
-            $this->publishes([__DIR__ . '/../../resources/views' => config('view.paths')[0] . '/vendor/page',], 'views');
-            $this->publishes([__DIR__ . '/../../resources/lang' => base_path('resources/lang/vendor/page'),], 'lang');
+            $this->publishes([__DIR__ . '/../../resources/views' => config('view.paths')[0] . '/vendor/page'], 'views');
+            $this->publishes([__DIR__ . '/../../resources/lang' => base_path('resources/lang/vendor/page')], 'lang');
             $this->publishes([__DIR__ . '/../../database' => base_path('database'),], 'migrations');
         }
     }
@@ -39,9 +42,11 @@ class PageServiceProvider extends ServiceProvider
         //Load helpers
         $this->loadHelpers();
 
+        /*Load Config*/
+        $this->publishConfig('page', 'config');
+
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(RepositoryServiceProvider::class);
-        $this->app->register(BootstrapModuleServiceProvider::class);
     }
 
     protected function loadHelpers()

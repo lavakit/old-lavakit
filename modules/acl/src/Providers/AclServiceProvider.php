@@ -18,7 +18,6 @@ class AclServiceProvider extends ServiceProvider
 
 
         if (app()->runningInConsole()) {
-
             /*Load migrations*/
             $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
 
@@ -41,7 +40,6 @@ class AclServiceProvider extends ServiceProvider
 
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(RepositoryServiceProvider::class);
-        $this->app->register(BootstrapModuleServiceProvider::class);
     }
 
     protected function loadHelpers()

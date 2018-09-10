@@ -111,7 +111,6 @@ class ThemeGeneratorCommand extends  Command
         $this->createStubs($themeStubFiles, $createdThemePath);
 
         $this->info(ucfirst($this->theme['name']).' Theme Folder Successfully Generated !!!');
-
     }
 
     /**

@@ -8,10 +8,11 @@ return [
     |-----------------------------------------------------------------------------
     |
     | Default active Themename like as
-    | 'active'  =>  'themeone'
+    | 'active'  =>  'default'
     |
     */
-    'active'    =>  '',
+    'active'            =>  'default',
+    'active_backend'    =>  'adminlte',
 
     /*
     |--------------------------------------------------------------------------
@@ -36,6 +37,7 @@ return [
     |
     */
     'symlink'    => true,
+
     /*
     |--------------------------------------------------------------------------
     | Theme types where you can set default theme for particular middleware.
@@ -47,17 +49,11 @@ return [
     |       ]
     |   ],
     |
-    | For Example route
-    | Route::get('/', function () {
-    |       return view('welcome');
-    | })->middleware('example');
-    |
-    |
     */
     'types'     => [
-        'enable'        => false,
+        'enable'        => true,
         'middleware'    => [
-            'example'      => 'admin',
+            'theme' => 'default'
         ],
     ],
     /*

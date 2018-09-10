@@ -83,7 +83,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     {
         $query = $this->make($with);
 
-        if (empty($select)) {
+        if (!empty($select)) {
             return $query->where($condition)->select($select)->first();
         }
 
@@ -125,7 +125,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     {
         $query = $this->make($with);
 
-        if (empty($select)) {
+        if (!empty($select)) {
             return $query->where($condition)->select($select)->first();
         }
 

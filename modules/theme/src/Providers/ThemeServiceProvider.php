@@ -2,16 +2,16 @@
 
 namespace Inspire\Theme\Providers;
 
-use App;
-use File;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Inspire\Base\Traits\CanPublishConfiguration;
 use Inspire\Theme\Console\ThemeGeneratorCommand;
 use Inspire\Theme\Console\ThemeListCommand;
 use Inspire\Theme\Contracts\ThemeContract;
+use Inspire\Theme\Facades\Theme;
+use Illuminate\Support\Facades\Config;
 use Inspire\Theme\Managers\ThemeManager;
-use Inspire\Theme\Facades\ThemeFacade;
+use Inspire\Theme\Middleware\RouteMiddleware;
 
 class ThemeServiceProvider extends ServiceProvider
 {
@@ -24,7 +24,7 @@ class ThemeServiceProvider extends ServiceProvider
      * @var array Facade Aliases
      */
     protected $facadeAliases = [
-        'Theme' => ThemeFacade::class
+        'Theme' => Theme::class
     ];
 
     /**
@@ -34,9 +34,7 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (!File::exists(public_path('Themes')) && config('theme.symlink') && File::exists(config('theme.frontend_path'))) {
-            //App::make('files')->link(config('theme.frontend_path'), public_path('Themes'));
-        }
+
     }
 
     /**
@@ -55,7 +53,9 @@ class ThemeServiceProvider extends ServiceProvider
         //Register aliases
         $this->registerFacadeAliases();
 
-        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'theme');
+        /*Load views*/
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views',  'theme');
+
     }
 
 
@@ -69,7 +69,11 @@ class ThemeServiceProvider extends ServiceProvider
         if (config('theme.types.enable')) {
             $themeTypes = config('theme.types.middleware');
             foreach ($themeTypes as $middleware => $themeName) {
-                $this->app['router']->aliasMiddleware($middleware, '\Inspire\Theme\Middleware\RouteMiddleware:' .$themeName);
+                /** Register Middleware */
+                $this->app['router']->aliasMiddleware($middleware, RouteMiddleware::class);
+
+                /** Push Config middleware theme */
+                Config::push('base.middleware.frontend', $middleware . ':' . $themeName);
             }
         }
     }
@@ -98,12 +102,15 @@ class ThemeServiceProvider extends ServiceProvider
         }
     }
 
+    /**
+     * Register theme Frontend
+     *
+     * @return void
+     */
     protected function registerTheme()
     {
         $this->app->singleton(ThemeContract::class, function ($app) {
-            $theme = new ThemeManager($app, $this->app['view']->getFinder(), $this->app['config'], $this->app['translator']);
-
-            return $theme;
+            return new ThemeManager($app, $this->app['view']->getFinder(), $this->app['config'], $this->app['translator']);
         });
     }
 
@@ -117,10 +124,10 @@ class ThemeServiceProvider extends ServiceProvider
         $this->registerThemeGeneratorCommand();
         $this->registerThemeListCommand();
         // Assign commands.
-        $this->commands(
+        $this->commands([
             self::THEME_CREATE_COMMAND,
             self::THEME_LIST_COMMAND
-        );
+        ]);
     }
 
     /**

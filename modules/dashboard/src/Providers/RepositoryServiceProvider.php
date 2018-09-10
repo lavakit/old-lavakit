@@ -13,7 +13,6 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
     }
 
     /**
@@ -23,6 +22,5 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
     }
 }

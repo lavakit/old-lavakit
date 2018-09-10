@@ -2,12 +2,15 @@
 
 namespace Inspire\Base\Providers;
 
+use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
+use Inspire\Base\Exceptions\Handler;
 use Inspire\Base\Facades\PageTitleFacade;
-use Inspire\Acl\Providers\AclServiceProvider;
 use Inspire\Base\Traits\CanPublishConfiguration;
+use Inspire\Acl\Providers\AclServiceProvider;
 use Inspire\Dashboard\Providers\DashboardServiceProvider;
+use Inspire\Menu\Providers\MenuServiceProvider;
 use Inspire\Page\Providers\PageServiceProvider;
 use Inspire\Post\Providers\PostServiceProvider;
 use Inspire\Theme\Providers\ThemeServiceProvider;
@@ -43,22 +46,23 @@ class BaseServiceProvider extends ServiceProvider
         $this->app->register(DashboardServiceProvider::class);
         $this->app->register(UserServiceProvider::class);
         $this->app->register(ThemeServiceProvider::class);
+        $this->app->register(MenuServiceProvider::class);
 
-        /*Load views*/
-        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'base');
+        /*Load views Backend*/
+        $pathView =  config('theme.backend_path') . '/' . config('theme.active_backend') . '/views';
+        $this->loadViewsFrom($pathView, 'base');
 
         /*Load translations*/
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'base');
 
 
         if (app()->runningInConsole()) {
-
             /*Load migrations*/
             $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
 
             $this->publishes([__DIR__ . '/../../resources/assets' => resource_path('assets')], 'assets');
-            $this->publishes([__DIR__ . '/../../resources/views' => config('view.paths')[0] . '/vendor/base',], 'views');
-            $this->publishes([__DIR__ . '/../../resources/lang' => base_path('resources/lang/vendor/base'),], 'lang');
+            $this->publishes([__DIR__ . '/../../resources/views' => config('view.paths')[0] . '/vendor/base'], 'views');
+            $this->publishes([__DIR__ . '/../../resources/lang' => base_path('resources/lang/vendor/base')], 'lang');
             $this->publishes([__DIR__ . '/../../database' => base_path('database'),], 'migrations');
         }
     }
@@ -73,12 +77,10 @@ class BaseServiceProvider extends ServiceProvider
         //Load helpers
         $this->loadHelpers();
 
+        $this->app->singleton(ExceptionHandler::class, Handler::class);
+
         //Register aliases
         $this->registerFacadeAliases();
-
-        $this->app->register(RepositoryServiceProvider::class);
-        $this->app->register(BootstrapModuleServiceProvider::class);
-
     }
 
     /**
@@ -99,7 +101,8 @@ class BaseServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerFacadeAliases() {
+    protected function registerFacadeAliases()
+    {
         $loader = AliasLoader::getInstance();
         foreach ($this->facadeAliases as $alias => $facade) {
             $loader->alias($alias, $facade);

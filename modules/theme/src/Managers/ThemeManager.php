@@ -146,7 +146,8 @@ class ThemeManager implements ThemeContract
 
     /**
      * Get all theme information.
-     * @return array
+     *
+     * @return \Inspire\Theme\Managers\ThemeManager
      */
     public function all()
     {
@@ -164,8 +165,8 @@ class ThemeManager implements ThemeContract
     public function assets($path, $secure = null)
     {
         $splitThemeAndPath = explode(':', $path);
-        if (count(splitThemeAndPath) > 1) {
-            if (is_null(splitThemeAndPath[1])) {
+        if (count($splitThemeAndPath) > 1) {
+            if (is_null($splitThemeAndPath[1])) {
                 return;
             }
             $themeName = splitThemeAndPath[0];
@@ -187,7 +188,8 @@ class ThemeManager implements ThemeContract
         $fullPath = $themePath.$assetPath.$path;
 
         if (!file_exists($fullPath) && $themeInfo->has('parent') && !empty($themeInfo->get('parent'))) {
-            $themePath = str_replace(base_path().'/', '', $this->getThemeInfo($themeInfo->get('parent'))->get('path') ).'/';
+            $getPath = $this->getThemeInfo($themeInfo->get('parent'))->get('path');
+            $themePath = str_replace(base_path().'/', '', $getPath) . '/';
             $fullPath = $themePath.$assetPath.$path;
 
             return $this->app['url']->asset($fullPath, $secure);
