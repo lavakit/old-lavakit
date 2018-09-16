@@ -17,5 +17,25 @@
   "dependencies": {
     "bootstrap": "3.3.7",
     "font-awesome": "4.7.0"
+  },
+  "install": {
+    "path": "assets/libs",
+    "sources": {
+      "bootstrap": {
+        "mapping": [
+          {"assets/vendor/bootstrap/dist/js/bootstrap.min.js": "js/bootstrap.min.js"},
+          {"assets/vendor/bootstrap/dist/css/bootstrap.min.css":"css/bootstrap.min.css"}
+        ]
+      },
+      "jquery": [
+        "assets/vendor/jquery/dist/jquery.min.js"
+      ],
+      "font-awesome": {
+        "mapping": [
+          {"assets/vendor/font-awesome/css/font-awesome.min.css": "css/font-awesome.min.css"},
+          {"assets/vendor/font-awesome/fonts/**": "fonts"}
+        ]
+      }
+    }
   }
 }
