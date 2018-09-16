@@ -33,6 +33,6 @@ class RouteServiceProvider extends BaseRoutingServiceProvider
      */
     protected function getApiRoute()
     {
-        return __DIR__ . '/../../routes/apiRoutes.php';
+        return false;
     }
 }

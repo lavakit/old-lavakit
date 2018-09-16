@@ -2,6 +2,12 @@
 
 namespace Inspire\Base\Supports;
 
+/**
+ * Class PageTitle
+ * @package Inspire\Base\Supports
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
 class PageTitle
 {
     /**
@@ -15,10 +21,11 @@ class PageTitle
      *
      * @param string $title
      * @param bool $full
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function setTitle($title = null, $full = true)
     {
-        $this->title    = $title;
+        $this->title = $title;
 
         if ($full) {
             $this->title .= ' - ' . config('base.app_name');
@@ -27,7 +34,9 @@ class PageTitle
 
     /**
      * Get a Title for page
+     *
      * @return string Title
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function getTitle()
     {

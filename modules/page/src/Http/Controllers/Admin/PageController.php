@@ -2,13 +2,21 @@
 
 namespace Inspire\Page\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Inspire\Base\Http\Controllers\BaseController;
 
-class PageController extends Controller
+/**
+ * Class PageController
+ * @package Inspire\Page\Http\Controllers\Admin
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
+class PageController extends BaseController
 {
+    /**
+     * PageController constructor.
+     */
     public function __construct()
     {
-
     }
 
     public function index()

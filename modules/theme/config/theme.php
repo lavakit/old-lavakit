@@ -7,7 +7,7 @@ return [
     | Default active Theme
     |-----------------------------------------------------------------------------
     |
-    | Default active Themename like as
+    | Default active Theme name like as
     | 'active'  =>  'default'
     |
     */
@@ -36,7 +36,7 @@ return [
     | then symlink can be false or true as your wish.
     |
     */
-    'symlink'    => true,
+    'symlink'    => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return [
         'enable'        => true,
         'middleware'    => [
             'theme' => 'default'
-        ],
+        ]
     ],
     /*
     |--------------------------------------------------------------------------
@@ -84,7 +84,7 @@ return [
         'lang/en'   => 'lang/en',
         'css'       => 'assets/css',
         'js'        => 'assets/js',
-        'img'       => 'assets/img',
+        'images'       => 'assets/images',
         'layouts'   => 'views/layouts',
     ],
     /*
@@ -101,11 +101,11 @@ return [
             'css'    => 'assets/css/app.css',
             'layout' => 'views/layouts/master.blade.php',
             'page'   => 'views/welcome.blade.php',
-            'lang'   => 'lang/en/content.php',
+            'lang'   => 'lang/en/site.php',
         ],
     ],
 
-    /*
+   /*
    |--------------------------------------------------------------------------
    | Author theme
    |--------------------------------------------------------------------------
@@ -113,6 +113,5 @@ return [
    | Default theme create.
    |
    */
-    'author' => 'HOATQ',
-
+    'author' => 'HOATQ'
 ];

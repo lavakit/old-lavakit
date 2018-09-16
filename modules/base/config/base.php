@@ -6,12 +6,13 @@ return [
     | App name
     |--------------------------------------------------------------------------
     */
-    'app_name' => env('APP_NAME','Inspired'),
+    'app_name' => env('APP_NAME', 'Inspired'),
 
 
     /*
     |--------------------------------------------------------------------------
-    | These are the core modules that should NOT be disabled under any circumstance
+    | These are the core modules that should NOT be disabled
+    | under any circumstance
     |--------------------------------------------------------------------------
     */
     'core-modules' => [
@@ -29,7 +30,7 @@ return [
     | The prefix that'll be used for the administration
     |--------------------------------------------------------------------------
     */
-    'admin-prefix' => env('APP_ADMIN','admin'),
+    'admin-prefix' => env('APP_ADMIN', 'admin'),
 
     /*
    |--------------------------------------------------------------------------
@@ -41,10 +42,8 @@ return [
    */
     'middleware' => [
         'backend' => [
-
         ],
         'frontend' => [
-
         ],
         'api' => [
             'api',

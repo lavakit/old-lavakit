@@ -1,7 +1,15 @@
-<?php namespace Inspire\User\Providers;
+<?php
+
+namespace Inspire\User\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class RepositoryServiceProvider
+ * @package Inspire\User\Providers
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
 class RepositoryServiceProvider extends ServiceProvider
 {
     protected $module = 'Inspire\User';
@@ -13,7 +21,6 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
     }
 
     /**
@@ -23,6 +30,6 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
     }
 }
+

@@ -4,6 +4,12 @@ namespace Inspire\Post\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class PostServiceProvider
+ * @package Inspire\Post\Providers
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
 class PostServiceProvider extends ServiceProvider
 {
 

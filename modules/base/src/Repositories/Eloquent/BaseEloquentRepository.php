@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Builder;
 use Inspire\Base\Repositories\BaseRepository;
 
 /**
- * Class EloquentBaseRepository
- *
+ * Class BaseEloquentRepository
  * @package Inspire\Base\Repositories\Eloquent
- * @author TRINH QUOC HOA <tqhoa8th@gmail.com>
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
  */
-abstract class EloquentBaseRepository implements BaseRepository
+abstract class BaseEloquentRepository implements BaseRepository
 {
     /**
      * @var $model
@@ -20,7 +20,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     protected $model;
 
     /**
-     * EloquentBaseRepository constructor.
+     * BaseEloquentRepository constructor
      *
      * @param Model $model
      */
@@ -34,6 +34,7 @@ abstract class EloquentBaseRepository implements BaseRepository
      *
      * @param array $fields
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function fill(array $fields)
     {
@@ -44,6 +45,7 @@ abstract class EloquentBaseRepository implements BaseRepository
      * Get Empty Model
      *
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function getModel()
     {
@@ -54,6 +56,7 @@ abstract class EloquentBaseRepository implements BaseRepository
      * Get Table name
      *
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function getTable()
     {
@@ -61,10 +64,11 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * Make a new instance of the entity to query on.
+     * Make a new instance of the entity to query on
      *
      * @param array $with
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function make(array $with = [])
     {
@@ -78,8 +82,9 @@ abstract class EloquentBaseRepository implements BaseRepository
      * @param array $select
      * @param array $with
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function getFirstByAttributes(array $condition = [], array $select = [], array $with = [])
+    public function getFirstBy(array $condition = [], array $select = [], array $with = [])
     {
         $query = $this->make($with);
 
@@ -91,11 +96,12 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * Retrieve model by id regardless of status.
+     * Retrieve model by id regardless of status
      *
      * @param $id
      * @param array $with
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function findById($id, array $with = [])
     {
@@ -103,33 +109,22 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * Get single model by Slug.
+     * Get single model by Slug
      *
      * @param string $slug slug
+     * @param array $with
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function findBySlug($slug)
+    public function findBySlug($slug, array $with = [])
     {
-        return $this->model->where('slug', $slug)->firstorFail();
-    }
+        $model = $this->make($with)->where('slug', '=', $slug)->firstOrFail();
 
-    /**
-     * Find a resource by an array of attributes
-     *
-     * @param  array $condition
-     * @param array $select
-     * @param  array $with
-     * @return $model
-     */
-    public function getAllByAttributes(array $condition = [], array $select = [], array $with = [])
-    {
-        $query = $this->make($with);
-
-        if (!empty($select)) {
-            return $query->where($condition)->select($select)->first();
+        if (!$model) {
+            abort(404);
         }
 
-        return $query->where($condition)->get();
+        return $model;
     }
 
     /**
@@ -138,6 +133,7 @@ abstract class EloquentBaseRepository implements BaseRepository
      * @param string $column
      * @param string $key
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function pluck($column, $key = null)
     {
@@ -149,6 +145,7 @@ abstract class EloquentBaseRepository implements BaseRepository
      *
      * @var array $with Eager load related models
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function all(array $with = [])
     {
@@ -158,22 +155,16 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * Get all Modle by attributes sort order
+     * Find a resource by an array of attributes
      *
      * @param array $condition
-     * @param string $orderBy
-     * @param string $sortOrder
      * @param array $with
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function getAllByAttributesSortOrder(
-        array $attributes,
-        $orderBy = null,
-        $sortOrder = 'desc'
-    ){
-        $query = $this->buildQueryByAttributes($attributes, $orderBy, $sortOrder);
-
-        return $query->get();
+    public function allBy(array $condition = [], array $with = [])
+    {
+        return $this->make($with)->where($condition)->get();
     }
 
     /**
@@ -182,12 +173,17 @@ abstract class EloquentBaseRepository implements BaseRepository
      * @param array $select
      * @param array $condition
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function select(array $select = ['*'], array $condition = [])
     {
         return $this->model->where($condition)->select($select);
     }
 
+    /**
+     * @return Builder
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
     public function allWithBuilder() : Builder
     {
         return $this->model->query();
@@ -198,21 +194,48 @@ abstract class EloquentBaseRepository implements BaseRepository
      *
      * @param array $data
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function create(array $data = [])
     {
         return $this->model->create($data);
     }
 
+    /**
+     * Create a new model
+     *
+     * @param Model $model
+     * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    public function createOrUpdate(Model $model)
+    {
+        if ($model->save()) {
+            return $model;
+        }
+        return false;
+    }
+
+    /**
+     * @param array $data
+     * @param array $with
+     * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    public function firstOrCreate(array $data, array $with = [])
+    {
+        return $this->model->firstOrCreate($data, $with);
+    }
 
     /**
      * Update a model
      *
      * @param Model $model
-     * @param array $attributes
-     * @return mixed
+     * @param array $data
+     * @return bool|mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function update(Model $model, array $data= [])
+    public function update(Model $model, array $data = [])
     {
         return $model->update($data);
     }
@@ -224,8 +247,9 @@ abstract class EloquentBaseRepository implements BaseRepository
      * @param array $condition
      * @param array $data
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function updateByAttributes(array $condition, array $data = [])
+    public function updateBy(array $condition, array $data = [])
     {
         return $this->model->where($condition)->update($data);
     }
@@ -234,7 +258,9 @@ abstract class EloquentBaseRepository implements BaseRepository
      * Delete a Model
      *
      * @param Model $model
-     * @return mixed
+     * @return bool|mixed|null
+     * @throws \Exception
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function delete(Model $model)
     {
@@ -243,34 +269,51 @@ abstract class EloquentBaseRepository implements BaseRepository
 
     /**
      * Delete by Attributes
+     *
      * @param array $condition
-     * @return mixed
+     * @return bool|mixed|null
+     * @throws \Exception
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function deleteByAttributes(array $condition = [])
+    public function deleteBy(array $condition = [])
     {
         return $this->model->where($condition)->delete();
     }
 
     /**
-     * Build Query to catch resources by an array of attributes and params
-     *
-     * @param  array $attributes
-     * @param  null|string $orderBy
-     * @param  string $sortOrder
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @param array $condition
+     * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    private function buildQueryByAttributes(array $attributes, $orderBy = null, $sortOrder = 'desc')
+    public function count(array $condition = [])
     {
-        $query = $this->model->query();
-
-        foreach ($attributes as $field => $value) {
-            $query = $query->where($field, $value);
-        }
-
-        if (null !== $orderBy) {
-            $query->orderBy($orderBy, $sortOrder);
-        }
-
-        return $query;
+        return $this->model->where($condition)->count();
     }
+
+    /**
+     * @param $column
+     * @param array $value
+            * @param array $args
+            * @return mixed
+            * @author hoatq <tqhoa8th@gmail.com>
+     */
+    public function getByWhereIn($column, array $value = [], array $args = [])
+    {
+        $records = $this->model->whereIn($column, $value);
+
+        if (!empty(array_get($args, 'where'))) {
+            $records = $records->where($args['where']);
+        }
+
+        if (!empty(array_get($args, 'paginate'))) {
+            return $records->paginate($args['paginate']);
+        }
+
+        if (!empty(array_get($args, 'limit'))) {
+            $records = $records->limit($args['limit']);
+        }
+
+        return $records->get();
+    }
+
 }

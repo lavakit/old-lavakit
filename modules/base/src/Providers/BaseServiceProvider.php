@@ -16,6 +16,12 @@ use Inspire\Post\Providers\PostServiceProvider;
 use Inspire\Theme\Providers\ThemeServiceProvider;
 use Inspire\User\Providers\UserServiceProvider;
 
+/**
+ * Class BaseServiceProvider
+ * @package Inspire\Base\Providers
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
 class BaseServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
@@ -50,7 +56,7 @@ class BaseServiceProvider extends ServiceProvider
 
         /*Load views Backend*/
         $pathView =  config('theme.backend_path') . '/' . config('theme.active_backend') . '/views';
-        $this->loadViewsFrom($pathView, 'base');
+        $this->loadViewsFrom($pathView, 'backend');
 
         /*Load translations*/
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'base');

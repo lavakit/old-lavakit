@@ -1,7 +1,15 @@
-<?php namespace Inspire\Menu\Providers;
+<?php
+
+namespace Inspire\Menu\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class MenuServiceProvider
+ * @package Inspire\Menu\Providers
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
 class MenuServiceProvider extends ServiceProvider
 {
     /**

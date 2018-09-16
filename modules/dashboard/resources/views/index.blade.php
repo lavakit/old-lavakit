@@ -1,4 +1,4 @@
-@extends('base::layouts.master')
+@extends('backend::layouts.master')
 
 @section('content')
 <h1>

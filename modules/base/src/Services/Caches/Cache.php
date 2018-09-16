@@ -6,15 +6,16 @@ use Illuminate\Cache\CacheManager;
 
 /**
  * Class Cache
- *
  * @package Inspire\Base\Services\Caches
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 class Cache implements CacheInterface
 {
     /**
      * @var CacheManager
      */
-    protected  $cache;
+    protected $cache;
 
     /**
      * @var null|int $minutes
@@ -27,17 +28,18 @@ class Cache implements CacheInterface
     protected $tag;
 
     /**
-     * Cache constructor.
+     * Cache constructor
      *
-     * @param CacheManager $cache
-     * @param string $tag
-     * @param bool $minutes
+     * @param CacheManager $cacheManager
+     * @param $tag
+     * @param null $minutes
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function __construct(CacheManager $cacheManager, $tag, $minutes = null)
     {
         $this->cache = $cacheManager;
         $this->tag   =  $tag;
-        $this->minutes  = $minutes ?: config('base.cache_time',10);
+        $this->minutes  = $minutes ?: config('base.cache_time', 10);
     }
 
     /**
@@ -45,6 +47,7 @@ class Cache implements CacheInterface
      *
      * @param $key
      * @return string
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function generateKey($key)
     {
@@ -52,10 +55,11 @@ class Cache implements CacheInterface
     }
 
     /**
-     * Retrieve data from cache.
+     * Retrieve data from cache
      *
      * @param $key
-     * @return mixed|void
+     * @return \Illuminate\Contracts\Cache\Repository|mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function get($key)
     {
@@ -65,10 +69,11 @@ class Cache implements CacheInterface
     /**
      * Add data for cache
      *
-     * @param cache $key
-     * @param string $value
+     * @param $key
+     * @param $value
      * @param null $minutes
      * @return mixed|void
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function put($key, $value, $minutes = null)
     {
@@ -86,12 +91,13 @@ class Cache implements CacheInterface
      * Store cache key to file
      *
      * @param $key
-     * @return void
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function storeCacheKey($key)
     {
         if (file_exists(config('base.cache_store'))) {
-            $cacheKeys = getFileDataJson(config('base.cache_store'));
+            $cacheKeys = getFileData(config('base.cache_store'));
             if (!empty($cacheKeys) && !in_array($key, array_get($cacheKeys, $this->tag, []))) {
                 $cacheKeys[$this->tag][] = $key;
             }
@@ -100,7 +106,7 @@ class Cache implements CacheInterface
             $cacheKeys[$this->tag][] = $key;
         }
 
-        saveFileDataJson(config('base.cache_store'), $cacheKeys);
+        storeFileData(config('base.cache_store'), $cacheKeys);
     }
 
     /**
@@ -108,6 +114,7 @@ class Cache implements CacheInterface
      *
      * @param $key
      * @return bool|mixed
+     * Store cache key to file
      */
     public function has($key)
     {
@@ -119,13 +126,17 @@ class Cache implements CacheInterface
      * Clear a cache
      *
      * @return mixed|void
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function flush()
     {
         $cacheKeys = [];
+
         if (file_exists(config('base.cache_store'))) {
-            $cacheKeys = getFileDataJson(config('base.cache_store'));
+            $cacheKeys = getFileData(config('base.cache_store'));
         }
+
         if (!empty($cacheKeys)) {
             $caches = array_get($cacheKeys, $this->tag);
             if ($caches) {
@@ -135,6 +146,7 @@ class Cache implements CacheInterface
                 unset($cacheKeys[$this->tag]);
             }
         }
-        saveFileDataJson(config('base.cache_store'), $cacheKeys);
+
+        storeFileData(config('base.cache_store'), $cacheKeys);
     }
 }

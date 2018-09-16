@@ -5,6 +5,12 @@ namespace Inspire\Theme\Console;
 use Illuminate\Console\Command;
 use Inspire\Theme\Contracts\ThemeContract;
 
+/**
+ * Class ThemeListCommand
+ * @package Inspire\Theme\Console
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
 class ThemeListCommand extends Command
 {
     /**

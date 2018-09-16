@@ -5,6 +5,12 @@ namespace Inspire\Page\Providers;
 use Illuminate\Support\ServiceProvider;
 use Inspire\Base\Traits\CanPublishConfiguration;
 
+/**
+ * Class PageServiceProvider
+ * @package Inspire\Page\Providers
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
 class PageServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;

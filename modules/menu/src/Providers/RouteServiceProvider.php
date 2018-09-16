@@ -1,71 +1,46 @@
-<?php namespace Inspire\Menu\Providers;
+<?php
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+namespace Inspire\Menu\Providers;
 
-class RouteServiceProvider extends ServiceProvider
+use Inspire\Base\Providers\RoutingServiceProvider as BaseRoutingServiceProvider;
+
+/**
+ * Class RouteServiceProvider
+ * @package Inspire\Menu\Providers
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
+class RouteServiceProvider extends BaseRoutingServiceProvider
 {
+    /**
+     * @var string
+     */
     protected $namespace = 'Inspire\Menu\Http\Controllers';
 
-
     /**
-     * Define your route model bindings, pattern filters, etc.
-     *
-     * @return void
+     * @return string
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function boot()
+    protected function getFrontendRoute()
     {
-        //
-
-        parent::boot();
+        return __DIR__ . '/../../routes/frontendRoutes.php';
     }
 
     /**
-     * Define the routes for the application.
-     *
-     * @return void
+     * @return string
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function map()
+    protected function getBackendRoute()
     {
-        $this->mapApiRoutes();
-
-        $this->mapWebRoutes();
-
-        //
+        return __DIR__ . '/../../routes/backendRoutes.php';
     }
 
     /**
-     * Define the "web" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     *
-     * @return void
+     * @return string
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    protected function mapWebRoutes()
+    protected function getApiRoute()
     {
-        Route::group([
-             'middleware' => 'web',
-             'namespace' => $this->namespace,
-        ], function ($router) {
-            require __DIR__ . '/../../routes/web.php';
-        });
-    }
-
-    /**
-     * Define the "api" routes for the application.
-     *
-     * These routes are typically stateless.
-     *
-     * @return void
-     */
-    protected function mapApiRoutes()
-    {
-        Route::group([
-             'middleware' => 'api',
-             'namespace' => $this->namespace,
-             'prefix' => 'api'
-         ], function ($router) {
-            require __DIR__ . '/../../routes/api.php';
-        });
+        return false;
     }
 }

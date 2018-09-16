@@ -3,8 +3,8 @@
 use Illuminate\Routing\Router;
 
 /** @var Router $router */
-$router->group(['prefix' => 'post'], function (Router $router){
-    $router->get('posts', [
+$router->group(['prefix' => '/posts'], function (Router $router) {
+    $router->get('/', [
         'as'        => 'admin.post.index',
         'uses'      => 'PostController@index',
         'middleware'=> 'web'

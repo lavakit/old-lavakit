@@ -1,9 +1,11 @@
 <?php
 
-Route::group(['prefix'  =>  '/page'], function (){
-    Route::get('pages', [
-        'as'            => 'admin.page.index',
-        'uses'          => 'PageController@index',
-        'middleware'    => 'web'
+use Illuminate\Routing\Router;
+
+/** @var Router $router */
+$router->group(['prefix' => '/pages'], function (Router $router) {
+    $router->get('/', [
+        'as'    => 'admin.page.index',
+        'uses'  => 'PageController@index'
     ]);
 });

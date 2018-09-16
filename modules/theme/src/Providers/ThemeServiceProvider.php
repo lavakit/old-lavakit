@@ -9,10 +9,17 @@ use Inspire\Theme\Console\ThemeGeneratorCommand;
 use Inspire\Theme\Console\ThemeListCommand;
 use Inspire\Theme\Contracts\ThemeContract;
 use Inspire\Theme\Facades\Theme;
-use Illuminate\Support\Facades\Config;
+use Config;
 use Inspire\Theme\Managers\ThemeManager;
+use Inspire\Theme\Middleware\RouteAdminMiddleware;
 use Inspire\Theme\Middleware\RouteMiddleware;
 
+/**
+ * Class ThemeServiceProvider
+ * @package Inspire\Theme\Providers
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
 class ThemeServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
@@ -21,7 +28,7 @@ class ThemeServiceProvider extends ServiceProvider
     const THEME_LIST_COMMAND    = 'theme.list';
 
     /**
-     * @var array Facade Aliases
+     * @var array Facade aliases
      */
     protected $facadeAliases = [
         'Theme' => Theme::class
@@ -34,7 +41,6 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
     }
 
     /**
@@ -54,10 +60,8 @@ class ThemeServiceProvider extends ServiceProvider
         $this->registerFacadeAliases();
 
         /*Load views*/
-        $this->loadViewsFrom(__DIR__ . '/../../resources/views',  'theme');
-
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'theme');
     }
-
 
     /**
      * Add Theme Types Middleware.
@@ -110,7 +114,12 @@ class ThemeServiceProvider extends ServiceProvider
     protected function registerTheme()
     {
         $this->app->singleton(ThemeContract::class, function ($app) {
-            return new ThemeManager($app, $this->app['view']->getFinder(), $this->app['config'], $this->app['translator']);
+            return new ThemeManager(
+                $app,
+                $this->app['view']->getFinder(),
+                $this->app['config'],
+                $this->app['translator']
+            );
         });
     }
 
@@ -123,6 +132,7 @@ class ThemeServiceProvider extends ServiceProvider
     {
         $this->registerThemeGeneratorCommand();
         $this->registerThemeListCommand();
+
         // Assign commands.
         $this->commands([
             self::THEME_CREATE_COMMAND,
@@ -167,7 +177,8 @@ class ThemeServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerFacadeAliases() {
+    protected function registerFacadeAliases()
+    {
         $loader = AliasLoader::getInstance();
         foreach ($this->facadeAliases as $alias => $facade) {
             $loader->alias($alias, $facade);

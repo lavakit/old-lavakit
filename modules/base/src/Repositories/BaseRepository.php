@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Interface BaseRepository
- *
  * @package Inspire\Base\Repositories
- * @author TRINH QUOC HOA <tqhoa8th@gmail.com>
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 interface BaseRepository
 {
@@ -18,6 +18,7 @@ interface BaseRepository
      *
      * @param array $fields
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function fill(array $fields);
 
@@ -25,6 +26,7 @@ interface BaseRepository
      * Get Empty Model
      *
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function getModel();
 
@@ -32,13 +34,15 @@ interface BaseRepository
      * Get Table name
      *
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function getTable();
 
     /**
-     * Make a new instance of the entity to query on.
+     * Make a new instance of the entity to query on
      * @param array $with
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function make(array $with = []);
 
@@ -49,35 +53,29 @@ interface BaseRepository
      * @param array $select
      * @param array $with
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function getFirstByAttributes(array $condition = [], array $select = [], array $with = []);
+    public function getFirstBy(array $condition = [], array $select = [], array $with = []);
 
     /**
-     * Retrieve model by id regardless of status.
+     * Retrieve model by id regardless of status
      *
      * @param $id
      * @param array $with
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function findById($id, array $with = []);
 
     /**
-     * Get single model by Slug.
+     * Get single model by Slug
      *
      * @param string $slug slug
+     * @param array $with
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function findBySlug($slug);
-
-    /**
-     * Find a resource by an array of attributes
-     *
-     * @param  array $condition
-     * @param  array $select
-     * @param  array $with
-     * @return $model
-     */
-    public function getAllByAttributes(array $condition = [], array $select = [], array $with = []);
+    public function findBySlug($slug, array $with = []);
 
     /**
      * Pluck a column
@@ -85,6 +83,7 @@ interface BaseRepository
      * @param string $column
      * @param string $key
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function pluck($column, $key = null);
 
@@ -93,19 +92,19 @@ interface BaseRepository
      *
      * @var array $with Eager load related models
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function all(array $with = []);
 
     /**
-     * Get all Modle by attributes sort order
+     * Find a resource by an array of attributes
      *
-     * @param array $attributes
-     * @param string $orderBy
-     * @param string $sortOrder
+     * @param array $condition
      * @param array $with
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function getAllByAttributesSortOrder(array $attributes, $orderBy = null, $sortOrder = 'desc');
+    public function allBy(array $condition = [], array $with = []);
 
     /**
      * Get select
@@ -113,11 +112,13 @@ interface BaseRepository
      * @param array $select
      * @param array $condition
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function select(array $select = ['*'], array $condition = []);
 
     /**
      * @return Builder
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function allWithBuilder() : Builder;
 
@@ -126,9 +127,26 @@ interface BaseRepository
      *
      * @param array $data
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function create(array $data = []);
 
+    /**
+     * Create a new model
+     *
+     * @param Model $model
+     * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    public function createOrUpdate(Model $model);
+
+    /**
+     * @param array $data
+     * @param array $with
+     * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    public function firstOrCreate(array $data, array $with = []);
 
     /**
      * Update a model
@@ -136,9 +154,9 @@ interface BaseRepository
      * @param Model $model
      * @param array $data
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function update(Model $model, array $data= []);
-
+    public function update(Model $model, array $data = []);
 
     /**
      * Update a model with ByAttributes
@@ -146,14 +164,16 @@ interface BaseRepository
      * @param array $condition
      * @param array $data
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function updateByAttributes(array $condition, array $data = []);
+    public function updateBy(array $condition, array $data = []);
 
     /**
      * Delete a Model
      *
      * @param Model $model
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function delete(Model $model);
 
@@ -162,6 +182,23 @@ interface BaseRepository
      *
      * @param array $condition
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function deleteByAttributes(array $condition = []);
+    public function deleteBy(array $condition = []);
+
+    /**
+     * @param array $condition
+     * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    public function count(array $condition = []);
+
+    /**
+     * @param $column
+     * @param array $value
+     * @param array $args
+     * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    public function getByWhereIn($column, array $value = [], array $args = []);
 }

@@ -4,6 +4,12 @@ namespace Inspire\Dashboard\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class DashboardServiceProvider
+ * @package Inspire\Dashboard\Providers
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
 class DashboardServiceProvider extends ServiceProvider
 {
     /**

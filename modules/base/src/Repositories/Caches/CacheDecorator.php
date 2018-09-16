@@ -3,14 +3,15 @@
 namespace Inspire\Base\Repositories\Caches;
 
 use Inspire\Base\Repositories\BaseRepository;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Builder;
+use Exception;
 
 /**
- * Abstract Class CacheDecorator
- *
+ * Class CacheDecorator
  * @package Inspire\Base\Repositories\Caches
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 abstract class CacheDecorator implements BaseRepository
 {
@@ -37,6 +38,7 @@ abstract class CacheDecorator implements BaseRepository
      *
      * @param array $fields
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function fill(array $fields)
     {
@@ -47,6 +49,7 @@ abstract class CacheDecorator implements BaseRepository
      * Get Empty Model
      *
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function getModel()
     {
@@ -57,6 +60,7 @@ abstract class CacheDecorator implements BaseRepository
      * Get Table name
      *
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function getTable()
     {
@@ -64,9 +68,11 @@ abstract class CacheDecorator implements BaseRepository
     }
 
     /**
-     * Make a new instance of the entity to query on.
+     * Make a new instance of the entity to query on
+     *
      * @param array $with
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function make(array $with = [])
     {
@@ -80,18 +86,20 @@ abstract class CacheDecorator implements BaseRepository
      * @param array $select
      * @param array $with
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function getFirstByAttributes(array $condition = [], array $select = [], array $with = [])
+    public function getFirstBy(array $condition = [], array $select = [], array $with = [])
     {
         return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
     }
 
     /**
-     * Retrieve model by id regardless of status.
+     * Retrieve model by id regardless of status
      *
      * @param $id
      * @param array $with
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function findById($id, array $with = [])
     {
@@ -99,25 +107,13 @@ abstract class CacheDecorator implements BaseRepository
     }
 
     /**
-     * Get single model by Slug.
+     * Get single model by Slug
      *
      * @param string $slug slug
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function findBySlug($slug)
-    {
-        return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
-    }
-
-    /**
-     * Find a resource by an array of attributes
-     *
-     * @param  array $condition
-     * @param  array $select
-     * @param  array $with
-     * @return $model
-     */
-    public function getAllByAttributes(array $condition = [], array $select = [], array $with = [])
     {
         return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
     }
@@ -128,6 +124,7 @@ abstract class CacheDecorator implements BaseRepository
      * @param string $column
      * @param string $key
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function pluck($column, $key = null)
     {
@@ -139,6 +136,7 @@ abstract class CacheDecorator implements BaseRepository
      *
      * @var array $with Eager load related models
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function all(array $with = [])
     {
@@ -146,15 +144,14 @@ abstract class CacheDecorator implements BaseRepository
     }
 
     /**
-     * Get all Modle by attributes sort order
+     * Find a resource by an array of attributes
      *
-     * @param array $attributes
-     * @param string $orderBy
-     * @param string $sortOrder
+     * @param array $condition
      * @param array $with
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function getAllByAttributesSortOrder(array $attributes, $orderBy = null, $sortOrder = 'desc')
+    public function allBy(array $condition = [], array $with = [])
     {
         return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
     }
@@ -165,6 +162,7 @@ abstract class CacheDecorator implements BaseRepository
      * @param array $select
      * @param array $condition
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function select(array $select = ['*'], array $condition = [])
     {
@@ -173,6 +171,7 @@ abstract class CacheDecorator implements BaseRepository
 
     /**
      * @return Builder
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function allWithBuilder() : Builder
     {
@@ -184,11 +183,35 @@ abstract class CacheDecorator implements BaseRepository
      *
      * @param array $data
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function create(array $data = []){
+    public function create(array $data = [])
+    {
         return $this->flushCacheAndUpdateData(__FUNCTION__, func_get_args());
     }
 
+    /**
+     * Create a new model
+     *
+     * @param Model $model
+     * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    public function createOrUpdate(Model $model)
+    {
+        return $this->flushCacheAndUpdateData(__FUNCTION__, func_get_arg());
+    }
+
+    /**
+     * @param array $data
+     * @param array $with
+     * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    public function firstOrCreate(array $data, array $with = [])
+    {
+        return $this->flushCacheAndUpdateData(__FUNCTION__, func_get_args());
+    }
 
     /**
      * Update a model
@@ -196,8 +219,10 @@ abstract class CacheDecorator implements BaseRepository
      * @param Model $model
      * @param array $data
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function update(Model $model, array $data= []){
+    public function update(Model $model, array $data = [])
+    {
         return $this->flushCacheAndUpdateData(__FUNCTION__, func_get_args());
     }
 
@@ -208,8 +233,10 @@ abstract class CacheDecorator implements BaseRepository
      * @param array $condition
      * @param array $data
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function updateByAttributes(array $condition, array $data = []){
+    public function updateBy(array $condition, array $data = [])
+    {
         return $this->flushCacheAndUpdateData(__FUNCTION__, func_get_args());
     }
 
@@ -218,6 +245,7 @@ abstract class CacheDecorator implements BaseRepository
      *
      * @param Model $model
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function delete(Model $model)
     {
@@ -229,18 +257,42 @@ abstract class CacheDecorator implements BaseRepository
      *
      * @param array $condition
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function deleteByAttributes(array $condition = [])
+    public function deleteBy(array $condition = [])
     {
         return $this->flushCacheAndUpdateData(__FUNCTION__, func_get_args());
+    }
+
+    /**
+     * @param array $condition
+     * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    public function count(array $condition = [])
+    {
+        return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
+    }
+
+    /**
+     * @param $column
+     * @param array $value
+     * @param array $args
+     * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    public function getByWhereIn($column, array $value = [], array $args = [])
+    {
+        return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
     }
 
     /**
      * Get Data with cache
      *
      * @param $function
-     * @param $args
+     * @param array $args
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     protected function getDataIfExistCache($function, array $args)
     {
@@ -259,14 +311,18 @@ abstract class CacheDecorator implements BaseRepository
             return $cacheData;
         } catch (Exception $ex) {
             info($ex->getMessage());
+
+            return call_user_func_array([$this->repository, $function], $args);
         }
     }
+
     /**
      * Get Data without cache
      *
      * @param $function
      * @param array $args
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     protected function getDataWithoutCache($function, array $args)
     {
@@ -280,6 +336,7 @@ abstract class CacheDecorator implements BaseRepository
      * @param $args
      * @param boolean $flushCache
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     protected function flushCacheAndUpdateData($function, $args, $flushCache = true)
     {
@@ -289,5 +346,4 @@ abstract class CacheDecorator implements BaseRepository
 
         return call_user_func_array([$this->repository, $function], $args);
     }
-
 }

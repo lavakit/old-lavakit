@@ -5,17 +5,32 @@ namespace Inspire\Post\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Inspire\Post\Repositories\PostRepository;
 
+/**
+ * Class PostController
+ * @package Inspire\Post\Http\Controllers
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
 class PostController extends Controller
 {
     protected $post;
 
+    /**
+     * PostController constructor.
+     * @param PostRepository $post
+     */
     public function __construct(PostRepository $post)
     {
         $this->post =  $post;
     }
 
+    /**
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
     public function index()
     {
+        return __CLASS__;
+        /*
         $post = $this->post->all(['menu'])->toArray();
         echo'<pre>';
             print_r($post);
@@ -26,6 +41,7 @@ class PostController extends Controller
             echo $po['menu']['id'];
             echo'<hr />';
         }
+        */
         /*
         pageTitle()->setTitle('Post');
 
