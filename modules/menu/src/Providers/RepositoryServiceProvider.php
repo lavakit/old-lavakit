@@ -35,7 +35,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (config('base.cache_enable')) {
+        if (config('base.cache.cache_enable')) {
             $this->app->singleton(MenuRepository::class, function () {
                 return new MenuCacheDecorator(
                     new MenuEloquentRepository(new Menu()),

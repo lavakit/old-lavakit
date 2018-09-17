@@ -14,7 +14,7 @@ use Inspire\Menu\Repositories\MenuRepository;
 class MenuCacheDecorator extends CacheDecorator implements MenuRepository
 {
     /**
-     * @var PostRepository
+     * @var MenuRepository
      */
     protected $repository;
 
@@ -24,9 +24,8 @@ class MenuCacheDecorator extends CacheDecorator implements MenuRepository
     protected $cache;
 
     /**
-     * PostCacheDecorator constructor.
-     *
-     * @param PostRepository $repository
+     * MenuCacheDecorator constructor.
+     * @param MenuRepository $repository
      * @param CacheInterface $cache
      */
     public function __construct(MenuRepository $repository, CacheInterface $cache)

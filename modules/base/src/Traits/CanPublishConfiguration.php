@@ -23,7 +23,7 @@ trait CanPublishConfiguration
             return;
         }
 
-        $this->mergeConfigFrom($this->getModuleConfigFilePath($module, $fileName), strtolower($module));
+        $this->mergeConfigFrom($this->getModuleConfigFilePath($module, $fileName), strtolower("$module.$fileName"));
 
         if (app()->runningInConsole()) {
             $pathConfig = strtolower("inspire/$module/$fileName") . '.php';

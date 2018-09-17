@@ -14,7 +14,7 @@ class ThemeNotFoundExceptions extends NotFoundHttpException
 {
     public function __construct($themeName)
     {
-        $name = config('theme.config.name');
+        $name = config('theme.theme.config.name');
         parent::__construct("Theme [ $themeName ] not found! Maybe you're missing a " . $name . ' file.');
     }
 }

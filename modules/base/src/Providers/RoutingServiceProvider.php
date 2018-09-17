@@ -80,7 +80,7 @@ abstract class RoutingServiceProvider extends ServiceProvider
         $frontend = $this->getFrontendRoute();
         if ($frontend && file_exists($frontend)) {
             $router->group([
-                'middleware' => config('base.middleware.frontend', []),
+                'middleware' => config('base.base.middleware.frontend', []),
             ], function (Router $router) use ($frontend) {
                 require $frontend;
             });
@@ -98,8 +98,8 @@ abstract class RoutingServiceProvider extends ServiceProvider
         if ($backend && file_exists($backend)) {
             $router->group([
                 'namespace' => 'Admin',
-                'prefix' => config('base.admin-prefix'),
-                'middleware' => config('base.middleware.backend', []),
+                'prefix' => config('base.base.admin-prefix'),
+                'middleware' => config('base.base.middleware.backend', []),
             ], function (Router $router) use ($backend) {
                 require $backend;
             });
@@ -118,7 +118,7 @@ abstract class RoutingServiceProvider extends ServiceProvider
             $router->group([
                 'namespace'     => 'Api',
                 'prefix'        => LaravelLocalization::setLocale() . '/api',
-                'middleware'    => config('base.middleware.api', [])
+                'middleware'    => config('base.base.middleware.api', [])
             ], function (Router $router) use ($api) {
                 require $api;
             });

@@ -39,7 +39,7 @@ class Cache implements CacheInterface
     {
         $this->cache = $cacheManager;
         $this->tag   =  $tag;
-        $this->minutes  = $minutes ?: config('base.cache_time', 10);
+        $this->minutes  = $minutes ?: config('base.cache.cache_time', 10);
     }
 
     /**
@@ -96,8 +96,8 @@ class Cache implements CacheInterface
      */
     public function storeCacheKey($key)
     {
-        if (file_exists(config('base.cache_store'))) {
-            $cacheKeys = getFileData(config('base.cache_store'));
+        if (file_exists(config('base.cache.cache_store'))) {
+            $cacheKeys = getFileData(config('base.cache.cache_store'));
             if (!empty($cacheKeys) && !in_array($key, array_get($cacheKeys, $this->tag, []))) {
                 $cacheKeys[$this->tag][] = $key;
             }
@@ -106,7 +106,7 @@ class Cache implements CacheInterface
             $cacheKeys[$this->tag][] = $key;
         }
 
-        storeFileData(config('base.cache_store'), $cacheKeys);
+        storeFileData(config('base.cache.cache_store'), $cacheKeys);
     }
 
     /**
@@ -133,8 +133,8 @@ class Cache implements CacheInterface
     {
         $cacheKeys = [];
 
-        if (file_exists(config('base.cache_store'))) {
-            $cacheKeys = getFileData(config('base.cache_store'));
+        if (file_exists(config('base.cache.cache_store'))) {
+            $cacheKeys = getFileData(config('base.cache.cache_store'));
         }
 
         if (!empty($cacheKeys)) {
@@ -147,6 +147,6 @@ class Cache implements CacheInterface
             }
         }
 
-        storeFileData(config('base.cache_store'), $cacheKeys);
+        storeFileData(config('base.cache.cache_store'), $cacheKeys);
     }
 }

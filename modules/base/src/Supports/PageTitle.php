@@ -28,7 +28,7 @@ class PageTitle
         $this->title = $title;
 
         if ($full) {
-            $this->title .= ' - ' . config('base.app_name');
+            $this->title .= ' - ' . config('base.base.app_name');
         }
     }
 
@@ -41,7 +41,7 @@ class PageTitle
     public function getTitle()
     {
         if (empty($this->title)) {
-            return config('base.app_name');
+            return config('base.base.app_name');
         }
 
         return $this->title;

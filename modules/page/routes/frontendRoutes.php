@@ -6,5 +6,5 @@ use Illuminate\Routing\Router;
 $router->get('/', [
    'as' => 'page.index',
    'uses' => 'PublicController@index',
-   'middleware' => config('page.middleware')
+   'middleware' => config('page.page.middleware')
 ]);

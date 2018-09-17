@@ -49,7 +49,7 @@ class PageServiceProvider extends ServiceProvider
         $this->loadHelpers();
 
         /*Load Config*/
-        $this->publishConfig('page', 'config');
+        $this->publishConfig('page', 'page');
 
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(RepositoryServiceProvider::class);

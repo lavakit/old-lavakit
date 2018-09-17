@@ -53,7 +53,7 @@ class Handler extends ExceptionHandler
             if ($this->isHttpException($ex)) {
                 switch ($ex->getStatusCode()) {
                     case 404:
-                        if ($request->is(locate() . '/' . config('base.admin-prefix') . '/*')) {
+                        if ($request->is(locate() . '/' . config('base.base.admin-prefix') . '/*')) {
                             return response()->view('base::errors.404', [], 404);
                         } else {
                             return response()->view('theme::errors.404', [], 404);
@@ -62,7 +62,7 @@ class Handler extends ExceptionHandler
 
                     case 500:
                     case 503:
-                        if ($request->is(locate() . '/' . config('base.admin-prefix') . '/*')) {
+                        if ($request->is(locate() . '/' . config('base.base.admin-prefix') . '/*')) {
                             return response()->view('base::errors.500', [], 500);
                         } else {
                             return response()->view('theme::errors.500', [], 500);

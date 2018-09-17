@@ -23,7 +23,7 @@ class WebMiddleware
      */
     public function handle($request, Closure $next)
     {
-        Theme::set(config('theme.active'));
+        Theme::set(config('theme.theme.active'));
 
         return $next($request);
     }

@@ -11,6 +11,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
+    "assets/resources/vendor",
     "test",
     "tests"
   ],
@@ -19,21 +20,21 @@
     "font-awesome": "4.7.0"
   },
   "install": {
-    "path": "assets/libs",
+    "path": "assets/vendor",
     "sources": {
       "bootstrap": {
         "mapping": [
-          {"assets/vendor/bootstrap/dist/js/bootstrap.min.js": "js/bootstrap.min.js"},
-          {"assets/vendor/bootstrap/dist/css/bootstrap.min.css":"css/bootstrap.min.css"}
+          {"assets/resources/vendor/bootstrap/dist/js/bootstrap.min.js": "js/bootstrap.min.js"},
+          {"assets/resources/vendor/bootstrap/dist/css/bootstrap.min.css":"css/bootstrap.min.css"}
         ]
       },
       "jquery": [
-        "assets/vendor/jquery/dist/jquery.min.js"
+        "assets/resources/vendor/jquery/dist/jquery.min.js"
       ],
       "font-awesome": {
         "mapping": [
-          {"assets/vendor/font-awesome/css/font-awesome.min.css": "css/font-awesome.min.css"},
-          {"assets/vendor/font-awesome/fonts/**": "fonts"}
+          {"assets/resources/vendor/font-awesome/css/font-awesome.min.css": "css/font-awesome.min.css"},
+          {"assets/resources/vendor/font-awesome/fonts/**": "fonts"}
         ]
       }
     }

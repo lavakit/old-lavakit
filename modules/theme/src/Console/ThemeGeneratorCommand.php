@@ -92,7 +92,7 @@ class ThemeGeneratorCommand extends Command
      */
     public function handle()
     {
-        $this->themePath = $this->config->get('theme.frontend_path');
+        $this->themePath = $this->config->get('theme.theme.frontend_path');
         $this->theme['name'] = strtolower($this->argument('name'));
 
         $createdThemePath = $this->themePath.'/'.$this->theme['name'];
@@ -103,12 +103,12 @@ class ThemeGeneratorCommand extends Command
 
         $this->consoleAsk();
 
-        $this->themeFolders = $this->config->get('theme.folders');
-        $this->themeStubPath = $this->config->get('theme.stubs.path');
+        $this->themeFolders = $this->config->get('theme.theme.folders');
+        $this->themeStubPath = $this->config->get('theme.theme.stubs.path');
 
-        $themeStubFiles = $this->config->get('theme.stubs.files');
-        $themeStubFiles['theme'] = $this->config->get('theme.config.name');
-        $themeStubFiles['changelog'] = $this->config->get('theme.config.changelog');
+        $themeStubFiles = $this->config->get('theme.theme.stubs.files');
+        $themeStubFiles['theme'] = $this->config->get('theme.theme.config.name');
+        $themeStubFiles['changelog'] = $this->config->get('theme.theme.config.changelog');
 
         $this->makeDir($createdThemePath);
 
@@ -130,7 +130,7 @@ class ThemeGeneratorCommand extends Command
      */
     public function consoleAsk()
     {
-        $author = $this->config->get('theme.author');
+        $author = $this->config->get('theme.theme.author');
         $this->theme['title'] = $this->ask('What is theme title?', "The title");
         $this->theme['description'] = $this->ask('What is theme description?', false);
         $this->theme['description'] = !$this->theme['description'] ? '' : title_case($this->theme['description']);
@@ -190,7 +190,7 @@ class ThemeGeneratorCommand extends Command
      */
     public function createStubs($themeStubFiles, $createdThemePath)
     {
-        $folderAssets = $this->config->get('theme.folders.assets');
+        $folderAssets = $this->config->get('theme.theme.folders.assets');
         foreach ($themeStubFiles as $filename => $storePath) {
             if ($filename == 'changelog') {
                 $filename = 'changelog'.pathinfo($storePath, PATHINFO_EXTENSION);

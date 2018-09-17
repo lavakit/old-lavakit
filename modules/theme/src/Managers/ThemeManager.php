@@ -80,7 +80,7 @@ class ThemeManager implements ThemeContract
         $this->app      = $app;
         $this->finder   = $finder;
         $this->lang     = $lang;
-        $this->basePath = $this->config['theme.frontend_path'];
+        $this->basePath = $this->config['theme.theme.frontend_path'];
 
         $this->scanThemes();
     }
@@ -188,18 +188,17 @@ class ThemeManager implements ThemeContract
 
         $themeInfo =  $this->getThemeInfo($themeName);
 
-        if ($this->config['theme.symlink']) {
-            $themePath = 'Themes/' . $themeName . '/';
+        if ($this->config['theme.theme.symlink']) {
+            $themePath = 'Themes/' . $themeName;
         } else {
-            $themePath = str_replace(base_path('public') . '/', '', $themeInfo->get('path')) . '/';
+            $themePath = strtolower(str_replace(base_path(), '', $themeInfo->get('path')));
         }
 
-        $assetPath = $this->config['theme.folders.assets'].'/';
-        $fullPath = $themePath.$assetPath.$path;
-
+        $assetPath = $this->config['theme.theme.folders.assets'];
+        $fullPath = $themePath . DS . $assetPath . DS . $path;
         if (!file_exists($fullPath) && $themeInfo->has('parent') && !empty($themeInfo->get('parent'))) {
             $getPath = $this->getThemeInfo($themeInfo->get('parent'))->get('path');
-            $themePath = str_replace(base_path().'/', '', $getPath) . '/';
+            $themePath = str_replace(base_path() . DS, '', $getPath) . DS;
             $fullPath = $themePath.$assetPath.$path;
 
             return $this->app['url']->asset($fullPath, $secure);
@@ -246,8 +245,8 @@ class ThemeManager implements ThemeContract
         $themeDirectories = glob($this->basePath.'/*', GLOB_ONLYDIR);
         $themes = [];
         foreach ($themeDirectories as $themePath) {
-            $themeConfigPath = $themePath. DIRECTORY_SEPARATOR . $this->config['theme.config.name'];
-            $themeChangelogPath = $themePath.DIRECTORY_SEPARATOR.$this->config['theme.config.changelog'];
+            $themeConfigPath = $themePath. DIRECTORY_SEPARATOR . $this->config['theme.theme.config.name'];
+            $themeChangelogPath = $themePath.DIRECTORY_SEPARATOR.$this->config['theme.theme.config.changelog'];
 
             if (file_exists($themeConfigPath)) {
                 $themeConfig = Config::load($themeConfigPath);
@@ -280,9 +279,10 @@ class ThemeManager implements ThemeContract
             return;
         }
 
+        /** @var Config $themeInfo */
         $this->loadTheme($themeInfo->get('parent'));
-        $viewPath = $themeInfo->get('path') . DS . $this->config['theme.folders.views'];
-        $langPath = $themeInfo->get('path') . DS . $this->config['theme.folders.lang'];
+        $viewPath = $themeInfo->get('path') . DS . $this->config['theme.theme.folders.views'];
+        $langPath = $themeInfo->get('path') . DS . $this->config['theme.theme.folders.lang'];
 
         $this->finder->prependLocation($themeInfo->get('path'));
         $this->finder->prependLocation($viewPath);

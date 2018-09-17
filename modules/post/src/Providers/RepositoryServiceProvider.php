@@ -38,7 +38,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (config('base.cache_enable')) {
+        if (config('base.cache.cache_enable')) {
             $this->app->singleton(PostRepository::class, function () {
                 return new PostCacheDecorator(
                     new PostEloquentRepository(new Post()),

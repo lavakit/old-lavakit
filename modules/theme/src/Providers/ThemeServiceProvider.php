@@ -70,14 +70,14 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function registerMiddleware()
     {
-        if (config('theme.types.enable')) {
-            $themeTypes = config('theme.types.middleware');
+        if (config('theme.theme.types.enable')) {
+            $themeTypes = config('theme.theme.types.middleware');
             foreach ($themeTypes as $middleware => $themeName) {
                 /** Register Middleware */
                 $this->app['router']->aliasMiddleware($middleware, RouteMiddleware::class);
 
                 /** Push Config middleware theme */
-                Config::push('base.middleware.frontend', $middleware . ':' . $themeName);
+                Config::push('base.base.middleware.frontend', $middleware . ':' . $themeName);
             }
         }
     }

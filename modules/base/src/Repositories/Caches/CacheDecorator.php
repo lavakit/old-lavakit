@@ -110,10 +110,11 @@ abstract class CacheDecorator implements BaseRepository
      * Get single model by Slug
      *
      * @param string $slug slug
+     * @param array $with
      * @return mixed
      * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function findBySlug($slug)
+    public function findBySlug($slug, array $with = [])
     {
         return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
     }
