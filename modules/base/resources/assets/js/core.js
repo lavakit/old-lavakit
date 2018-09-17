@@ -1,7 +1,7 @@
 var Inspired = Inspired || {};
 
 Inspired.getLanguage = function () {
-    let language = '/en';
+    let language = '/' + _default_language;
 
     return language;
 };
