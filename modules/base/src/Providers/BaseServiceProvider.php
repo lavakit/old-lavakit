@@ -3,12 +3,12 @@
 namespace Inspire\Base\Providers;
 
 use Illuminate\Contracts\Debug\ExceptionHandler;
-use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Inspire\Base\Exceptions\Handler;
 use Inspire\Base\Facades\PageTitleFacade;
 use Inspire\Base\Traits\CanPublishConfiguration;
 use Inspire\Acl\Providers\AclServiceProvider;
+use Inspire\Base\Traits\CanRegisterFacadeAliases;
 use Inspire\Dashboard\Providers\DashboardServiceProvider;
 use Inspire\Menu\Providers\MenuServiceProvider;
 use Inspire\Page\Providers\PageServiceProvider;
@@ -25,7 +25,7 @@ use Inspire\User\Providers\UserServiceProvider;
 class BaseServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
-
+    use CanRegisterFacadeAliases;
     /**
      * @var array Facade Aliases
      */
@@ -86,7 +86,7 @@ class BaseServiceProvider extends ServiceProvider
         $this->app->singleton(ExceptionHandler::class, Handler::class);
 
         //Register aliases
-        $this->registerFacadeAliases();
+        $this->registerFacadeAliases($this->facadeAliases);
     }
 
     /**
@@ -99,19 +99,6 @@ class BaseServiceProvider extends ServiceProvider
         $helpers = $this->app['files']->glob(__DIR__ . '/../../helpers/*.php');
         foreach ($helpers as $helper) {
             require_once $helper;
-        }
-    }
-
-    /**
-     * Load additional Aliases
-     *
-     * @return void
-     */
-    protected function registerFacadeAliases()
-    {
-        $loader = AliasLoader::getInstance();
-        foreach ($this->facadeAliases as $alias => $facade) {
-            $loader->alias($alias, $facade);
         }
     }
 }

@@ -50,9 +50,10 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->loadHelpers();
+
         $this->registerConfig();
         $this->registerTheme();
-        $this->loadHelpers();
         $this->consoleCommand();
         $this->registerMiddleware();
 

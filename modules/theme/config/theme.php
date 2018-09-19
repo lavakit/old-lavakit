@@ -11,8 +11,8 @@ return [
     | 'active'  =>  'default'
     |
     */
-    'active'            =>  'default',
-    'active_backend'    =>  'adminlte',
+    'active'            =>  env('FRONTEND_DEFAULT', 'default'),
+    'active_backend'    =>  env('BACKEND_DEFAULT', 'adminlte'),
 
     /*
     |--------------------------------------------------------------------------
@@ -53,7 +53,7 @@ return [
     'types'     => [
         'enable'        => true,
         'middleware'    => [
-            'theme' => 'default'
+            'theme' => env('FRONTEND_DEFAULT', 'default')
         ]
     ],
     /*
