@@ -10,15 +10,17 @@
          stopOnFailure="false">
     <testsuites>
         <testsuite name="Base">
-            <directory suffix="Test.php">./modules/base/src/Tests</directory>
+            <directory suffix="Test.php">./modules/base/src/Tests/</directory>
         </testsuite>
         <testsuite name="Theme">
-            <directory suffix="Test.php">./modules/theme/src/Tests</directory>
+            <directory suffix="Test.php">./modules/theme/src/Tests/</directory>
         </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./app</directory>
+            <directory suffix=".php">./modules/base/src/</directory>
+            <directory suffix=".php">./modules/theme/src/</directory>
         </whitelist>
     </filter>
     <php>

@@ -9,7 +9,7 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Theme">
+        <testsuite name="Base">
             <directory suffix="Test.php">./src/Tests</directory>
         </testsuite>
     </testsuites>
@@ -29,7 +29,7 @@
     </php>
     <logging>
         <log type="coverage-html"
-             target="./../../public/report/each_module/theme"
+             target="./../../public/report/each_module/base"
              lowUpperBound="50"
              highLowerBound="80"/>
     </logging>
