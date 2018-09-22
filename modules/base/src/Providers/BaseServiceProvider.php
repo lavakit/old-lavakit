@@ -3,9 +3,11 @@
 namespace Inspire\Base\Providers;
 
 use Illuminate\Contracts\Debug\ExceptionHandler;
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Inspire\Base\Exceptions\Handler;
 use Inspire\Base\Facades\PageTitleFacade;
+use Inspire\Base\Http\Middleware\LocalizationMiddleware;
 use Inspire\Base\Traits\CanPublishConfiguration;
 use Inspire\Acl\Providers\AclServiceProvider;
 use Inspire\Base\Traits\CanRegisterFacadeAliases;
@@ -26,11 +28,22 @@ class BaseServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
     use CanRegisterFacadeAliases;
+
     /**
      * @var array Facade Aliases
      */
     protected $facadeAliases = [
         'PageTitle' => PageTitleFacade::class
+    ];
+
+    /**
+     * The filters base class name
+     * @var array
+     */
+    protected $middleware = [
+        'Base' => [
+            'localizationRedirect'  => 'LocalizationMiddleware'
+        ]
     ];
 
     /**
@@ -44,6 +57,8 @@ class BaseServiceProvider extends ServiceProvider
         /*Load Config*/
         $this->publishConfig('base', 'base');
         $this->publishConfig('base', 'cache');
+
+        $this->registerMiddleware();
 
         /*Load Services on Lucky*/
         $this->app->register(AclServiceProvider::class);
@@ -99,6 +114,21 @@ class BaseServiceProvider extends ServiceProvider
         $helpers = $this->app['files']->glob(__DIR__ . '/../../helpers/*.php');
         foreach ($helpers as $helper) {
             require_once $helper;
+        }
+    }
+
+    /**
+     * Register the filters
+     *
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    public function registerMiddleware()
+    {
+        foreach ($this->middleware as $module => $middlewares) {
+            foreach ($middlewares as $name => $middleware) {
+                $class = "Inspire\\{$module}\\Http\\Middleware\\{$middleware}";
+                $this->app['router']->aliasMiddleware($name, $class);
+            }
         }
     }
 }

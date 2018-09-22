@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit backupGlobals="false"
          backupStaticAttributes="false"
-         bootstrap="vendor/autoload.php"
+         bootstrap="./../../vendor/autoload.php"
          colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
@@ -9,16 +9,13 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Base">
-            <directory suffix="Test.php">./modules/base/src/Tests</directory>
-        </testsuite>
         <testsuite name="Theme">
-            <directory suffix="Test.php">./modules/theme/src/Tests</directory>
+            <directory suffix="Test.php">./src/Tests/</directory>
         </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./app</directory>
+            <directory suffix=".php">./src</directory>
         </whitelist>
     </filter>
     <php>
@@ -32,7 +29,7 @@
     </php>
     <logging>
         <log type="coverage-html"
-             target="./public/report"
+             target="./../../public/report"
              lowUpperBound="50"
              highLowerBound="80"/>
     </logging>

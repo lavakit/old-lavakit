@@ -2,16 +2,15 @@
 
 namespace Inspire\Theme\Providers;
 
-use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Inspire\Base\Traits\CanPublishConfiguration;
+use Inspire\Base\Traits\CanRegisterFacadeAliases;
 use Inspire\Theme\Console\ThemeGeneratorCommand;
 use Inspire\Theme\Console\ThemeListCommand;
 use Inspire\Theme\Contracts\ThemeContract;
 use Inspire\Theme\Facades\Theme;
 use Config;
 use Inspire\Theme\Managers\ThemeManager;
-use Inspire\Theme\Middleware\RouteAdminMiddleware;
 use Inspire\Theme\Middleware\RouteMiddleware;
 
 /**
@@ -23,6 +22,7 @@ use Inspire\Theme\Middleware\RouteMiddleware;
 class ThemeServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+    use CanRegisterFacadeAliases;
 
     const THEME_CREATE_COMMAND  = 'theme.create';
     const THEME_LIST_COMMAND    = 'theme.list';
@@ -57,8 +57,11 @@ class ThemeServiceProvider extends ServiceProvider
         $this->consoleCommand();
         $this->registerMiddleware();
 
+        $this->app->register(AssetServiceProvider::class);
+        $this->app->register(ComposerThemeServiceProvider::class);
+
         //Register aliases
-        $this->registerFacadeAliases();
+        $this->registerFacadeAliases($this->facadeAliases);
 
         /*Load views*/
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'theme');
@@ -171,18 +174,5 @@ class ThemeServiceProvider extends ServiceProvider
     public function provides()
     {
         return [];
-    }
-
-    /**
-     * Load additional Aliases
-     *
-     * @return void
-     */
-    protected function registerFacadeAliases()
-    {
-        $loader = AliasLoader::getInstance();
-        foreach ($this->facadeAliases as $alias => $facade) {
-            $loader->alias($alias, $facade);
-        }
     }
 }

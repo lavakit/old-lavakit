@@ -160,17 +160,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        /**
-         * Package
-         */
-        Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
-
-
         /*
          * LUCKY SERVICES
          */
         Inspire\Base\Providers\BaseServiceProvider::class,
-
     ],
 
     /*
@@ -219,12 +212,5 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
-        /**
-         * Alias other package
-         */
-        'LaravelLocalization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
-
     ],
-
 ];
