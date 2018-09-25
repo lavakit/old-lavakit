@@ -46,6 +46,10 @@ class AssetViewComposer
      */
     private function getJavascript()
     {
-        return Asset::getJavascript();
+         $jsDefault = Asset::getJavascript();
+         $jsAppModules =  Asset::getAppModules();
+         $js = array_merge($jsDefault, $jsAppModules);
+
+        return $js;
     }
 }

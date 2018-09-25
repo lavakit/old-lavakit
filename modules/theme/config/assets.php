@@ -21,13 +21,13 @@ return [
     'resources' => [
         'javascript' => [
             'jquery' => [
-                 'use_cdn' => false,
-                 'fallback' => 'jQuery',
-                 'location' => 'top',
-                 'src' => [
-                     'local' =>  BACKEND_VENDOR . 'jquery/jquery.min.js',
-                     'cdn' => '//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'
-                 ]
+                'use_cdn' => false,
+                'fallback' => 'jQuery',
+                'location' => 'top',
+                'src' => [
+                    'local' =>  BACKEND_VENDOR . 'jquery/jquery.min.js',
+                    'cdn' => '//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'
+                ]
             ],
             'bootstrap' => [
                  'use_cdn' => false,
@@ -36,6 +36,14 @@ return [
                      'local' => BACKEND_VENDOR . 'bootstrap/js/bootstrap.min.js',
                      'cdn' => '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'
                  ]
+            ],
+            'select2' => [
+                'use_cdn' => true,
+                'location' => 'bottom',
+                'src' => [
+                    'local' => BACKEND_VENDOR . 'select2/js/select2.min.js',
+                    'cdn' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js'
+                ]
             ],
             'core' => [
                 'use_cdn' => false,
@@ -50,8 +58,8 @@ return [
                 'use_cdn' => false,
                 'location' => 'top',
                 'src' => [
-                   'local' => BACKEND_VENDOR . 'bootstrap/css/bootstrap.min.css',
-                   'cdn' => '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'
+                    'local' => BACKEND_VENDOR . 'bootstrap/css/bootstrap.min.css',
+                    'cdn' => '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'
                 ]
             ],
             'font-awesome' => [
@@ -60,6 +68,14 @@ return [
                 'src' => [
                     'local' => BACKEND_VENDOR . 'font-awesome/css/font-awesome.min.css',
                     'cdn' => '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+                ]
+            ],
+            'select2' => [
+                'use_cdn' => true,
+                'location' => 'top',
+                'src' => [
+                        'local' => BACKEND_VENDOR . '/select2/css/select2.min.css',
+                    'cdn' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css'
                 ]
             ],
             'core' => [

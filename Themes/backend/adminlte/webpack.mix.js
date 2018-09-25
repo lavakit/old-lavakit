@@ -19,7 +19,8 @@ mix.scripts([
 
 mix
     .scripts('../../../modules/base/resources/assets/js/editor.js', 'assets/js/app_modules/editor.js')
-    .scripts('../../../modules/menu/resources/assets/js/menu.js', 'assets/js/app_modules/menu.js');
+    .scripts('../../../modules/menu/resources/assets/js/menu.js', 'assets/js/app_modules/menu.js')
+    .scripts('../../../modules/post/resources/assets/js/post.js', 'assets/js/app_modules/post.js');
 
 
 /**

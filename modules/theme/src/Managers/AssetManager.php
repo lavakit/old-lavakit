@@ -54,6 +54,7 @@ final class AssetManager implements AssetContract
         $this->javascript = config('theme.assets.javascript');
         $this->stylesheets = config('theme.assets.stylesheets');
         $this->build = time();
+
         if (config('app.env') == 'production') {
             $this->build = config('base.base.version');
         }
@@ -71,7 +72,9 @@ final class AssetManager implements AssetContract
         if (!is_array($assets)) {
             $assets = [$assets];
         }
+
         $this->javascript = array_merge($this->javascript, $assets);
+
         return $this;
     }
 
@@ -83,8 +86,9 @@ final class AssetManager implements AssetContract
      */
     public function addJavascriptDirectly($assets, $location = 'bottom')
     {
-        $js = array_merge((array)$assets, $this->appendedCss[$location]);
+        $js = array_merge((array)$assets, $this->appendedJs[$location]);
         $this->appendedJs[$location] = $js;
+
         return $this;
     }
 
@@ -100,7 +104,9 @@ final class AssetManager implements AssetContract
         if (!is_array($assets)) {
             $assets = [$assets];
         }
+
         $this->stylesheets = array_merge($this->stylesheets, $assets);
+
         return $this;
     }
 
@@ -114,7 +120,9 @@ final class AssetManager implements AssetContract
         if (!is_array($assets)) {
             $assets = func_get_args();
         }
+
         $this->appendedCss = array_merge($this->appendedCss, $assets);
+
         return $this;
     }
 
@@ -130,7 +138,9 @@ final class AssetManager implements AssetContract
         if (!is_array($modules)) {
             $modules = [$modules];
         }
+
         $this->appModules = array_merge($this->appModules, $modules);
+
         return $this;
     }
 
@@ -146,9 +156,11 @@ final class AssetManager implements AssetContract
         if (!is_array($assets)) {
             $assets = [$assets];
         }
+
         foreach ($assets as $rem) {
             unset($this->stylesheets[array_search($rem, $this->stylesheets)]);
         }
+
         return $this;
     }
 
@@ -164,9 +176,11 @@ final class AssetManager implements AssetContract
         if (!is_array($assets)) {
             $assets = [$assets];
         }
+
         foreach ($assets as $rem) {
             unset($this->javascript[array_search($rem, $this->javascript)]);
         }
+
         return $this;
     }
 
@@ -192,14 +206,17 @@ final class AssetManager implements AssetContract
                     }
                     $src = config($jsConfig . '.src.local');
                     $cdn = false;
+
                     if (config($jsConfig . '.use_cdn') && !config('theme.assets.offline')) {
                         $src = config($jsConfig . '.src.cdn');
                         $cdn = true;
                     }
+
                     if (config($jsConfig . '.include_style')) {
                         $this->addStylesheets([$js]);
                     }
                     $version = $version ? '?ver=' . $this->build : '';
+
                     if (!is_array($src)) {
                         $scripts[] = $src . $version;
                     } else {
@@ -207,6 +224,7 @@ final class AssetManager implements AssetContract
                             $scripts[] = $s . $version;
                         }
                     }
+
                     if (empty($src) && $cdn && $location === 'top' && Config::has($jsConfig . '.fallback')) {
                         $fallback = config($jsConfig . '.fallback');
                         $scripts[] = [
@@ -247,9 +265,11 @@ final class AssetManager implements AssetContract
                     if (config($cssConfig . '.use_cdn') && !config('theme.assets.offline')) {
                         $src = config($cssConfig . '.src.cdn');
                     }
+
                     if (!is_array($src)) {
                         $src = [$src];
                     }
+
                     foreach ($src as $s) {
                         $stylesheets[] = $s . ($version ? '?ver=' . $this->build : '');
                     }
@@ -278,6 +298,7 @@ final class AssetManager implements AssetContract
                 }
             }
         }
+
         return $modules;
     }
 
@@ -291,16 +312,20 @@ final class AssetManager implements AssetContract
      */
     protected function getModule($module, $version)
     {
-        $pathPrefix = public_path() . ASSETS_PUBLIC . 'js/app_modules/' . $module;
+        $pathPrefix = public_path() . BACKEND_ASSET . 'js/app_modules/' . $module;
+
         $file = null;
+
         if (file_exists($pathPrefix . '.min.js')) {
             $file = $module . '.min.js';
         } elseif (file_exists($pathPrefix . '.js')) {
-            $file = $module . 'js';
+            $file = $module . '.js';
         }
+
         if ($file) {
-            return ASSETS_PUBLIC . 'js/app_modules/' . $file . ($version ? '?ver=' . $this->build : '');
+            return BACKEND_ASSET . 'js/app_modules/' . $file . ($version ? '?ver=' . $this->build : '');
         }
+
         return null;
     }
 }

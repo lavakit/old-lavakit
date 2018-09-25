@@ -6,9 +6,9 @@
  */
 
 if (!defined('BACKEND_ASSET')) {
-    define('BACKEND_ASSET', 'themes/backend/' . env('BACKEND_DEFAULT', 'adminlte') . '/assets/');
+    define('BACKEND_ASSET', '/themes/backend/' . env('BACKEND_DEFAULT', 'adminlte') . '/assets/');
 }
 
 if (!defined('BACKEND_VENDOR')) {
-    define('BACKEND_VENDOR', BACKEND_ASSET .'vendor/');
+    define('BACKEND_VENDOR', BACKEND_ASSET . 'vendor/');
 }
