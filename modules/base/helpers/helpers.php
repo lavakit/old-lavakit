@@ -3,11 +3,12 @@
 use Inspire\Base\Facades\PageTitleFacade;
 
 if (! function_exists('locate')) {
-
     /**
      * Get Locale of App
+     *
      * @param null $locate
      * @return string
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     function locate($locate = null)
     {
@@ -22,7 +23,6 @@ if (! function_exists('locate')) {
 }
 
 if (! function_exists('pageTitle')) {
-
     /**
      * @return \Inspire\Base\Supports\PageTitle
      */

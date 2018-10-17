@@ -4,6 +4,12 @@ namespace Inspire\Post\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class PostServiceProvider
+ * @package Inspire\Post\Providers
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
 class PostServiceProvider extends ServiceProvider
 {
 
@@ -24,8 +30,8 @@ class PostServiceProvider extends ServiceProvider
             /*Load migrations*/
             $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
             $this->publishes([__DIR__ . '/../../resources/assets' => resource_path('assets'),], 'assets');
-            $this->publishes([__DIR__ . '/../../resources/views' => config('view.paths')[0] . '/vendor/post',], 'views');
-            $this->publishes([__DIR__ . '/../../resources/lang' => base_path('resources/lang/vendor/post'),], 'lang');
+            $this->publishes([__DIR__ . '/../../resources/views' => config('view.paths')[0] . '/vendor/post'], 'views');
+            $this->publishes([__DIR__ . '/../../resources/lang' => base_path('resources/lang/vendor/post')], 'lang');
             $this->publishes([__DIR__ . '/../../database' => base_path('database'),], 'migrations');
         }
     }
@@ -42,7 +48,6 @@ class PostServiceProvider extends ServiceProvider
 
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(RepositoryServiceProvider::class);
-        $this->app->register(BootstrapModuleServiceProvider::class);
     }
 
     /**

@@ -10,6 +10,12 @@ use Noodlehaus\Config;
 use Inspire\Theme\Contracts\ThemeContract;
 use Inspire\Theme\Exceptions\ThemeNotFoundExceptions;
 
+/**
+ * Class ThemeManager
+ * @package Inspire\Theme\Managers
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
 class ThemeManager implements ThemeContract
 {
     /**
@@ -20,14 +26,14 @@ class ThemeManager implements ThemeContract
     protected $basePath;
 
     /**
-     * All theme Infomation
+     * All theme information
      *
-     * @var Collection
+     * @var $themes
      */
     protected $themes;
 
     /**
-     * Balde View Finder
+     * Blade View Finder
      *
      * @var \Illuminate\View\ViewFinderInterface
      */
@@ -57,13 +63,12 @@ class ThemeManager implements ThemeContract
     /**
      * Current Active Theme
      *
-     * @var string|collection
+     * @var string
      */
     protected $activeTheme = null;
 
     /**
-     * Theme constructor.
-     *
+     * Theme constructor
      * @param Container             $app
      * @param ViewFinderInterface   $finder
      * @param Repository            $config
@@ -75,7 +80,7 @@ class ThemeManager implements ThemeContract
         $this->app      = $app;
         $this->finder   = $finder;
         $this->lang     = $lang;
-        $this->basePath = $this->config['theme.frontend_path'];
+        $this->basePath = $this->config['theme.theme.frontend_path'];
 
         $this->scanThemes();
     }
@@ -84,6 +89,7 @@ class ThemeManager implements ThemeContract
      * Set Current theme
      *
      * @param $theme
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function set($theme)
     {
@@ -96,10 +102,11 @@ class ThemeManager implements ThemeContract
     }
 
     /**
-     * Check if theme exists.
+     * Check if theme exists
      *
-     * @param string $theme
+     * @param $theme
      * @return bool
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function has($theme)
     {
@@ -107,10 +114,11 @@ class ThemeManager implements ThemeContract
     }
 
     /**
-     * Get particular theme all information.
+     * Get particular theme all information
      *
-     * @param string $themeName
-     * @return null|ThemeInfo
+     * @param $themeName
+     * @return null
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function getThemeInfo($themeName)
     {
@@ -118,11 +126,12 @@ class ThemeManager implements ThemeContract
     }
 
     /**
-     * Returns current theme or particular theme information.
+     * Returns current theme or particular theme information
      *
-     * @param string $theme
-     * @param bool   $collection
-     * @return array|null|ThemeInfo
+     * @param null $theme
+     * @param bool $collection
+     * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function get($theme = null, $collection = false)
     {
@@ -134,10 +143,11 @@ class ThemeManager implements ThemeContract
     }
 
     /**
-     * Get current active theme name only or themeinfo collection.
+     * Get current active theme name only or theme info collection
      *
      * @param bool $collection
-     * @return null|ThemeInfo
+     * @return null|string
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function current($collection = false)
     {
@@ -145,8 +155,10 @@ class ThemeManager implements ThemeContract
     }
 
     /**
-     * Get all theme information.
-     * @return array
+     * Get all theme information
+     *
+     * @return \Inspire\Theme\Managers\ThemeManager
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function all()
     {
@@ -154,22 +166,21 @@ class ThemeManager implements ThemeContract
     }
 
     /**
-     * Find asset file for theme asset.
+     * Find asset file for theme asset
      *
-     * @param string    $path
-     * @param null|bool $secure
-     *
-     * @return string
+     * @param $path
+     * @param null $secure
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function assets($path, $secure = null)
     {
         $splitThemeAndPath = explode(':', $path);
-        if (count(splitThemeAndPath) > 1) {
-            if (is_null(splitThemeAndPath[1])) {
+        if (count($splitThemeAndPath) > 1) {
+            if (is_null($splitThemeAndPath[1])) {
                 return;
             }
-            $themeName = splitThemeAndPath[0];
-            $path = splitThemeAndPath[1];
+            $themeName = $splitThemeAndPath[0];
+            $path = $splitThemeAndPath[1];
         } else {
             $themeName = $this->activeTheme;
             $path = $splitThemeAndPath[0];
@@ -177,17 +188,17 @@ class ThemeManager implements ThemeContract
 
         $themeInfo =  $this->getThemeInfo($themeName);
 
-        if ($this->config['theme.symlink']) {
-            $themePath = 'Themes/' . $themeName . '/';
+        if ($this->config['theme.theme.symlink']) {
+            $themePath = 'Themes/' . $themeName;
         } else {
-            $themePath = str_replace(base_path('public') . '/', '', $themeInfo->get('path')) . '/';
+            $themePath = strtolower(str_replace(base_path(), '', $themeInfo->get('path')));
         }
 
-        $assetPath = $this->config['theme.folders.assets'].'/';
-        $fullPath = $themePath.$assetPath.$path;
-
+        $assetPath = $this->config['theme.theme.folders.assets'];
+        $fullPath = $themePath . DS . $assetPath . DS . $path;
         if (!file_exists($fullPath) && $themeInfo->has('parent') && !empty($themeInfo->get('parent'))) {
-            $themePath = str_replace(base_path().'/', '', $this->getThemeInfo($themeInfo->get('parent'))->get('path') ).'/';
+            $getPath = $this->getThemeInfo($themeInfo->get('parent'))->get('path');
+            $themePath = str_replace(base_path() . DS, '', $getPath) . DS;
             $fullPath = $themePath.$assetPath.$path;
 
             return $this->app['url']->asset($fullPath, $secure);
@@ -197,11 +208,11 @@ class ThemeManager implements ThemeContract
     }
 
     /**
-     * Get lang content from current theme.
+     * Get lang content from current theme
      *
      * @param string $fallback
-     *
      * @return \Illuminate\Contracts\Translation\Translator|string
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function lang($fallback)
     {
@@ -224,17 +235,18 @@ class ThemeManager implements ThemeContract
     }
 
     /**
-     * Scan for all available themes.
+     * Scan for all available themes
      *
      * @return void
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     private function scanThemes()
     {
         $themeDirectories = glob($this->basePath.'/*', GLOB_ONLYDIR);
         $themes = [];
         foreach ($themeDirectories as $themePath) {
-            $themeConfigPath = $themePath. DIRECTORY_SEPARATOR . $this->config['theme.config.name'];
-            $themeChangelogPath = $themePath.DIRECTORY_SEPARATOR.$this->config['theme.config.changelog'];
+            $themeConfigPath = $themePath. DIRECTORY_SEPARATOR . $this->config['theme.theme.config.name'];
+            $themeChangelogPath = $themePath.DIRECTORY_SEPARATOR.$this->config['theme.theme.config.changelog'];
 
             if (file_exists($themeConfigPath)) {
                 $themeConfig = Config::load($themeConfigPath);
@@ -250,11 +262,11 @@ class ThemeManager implements ThemeContract
     }
 
     /**
-     * Map view map for particular theme.
+     * Map view map for particular theme
      *
      * @param string $theme
-     *
      * @return void
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     private function loadTheme($theme)
     {
@@ -267,9 +279,10 @@ class ThemeManager implements ThemeContract
             return;
         }
 
+        /** @var Config $themeInfo */
         $this->loadTheme($themeInfo->get('parent'));
-        $viewPath = $themeInfo->get('path') . DIRECTORY_SEPARATOR . $this->config['theme.folders.views'];
-        $langPath = $themeInfo->get('path') . '/' . $this->config['theme.folders.lang'];
+        $viewPath = $themeInfo->get('path') . DS . $this->config['theme.theme.folders.views'];
+        $langPath = $themeInfo->get('path') . DS . $this->config['theme.theme.folders.lang'];
 
         $this->finder->prependLocation($themeInfo->get('path'));
         $this->finder->prependLocation($viewPath);

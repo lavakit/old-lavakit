@@ -1,7 +1,15 @@
-<?php namespace Inspire\Acl\Providers;
+<?php
+
+namespace Inspire\Acl\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class AclServiceProvider
+ * @package Inspire\Acl\Providers
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
 class AclServiceProvider extends ServiceProvider
 {
     /**
@@ -18,7 +26,6 @@ class AclServiceProvider extends ServiceProvider
 
 
         if (app()->runningInConsole()) {
-
             /*Load migrations*/
             $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
 
@@ -41,7 +48,6 @@ class AclServiceProvider extends ServiceProvider
 
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(RepositoryServiceProvider::class);
-        $this->app->register(BootstrapModuleServiceProvider::class);
     }
 
     protected function loadHelpers()

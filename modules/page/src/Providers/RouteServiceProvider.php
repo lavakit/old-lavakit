@@ -4,13 +4,22 @@ namespace Inspire\Page\Providers;
 
 use Inspire\Base\Providers\RoutingServiceProvider as BaseRoutingServiceProvider;
 
+/**
+ * Class RouteServiceProvider
+ * @package Inspire\Page\Providers
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
 class RouteServiceProvider extends BaseRoutingServiceProvider
 {
     protected $namespace = 'Inspire\Page\Http\Controllers';
 
+    /**
+     * @return string
+     */
     protected function getFrontendRoute()
     {
-        require __DIR__ . '/../../routes/web.php';
+        return __DIR__ . '/../../routes/frontendRoutes.php';
     }
 
     /**
@@ -18,7 +27,7 @@ class RouteServiceProvider extends BaseRoutingServiceProvider
      */
     protected function getBackendRoute()
     {
-        require __DIR__ . '/../../routes/web.php';
+        return __DIR__ . '/../../routes/backendRoutes.php';
     }
 
     /**
@@ -26,47 +35,6 @@ class RouteServiceProvider extends BaseRoutingServiceProvider
      */
     protected function getApiRoute()
     {
-        require __DIR__ . '/../../routes/api.php';
+        return false;
     }
-
-    /**
-     * Define the "web" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     *
-     * @return void
-     */
-
-    /*
-    protected function mapWebRoutes()
-    {
-        Route::group([
-            'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'web'],
-            'namespace' => $this->namespace,
-            'prefix' => LaravelLocalization::setLocale(),
-        ], function ($router) {
-            require __DIR__ . '/../../routes/web.php';
-        });
-    }
-    */
-
-    /**
-     * Define the "api" routes for the application.
-     *
-     * These routes are typically stateless.
-     *
-     * @return void
-     */
-    /*
-    protected function mapApiRoutes()
-    {
-        Route::group([
-             'middleware' => 'api',
-             'namespace' => $this->namespace,
-             'prefix' => 'api'
-         ], function ($router) {
-            require __DIR__ . '/../../routes/api.php';
-        });
-    }
-    */
 }

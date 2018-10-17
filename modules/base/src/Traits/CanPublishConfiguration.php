@@ -2,6 +2,12 @@
 
 namespace Inspire\Base\Traits;
 
+/**
+ * Trait CanPublishConfiguration
+ * @package Inspire\Base\Traits
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
 trait CanPublishConfiguration
 {
     /**
@@ -9,6 +15,7 @@ trait CanPublishConfiguration
      *
      * @param string $module
      * @param string $fileName
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function publishConfig($module, $fileName)
     {
@@ -16,20 +23,23 @@ trait CanPublishConfiguration
             return;
         }
 
-        $this->mergeConfigFrom($this->getModuleConfigFilePath($module, $fileName), strtolower($module));
+        $this->mergeConfigFrom($this->getModuleConfigFilePath($module, $fileName), strtolower("$module.$fileName"));
 
         if (app()->runningInConsole()) {
+            $pathConfig = strtolower("inspire/$module/$fileName") . '.php';
             $this->publishes([
-                $this->getModuleConfigFilePath($module, $fileName) => config_path(strtolower("inspire/$module/$fileName") . '.php')
-            ],'config');
+                $this->getModuleConfigFilePath($module, $fileName) => config_path($pathConfig)
+            ], 'config');
         }
     }
 
     /**
      * Get path of the give file name in the given module
+     *
      * @param string $module
      * @param string $file
      * @return string
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     private function getModuleConfigFilePath($module, $file)
     {
@@ -39,6 +49,7 @@ trait CanPublishConfiguration
     /**
      * @param $module
      * @return string
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     private function getModulePath($module)
     {

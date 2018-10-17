@@ -20,7 +20,7 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "^7.1.3",
+        "php": "7.2",
         "fideloper/proxy": "^4.0",
         "hassankhan/config": "^1.0",
         "laravel/framework": "5.6.*",
@@ -50,15 +50,16 @@
             "Inspire\\Post\\": "modules/post/src",
             "Inspire\\Page\\": "modules/page/src",
             "Inspire\\Dashboard\\": "modules/dashboard/src",
-            "Inspire\\User\\":"modules/user/src",
-            "Inspire\\Theme\\":"modules/theme/src"
+            "Inspire\\User\\": "modules/user/src",
+            "Inspire\\Theme\\": "modules/theme/src",
+            "Inspire\\Menu\\": "modules/menu/src"
         }
     },
     "autoload-dev": {
-    "psr-4": {
-        "Tests\\": "tests/"
-    }
-},
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "extra": {
         "laravel": {
             "dont-discover": []

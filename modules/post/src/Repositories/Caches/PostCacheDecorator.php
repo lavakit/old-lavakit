@@ -8,8 +8,9 @@ use Inspire\Base\Services\Caches\CacheInterface;
 
 /**
  * Class PostCacheDecorator
- *
  * @package Inspire\Post\Repositories\Caches
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 class PostCacheDecorator extends CacheDecorator implements PostRepository
 {

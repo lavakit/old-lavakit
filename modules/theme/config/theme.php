@@ -7,11 +7,12 @@ return [
     | Default active Theme
     |-----------------------------------------------------------------------------
     |
-    | Default active Themename like as
-    | 'active'  =>  'themeone'
+    | Default active Theme name like as
+    | 'active'  =>  'default'
     |
     */
-    'active'    =>  '',
+    'active'            =>  env('FRONTEND_DEFAULT', 'default'),
+    'active_backend'    =>  env('BACKEND_DEFAULT', 'adminlte'),
 
     /*
     |--------------------------------------------------------------------------
@@ -35,7 +36,8 @@ return [
     | then symlink can be false or true as your wish.
     |
     */
-    'symlink'    => true,
+    'symlink'    => false,
+
     /*
     |--------------------------------------------------------------------------
     | Theme types where you can set default theme for particular middleware.
@@ -47,18 +49,12 @@ return [
     |       ]
     |   ],
     |
-    | For Example route
-    | Route::get('/', function () {
-    |       return view('welcome');
-    | })->middleware('example');
-    |
-    |
     */
     'types'     => [
-        'enable'        => false,
+        'enable'        => true,
         'middleware'    => [
-            'example'      => 'admin',
-        ],
+            'theme' => env('FRONTEND_DEFAULT', 'default')
+        ]
     ],
     /*
     |--------------------------------------------------------------------------
@@ -88,7 +84,7 @@ return [
         'lang/en'   => 'lang/en',
         'css'       => 'assets/css',
         'js'        => 'assets/js',
-        'img'       => 'assets/img',
+        'images'       => 'assets/images',
         'layouts'   => 'views/layouts',
     ],
     /*
@@ -105,11 +101,11 @@ return [
             'css'    => 'assets/css/app.css',
             'layout' => 'views/layouts/master.blade.php',
             'page'   => 'views/welcome.blade.php',
-            'lang'   => 'lang/en/content.php',
+            'lang'   => 'lang/en/site.php',
         ],
     ],
 
-    /*
+   /*
    |--------------------------------------------------------------------------
    | Author theme
    |--------------------------------------------------------------------------
@@ -117,6 +113,5 @@ return [
    | Default theme create.
    |
    */
-    'author' => 'HOATQ',
-
+    'author' => 'HOATQ'
 ];

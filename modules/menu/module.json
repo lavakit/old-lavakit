@@ -1,0 +1,10 @@
+{
+    "alias": "menu",
+    "name": "Inspire menu",
+    "author": "hoatq",
+    "description": "Menu",
+    "namespace": "Inspire\\Menu",
+    "version": "1.0",
+    "autoload": "psr-4",
+    "enabled": true
+}

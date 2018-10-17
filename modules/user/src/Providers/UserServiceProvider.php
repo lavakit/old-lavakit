@@ -1,7 +1,15 @@
-<?php namespace Inspire\User\Providers;
+<?php
+
+namespace Inspire\User\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class UserServiceProvider
+ * @package Inspire\User\Providers
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
 class UserServiceProvider extends ServiceProvider
 {
     /**
@@ -47,7 +55,6 @@ class UserServiceProvider extends ServiceProvider
 
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(RepositoryServiceProvider::class);
-        $this->app->register(BootstrapModuleServiceProvider::class);
     }
 
     protected function loadHelpers()

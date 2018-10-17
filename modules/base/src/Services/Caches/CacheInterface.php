@@ -1,10 +1,12 @@
 <?php
 
 namespace Inspire\Base\Services\Caches;
+
 /**
  * Interface CacheInterface
- *
  * @package Inspire\Base\Services\Caches
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 interface CacheInterface
 {
@@ -13,16 +15,18 @@ interface CacheInterface
      *
      * @param $key
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function get($key);
 
     /**
      * Add data to the cache
      *
-     * @param $key cache item key
-     * @param $value the data fto store
-     * @param null|int  $minutes the number of minutes to store the item
+     * @param $key
+     * @param $value
+     * @param null $minutes
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function put($key, $value, $minutes = null);
 
@@ -31,6 +35,7 @@ interface CacheInterface
      *
      * @param $key
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function has($key);
 
@@ -38,6 +43,7 @@ interface CacheInterface
      * Clear cache
      *
      * @return mixed
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function flush();
 }

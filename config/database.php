@@ -49,9 +49,24 @@ return [
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
-            'prefix' => env('DB_PREFIX','cms_'),
+            'prefix' => env('DB_PREFIX', 'cms_'),
             'strict' => true,
-            'engine' => env('DB_ENGINE','InnoDB'),
+            'engine' => env('DB_ENGINE', 'InnoDB'),
+        ],
+
+        'testing' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => 'dev_lucky_testing',
+            'username' => 'root',
+            'password' => 'root',
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => env('DB_PREFIX', 'cms_'),
+            'strict' => true,
+            'engine' => env('DB_ENGINE', 'InnoDB'),
         ],
 
         'pgsql' => [

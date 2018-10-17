@@ -1,7 +1,15 @@
-<?php namespace Inspire\Dashboard\Providers;
+<?php
+
+namespace Inspire\Dashboard\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class DashboardServiceProvider
+ * @package Inspire\Dashboard\Providers
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
 class DashboardServiceProvider extends ServiceProvider
 {
     /**
@@ -38,7 +46,6 @@ class DashboardServiceProvider extends ServiceProvider
 
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(RepositoryServiceProvider::class);
-        $this->app->register(BootstrapModuleServiceProvider::class);
     }
 
     protected function loadHelpers()

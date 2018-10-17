@@ -2,6 +2,12 @@
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class RepositoryServiceProvider
+ * @package Inspire\Page\Providers
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
 class RepositoryServiceProvider extends ServiceProvider
 {
     protected $module = 'Inspire\Page';
@@ -13,7 +19,6 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
     }
 
     /**
@@ -23,6 +28,5 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
     }
 }

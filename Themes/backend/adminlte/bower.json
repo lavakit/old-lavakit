@@ -1,0 +1,42 @@
+{
+  "name": "adminlte",
+  "description": "",
+  "main": "",
+  "authors": [
+    "tqhoa <webnambo@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/inspiredby/lucky",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/resources/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "3.3.7",
+    "font-awesome": "4.7.0"
+  },
+  "install": {
+    "path": "assets/vendor",
+    "sources": {
+      "bootstrap": {
+        "mapping": [
+          {"assets/resources/vendor/bootstrap/dist/js/bootstrap.min.js": "js/bootstrap.min.js"},
+          {"assets/resources/vendor/bootstrap/dist/css/bootstrap.min.css":"css/bootstrap.min.css"}
+        ]
+      },
+      "jquery": [
+        "assets/resources/vendor/jquery/dist/jquery.min.js"
+      ],
+      "font-awesome": {
+        "mapping": [
+          {"assets/resources/vendor/font-awesome/css/font-awesome.min.css": "css/font-awesome.min.css"},
+          {"assets/resources/vendor/font-awesome/fonts/**": "fonts"}
+        ]
+      }
+    }
+  }
+}

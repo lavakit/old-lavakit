@@ -6,6 +6,12 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use Illuminate\Routing\Router;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
+/**
+ * Class RoutingServiceProvider
+ * @package Inspire\Base\Providers
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
 abstract class RoutingServiceProvider extends ServiceProvider
 {
     /**
@@ -16,9 +22,9 @@ abstract class RoutingServiceProvider extends ServiceProvider
     protected $namespace = '';
 
     /**
-     * Define your route model bindings, pattern filters, etc.
+     * Define your route model bindings, pattern filters, etc
      *
-     * @return void();
+     * @return void
      */
     public function boot()
     {
@@ -27,24 +33,27 @@ abstract class RoutingServiceProvider extends ServiceProvider
 
     /**
      * @return string
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    abstract protected function getFrontEndRoute();
+    abstract protected function getFrontendRoute();
 
     /**
      * @return string
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     abstract protected function getBackendRoute();
 
     /**
      * @return string
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     abstract protected function getApiRoute();
 
     /**
-     * Define the routers for the application.
+     * Define the routers for the application
      *
-     * @param \Illuminate\Routing\Route $router
-     * @return void
+     * @param Router $router
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function map(Router $router)
     {
@@ -64,14 +73,14 @@ abstract class RoutingServiceProvider extends ServiceProvider
 
     /**
      * @param Router $router
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     private function loadFrontendRoutes(Router $router)
     {
         $frontend = $this->getFrontendRoute();
-
         if ($frontend && file_exists($frontend)) {
             $router->group([
-                'middleware' => config('base.middleware.frontend', []),
+                'middleware' => config('base.base.middleware.frontend', []),
             ], function (Router $router) use ($frontend) {
                 require $frontend;
             });
@@ -80,6 +89,7 @@ abstract class RoutingServiceProvider extends ServiceProvider
 
     /**
      * @param Router $router
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     private function loadBackendRoutes(Router $router)
     {
@@ -88,8 +98,8 @@ abstract class RoutingServiceProvider extends ServiceProvider
         if ($backend && file_exists($backend)) {
             $router->group([
                 'namespace' => 'Admin',
-                'prefix' => config('base.admin-prefix'),
-                'middleware' => config('base.middleware.backend', []),
+                'prefix' => config('base.base.admin-prefix'),
+                'middleware' => config('base.base.middleware.backend', []),
             ], function (Router $router) use ($backend) {
                 require $backend;
             });
@@ -98,6 +108,7 @@ abstract class RoutingServiceProvider extends ServiceProvider
 
     /**
      * @param Router $router
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     private function loadApiRoutes(Router $router)
     {
@@ -107,8 +118,8 @@ abstract class RoutingServiceProvider extends ServiceProvider
             $router->group([
                 'namespace'     => 'Api',
                 'prefix'        => LaravelLocalization::setLocale() . '/api',
-                'middleware'    => config('base.middleware.api', [])
-            ], function (Router $router) use ($api){
+                'middleware'    => config('base.base.middleware.api', [])
+            ], function (Router $router) use ($api) {
                 require $api;
             });
         }

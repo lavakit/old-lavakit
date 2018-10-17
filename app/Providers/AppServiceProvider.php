@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
        |--------------------------------------------------------------------------------------------
        */
         if ($this->app->environment() == 'local') {
-            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+            $this->app->register(IdeHelperServiceProvider::class);
         }
     }
 
@@ -30,6 +31,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
     }
 }

@@ -2,26 +2,48 @@
 
 namespace Inspire\Base\Providers;
 
-use Illuminate\Foundation\AliasLoader;
+use Illuminate\Contracts\Debug\ExceptionHandler;
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use Inspire\Base\Exceptions\Handler;
 use Inspire\Base\Facades\PageTitleFacade;
-use Inspire\Acl\Providers\AclServiceProvider;
+use Inspire\Base\Http\Middleware\LocalizationMiddleware;
 use Inspire\Base\Traits\CanPublishConfiguration;
+use Inspire\Acl\Providers\AclServiceProvider;
+use Inspire\Base\Traits\CanRegisterFacadeAliases;
 use Inspire\Dashboard\Providers\DashboardServiceProvider;
+use Inspire\Menu\Providers\MenuServiceProvider;
 use Inspire\Page\Providers\PageServiceProvider;
 use Inspire\Post\Providers\PostServiceProvider;
 use Inspire\Theme\Providers\ThemeServiceProvider;
 use Inspire\User\Providers\UserServiceProvider;
 
+/**
+ * Class BaseServiceProvider
+ * @package Inspire\Base\Providers
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
 class BaseServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
+    use CanRegisterFacadeAliases;
 
     /**
      * @var array Facade Aliases
      */
     protected $facadeAliases = [
         'PageTitle' => PageTitleFacade::class
+    ];
+
+    /**
+     * The filters base class name
+     * @var array
+     */
+    protected $middleware = [
+        'Base' => [
+            'localizationRedirect'  => 'LocalizationMiddleware'
+        ]
     ];
 
     /**
@@ -36,6 +58,8 @@ class BaseServiceProvider extends ServiceProvider
         $this->publishConfig('base', 'base');
         $this->publishConfig('base', 'cache');
 
+        $this->registerMiddleware();
+
         /*Load Services on Lucky*/
         $this->app->register(AclServiceProvider::class);
         $this->app->register(PostServiceProvider::class);
@@ -43,22 +67,23 @@ class BaseServiceProvider extends ServiceProvider
         $this->app->register(DashboardServiceProvider::class);
         $this->app->register(UserServiceProvider::class);
         $this->app->register(ThemeServiceProvider::class);
+        $this->app->register(MenuServiceProvider::class);
 
-        /*Load views*/
-        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'base');
+        /*Load views Backend*/
+        $pathView =  config('theme.theme.backend_path') . '/' . config('theme.theme.active_backend') . '/views';
+        $this->loadViewsFrom($pathView, 'backend');
 
         /*Load translations*/
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'base');
 
 
         if (app()->runningInConsole()) {
-
             /*Load migrations*/
             $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
 
             $this->publishes([__DIR__ . '/../../resources/assets' => resource_path('assets')], 'assets');
-            $this->publishes([__DIR__ . '/../../resources/views' => config('view.paths')[0] . '/vendor/base',], 'views');
-            $this->publishes([__DIR__ . '/../../resources/lang' => base_path('resources/lang/vendor/base'),], 'lang');
+            $this->publishes([__DIR__ . '/../../resources/views' => config('view.paths')[0] . '/vendor/base'], 'views');
+            $this->publishes([__DIR__ . '/../../resources/lang' => base_path('resources/lang/vendor/base')], 'lang');
             $this->publishes([__DIR__ . '/../../database' => base_path('database'),], 'migrations');
         }
     }
@@ -73,12 +98,10 @@ class BaseServiceProvider extends ServiceProvider
         //Load helpers
         $this->loadHelpers();
 
+        $this->app->singleton(ExceptionHandler::class, Handler::class);
+
         //Register aliases
-        $this->registerFacadeAliases();
-
-        $this->app->register(RepositoryServiceProvider::class);
-        $this->app->register(BootstrapModuleServiceProvider::class);
-
+        $this->registerFacadeAliases($this->facadeAliases);
     }
 
     /**
@@ -95,14 +118,17 @@ class BaseServiceProvider extends ServiceProvider
     }
 
     /**
-     * Load additional Aliases
+     * Register the filters
      *
-     * @return void
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    protected function registerFacadeAliases() {
-        $loader = AliasLoader::getInstance();
-        foreach ($this->facadeAliases as $alias => $facade) {
-            $loader->alias($alias, $facade);
+    public function registerMiddleware()
+    {
+        foreach ($this->middleware as $module => $middlewares) {
+            foreach ($middlewares as $name => $middleware) {
+                $class = "Inspire\\{$module}\\Http\\Middleware\\{$middleware}";
+                $this->app['router']->aliasMiddleware($name, $class);
+            }
         }
     }
 }
