@@ -7,12 +7,14 @@ const dir_destination = './../../../public/themes/backend/adminlte/assets';
 
 /*Load file scss*/
 let filesStylesheetModules = [
-    {module:'post', file: 'post'},
+    {module: 'post', file: 'post'},
+    {module: 'menu', file: 'menu'},
 ];
 
 /*Load file Js scss*/
 let filesJsModules = [
     {module:'post', file: 'post'},
+    {module: 'menu', file: 'menu'},
 ];
 
 elixir.config.sourcemaps = false;
@@ -31,7 +33,7 @@ elixir(function (mix) {
         mix.styles([
             './assets/css/style.css',
             './assets/css/post.css',
-        ], dir_destination + '/css/all.css');
+        ], dir_destination + '/css/style.css');
     });
 
     mix.scripts([
