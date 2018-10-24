@@ -17,6 +17,11 @@ let filesJsModules = [
     {module: 'menu', file: 'menu'},
 ];
 
+/*Combine file style*/
+let fileStyle = [
+    './assets/css/style.css'
+];
+
 elixir.config.sourcemaps = false;
 elixir.inProduction = false;
 
@@ -27,13 +32,12 @@ elixir(function (mix) {
     /*StyleSheet in the module */
     filesStylesheetModules.forEach(function (data) {
         mix.sass('./../../../modules/'+ data.module +'/resources/assets/sass/'+ data.file +'.scss', 'assets/css/'+  data.file +'.css');
+
+        fileStyle.push('./assets/css/' + data.file + '.css');
     });
 
     elixir(function(mix) {
-        mix.styles([
-            './assets/css/style.css',
-            './assets/css/post.css',
-        ], dir_destination + '/css/style.css');
+        mix.styles(fileStyle, dir_destination + '/css/style.css');
     });
 
     mix.scripts([
@@ -53,4 +57,7 @@ elixir(function (mix) {
 
     /*Copy an entire vendor directory*/
     mix.copy('assets/vendor', '../../../public/themes/backend/adminlte/assets/vendor');
+
+    /*Copy file core.js */
+    mix.copy('assets/js/core.js', '../../../public/themes/backend/adminlte/assets/js/core.js');
 });
