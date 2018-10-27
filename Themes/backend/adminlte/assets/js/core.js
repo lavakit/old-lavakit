@@ -1,6 +1,12 @@
 /**=== Set default language ===*/
 var _default_language = 'en';
 
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 var Inspired = Inspired || {};
 
 Inspired.getLanguage = function () {
@@ -8,8 +14,3 @@ Inspired.getLanguage = function () {
 
     return language;
 };
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
