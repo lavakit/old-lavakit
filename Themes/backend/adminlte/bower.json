@@ -20,7 +20,7 @@
     "font-awesome": "4.7.0"
   },
   "install": {
-    "path": "assets/vendor",
+    "path": "./../../../public/themes/backend/adminlte/assets/vendor",
     "sources": {
       "bootstrap": {
         "mapping": [

@@ -44,7 +44,7 @@ elixir(function (mix) {
         './../../../modules/base/resources/assets/js/variable.js',
         './../../../modules/base/resources/assets/js/csrf.js',
         './../../../modules/base/resources/assets/js/core.js'
-    ], 'assets/js/core.js')
+    ], dir_destination + '/js/core.js')
 
     /*Javascript in the module*/
     filesJsModules.forEach(function (data) {
@@ -54,10 +54,4 @@ elixir(function (mix) {
 
     /*Copy an entire Images directory*/
     mix.copy('assets/images', '../../../public/themes/backend/adminlte/assets/images');
-
-    /*Copy an entire vendor directory*/
-    mix.copy('assets/vendor', '../../../public/themes/backend/adminlte/assets/vendor');
-
-    /*Copy file core.js */
-    mix.copy('assets/js/core.js', '../../../public/themes/backend/adminlte/assets/js/core.js');
 });
