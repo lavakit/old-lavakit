@@ -31,9 +31,9 @@ elixir(function (mix) {
 
     /*StyleSheet in the module */
     filesStylesheetModules.forEach(function (data) {
-        mix.sass('./../../../modules/'+ data.module +'/resources/assets/sass/'+ data.file +'.scss', dir_destination + '/css/');
+        mix.sass('./../../../modules/'+ data.module +'/resources/assets/sass/'+ data.file +'.scss', dir_destination + '/css/app_modules/');
 
-        fileStyle.push(dir_destination + '/css/' + data.file + '.css');
+        fileStyle.push(dir_destination + '/css/app_modules/' + data.file + '.css');
     });
 
     mix.scripts([
@@ -52,5 +52,5 @@ elixir(function (mix) {
 });
 
 elixir(function(mix) {
-    mix.styles(fileStyle, dir_destination + '/css/style.css');
+    mix.styles(fileStyle, dir_destination + '/css/all.css');
 });
