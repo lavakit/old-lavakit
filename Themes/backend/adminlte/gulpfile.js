@@ -19,7 +19,7 @@ let filesJsModules = [
 
 /*Combine file style*/
 let fileStyle = [
-    dir_destination + '/css/style.css'
+    dir_destination + '/css/build/style.css'
 ];
 
 elixir.config.sourcemaps = false;
@@ -27,13 +27,13 @@ elixir.inProduction = false;
 
 elixir(function (mix) {
 
-    mix.sass('./assets/sass/style.scss', dir_destination + '/css/style.css');
+    mix.sass('./assets/sass/style.scss', dir_destination + '/css/build/style.css');
 
     /*StyleSheet in the module */
     filesStylesheetModules.forEach(function (data) {
-        mix.sass('./../../../modules/'+ data.module +'/resources/assets/sass/'+ data.file +'.scss', dir_destination + '/css/app_modules/');
+        mix.sass('./../../../modules/'+ data.module +'/resources/assets/sass/'+ data.file +'.scss', dir_destination + '/css/build/');
 
-        fileStyle.push(dir_destination + '/css/app_modules/' + data.file + '.css');
+        fileStyle.push(dir_destination + '/css/build/' + data.file + '.css');
     });
 
     mix.scripts([
