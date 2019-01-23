@@ -55,19 +55,16 @@ class Handler extends ExceptionHandler
                     case 404:
                         if ($request->is(locate() . '/' . config('base.base.admin-prefix') . '/*')) {
                             return response()->view('backend::errors.404', [], 404);
-                        } else {
-                            return response()->view('theme::errors.404', [], 404);
                         }
-                        break;
+                        return response()->view('theme::errors.404', [], 404);
 
                     case 500:
                     case 503:
                         if ($request->is(locate() . '/' . config('base.base.admin-prefix') . '/*')) {
                             return response()->view('backend::errors.500', [], 500);
-                        } else {
-                            return response()->view('theme::errors.500', [], 500);
                         }
-                        break;
+
+                        return response()->view('theme::errors.500', [], 500);
                 }
             }
         }

@@ -39,7 +39,7 @@ class RepositoryServiceProvider extends ServiceProvider
             $this->app->singleton(MenuRepository::class, function () {
                 return new MenuCacheDecorator(
                     new MenuEloquentRepository(new Menu()),
-                    new Cache($this->app['cache'], __CLASS__)
+                    new Cache($this->app['cache'], MenuRepository::class)
                 );
             });
         } else {

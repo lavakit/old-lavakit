@@ -3,15 +3,15 @@
 namespace Inspire\Theme\Composers;
 
 use Illuminate\View\View;
-use Inspire\Theme\Facades\Asset;
+use Asset;
 
 /**
- * Class AssetViewComposer
+ * Class AssetFrontendViewComposer
  * @package Inspire\Theme\Composers
  * @copyright 2018 Inspire Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
-class AssetViewComposer
+class AssetFrontendViewComposer
 {
 
     /**
@@ -33,21 +33,21 @@ class AssetViewComposer
      * @return mixed
      * @author hoatq <tqhoa8th@gmail.com>
      */
-    private function getStylesheet()
+    protected function getStylesheet()
     {
         return Asset::getStylesheets();
     }
 
     /**
-     * Get The current Javascrip
+     * Get The current Javascript
      *
      * @return mixed
      * @author hoatq <tqhoa8th@gmail.com>
      */
-    private function getJavascript()
+    protected function getJavascript()
     {
          $jsDefault = Asset::getJavascript();
-         $jsAppModules =  Asset::getAppModules();
+         $jsAppModules = Asset::getAppModules();
          $js = array_merge($jsDefault, $jsAppModules);
 
         return $js;

@@ -3,7 +3,7 @@
 namespace Inspire\Theme\Middleware;
 
 use Closure;
-use Inspire\Theme\Facades\Theme;
+use Theme;
 
 /**
  * Class WebMiddleware

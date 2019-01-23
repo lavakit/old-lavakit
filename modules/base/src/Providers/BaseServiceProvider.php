@@ -3,11 +3,9 @@
 namespace Inspire\Base\Providers;
 
 use Illuminate\Contracts\Debug\ExceptionHandler;
-use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Inspire\Base\Exceptions\Handler;
-use Inspire\Base\Facades\PageTitleFacade;
-use Inspire\Base\Http\Middleware\LocalizationMiddleware;
+use Inspire\Base\Facades\TitleFacade;
 use Inspire\Base\Traits\CanPublishConfiguration;
 use Inspire\Acl\Providers\AclServiceProvider;
 use Inspire\Base\Traits\CanRegisterFacadeAliases;
@@ -33,7 +31,7 @@ class BaseServiceProvider extends ServiceProvider
      * @var array Facade Aliases
      */
     protected $facadeAliases = [
-        'PageTitle' => PageTitleFacade::class
+        'Title' => TitleFacade::class
     ];
 
     /**
@@ -42,7 +40,7 @@ class BaseServiceProvider extends ServiceProvider
      */
     protected $middleware = [
         'Base' => [
-            'localizationRedirect'  => 'LocalizationMiddleware'
+            'localizationRedirect' => 'LocalizationMiddleware'
         ]
     ];
 
@@ -53,7 +51,6 @@ class BaseServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
         /*Load Config*/
         $this->publishConfig('base', 'base');
         $this->publishConfig('base', 'cache');
@@ -70,12 +67,11 @@ class BaseServiceProvider extends ServiceProvider
         $this->app->register(MenuServiceProvider::class);
 
         /*Load views Backend*/
-        $pathView =  config('theme.theme.backend_path') . '/' . config('theme.theme.active_backend') . '/views';
+        $pathView = config('theme.theme.backend_path') . '/' . config('theme.theme.active_backend') . '/views';
         $this->loadViewsFrom($pathView, 'backend');
 
         /*Load translations*/
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'base');
-
 
         if (app()->runningInConsole()) {
             /*Load migrations*/

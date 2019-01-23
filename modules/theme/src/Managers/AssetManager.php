@@ -37,8 +37,8 @@ final class AssetManager implements AssetContract
      * @var array
      */
     protected $appendedJs = [
-            'top' => [],
-            'bottom' => []
+        'top'       => [],
+        'bottom'    => []
     ];
 
     /**
@@ -47,17 +47,47 @@ final class AssetManager implements AssetContract
     protected $appendedCss = [];
 
     /**
+     * @var string
+     */
+    protected $config = 'frontend';
+
+    /**
      * AssetManager constructor.
      */
     public function __construct()
     {
-        $this->javascript = config('theme.assets.javascript');
-        $this->stylesheets = config('theme.assets.stylesheets');
-        $this->build = time();
+        $this->setConfig($this->config);
 
         if (config('app.env') == 'production') {
             $this->build = config('base.base.version');
         }
+    }
+
+    /**
+     * @param string $page
+     * @return $this
+     * @copyright 2019 LUCY VN
+     * @author Pencii Team <hoatq@lucy.ne.jp>
+     */
+    public function setConfig($page = 'frontend')
+    {
+        $this->config = $page;
+
+        $this->build = time();
+        $this->javascript = config("theme.{$this->getConfig()}.javascript");
+        $this->stylesheets = config("theme.{$this->getConfig()}.stylesheets");
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     * @copyright 2019 LUCY VN
+     * @author Pencii Team <hoatq@lucy.ne.jp>
+     */
+    public function getConfig()
+    {
+        return $this->config;
     }
 
     /**
@@ -198,7 +228,7 @@ final class AssetManager implements AssetContract
         if (!empty($this->javascript)) {
             $this->javascript = array_unique($this->javascript);
             foreach ($this->javascript as $js) {
-                $jsConfig = 'theme.assets.resources.javascript.' . $js;
+                $jsConfig = "theme.{$this->getConfig()}.resources.javascript." . $js;
                 if (Config::has($jsConfig)) {
                     if ($location != null && config($jsConfig . '.location') !== $location) {
                         //skip assets that don't match this location
@@ -207,7 +237,7 @@ final class AssetManager implements AssetContract
                     $src = config($jsConfig . '.src.local');
                     $cdn = false;
 
-                    if (config($jsConfig . '.use_cdn') && !config('theme.assets.offline')) {
+                    if (config($jsConfig . '.use_cdn') && !config("theme.{$this->getConfig()}.offline")) {
                         $src = config($jsConfig . '.src.cdn');
                         $cdn = true;
                     }
@@ -259,10 +289,10 @@ final class AssetManager implements AssetContract
             }
             $this->stylesheets = array_unique($this->stylesheets);
             foreach ($this->stylesheets as $style) {
-                $cssConfig = 'theme.assets.resources.stylesheets.' . $style;
+                $cssConfig = "theme.{$this->getConfig()}.resources.stylesheets." . $style;
                 if (Config::has($cssConfig)) {
                     $src = config($cssConfig . '.src.local');
-                    if (config($cssConfig . '.use_cdn') && !config('theme.assets.offline')) {
+                    if (config($cssConfig . '.use_cdn') && !config("theme.{$this->getConfig()}.offline")) {
                         $src = config($cssConfig . '.src.cdn');
                     }
 

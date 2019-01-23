@@ -1,2 +1,2 @@
 /**=== Set default language ===*/
-var _default_language = 'en';
+let default_language = 'en';

@@ -18,6 +18,9 @@ class AssetServiceProvider extends ServiceProvider
 {
     use CanRegisterFacadeAliases;
 
+    /**
+     * @var array $facadeAlias
+     */
     protected $facadeAlias = [
         'Asset' => Asset::class
     ];

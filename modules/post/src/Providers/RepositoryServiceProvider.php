@@ -42,7 +42,7 @@ class RepositoryServiceProvider extends ServiceProvider
             $this->app->singleton(PostRepository::class, function () {
                 return new PostCacheDecorator(
                     new PostEloquentRepository(new Post()),
-                    new Cache($this->app['cache'], __CLASS__)
+                    new Cache($this->app['cache'], PostRepository::class)
                 );
             });
         } else {

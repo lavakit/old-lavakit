@@ -1,8 +1,8 @@
 <?php
 
-use Inspire\Base\Facades\PageTitleFacade;
+use Inspire\Base\Facades\TitleFacade;
 
-if (! function_exists('locate')) {
+if (!function_exists('locate')) {
     /**
      * Get Locale of App
      *
@@ -22,12 +22,12 @@ if (! function_exists('locate')) {
     }
 }
 
-if (! function_exists('pageTitle')) {
+if (!function_exists('title')) {
     /**
-     * @return \Inspire\Base\Supports\PageTitle
+     * @return \Inspire\Base\Supports\Title
      */
-    function pageTitle()
+    function title()
     {
-        return PageTitleFacade::getFacadeRoot();
+        return TitleFacade::getFacadeRoot();
     }
 }
