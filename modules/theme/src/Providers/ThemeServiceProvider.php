@@ -41,6 +41,7 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //
     }
 
     /**
@@ -58,7 +59,7 @@ class ThemeServiceProvider extends ServiceProvider
         $this->registerMiddleware();
 
         $this->app->register(AssetServiceProvider::class);
-        $this->app->register(ComposerThemeServiceProvider::class);
+        $this->app->register(ComposerServiceProvider::class);
 
         //Register aliases
         $this->registerFacadeAliases($this->facadeAliases);
@@ -94,7 +95,8 @@ class ThemeServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishConfig('theme', 'theme');
-        $this->publishConfig('theme', 'assets');
+        $this->publishConfig('theme', 'frontend');
+        $this->publishConfig('theme', 'backend');
     }
 
     /**

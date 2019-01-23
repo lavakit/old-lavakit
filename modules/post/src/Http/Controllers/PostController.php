@@ -43,7 +43,7 @@ class PostController extends Controller
         }
         */
         /*
-        pageTitle()->setTitle('Post');
+        title()->set('Post');
 
         $post = $this->post->all();
 

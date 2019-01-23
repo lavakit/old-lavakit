@@ -3,7 +3,7 @@
 <head>
     <base src="{{ URL::asset('/') }}" />
     <meta charset="utf-8">
-    <title>{{ pageTitle()->getTitle() }}</title>
+    <title>{{ title()->get() }}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @foreach($cssFiles as $css)

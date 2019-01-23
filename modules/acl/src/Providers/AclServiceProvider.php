@@ -24,7 +24,6 @@ class AclServiceProvider extends ServiceProvider
         /*Load translations*/
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'acl');
 
-
         if (app()->runningInConsole()) {
             /*Load migrations*/
             $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');

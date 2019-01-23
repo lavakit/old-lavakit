@@ -36,7 +36,7 @@ return [
     | then symlink can be false or true as your wish.
     |
     */
-    'symlink'    => false,
+    'symlink' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -84,7 +84,7 @@ return [
         'lang/en'   => 'lang/en',
         'css'       => 'assets/css',
         'js'        => 'assets/js',
-        'images'       => 'assets/images',
+        'images'    => 'assets/images',
         'layouts'   => 'views/layouts',
     ],
     /*
