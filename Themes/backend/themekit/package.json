@@ -2,7 +2,7 @@
   "name": "themekit",
   "version": "1.0.0",
   "description": "Theme Kit",
-  "main": "gulpfile,js",
+  "main": "gulp.js",
   "scripts": {
     "prod": "gulp --production",
     "dev": "gulp watch"
@@ -12,5 +12,8 @@
     "admin"
   ],
   "author": "hoatq",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "laravel-elixir": "^6.0.0-18"
+  }
 }
