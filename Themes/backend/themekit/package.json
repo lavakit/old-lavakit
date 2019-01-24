@@ -1,0 +1,16 @@
+{
+  "name": "themekit",
+  "version": "1.0.0",
+  "description": "Theme Kit",
+  "main": "gulpfile,js",
+  "scripts": {
+    "prod": "gulp --production",
+    "dev": "gulp watch"
+  },
+  "keywords": [
+    "Theme",
+    "admin"
+  ],
+  "author": "hoatq",
+  "license": "MIT"
+}
