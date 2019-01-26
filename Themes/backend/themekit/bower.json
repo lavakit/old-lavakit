@@ -19,7 +19,60 @@
     "test",
     "tests"
   ],
-  "devDependencies": {
-    "bootstrap": "4.2.1"
+  "dependencies": {
+    "bootstrap": "4.2.1",
+    "jquery": "3.3.1",
+    "select2": "^4.0.5",
+    "fontawesome": "font-awesome#5.5.0",
+    "perfect-scrollbar": "^0.8.1"
+  },
+  "devDependencies": {},
+  "install": {
+    "path": "./../../../public/themes/backend/themekit/assets/vendor",
+    "sources": {
+      "bootstrap": {
+        "mapping": [
+          {
+            "assets/resources/vendor/bootstrap/dist/js/bootstrap.min.js": "js/bootstrap.min.js"
+          },
+          {
+            "assets/resources/vendor/bootstrap/dist/css/bootstrap.min.css": "css/bootstrap.min.css"
+          }
+        ]
+      },
+      "jquery": [
+        "assets/resources/vendor/jquery/dist/jquery.min.js"
+      ],
+      "fontawesome": {
+        "mapping": [
+          {
+            "assets/resources/vendor/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css": "css/fontawesome-all.min.css"
+          },
+          {
+            "assets/resources/vendor/fontawesome/web-fonts-with-css/webfonts/**": "webfonts"
+          }
+        ]
+      },
+      "perfect-scrollbar": {
+        "mapping": [
+          {
+            "assets/resources/vendor/perfect-scrollbar/css/perfect-scrollbar.min.css": "css/perfect-scrollbar.min.css"
+          },
+          {
+            "assets/resources/vendor/perfect-scrollbar/js/perfect-scrollbar.min.js": "js/perfect-scrollbar.min.js"
+          }
+        ]
+      },
+      "select2": {
+        "mapping": [
+          {
+            "assets/resources/vendor/select2/dist/js/select2.min.js": "js/select2.min.js"
+          },
+          {
+            "assets/resources/vendor/select2/dist/css/select2.min.css": "css/select2.min.css"
+          }
+        ]
+      }
+    }
   }
 }

@@ -11,19 +11,22 @@ return [
     'javascript' => [
         'jquery',
         'bootstrap',
+        'perfect-scrollbar',
         'select2',
+        'theme',
         'core'
     ],
     'stylesheets' => [
         'bootstrap',
         'font-awesome',
+        'perfect-scrollbar',
         'select2',
         'core'
     ],
     'resources' => [
         'javascript' => [
             'jquery' => [
-                'use_cdn' => false,
+                'use_cdn' => true,
                 'fallback' => 'jQuery',
                 'location' => 'top',
                 'src' => [
@@ -32,19 +35,34 @@ return [
                 ]
             ],
             'bootstrap' => [
-                 'use_cdn' => false,
+                 'use_cdn' => true,
                  'location' => 'bottom',
                  'src' => [
                      'local' => BACKEND_VENDOR . 'bootstrap/js/bootstrap.min.js',
-                     'cdn' => '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'
+                     'cdn' => '//maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js'
                  ]
             ],
+            'perfect-scrollbar' => [
+                'use_cdn' => true,
+                'location' => 'bottom',
+                'src' => [
+                    'local' => BACKEND_VENDOR . 'perfect-scrollbar/js/perfect-scrollbar.min.js',
+                    'cdn' => '//cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.8.1/js/perfect-scrollbar.min.js'
+                ]
+            ],
             'select2' => [
-                'use_cdn' => false,
+                'use_cdn' => true,
                 'location' => 'bottom',
                 'src' => [
                     'local' => BACKEND_VENDOR . 'select2/js/select2.min.js',
                     'cdn' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js'
+                ]
+            ],
+            'theme' => [
+                'use_cdn' => false,
+                'location' => 'bottom',
+                'src' => [
+                    'local' => BACKEND_ASSET . 'js/theme.js'
                 ]
             ],
             'core' => [
@@ -57,23 +75,31 @@ return [
         ],
         'stylesheets' => [
             'bootstrap' => [
-                'use_cdn' => false,
+                'use_cdn' => true,
                 'location' => 'top',
                 'src' => [
                     'local' => BACKEND_VENDOR . 'bootstrap/css/bootstrap.min.css',
-                    'cdn' => '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'
+                    'cdn' => '//maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css'
                 ]
             ],
             'font-awesome' => [
                 'use_cdn' => false,
                 'location' => 'top',
                 'src' => [
-                    'local' => BACKEND_VENDOR . 'font-awesome/css/font-awesome.min.css',
-                    'cdn' => '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+                    'local' => BACKEND_VENDOR . 'fontawesome/css/fontawesome-all.min.css',
+                    'cdn' => '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/fontawesome-all.min.css'
+                ]
+            ],
+            'perfect-scrollbar' => [
+                'use_cdn' => true,
+                'location' => 'top',
+                'src' => [
+                    'local' => BACKEND_VENDOR . 'perfect-scrollbar/css/perfect-scrollbar.min.css',
+                    'cdn' => '//cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.8.1/css/perfect-scrollbar.min.css'
                 ]
             ],
             'select2' => [
-                'use_cdn' => false,
+                'use_cdn' => true,
                 'location' => 'top',
                 'src' => [
                         'local' => BACKEND_VENDOR . 'select2/css/select2.min.css',
