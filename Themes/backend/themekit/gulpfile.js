@@ -57,7 +57,7 @@ elixir(function (mix) {
     });
 
     /*Copy an entire Images directory*/
-    mix.copy('assets/images',  dir_destination + '/images');
+    mix.copy('assets/images',  '../../../public/themes/backend/themekit/assets/images');
 });
 
 elixir(function(mix) {
