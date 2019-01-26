@@ -3,27 +3,36 @@ process.env.DISABLE_NOTIFIER = true;
 const elixir = require('laravel-elixir');
 const gulp = require('gulp');
 
-const dir_destination = './../../../public/themes/backend/adminlte/assets';
+/*
+ |--------------------------------------------------------------------------
+ | Elixir Asset Management
+ |--------------------------------------------------------------------------
+ |
+ | Elixir provides a clean, fluent API for defining some basic Gulp tasks
+ | for your Laravel application. By default, we are compiling the Sass
+ | file for our application, as well as publishing vendor resources.
+ |
+ */
+
+elixir.config.sourcemaps = false;
+elixir.inProduction = false;
+
+const dir_destination = './../../../public/themes/backend/themekit/assets';
 
 /*Load file scss*/
 let filesStylesheetModules = [
-    {module: 'post', file: 'post'},
-    {module: 'menu', file: 'menu'},
+    //{module: 'post', file: 'post'},
 ];
 
 /*Load file Js scss*/
 let filesJsModules = [
-    {module:'post', file: 'post'},
-    {module: 'menu', file: 'menu'},
+    //{module:'post', file: 'post'},
 ];
 
 /*Combine file style*/
 let fileStyle = [
     dir_destination + '/css/build/style.css'
 ];
-
-elixir.config.sourcemaps = false;
-elixir.inProduction = false;
 
 elixir(function (mix) {
 
