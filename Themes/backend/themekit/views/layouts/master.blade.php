@@ -16,6 +16,9 @@
         @foreach($cssBackendFiles as $css)
             <link media="all" type="text/css" rel="stylesheet" href="{{ URL::asset($css) }}">
         @endforeach
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
         @stack('css-stack')
     </head>
     <body>
@@ -28,21 +31,20 @@
 
             <div class="page-wrap">
                 <div class="app-sidebar colored">
-
+                    @include('backend::layouts.partials.sidebar')
                 </div>
 
                 <div class="main-content">
-                    {{--<div class="content">--}}
+                    @include('backend::layouts.partials.content')
                     {{--@yield('content')--}}
-                    {{--</div>--}}
                 </div>
 
                 <aside class="right-sidebar">
-
+                    @include('backend::layouts.partials.asside')
                 </aside>
 
                 <div class="chat-panel" hidden>
-
+                    @include('backend::layouts.partials.chat')
                 </div>
 
                 @include('backend::layouts.partials.footer')

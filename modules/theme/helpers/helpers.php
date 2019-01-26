@@ -26,3 +26,22 @@ if (!function_exists('lang')) {
         return Theme::lang($fallback);
     }
 }
+
+if (!function_exists('assetTheme')) {
+
+    /**
+     * @param $path
+     * @param bool $frontend
+     * @return string
+     * @copyright 2019 LUCY VN
+     * @author Pencii Team <hoatq@lucy.ne.jp>
+     */
+    function assetTheme($path, $frontend = true)
+    {
+        if ($frontend) {
+            return asset(FRONTEND_ASSET . $path);
+        }
+
+        return asset(BACKEND_ASSET . $path);
+    }
+}

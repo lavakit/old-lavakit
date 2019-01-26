@@ -24,7 +24,20 @@
     "jquery": "3.3.1",
     "select2": "^4.0.5",
     "fontawesome": "font-awesome#5.5.0",
-    "perfect-scrollbar": "^0.8.1"
+    "IconKit": "https://github.com/IconKit/IconKit.git",
+    "ionicons": "^4.5.5",
+    "screenfull": "3.3.*",
+    "popper.js": "1.14.3",
+    "datatables.net": "1.10.19",
+    "datatables.net-bs4": "1.10.19",
+    "datatables.net-responsive-bs4": "2.2.3",
+    "jvectormap": "2.0.4",
+    "tempusdominus-bootstrap-4": "5.1.2",
+    "moment": "2.22.2",
+    "weather-icons": "1.3.2",
+    "d3": "5.7.0",
+    "c3": "0.6.8",
+    "utatti-perfect-scrollbar": "^1.4.0"
   },
   "devDependencies": {},
   "install": {
@@ -53,13 +66,13 @@
           }
         ]
       },
-      "perfect-scrollbar": {
+      "utatti-perfect-scrollbar": {
         "mapping": [
           {
-            "assets/resources/vendor/perfect-scrollbar/css/perfect-scrollbar.min.css": "css/perfect-scrollbar.min.css"
+            "assets/resources/vendor/utatti-perfect-scrollbar/css/perfect-scrollbar.css": "css/perfect-scrollbar.css"
           },
           {
-            "assets/resources/vendor/perfect-scrollbar/js/perfect-scrollbar.min.js": "js/perfect-scrollbar.min.js"
+            "assets/resources/vendor/utatti-perfect-scrollbar/dist/perfect-scrollbar.min.js": "js/perfect-scrollbar.min.js"
           }
         ]
       },
@@ -70,6 +83,100 @@
           },
           {
             "assets/resources/vendor/select2/dist/css/select2.min.css": "css/select2.min.css"
+          }
+        ]
+      },
+      "IconKit": {
+        "mapping": [
+          {
+            "assets/resources/vendor/IconKit/dist/css/iconkit.min.css": "css/iconkit.min.css"
+          },
+          {
+            "assets/resources/vendor/IconKit/dist/fonts/**": "fonts"
+          }
+        ]
+      },
+      "ionicons": {
+        "mapping": [
+          {
+            "assets/resources/vendor/ionicons/docs/css/ionicons.min.css": "css/ionicons.min.css"
+          },
+          {
+            "assets/resources/vendor/ionicons/docs/fonts/**": "fonts"
+          }
+        ]
+      },
+      "screenfull": [
+        "assets/resources/vendor/screenfull/dist/screenfull.min.js"
+      ],
+      "popper.js": [
+        "assets/resources/vendor/popper.js/dist/umd/popper.min.js"
+      ],
+      "datatables.net": [
+        "assets/resources/vendor/datatables.net/js/jquery.dataTables.min.js"
+      ],
+      "datatables.net-bs4": {
+        "mapping": [
+          {
+            "assets/resources/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js": "js/dataTables.bootstrap4.min.js"
+          },
+          {
+            "assets/resources/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css": "css/dataTables.bootstrap4.min.css"
+          }
+        ]
+      },
+      "datatables.net-responsive": [
+        "assets/resources/vendor/datatables.net-responsive/js/dataTables.responsive.min.js"
+      ],
+      "datatables.net-responsive-bs4": [
+        "assets/resources/vendor/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"
+      ],
+      "jvectormap": {
+        "mapping": [
+          {
+            "assets/resources/vendor/jvectormap/jquery-jvectormap.js": "js/jquery-jvectormap.js"
+          },
+          {
+            "assets/resources/vendor/jvectormap/tests/assets/jquery-jvectormap-us-mill-en.js": "js/test/jquery-jvectormap-us-mill-en.js"
+          },
+          {
+            "assets/resources/vendor/jvectormap/jquery-jvectormap.css": "css/jquery-jvectormap.css"
+          }
+        ]
+      },
+      "moment": [
+        "assets/resources/vendor/moment/moment.js"
+      ],
+      "tempusdominus-bootstrap-4": {
+        "mapping": [
+          {
+            "assets/resources/vendor/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js": "js/tempusdominus-bootstrap-4.min.js"
+          },
+          {
+            "assets/resources/vendor/tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css": "css/tempusdominus-bootstrap-4.min.css"
+          }
+        ]
+      },
+      "weather-icons": {
+        "mapping": [
+          {
+            "assets/resources/vendor/weather-icons/css/weather-icons.min.css": "css/weather-icons.min.css"
+          },
+          {
+            "assets/resources/vendor/weather-icons/font/**": "font"
+          }
+        ]
+      },
+      "d3": [
+        "assets/resources/vendor/d3/d3.min.js"
+      ],
+      "c3": {
+        "mapping": [
+          {
+            "assets/resources/vendor/c3/c3.min.js": "js/c3.min.js"
+          },
+          {
+            "assets/resources/vendor/c3/c3.min.css": "css/c3.min.css"
           }
         ]
       }

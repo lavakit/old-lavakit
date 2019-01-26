@@ -49,7 +49,9 @@ elixir(function (mix) {
         './../../../modules/base/resources/assets/js/variable.js',
         './../../../modules/base/resources/assets/js/csrf.js',
         './../../../modules/base/resources/assets/js/core.js'
-    ], dir_destination + '/js/core.js')
+    ], dir_destination + '/js/core.js');
+
+    mix.scripts('./assets/js/theme.js', dir_destination + '/js/theme.js');
 
     /*Javascript in the module*/
     filesJsModules.forEach(function (data) {
