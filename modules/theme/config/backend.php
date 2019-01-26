@@ -76,7 +76,7 @@ return [
                 'use_cdn' => false,
                 'location' => 'top',
                 'src' => [
-                        'local' => BACKEND_VENDOR . '/select2/css/select2.min.css',
+                        'local' => BACKEND_VENDOR . 'select2/css/select2.min.css',
                         'cdn' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css'
                 ]
             ],

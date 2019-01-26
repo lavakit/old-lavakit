@@ -48,7 +48,7 @@ elixir(function (mix) {
     });
 
     /*Copy an entire Images directory*/
-    mix.copy('assets/images', '../../../public/themes/backend/adminlte/assets/images');
+    mix.copy('assets/images',  dir_destination + '/images');
 });
 
 elixir(function(mix) {
