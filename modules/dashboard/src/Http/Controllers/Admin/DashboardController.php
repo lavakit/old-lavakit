@@ -2,7 +2,7 @@
 
 namespace Inspire\Dashboard\Http\Controllers\Admin;
 
-use Inspire\Base\Http\Controllers\BaseController;
+use Inspire\Base\Http\Controllers\Admin\BaseAdminController;
 
 /**
  * Class DashboardController
@@ -10,13 +10,23 @@ use Inspire\Base\Http\Controllers\BaseController;
  * @copyright 2018 Inspire Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
-class DashboardController extends BaseController
+class DashboardController extends BaseAdminController
 {
+    /**
+     * DashboardController constructor.
+     */
+
+    /** @var string */
+    protected $module = [
+        'tables', 'widgets', 'charts'
+    ];
+
     /**
      * DashboardController constructor.
      */
     public function __construct()
     {
+        parent::__construct();
     }
 
     /**

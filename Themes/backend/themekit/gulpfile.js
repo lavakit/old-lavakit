@@ -26,7 +26,9 @@ let filesStylesheetModules = [
 
 /*Load file Js scss*/
 let filesJsModules = [
-    //{module:'post', file: 'post'},
+    {module: 'dashboard', file: 'tables'},
+    {module: 'dashboard', file: 'widgets'},
+    {module: 'dashboard', file: 'charts'}
 ];
 
 /*Combine file style*/
@@ -49,7 +51,9 @@ elixir(function (mix) {
         './../../../modules/base/resources/assets/js/variable.js',
         './../../../modules/base/resources/assets/js/csrf.js',
         './../../../modules/base/resources/assets/js/core.js'
-    ], dir_destination + '/js/core.js')
+    ], dir_destination + '/js/core.js');
+
+    mix.scripts('./assets/js/theme.js', dir_destination + '/js/theme.js');
 
     /*Javascript in the module*/
     filesJsModules.forEach(function (data) {
@@ -57,7 +61,7 @@ elixir(function (mix) {
     });
 
     /*Copy an entire Images directory*/
-    mix.copy('assets/images',  dir_destination + '/images');
+    mix.copy('assets/images',  '../../../public/themes/backend/themekit/assets/images');
 });
 
 elixir(function(mix) {
