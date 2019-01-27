@@ -176,7 +176,7 @@ return [
                 'use_cdn' => false,
                 'location' => 'bottom',
                 'src' => [
-                    'local' => BACKEND_ASSET . 'js/theme.min.js'
+                    'local' => BACKEND_ASSET . 'js/theme.js'
                 ]
             ],
             'core' => [

@@ -31,3 +31,15 @@ if (!function_exists('title')) {
         return TitleFacade::getFacadeRoot();
     }
 }
+
+if (!function_exists('crafted')) {
+    /**
+     * @return \Illuminate\Config\Repository|mixed
+     * @copyright 2019 LUCY VN
+     * @author Pencii Team <hoatq@lucy.ne.jp>
+     */
+    function crafted()
+    {
+        return config('base.base.crafted');
+    }
+}

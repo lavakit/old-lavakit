@@ -35,12 +35,12 @@
                 </div>
 
                 <div class="main-content">
-                    @include('backend::layouts.partials.content')
+                    {{--@include('backend::layouts.partials.content')--}}
                     {{--@yield('content')--}}
                 </div>
 
                 <aside class="right-sidebar">
-                    @include('backend::layouts.partials.asside')
+                    @include('backend::layouts.partials.aside')
                 </aside>
 
                 <div class="chat-panel" hidden>
@@ -50,10 +50,14 @@
                 @include('backend::layouts.partials.footer')
             </div>
         </div>
+
+        @include('backend::layouts.partials.apps_modal')
+
     {{-- Script --}}
     @foreach($jsBackendFiles as $js)
         <script src="{{ URL::asset($js) }}" type="text/javascript"></script>
     @endforeach
     @stack('js-stack')
+
     </body>
 </html>
