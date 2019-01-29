@@ -33,8 +33,8 @@ if (!function_exists('assetTheme')) {
      * @param $path
      * @param bool $frontend
      * @return string
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @copyright 2018 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     function assetTheme($path, $frontend = true)
     {
@@ -50,8 +50,8 @@ if (!function_exists('backendAsset')) {
     /**
      * @param $path
      * @return string
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @copyright 2018 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     function backendAsset($path)
     {
@@ -63,8 +63,8 @@ if (!function_exists('frontendAsset')) {
     /**
      * @param $path
      * @return string
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @copyright 2018 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     function frontendAsset($path)
     {

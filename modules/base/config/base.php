@@ -24,7 +24,6 @@ return [
     */
     'core-modules' => [
         'base',
-        'acl',
         'post',
         'page',
         'dashboard',
@@ -49,6 +48,7 @@ return [
    */
     'middleware' => [
         'backend' => [
+            'auth'
         ],
         'frontend' => [
         ],

@@ -23,7 +23,7 @@ class RouteServiceProvider extends BaseRoutingServiceProvider
      */
     protected function getFrontendRoute()
     {
-        return false;
+        return __DIR__ . '/../../routes/frontend.php';
     }
 
     /**
@@ -31,7 +31,7 @@ class RouteServiceProvider extends BaseRoutingServiceProvider
      */
     protected function getBackendRoute()
     {
-        return __DIR__ . '/../../routes/backendRoutes.php';
+        return __DIR__ . '/../../routes/backend.php';
     }
 
     /**

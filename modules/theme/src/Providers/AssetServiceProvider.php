@@ -4,9 +4,13 @@ namespace Inspire\Theme\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Inspire\Base\Traits\CanRegisterFacadeAliases;
-use Inspire\Theme\Contracts\AssetContract;
-use Inspire\Theme\Facades\Asset;
-use Inspire\Theme\Managers\AssetManager;
+use Inspire\Theme\Contracts\Assets\Frontend;
+use Inspire\Theme\Contracts\Assets\Backend as BackendAssetContract;
+use Inspire\Theme\Contracts\Assets\Frontend as FrontendAssetContract;
+use Inspire\Theme\Facades\AssetBackendFacade;
+use Inspire\Theme\Facades\AssetFrontendFacade;
+use Inspire\Theme\Managers\Assets\BackendAsset;
+use Inspire\Theme\Managers\Assets\FrontendAsset;
 
 /**
  * Class AssetServiceProvider
@@ -22,7 +26,8 @@ class AssetServiceProvider extends ServiceProvider
      * @var array $facadeAlias
      */
     protected $facadeAlias = [
-        'Asset' => Asset::class
+        'AssetFrontend' => AssetFrontendFacade::class,
+        'AssetBackend' => AssetBackendFacade::class
     ];
 
     /**
@@ -42,8 +47,12 @@ class AssetServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(AssetContract::class, function () {
-            return new AssetManager();
+        $this->app->singleton( BackendAssetContract::class, function () {
+            return new BackendAsset();
+        });
+
+        $this->app->singleton(FrontendAssetContract::class, function () {
+            return new FrontendAsset();
         });
 
         $this->registerFacadeAliases($this->facadeAlias);

@@ -3,13 +3,13 @@
 namespace Inspire\Theme\Composers;
 
 use Illuminate\View\View;
-use Asset;
+use AssetBackend;
 
 /**
  * Class AssetBackendViewComposer
  * @package Inspire\Theme\Providers
- * @copyright 2019 LUCY VN
- * @author Pencii Team <hoatq@lucy.ne.jp>
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 class AssetBackendViewComposer
 {
@@ -34,7 +34,7 @@ class AssetBackendViewComposer
      */
     protected function getStylesheet()
     {
-        return Asset::setConfig('backend')->getStylesheets();
+        return AssetBackend::getStylesheets();
     }
 
     /**
@@ -45,8 +45,8 @@ class AssetBackendViewComposer
      */
     protected function getJavascript()
     {
-        $jsDefault = Asset::setConfig('backend')->getJavascript();
-        $jsAppModules = Asset::getAppModules();
+        $jsDefault = AssetBackend::getJavascript();
+        $jsAppModules = AssetBackend::getAppModules();
         $js = array_merge($jsDefault, $jsAppModules);
 
         return $js;

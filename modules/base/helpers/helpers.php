@@ -35,8 +35,8 @@ if (!function_exists('title')) {
 if (!function_exists('crafted')) {
     /**
      * @return \Illuminate\Config\Repository|mixed
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @copyright 2018 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     function crafted()
     {

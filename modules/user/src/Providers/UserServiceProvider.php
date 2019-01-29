@@ -3,6 +3,7 @@
 namespace Inspire\User\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Inspire\Base\Traits\CanPublishConfiguration;
 
 /**
  * Class UserServiceProvider
@@ -12,6 +13,8 @@ use Illuminate\Support\ServiceProvider;
  */
 class UserServiceProvider extends ServiceProvider
 {
+    use CanPublishConfiguration;
+
     /**
      * Bootstrap the application services.
      *
@@ -50,6 +53,8 @@ class UserServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->publishConfig('user', 'user');
+
         //Load helpers
         $this->loadHelpers();
 
@@ -57,6 +62,9 @@ class UserServiceProvider extends ServiceProvider
         $this->app->register(RepositoryServiceProvider::class);
     }
 
+    /**
+     * Load all helpers
+     */
     protected function loadHelpers()
     {
         $helpers = $this->app['files']->glob(__DIR__ . '/../../helpers/*.php');

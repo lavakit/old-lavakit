@@ -7,7 +7,6 @@ use Illuminate\Support\ServiceProvider;
 use Inspire\Base\Exceptions\Handler;
 use Inspire\Base\Facades\TitleFacade;
 use Inspire\Base\Traits\CanPublishConfiguration;
-use Inspire\Acl\Providers\AclServiceProvider;
 use Inspire\Base\Traits\CanRegisterFacadeAliases;
 use Inspire\Dashboard\Providers\DashboardServiceProvider;
 use Inspire\Menu\Providers\MenuServiceProvider;
@@ -57,8 +56,10 @@ class BaseServiceProvider extends ServiceProvider
 
         $this->registerMiddleware();
 
+        /*Load Service on Vendor*/
+        $this->app->register(VendorProvider::class);
+
         /*Load Services on Lucky*/
-        $this->app->register(AclServiceProvider::class);
         $this->app->register(PostServiceProvider::class);
         $this->app->register(PageServiceProvider::class);
         $this->app->register(DashboardServiceProvider::class);
