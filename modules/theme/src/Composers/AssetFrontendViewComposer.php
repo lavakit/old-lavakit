@@ -3,7 +3,7 @@
 namespace Inspire\Theme\Composers;
 
 use Illuminate\View\View;
-use Asset;
+use AssetFrontend;
 
 /**
  * Class AssetFrontendViewComposer
@@ -35,7 +35,7 @@ class AssetFrontendViewComposer
      */
     protected function getStylesheet()
     {
-        return Asset::getStylesheets();
+        return AssetFrontend::getStylesheets();
     }
 
     /**
@@ -46,8 +46,8 @@ class AssetFrontendViewComposer
      */
     protected function getJavascript()
     {
-         $jsDefault = Asset::getJavascript();
-         $jsAppModules = Asset::getAppModules();
+         $jsDefault = AssetFrontend::getJavascript();
+         $jsAppModules = AssetFrontend::getAppModules();
          $js = array_merge($jsDefault, $jsAppModules);
 
         return $js;

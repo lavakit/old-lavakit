@@ -49,6 +49,7 @@ return [
    */
     'middleware' => [
         'backend' => [
+            'auth'
         ],
         'frontend' => [
         ],
