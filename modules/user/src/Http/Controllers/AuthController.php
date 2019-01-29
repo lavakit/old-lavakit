@@ -9,8 +9,8 @@ use Inspire\User\Http\Requests\LoginRequest;
 /**
  * Class AuthController
  * @package Inspire\User\Http\Controllers
- * @copyright 2019 LUCY VN
- * @author Pencii Team <hoatq@lucy.ne.jp>
+ * @copyright 2019 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 class AuthController extends BaseController
 {
@@ -24,7 +24,8 @@ class AuthController extends BaseController
     {
         parent::__construct();
 
-        AssetBackend::onlyStylesheets('bootstrap', 'core');
+        AssetBackend::onlyStylesheets(['bootstrap', 'iconkit', 'core']);
+        AssetBackend::onlyJavascript(['jquery', 'bootstrap']);
     }
 
     /**

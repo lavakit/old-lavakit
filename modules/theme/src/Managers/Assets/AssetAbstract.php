@@ -281,6 +281,34 @@ abstract class AssetAbstract implements AssetContract
     }
 
     /**
+     * @param $assets
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    public function onlyStylesheets($assets)
+    {
+        unset($this->stylesheets);
+
+        foreach (is_array($assets) ? $assets : func_get_args() as $asset) {
+            $this->stylesheets[] = $asset;
+        }
+    }
+
+    /**
+     * @param $assets
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    public function onlyJavascript($assets)
+    {
+        unset($this->javascript);
+
+        foreach (is_array($assets) ? $assets : func_get_args() as $asset) {
+            $this->javascript[] = $asset;
+        }
+    }
+
+    /**
      * Get all modules in current module
      *
      * @param bool $version

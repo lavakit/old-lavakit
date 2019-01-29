@@ -5,8 +5,8 @@ namespace Inspire\Theme\Contracts\Assets;
 /**
  * Interface Backend
  * @package Inspire\Theme\Contracts
- * @copyright 2019 LUCY VN
- * @author Pencii Team <hoatq@lucy.ne.jp>
+ * @copyright 2019 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 interface Backend extends AssetContract
 {

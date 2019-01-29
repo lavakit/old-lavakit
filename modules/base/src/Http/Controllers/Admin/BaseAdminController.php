@@ -3,7 +3,7 @@
 namespace Inspire\Base\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Asset;
+use AssetBackend;
 
 /**
  * Class BaseAdminController
@@ -31,6 +31,6 @@ class BaseAdminController extends Controller
      */
     protected function addJsModule()
     {
-        Asset::addAppModule($this->module);
+        AssetBackend::addAppModule($this->module);
     }
 }

@@ -7,8 +7,8 @@ use Inspire\Theme\Contracts\Assets\Backend as BackendContract;
 /**
  * Class BackendAsset
  * @package Inspire\Theme\Managers
- * @copyright 2019 LUCY VN
- * @author Pencii Team <hoatq@lucy.ne.jp>
+ * @copyright 2019 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 class BackendAsset extends AssetAbstract implements BackendContract
 {
@@ -30,20 +30,11 @@ class BackendAsset extends AssetAbstract implements BackendContract
 
     /**
      * @return mixed|string
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function assetPath()
     {
         return BACKEND_ASSET;
-    }
-
-    public function onlyStylesheets($assets)
-    {
-        unset($this->stylesheets);
-
-        foreach (is_array($assets) ? $assets : func_get_args() as $asset) {
-            $this->stylesheets[] = $asset;
-        }
     }
 }

@@ -24,7 +24,6 @@ return [
     */
     'core-modules' => [
         'base',
-        'acl',
         'post',
         'page',
         'dashboard',
