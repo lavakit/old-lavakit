@@ -13,16 +13,16 @@
                     <div class="logo-centered">
                         <a href="#"><img src="{{ backendAsset('images/logo.png') }}" alt=""></a>
                     </div>
-                    <h4>Sign In</h4>
-                    <p>Happy to see you again!</p>
+                    <h4>{{ trans('user::auth.html.sign_in') }}</h4>
+                    <p>{{ trans('user::auth.html.see_you_again') }}</p>
                     {{ Form::open(['route' => 'auth.login']) }}
                         <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-                            {{ Form::email('email', '', ['class' => 'form-control', 'placeholder' => 'Email']) }}
+                            {{ Form::email('email', '', ['class' => 'form-control', 'placeholder' => trans('user::auth.html.email')]) }}
                             <i class="ik ik-user"></i>
                             {!! $errors->first('email', '<span class="help-block"><strong>:message</strong></span>') !!}
                         </div>
                         <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
-                            {{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password'] ) }}
+                            {{ Form::password('password', ['class' => 'form-control', 'placeholder' => trans('user::auth.html.password')]) }}
                             <i class="ik ik-lock"></i>
                             {!! $errors->first('password', '<span class="help-block"><strong>:message</strong></span>') !!}
                         </div>
@@ -30,20 +30,24 @@
                             <div class="col text-left">
                                 <label class="custom-control custom-checkbox">
                                     {{ Form::checkbox('remember', 1, null, ['class' => 'custom-control-input']) }}
-                                    <span class="custom-control-label">{!! Html::nbsp() !!}Remember Me</span>
+                                    <span class="custom-control-label">{!! Html::nbsp() !!}{{ trans('user::auth.html.remember') }}</span>
                                 </label>
                             </div>
                             <div class="col text-right">
-                                <a href="#forgot-password.html">Forgot Password ?</a>
+                                <a href="{{ route('forgot') }}">{{ trans('user::auth.html.forgot_password') }}</a>
                             </div>
                         </div>
                         <div class="sign-btn text-center">
-                            <button class="btn btn-theme">Sign In</button>
+                            <button class="btn btn-theme">{{ trans('user::auth.html.sign_in') }}</button>
                         </div>
                     {{ Form::close() }}
 
                     <div class="register">
-                        <p>Don't have an account? <a href="#register.html">Create an account</a></p>
+                        <p>
+                            {{ trans('user::auth.html.not_account')}}
+                            {!! Html::nbsp() !!}
+                            <a href="{{ route('register') }}">{{ trans('user::auth.html.create_account')}}</a>
+                        </p>
                     </div>
                 </div>
             </div>

@@ -4,6 +4,8 @@ namespace Inspire\User\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Inspire\Base\Traits\CanPublishConfiguration;
+use Inspire\User\Contracts\AuthenticationContract;
+use Inspire\User\Services\Authentication\AuthenticationService;
 
 /**
  * Class UserServiceProvider
@@ -60,6 +62,8 @@ class UserServiceProvider extends ServiceProvider
 
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(RepositoryServiceProvider::class);
+
+        $this->app->bind(AuthenticationContract::class, AuthenticationService::class);
     }
 
     /**
