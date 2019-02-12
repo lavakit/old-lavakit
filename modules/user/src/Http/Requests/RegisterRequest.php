@@ -2,8 +2,9 @@
 
 namespace Inspire\User\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Inspire\Base\Http\Requests\BaseFormRequest;
+use Crypt;
 
 /**
  * Class RegisterRequest
@@ -11,16 +12,17 @@ use Illuminate\Validation\Rule;
  * @copyright 2019 Inspire Group
  * @author hoatq <tqhoa8th@gmail.com
  */
-class RegisterRequest extends FormRequest
+class RegisterRequest extends BaseFormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Prepare the data for validation.
      *
-     * @return bool
+     * @return void
      */
-    public function authorize()
+    protected function prepareForValidation()
     {
-        return true;
+        $token = Crypt::encrypt($this->request->get('email'));
+        $this->merge(['token' => $token, 'full_name' => null]);
     }
 
     /**
@@ -31,8 +33,8 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name'    => 'required|string|max:100',
-            'last_name'     => 'required|string|max:100',
+            'first_name'    => 'required|string|max:100|min:3',
+            'last_name'     => 'required|string|max:100|min:3',
             'email'         => [
                 'required',
                 'email',

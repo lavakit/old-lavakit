@@ -26,22 +26,22 @@ return [
 
     'validations' => [
         'required' => 'Vui lòng nhập :attribute',
-        'string' => '[vi]The :attribute must be a string',
+        'string' => ':attribute phải là chuỗi',
         'max' => [
             'numeric' => '[vi]The :attribute may not be greater than :max',
             'file'    => '[vi]The :attribute may not be greater than :max kilobytes',
-            'string'  => '[vi]The :attribute may not be greater than :max characters',
+            'string'  => ':attribute không được lớn hơn :max kí tự',
             'array'   => '[vi]The :attribute may not have more than :max items',
         ],
         'min' => [
             'numeric' => '[vi]The :attribute must be at least :min',
             'file'    => '[vi]The :attribute must be at least :min kilobytes',
-            'string'  => '[vi]The :attribute must be at least :min characters',
+            'string'  => ':attribute phải có ít nhất :min kí tự',
             'array'   => '[vi]The :attribute must have at least :min items',
         ],
-        'email' => '[vi]The :attribute is invalid',
-        'unique' => '[vi]The :attribute you have entered is already registered',
-        'confirmed' => '[vi]The :attribute confirmation does not match',
-        'password_regex' => '[vi]The Password may have alpha-numeric characters, as well as symbols (only . - _)',
+        'email' => ':attribute không hợp lệ',
+        'unique' => ':attribute đã được đăng ký',
+        'confirmed' => ':attribute xác nhận không trùng khớp',
+        'password_regex' => 'Mật khẩu có thể có các ký tự chữ và số, cũng như các ký hiệu [. - _]',
     ],
 ];

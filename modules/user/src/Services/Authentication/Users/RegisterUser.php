@@ -3,6 +3,7 @@
 namespace Inspire\User\Services\Authentication\Users;
 
 use Illuminate\Http\Request;
+use Inspire\User\Repositories\Interfaces\UserRepository;
 
 /**
  * Class RegisterUser
@@ -12,10 +13,28 @@ use Illuminate\Http\Request;
  */
 class RegisterUser
 {
+    /** @var UserRepository */
+    protected $repository;
+
+    /**
+     * RegisterUser constructor.
+     * @param UserRepository $repository
+     */
+    public function __construct(UserRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
+
     public function register(Request $request)
     {
-        echo'<pre>';
-            print_r($request->all());
-        echo'</pre>';
+        $repository = $this->repository->getFirstBy(['email' => $request['email']]);
+        if (!$repository) {
+            $repository = $this->repository->getModel();
+        }
+
+        $repository->fill($request->all());
+
+        $user = $this->repository->createOrUpdate($repository);
     }
 }

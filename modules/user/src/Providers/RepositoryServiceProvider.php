@@ -3,6 +3,9 @@
 namespace Inspire\User\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Inspire\User\Models\User;
+use Inspire\User\Repositories\Eloquent\UserEloquentRepository;
+use Inspire\User\Repositories\Interfaces\UserRepository;
 
 /**
  * Class RepositoryServiceProvider
@@ -31,6 +34,9 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->singleton(UserRepository::class, function () {
+            return new UserEloquentRepository(new User());
+        });
     }
 }
 
