@@ -4,6 +4,7 @@ namespace Inspire\User\Services\Authentication\Users;
 
 use Illuminate\Http\Request;
 use Inspire\User\Repositories\Interfaces\UserRepository;
+use EmailHandler;
 
 /**
  * Class RegisterUser
@@ -35,6 +36,10 @@ class RegisterUser
 
         $repository->fill($request->all());
 
-        $user = $this->repository->createOrUpdate($repository);
+        $this->repository->createOrUpdate($repository);
+
+        EmailHandler::send('subject TQHOA', 'content TQHOA', [
+            'name' => 'NameTQHOA', 'to' => $request['email']
+        ]);
     }
 }

@@ -77,6 +77,6 @@ class User extends Authentication
      */
     public function setFullNameAttribute()
     {
-        $this->attributes['full_name'] = ucfirst($this->first_name)  .' '. ucfirst($this->last_name);
+        $this->attributes['full_name'] = ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
     }
 }
