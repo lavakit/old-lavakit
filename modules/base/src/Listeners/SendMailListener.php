@@ -35,9 +35,7 @@ class SendMailListener
     public function handle(SendMailEvent $event)
     {
         try {
-            $this->mailer->to($event->args['to'], $event->args['name'])
-                ->send(new EmailAbstract($event->subject, $event->body));
-
+            $this->mailer->send(new EmailAbstract($event->subject, $event->body, $event->args));
             info('Send mail to' . $event->args['to'] . 'successfully');
         } catch (\Exception $ex) {
             Log::error($ex->getMessage());

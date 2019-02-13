@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'from' => env('MAIL_FROM', 'tqhoa8th2@gmail.com'),
-    'name' => env('MAIL_NAME', 'Trịnh Quốc Hòa'),
+    'from' => env('MAIL_FROM_ADDRESS', 'info@gmail.com'),
+    'name' => env('MAIL_FROM_NAME', 'Info'),
 
     /** Email template */
-    'template' => 'backend::layouts.email',
+    'template' => 'backend::layouts.emails.auth',
 ];

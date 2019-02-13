@@ -2,6 +2,7 @@
 
 namespace Inspire\Base\Providers;
 
+use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 use Inspire\Base\Traits\CanRegisterFacadeAliases;
 use Collective\Html\HtmlServiceProvider;

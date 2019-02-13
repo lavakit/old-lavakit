@@ -26,7 +26,6 @@ class RegisterUser
         $this->repository = $repository;
     }
 
-
     public function register(Request $request)
     {
         $repository = $this->repository->getFirstBy(['email' => $request['email']]);
@@ -36,7 +35,7 @@ class RegisterUser
 
         $repository->fill($request->all());
 
-        $this->repository->createOrUpdate($repository);
+        //$this->repository->createOrUpdate($repository);
 
         EmailHandler::send('subject TQHOA', 'content TQHOA', [
             'name' => 'NameTQHOA', 'to' => $request['email']

@@ -46,6 +46,11 @@ class EmailHandler
         }
     }
 
+    /**
+     * @param Exception $exception
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
     public function sendErrorException(Exception $exception)
     {
         if (app()->environment() === 'local') {
