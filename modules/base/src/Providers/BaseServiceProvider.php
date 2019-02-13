@@ -5,7 +5,7 @@ namespace Inspire\Base\Providers;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\ServiceProvider;
 use Inspire\Base\Exceptions\Handler;
-use Inspire\Base\Facades\EmailHandlerFacade;
+use Inspire\Base\Facades\EmailFacade;
 use Inspire\Base\Facades\TitleFacade;
 use Inspire\Base\Traits\CanPublishConfiguration;
 use Inspire\Base\Traits\CanRegisterFacadeAliases;
@@ -32,7 +32,7 @@ class BaseServiceProvider extends ServiceProvider
      */
     protected $facadeAliases = [
         'Title' => TitleFacade::class,
-        'EmailHandler' => EmailHandlerFacade::class,
+        'Email' => EmailFacade::class,
     ];
 
     /**

@@ -76,6 +76,8 @@ class AuthController extends BaseController
     }
 
     /**
+     * Registration request for the application
+     *
      * @param RegisterRequest $request
      * @return \Illuminate\Support\ServiceProvider|mixed
      * @copyright 2019 Inspire Group
@@ -84,5 +86,18 @@ class AuthController extends BaseController
     public function register(RegisterRequest $request)
     {
         return $this->auth->register($request);
+    }
+
+    /**
+     * Confirmation
+     *
+     * @param string|null $email
+     * @return mixed
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    public function confirm(string $email = null)
+    {
+        return $this->auth->confirm($email);
     }
 }

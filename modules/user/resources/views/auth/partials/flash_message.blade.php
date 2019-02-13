@@ -1,13 +1,17 @@
 @if ($message = Session::get('alert-success'))
-    <div class="alert alert-success alert-login">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <p>{{ $message }}</p>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ $message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <i class="ik ik-x"></i>
+        </button>
     </div>
 @endif
 
 @if ($message = Session::get('alert-info'))
-    <div class="alert alert-success alert-login">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <p>{{ $message }}</p>
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        {{ $message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <i class="ik ik-x"></i>
+        </button>
     </div>
 @endif

@@ -3,6 +3,7 @@
 namespace Inspire\Base\Listeners;
 
 use Illuminate\Contracts\Mail\Mailer;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Inspire\Base\Services\Emails\EmailAbstract;
 use Log;
 use Inspire\Base\Events\SendMailEvent;
@@ -13,7 +14,7 @@ use Inspire\Base\Events\SendMailEvent;
  * @copyright 2019 Inspire Group
  * @author hoatq <tqhoa8th@gmail.com
  */
-class SendMailListener
+class SendMailListener implements ShouldQueue
 {
     /** @var Mailer */
     protected $mailer;

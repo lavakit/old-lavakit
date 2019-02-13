@@ -4,21 +4,21 @@ namespace Inspire\User\Services\Authentication\Users;
 
 use Illuminate\Http\Request;
 use Inspire\User\Repositories\Interfaces\UserRepository;
-use EmailHandler;
+use Email;
 
 /**
- * Class RegisterUser
+ * Class Register
  * @package Inspire\User\Services\Authentication\Users
  * @copyright 2019 Inspire Group
  * @author hoatq <tqhoa8th@gmail.com
  */
-class RegisterUser
+class Register
 {
     /** @var UserRepository */
     protected $repository;
 
     /**
-     * RegisterUser constructor.
+     * Register constructor.
      * @param UserRepository $repository
      */
     public function __construct(UserRepository $repository)
@@ -34,7 +34,7 @@ class RegisterUser
      * @copyright 2019 Inspire Group
      * @author hoatq <tqhoa8th@gmail.com
      */
-    public function register(Request $request)
+    public function handler(Request $request)
     {
         $repository = $this->repository->getFirstBy(['email' => $request['email']]);
         if (!$repository) {
@@ -52,7 +52,7 @@ class RegisterUser
             'btn_link' => route('auth.confirm', $user->confirm_token)
         ];
 
-        EmailHandler::send($subject, $body, $args);
+        Email::send($subject, $body, $args);
 
         return redirect()->route('login')->with('alert-success', trans('user::auth.messages.confirms.check_email'));
     }

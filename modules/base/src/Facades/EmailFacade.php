@@ -11,7 +11,7 @@ use Inspire\Base\Services\Emails\EmailHandler;
  * @copyright 2019 Inspire Group
  * @author hoatq <tqhoa8th@gmail.com
  */
-class EmailHandlerFacade extends Facade
+class EmailFacade extends Facade
 {
     /**
      * Get the registered name of the component.

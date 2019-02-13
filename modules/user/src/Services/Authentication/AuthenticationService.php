@@ -4,8 +4,9 @@ namespace Inspire\User\Services\Authentication;
 
 use Illuminate\Http\Request;
 use Inspire\User\Contracts\AuthenticationContract;
-use Inspire\User\Services\Authentication\Users\LoginUser;
-use Inspire\User\Services\Authentication\Users\RegisterUser;
+use Inspire\User\Services\Authentication\Users\Confirm;
+use Inspire\User\Services\Authentication\Users\Login;
+use Inspire\User\Services\Authentication\Users\Register;
 
 /**
  * Class AuthenticationService
@@ -25,7 +26,7 @@ class AuthenticationService implements AuthenticationContract
      */
     public function login(Request $request)
     {
-        return app(LoginUser::class)->login($request);
+        return app(Login::class)->handler($request);
     }
 
     /**
@@ -38,7 +39,7 @@ class AuthenticationService implements AuthenticationContract
      */
     public function register(Request $request)
     {
-        return app(RegisterUser::class)->register($request);
+        return app(Register::class)->handler($request);
     }
 
     /**
@@ -49,7 +50,7 @@ class AuthenticationService implements AuthenticationContract
      */
     public function confirm(string $email = null)
     {
-        // TODO: Implement confirm() method.
+        return app(Confirm::class)->handler($email);
     }
 
     /**

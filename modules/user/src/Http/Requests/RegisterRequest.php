@@ -21,8 +21,8 @@ class RegisterRequest extends BaseFormRequest
      */
     protected function prepareForValidation()
     {
-        $token = Crypt::encrypt($this->request->get('email'));
-        $this->merge(['token' => $token, 'full_name' => null]);
+        $confirmToken = Crypt::encrypt($this->request->get('email'));
+        $this->merge(['confirm_token' => $confirmToken, 'full_name' => null]);
     }
 
     /**

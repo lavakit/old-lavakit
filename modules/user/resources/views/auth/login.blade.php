@@ -3,11 +3,6 @@
 @section('content')
     <div class="container-fluid h-100">
         <div class="row flex-row h-100 bg-white">
-            <div class="col-xl-8 col-lg-6 col-md-5 p-0 d-md-block d-lg-block d-sm-none d-none">
-                <div class="lavalite-bg" style="background-image: url('{{ backendAsset('images/auth/login-bg.jpg') }}')">
-                    <div class="lavalite-overlay"></div>
-                </div>
-            </div>
             <div class="col-xl-4 col-lg-6 col-md-7 my-auto p-0">
                 <div class="authentication-form mx-auto">
                     <div class="logo-centered">
@@ -15,16 +10,19 @@
                     </div>
                     <h4>{{ trans('user::auth.html.sign_in') }}</h4>
                     <p>{{ trans('user::auth.html.see_you_again') }}</p>
+
+                    @include('user::auth.partials.flash_message')
+
                     {{ Form::open(['route' => 'auth.login']) }}
                         <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
                             {{ Form::email('email', '', ['class' => 'form-control', 'placeholder' => trans('user::auth.html.email')]) }}
                             <i class="ik ik-user"></i>
-                            {!! $errors->first('email', '<span class="help-block"><strong>:message</strong></span>') !!}
+                            {!! $errors->first('email', '<span class="help-block">:message</span>') !!}
                         </div>
                         <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
                             {{ Form::password('password', ['class' => 'form-control', 'placeholder' => trans('user::auth.html.password')]) }}
                             <i class="ik ik-lock"></i>
-                            {!! $errors->first('password', '<span class="help-block"><strong>:message</strong></span>') !!}
+                            {!! $errors->first('password', '<span class="help-block">:message</span>') !!}
                         </div>
                         <div class="row">
                             <div class="col text-left">
@@ -38,7 +36,10 @@
                             </div>
                         </div>
                         <div class="sign-btn text-center">
-                            <button class="btn btn-theme">{{ trans('user::auth.html.sign_in') }}</button>
+                            <button class="btn btn-success">
+                                <i class="ik ik-check-circle"></i>
+                                {{ trans('user::auth.html.sign_in') }}
+                            </button>
                         </div>
                     {{ Form::close() }}
 
@@ -49,6 +50,11 @@
                             <a href="{{ route('register') }}">{{ trans('user::auth.html.create_account')}}</a>
                         </p>
                     </div>
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-6 col-md-5 p-0 d-md-block d-lg-block d-sm-none d-none">
+                <div class="lavalite-bg" style="background-image: url('{{ backendAsset('images/auth/login-bg.jpg') }}')">
+                    <div class="lavalite-overlay"></div>
                 </div>
             </div>
         </div>

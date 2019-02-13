@@ -24,6 +24,11 @@ $router->group(['prefix' => 'auth'], function (Router $router) {
         'uses'  => 'AuthController@register'
     ]);
 
+    $router->get('/confirm/{email?}', [
+        'as'    => 'auth.confirm',
+        'uses'  => 'AuthController@confirm'
+    ]);
+
     $router->get('/forgot', [
         'as'    => 'forgot',
         'uses'  => 'AuthController@getForgot'

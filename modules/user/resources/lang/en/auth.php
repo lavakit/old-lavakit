@@ -22,7 +22,12 @@ return [
     ],
 
     'messages' => [
-
+        'confirms' => [
+            'subject' => 'Register Confirmation',
+            'body' => 'Your registration is completed. Please click link to get access',
+            'check_email' => 'Confirmation email has been send. Please check your email',
+            'completed' => 'Your activation is completed',
+        ],
     ],
 
     'validations' => [

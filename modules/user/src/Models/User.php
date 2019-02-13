@@ -30,7 +30,7 @@ class User extends Authentication
      *
      * @var array
      */
-    protected $hidden = ['password', 'remember_token'];
+    protected $hidden = ['password', 'confirm_token', 'remember_token'];
 
     /**
      * The attributes that are mass assignable.
@@ -45,6 +45,7 @@ class User extends Authentication
         'password',
         'confirmed',
         'registered',
+        'confirm_token',
         'remember_token'
     ];
 

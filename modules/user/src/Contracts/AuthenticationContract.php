@@ -33,6 +33,8 @@ interface AuthenticationContract
     public function register(Request $request);
 
     /**
+     * Confirmation
+     *
      * @param string $email
      * @return mixed
      * @copyright 2019 Inspire Group
