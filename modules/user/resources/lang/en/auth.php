@@ -3,12 +3,31 @@
 
 return [
     'html' => [
+        'sign_in' => 'Sign In',
+        'first_name' => 'First Name',
+        'last_name' => 'Last Name',
         'email' => 'E-mail',
-        'password' => 'Password'
+        'password' => 'Password',
+        'password_confirm' => 'Confirm Password',
+        'see_you_again' => 'Happy to see you again!',
+        'remember' => 'Remember Me',
+        'forgot_password' => 'Forgot Password ?',
+        'not_account' => 'Don\'t have an account?',
+        'create_account' => 'Create an account',
+        'register' => 'Register',
+        'join_step' => 'Join us today! It takes only few steps',
+        'accept' => 'I Accept',
+        'term_condition' => 'Terms and Conditions',
+        'has_account' => 'Already have an account',
     ],
 
     'messages' => [
-
+        'confirms' => [
+            'subject' => 'Register Confirmation',
+            'body' => 'Your registration is completed. Please click link to get access',
+            'check_email' => 'Confirmation email has been send. Please check your email',
+            'completed' => 'Your activation is completed',
+        ],
     ],
 
     'validations' => [

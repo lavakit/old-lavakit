@@ -1012,3 +1012,16 @@ $background-checkbox-bg-color: $primary, $warning, $default, $danger, $success, 
         background-color: nth($background-checkbox-bg-color, $i);
     }
 }
+
+.custom-checkbox {
+    .custom-control-label {
+        &:before,
+        &:after {
+            top: 1px;
+        }
+    }
+}
+
+.help-block {
+	color: $warning;
+}

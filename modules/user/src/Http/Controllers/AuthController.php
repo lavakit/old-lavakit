@@ -4,7 +4,9 @@ namespace Inspire\User\Http\Controllers;
 
 use Inspire\Base\Http\Controllers\BaseController;
 use AssetBackend;
+use Inspire\User\Contracts\AuthenticationContract;
 use Inspire\User\Http\Requests\LoginRequest;
+use Inspire\User\Http\Requests\RegisterRequest;
 
 /**
  * Class AuthController
@@ -17,6 +19,9 @@ class AuthController extends BaseController
     /** @var string */
     protected $module = 'user';
 
+    /** @var AuthenticationContract */
+    protected $auth;
+
     /**
      * AuthController constructor.
      */
@@ -24,8 +29,11 @@ class AuthController extends BaseController
     {
         parent::__construct();
 
+        $this->auth = app(AuthenticationContract::class);
+
         AssetBackend::onlyStylesheets(['bootstrap', 'iconkit', 'core']);
         AssetBackend::onlyJavascript(['jquery', 'bootstrap']);
+        AssetBackend::addAppModule(['auth']);
     }
 
     /**
@@ -35,15 +43,61 @@ class AuthController extends BaseController
      * @copyright 2018 Inspire Group
      * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function showLogin()
+    public function getLogin()
     {
-        title()->set('Auth-Login');
+        title()->set('Login-Authenticate');
 
         return view('user::auth.login');
     }
 
+    /**
+     * @param LoginRequest $request
+     * @return mixed
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
     public function login(LoginRequest $request)
     {
-        echo __CLASS__;
+        return $this->auth->login($request);
+    }
+
+    /**
+     * Show the view register page
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    public function getRegister()
+    {
+        title()->set('Register-Authenticate');
+
+        return view('user::auth.register');
+    }
+
+    /**
+     * Registration request for the application
+     *
+     * @param RegisterRequest $request
+     * @return \Illuminate\Support\ServiceProvider|mixed
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    public function register(RegisterRequest $request)
+    {
+        return $this->auth->register($request);
+    }
+
+    /**
+     * Confirmation
+     *
+     * @param string|null $email
+     * @return mixed
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    public function confirm(string $email = null)
+    {
+        return $this->auth->confirm($email);
     }
 }

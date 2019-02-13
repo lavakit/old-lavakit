@@ -5,6 +5,7 @@ namespace Inspire\Base\Providers;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\ServiceProvider;
 use Inspire\Base\Exceptions\Handler;
+use Inspire\Base\Facades\EmailFacade;
 use Inspire\Base\Facades\TitleFacade;
 use Inspire\Base\Traits\CanPublishConfiguration;
 use Inspire\Base\Traits\CanRegisterFacadeAliases;
@@ -30,7 +31,8 @@ class BaseServiceProvider extends ServiceProvider
      * @var array Facade Aliases
      */
     protected $facadeAliases = [
-        'Title' => TitleFacade::class
+        'Title' => TitleFacade::class,
+        'Email' => EmailFacade::class,
     ];
 
     /**
@@ -53,6 +55,7 @@ class BaseServiceProvider extends ServiceProvider
         /*Load Config*/
         $this->publishConfig('base', 'base');
         $this->publishConfig('base', 'cache');
+        $this->publishConfig('base', 'mail');
 
         $this->registerMiddleware();
 
@@ -99,6 +102,8 @@ class BaseServiceProvider extends ServiceProvider
 
         //Register aliases
         $this->registerFacadeAliases($this->facadeAliases);
+
+        $this->app->register(EventServiceProvider::class);
     }
 
     /**

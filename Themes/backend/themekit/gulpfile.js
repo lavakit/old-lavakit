@@ -28,7 +28,8 @@ let filesStylesheetModules = [
 let filesJsModules = [
     {module: 'dashboard', file: 'tables'},
     {module: 'dashboard', file: 'widgets'},
-    {module: 'dashboard', file: 'charts'}
+    {module: 'dashboard', file: 'charts'},
+    {module: 'user', file: 'auth'},
 ];
 
 /*Combine file style*/
