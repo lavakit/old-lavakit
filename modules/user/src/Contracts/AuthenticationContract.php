@@ -71,4 +71,14 @@ interface AuthenticationContract
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function logout(array $args = []);
+
+    /**
+     * Check if the user has been confirmed
+     *
+     * @param object $user
+     * @return bool
+     * @copyright 2018 LUCY VN
+     * @author Pencii Team <hoatq@lucy.ne.jp>
+     */
+    public function hasConfirmed(object $user): bool;
 }

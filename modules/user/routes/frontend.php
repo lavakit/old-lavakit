@@ -38,4 +38,19 @@ $router->group(['prefix' => 'auth'], function (Router $router) {
         'as'    => 'auth.forgot',
         'uses'  => 'AuthController@forgot'
     ]);
+
+    $router->get('/reset/{email?}/{token?}', [
+        'as'    => 'password.reset',
+        'uses'  => 'AuthController@getReset'
+    ]);
+
+    $router->post('/reset', [
+        'as'    => 'auth.reset',
+        'uses'  => 'AuthController@reset'
+    ]);
+
+    $router->get('/logout', [
+        'as'    => 'auth.logout',
+        'uses'  => 'AuthController@logout'
+    ]);
 });

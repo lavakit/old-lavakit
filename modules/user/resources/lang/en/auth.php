@@ -19,6 +19,14 @@ return [
         'accept' => 'I Accept',
         'term_condition' => 'Terms and Conditions',
         'has_account' => 'Already have an account',
+        'forgot' => 'Forgot Password',
+        'forgot_logan' => 'We will send you a link to reset password.',
+        'reset' => 'Reset Password',
+        'reset_logan' => 'Almost done. Enter your new password, and you\'re good to go.',
+
+        'btn' => [
+            'forgot' => 'Reset Password',
+        ],
     ],
 
     'messages' => [
@@ -27,6 +35,13 @@ return [
             'body' => 'Your registration is completed. Please click link to get access',
             'check_email' => 'Confirmation email has been send. Please check your email',
             'completed' => 'Your activation is completed',
+            'confirm_email' => 'Please confirm your email',
+        ],
+        'passwords' => [
+            'user' => 'We can\'t find a user with that e-mail address',
+            'token' => 'This password reset token is invalid',
+            'reset' => 'Your password has been reset',
+            'sent' => 'We have e-mailed your password reset link',
         ],
     ],
 

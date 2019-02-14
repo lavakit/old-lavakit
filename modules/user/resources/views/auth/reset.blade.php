@@ -8,14 +8,15 @@
                     <div class="logo-centered">
                         <a href="#"><img src="{{ backendAsset('images/logo.png') }}" alt=""></a>
                     </div>
-                    <h4>{{ trans('user::auth.html.sign_in') }}</h4>
-                    <p>{{ trans('user::auth.html.see_you_again') }}</p>
+                    <h4>{{ trans('user::auth.html.reset') }}</h4>
+                    <p>{{ trans('user::auth.html.reset_logan') }}</p>
 
                     @include('backend::layouts.messages.alert')
 
-                    {{ Form::open(['route' => 'auth.login']) }}
+                    {{ Form::open(['route' => 'auth.reset']) }}
+                        {{ Form::hidden('token', $token) }}
                         <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-                            {{ Form::email('email', '', ['class' => 'form-control', 'placeholder' => trans('user::auth.html.email')]) }}
+                            {{ Form::email('email', ($email ?? old('email')), ['class' => 'form-control', 'placeholder' => trans('user::auth.html.email')]) }}
                             <i class="ik ik-user"></i>
                             {!! $errors->first('email', '<span class="help-block">:message</span>') !!}
                         </div>
@@ -24,30 +25,24 @@
                             <i class="ik ik-lock"></i>
                             {!! $errors->first('password', '<span class="help-block">:message</span>') !!}
                         </div>
-                        <div class="row">
-                            <div class="col text-left">
-                                <label class="custom-control custom-checkbox">
-                                    {{ Form::checkbox('remember', 1, null, ['class' => 'custom-control-input']) }}
-                                    <span class="custom-control-label">{!! Html::nbsp() !!}{{ trans('user::auth.html.remember') }}</span>
-                                </label>
-                            </div>
-                            <div class="col text-right">
-                                <a href="{{ route('forgot') }}">{{ trans('user::auth.html.forgot_password') }}</a>
-                            </div>
+
+                        <div class="form-group {{ $errors->has('password_confirmation') ? 'has-error' : '' }}">
+                            {{ Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => trans('user::auth.html.password_confirm')]) }}
+                            <i class="ik ik-eye-off"></i>
+                            {!! $errors->first('password_confirmation', '<span class="help-block">:message</span>') !!}
                         </div>
                         <div class="sign-btn text-center">
-                            <button class="btn btn-success">
+                            <button class="btn btn-theme">
                                 <i class="ik ik-check-circle"></i>
-                                {{ trans('user::auth.html.sign_in') }}
+                                {{ trans('user::auth.html.btn.forgot') }}
                             </button>
                         </div>
                     {{ Form::close() }}
 
                     <div class="register">
                         <p>
-                            {{ trans('user::auth.html.not_account')}}
-                            {!! Html::nbsp() !!}
-                            <a href="{{ route('register') }}">{{ trans('user::auth.html.create_account')}}</a>
+                            {{ trans('user::auth.html.has_account') }}
+                            &nbsp;<a href="{{ route('login') }}">{{ trans('user::auth.html.sign_in') }}</a>
                         </p>
                     </div>
                 </div>

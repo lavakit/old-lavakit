@@ -5,8 +5,11 @@ namespace Inspire\User\Services\Authentication;
 use Illuminate\Http\Request;
 use Inspire\User\Contracts\AuthenticationContract;
 use Inspire\User\Services\Authentication\Users\Confirm;
+use Inspire\User\Services\Authentication\Users\Forgot;
 use Inspire\User\Services\Authentication\Users\Login;
+use Inspire\User\Services\Authentication\Users\Logout;
 use Inspire\User\Services\Authentication\Users\Register;
+use Inspire\User\Services\Authentication\Users\Reset;
 
 /**
  * Class AuthenticationService
@@ -19,8 +22,9 @@ class AuthenticationService implements AuthenticationContract
     /**
      * Authenticate a user
      *
-     * @param $request
+     * @param Request $request
      * @return mixed
+     * @throws \Illuminate\Validation\ValidationException
      * @copyright 2019 Inspire Group
      * @author hoatq <tqhoa8th@gmail.com
      */
@@ -63,7 +67,7 @@ class AuthenticationService implements AuthenticationContract
      */
     public function reset(Request $request)
     {
-        // TODO: Implement reset() method.
+        return app(Reset::class)->handler($request);
     }
 
     /**
@@ -76,7 +80,7 @@ class AuthenticationService implements AuthenticationContract
      */
     public function forgot(Request $request)
     {
-        // TODO: Implement forgot() method.
+        return app(Forgot::class)->handler($request);
     }
 
     /**
@@ -89,7 +93,23 @@ class AuthenticationService implements AuthenticationContract
      */
     public function logout(array $args = [])
     {
-        // TODO: Implement logout() method.
+        return app(Logout::class)->handler($args);
     }
 
+    /**
+     * Check if the user has been confirmed
+     *
+     * @param object $user
+     * @return mixed
+     * @copyright 2019 Inspire Group
+     * @author Pencii Team <hoatq@lucy.ne.jp>
+     */
+    public function hasConfirmed(object $user): bool
+    {
+        if (!$user->confirmed) {
+            return false;
+        }
+
+        return true;
+    }
 }

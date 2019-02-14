@@ -44,6 +44,7 @@ class RegisterRequest extends BaseFormRequest
             'password'      => [
                 'required',
                 'min:8',
+                'max:254',
                 'confirmed',
                 'regex:/^[a-zA-Z0-9-._]*$/u'
             ]
