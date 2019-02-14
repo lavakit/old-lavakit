@@ -38,4 +38,9 @@ $router->group(['prefix' => 'auth'], function (Router $router) {
         'as'    => 'auth.forgot',
         'uses'  => 'AuthController@forgot'
     ]);
+
+    $router->get('/logout', [
+        'as'    => 'auth.logout',
+        'uses'  => 'AuthController@logout'
+    ]);
 });

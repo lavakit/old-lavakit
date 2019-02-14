@@ -100,4 +100,14 @@ class AuthController extends BaseController
     {
         return $this->auth->confirm($email);
     }
+
+    /**
+     * @return mixed
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    public function logout()
+    {
+        return $this->auth->logout();
+    }
 }

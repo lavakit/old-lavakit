@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Inspire\User\Contracts\AuthenticationContract;
 use Inspire\User\Services\Authentication\Users\Confirm;
 use Inspire\User\Services\Authentication\Users\Login;
+use Inspire\User\Services\Authentication\Users\Logout;
 use Inspire\User\Services\Authentication\Users\Register;
 
 /**
@@ -19,8 +20,9 @@ class AuthenticationService implements AuthenticationContract
     /**
      * Authenticate a user
      *
-     * @param $request
+     * @param Request $request
      * @return mixed
+     * @throws \Illuminate\Validation\ValidationException
      * @copyright 2019 Inspire Group
      * @author hoatq <tqhoa8th@gmail.com
      */
@@ -89,7 +91,23 @@ class AuthenticationService implements AuthenticationContract
      */
     public function logout(array $args = [])
     {
-        // TODO: Implement logout() method.
+        return app(Logout::class)->handler($args);
     }
 
+    /**
+     * Check if the user has been confirmed
+     *
+     * @param object $user
+     * @return mixed
+     * @copyright 2019 Inspire Group
+     * @author Pencii Team <hoatq@lucy.ne.jp>
+     */
+    public function hasConfirmed(object $user): bool
+    {
+        if (!$user->confirmed) {
+            return false;
+        }
+
+        return true;
+    }
 }

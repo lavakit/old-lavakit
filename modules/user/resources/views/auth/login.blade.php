@@ -11,7 +11,7 @@
                     <h4>{{ trans('user::auth.html.sign_in') }}</h4>
                     <p>{{ trans('user::auth.html.see_you_again') }}</p>
 
-                    @include('user::auth.partials.flash_message')
+                    @include('backend::layouts.messages.alert')
 
                     {{ Form::open(['route' => 'auth.login']) }}
                         <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">

@@ -92,7 +92,9 @@
                             <i class="ik ik-mail dropdown-icon"></i> Inbox
                         </a>
                         <a class="dropdown-item" href="#"><i class="ik ik-navigation dropdown-icon"></i> Message</a>
-                        <a class="dropdown-item" href="pages/login.html"><i class="ik ik-power dropdown-icon"></i> Logout</a>
+                        <a class="dropdown-item" href="{{ route('auth.logout') }}">
+                            <i class="ik ik-power dropdown-icon"></i> Logout
+                        </a>
                     </div>
                 </div>
 
