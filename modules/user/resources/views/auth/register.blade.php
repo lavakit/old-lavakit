@@ -59,7 +59,10 @@
                         </div>
 
                         <div class="sign-btn text-center">
-                            <button class="btn btn-theme">{{ trans('user::auth.html.create_account') }}</button>
+                            <button class="btn btn-success">
+                                <i class="ik ik-check-circle"></i>
+                                {{ trans('user::auth.html.create_account') }}
+                            </button>
                         </div>
                     {{ Form::close() }}
 

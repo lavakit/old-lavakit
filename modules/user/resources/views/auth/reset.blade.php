@@ -32,7 +32,7 @@
                             {!! $errors->first('password_confirmation', '<span class="help-block">:message</span>') !!}
                         </div>
                         <div class="sign-btn text-center">
-                            <button class="btn btn-theme">
+                            <button class="btn btn-success">
                                 <i class="ik ik-check-circle"></i>
                                 {{ trans('user::auth.html.btn.forgot') }}
                             </button>

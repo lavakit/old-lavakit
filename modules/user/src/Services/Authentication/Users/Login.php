@@ -5,6 +5,7 @@ namespace Inspire\User\Services\Authentication\Users;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Inspire\User\Contracts\AuthenticationContract;
+use Illuminate\Validation\ValidationException;
 
 /**
  * Class Login
@@ -56,6 +57,21 @@ class Login
         $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
+    }
+
+    /**
+     * Get the failed login response instance
+     *
+     * @param Request $request
+     * @throws ValidationException
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        throw ValidationException::withMessages([
+            $this->username() => [trans('user::auth.messages.auth.failed')],
+        ]);
     }
 
     /**

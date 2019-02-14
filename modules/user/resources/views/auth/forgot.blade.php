@@ -20,13 +20,14 @@
                             {!! $errors->first('email', '<span class="help-block">:message</span>') !!}
                         </div>
                         <div class="sign-btn text-center">
-                            <button class="btn btn-theme">
+                            <button class="btn btn-success">
                                 <i class="ik ik-check-circle"></i>
                                 {{ trans('user::auth.html.btn.forgot') }}
                             </button>
                         </div>
                     {{ Form::close() }}
 
+                    @if (config('user.user.allow_register'))
                     <div class="register">
                         <p>
                             {{ trans('user::auth.html.not_account')}}
@@ -34,6 +35,7 @@
                             <a href="{{ route('register') }}">{{ trans('user::auth.html.create_account')}}</a>
                         </p>
                     </div>
+                    @endif
                 </div>
             </div>
             <div class="col-xl-8 col-lg-6 col-md-5 p-0 d-md-block d-lg-block d-sm-none d-none">
