@@ -5,9 +5,11 @@ namespace Inspire\User\Services\Authentication;
 use Illuminate\Http\Request;
 use Inspire\User\Contracts\AuthenticationContract;
 use Inspire\User\Services\Authentication\Users\Confirm;
+use Inspire\User\Services\Authentication\Users\Forgot;
 use Inspire\User\Services\Authentication\Users\Login;
 use Inspire\User\Services\Authentication\Users\Logout;
 use Inspire\User\Services\Authentication\Users\Register;
+use Inspire\User\Services\Authentication\Users\Reset;
 
 /**
  * Class AuthenticationService
@@ -65,7 +67,7 @@ class AuthenticationService implements AuthenticationContract
      */
     public function reset(Request $request)
     {
-        // TODO: Implement reset() method.
+        return app(Reset::class)->handler($request);
     }
 
     /**
@@ -78,7 +80,7 @@ class AuthenticationService implements AuthenticationContract
      */
     public function forgot(Request $request)
     {
-        // TODO: Implement forgot() method.
+        return app(Forgot::class)->handler($request);
     }
 
     /**

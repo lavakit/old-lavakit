@@ -5,8 +5,10 @@ namespace Inspire\User\Http\Controllers;
 use Inspire\Base\Http\Controllers\BaseController;
 use AssetBackend;
 use Inspire\User\Contracts\AuthenticationContract;
+use Inspire\User\Http\Requests\ForgotRequest;
 use Inspire\User\Http\Requests\LoginRequest;
 use Inspire\User\Http\Requests\RegisterRequest;
+use Inspire\User\Http\Requests\ResetRequest;
 
 /**
  * Class AuthController
@@ -99,6 +101,70 @@ class AuthController extends BaseController
     public function confirm(string $email = null)
     {
         return $this->auth->confirm($email);
+    }
+
+    /**
+     * Get the view forgot password
+     *
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    public function getForgot()
+    {
+        title()->set('Forgot-Password');
+
+        return view('user::auth.forgot');
+    }
+
+    /**
+     * Forgot password
+     *
+     * @param ForgotRequest $request
+     * @return mixed
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    public function forgot(ForgotRequest $request)
+    {
+        return $this->auth->forgot($request);
+    }
+
+    /**
+     * Get the view reset password
+     *
+     * @param string|null $email
+     * @param string|null $token
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @copyright 2019 LUCY VN
+     * @author Pencii Team <hoatq@lucy.ne.jp>
+     */
+    public function getReset(string $email = null, string $token = null)
+    {
+        if (is_null($email)) {
+            return redirect()->route('login');
+        }
+
+        if (is_null($token)) {
+            return redirect()->route('forgot');
+        }
+
+        title()->set('Reset-Password');
+        $email = base64_decode($email);
+
+        return view('user::auth.reset', compact('token', 'email'));
+    }
+
+    /**
+     * Reset password
+     *
+     * @param ResetRequest $request
+     * @return mixed
+     * @copyright 2019 LUCY VN
+     * @author Pencii Team <hoatq@lucy.ne.jp>
+     */
+    public function reset(ResetRequest $request)
+    {
+        return $this->auth->reset($request);
     }
 
     /**
