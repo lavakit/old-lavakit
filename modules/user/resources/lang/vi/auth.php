@@ -42,6 +42,9 @@ return [
             'reset' => 'Your password has been reset',
             'sent' => 'We have e-mailed your password reset link',
         ],
+        'auth' => [
+            'failed' => 'These credentials do not match our records',
+        ],
     ],
 
     'validations' => [

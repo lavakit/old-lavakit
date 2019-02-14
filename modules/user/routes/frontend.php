@@ -14,15 +14,17 @@ $router->group(['prefix' => 'auth'], function (Router $router) {
         'uses'  => 'AuthController@login'
     ]);
 
-    $router->get('/register', [
-        'as'    => 'register',
-        'uses'  => 'AuthController@getRegister'
-    ]);
+    if (config('user.user.allow_register')) {
+        $router->get('/register', [
+            'as' => 'register',
+            'uses' => 'AuthController@getRegister'
+        ]);
 
-    $router->post('/register', [
-        'as'    => 'auth.register',
-        'uses'  => 'AuthController@register'
-    ]);
+        $router->post('/register', [
+            'as' => 'auth.register',
+            'uses' => 'AuthController@register'
+        ]);
+    }
 
     $router->get('/confirm/{email?}', [
         'as'    => 'auth.confirm',
