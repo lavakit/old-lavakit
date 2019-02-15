@@ -2,6 +2,6 @@
 
 @section('content')
     <h1>
-        DEFAULT
+        {{ lang('site.theme_name') }}
     </h1>
 @stop

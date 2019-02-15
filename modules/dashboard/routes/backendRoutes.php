@@ -4,7 +4,7 @@ use Illuminate\Routing\Router;
 
 /** @var Router $router */
 $router->get('/', [
-   'as'            => 'admin.dashboard.index',
+   'as'            => 'dashboard.index',
    'uses'          => 'DashboardController@index',
    'middleware'    => 'web'
 ]);
