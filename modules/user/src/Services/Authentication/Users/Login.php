@@ -87,6 +87,6 @@ class Login
             return $this->auth->logout(['confirm' => 'user::auth.messages.confirms.confirm_email']);
         }
 
-        return redirect()->route('admin.dashboard.index');
+        return redirect()->route('dashboard.index');
     }
 }
