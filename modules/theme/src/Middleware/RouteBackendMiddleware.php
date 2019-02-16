@@ -3,27 +3,28 @@
 namespace Inspire\Theme\Middleware;
 
 use Closure;
-use Theme;
+use ThemeBackend;
 
 /**
- * Class WebMiddleware
+ * Class RouteBackendMiddleware
  * @package Inspire\Theme\Middleware
  * @copyright 2018 Inspire Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
-class WebMiddleware
+class RouteBackendMiddleware
 {
     /**
      * Handle an incoming request
      *
      * @param $request
      * @param Closure $next
+     * @param $themeName
      * @return mixed
      * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $themeName)
     {
-        Theme::set(config('theme.theme.active'));
+        ThemeBackend::set($themeName);
 
         return $next($request);
     }

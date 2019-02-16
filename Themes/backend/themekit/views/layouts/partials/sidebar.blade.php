@@ -14,7 +14,7 @@
 <div class="sidebar-content">
     <div class="nav-container">
         <nav id="main-menu-navigation" class="navigation-main">
-            <div class="nav-lavel">Home</div>
+            <div class="nav-lavel">{{ lang('site.sidebar.home', false) }}</div>
             <div class="nav-item active">
                 <a href="index.html"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
             </div>

@@ -10,7 +10,7 @@ if (!function_exists('themes')) {
      */
     function themes($path, $secure = null)
     {
-        return Theme::assets($path, $secure);
+        return ThemeFrontend::assets($path, $secure);
     }
 }
 
@@ -19,30 +19,16 @@ if (!function_exists('lang')) {
      * Get lang content from current theme.
      *
      * @param $fallback
+     * @param  bool $frontend
      * @return \Illuminate\Contracts\Translation\Translator|string
      */
-    function lang($fallback)
-    {
-        return Theme::lang($fallback);
-    }
-}
-
-if (!function_exists('assetTheme')) {
-
-    /**
-     * @param $path
-     * @param bool $frontend
-     * @return string
-     * @copyright 2018 Inspire Group
-     * @author hoatq <tqhoa8th@gmail.com>
-     */
-    function assetTheme($path, $frontend = true)
+    function lang($fallback, $frontend = true)
     {
         if ($frontend) {
-            return asset(FRONTEND_ASSET . $path);
+            return ThemeFrontend::lang($fallback);
         }
 
-        return asset(BACKEND_ASSET . $path);
+        return ThemeBackend::lang($fallback);
     }
 }
 
@@ -55,7 +41,7 @@ if (!function_exists('backendAsset')) {
      */
     function backendAsset($path)
     {
-        return asset(BACKEND_ASSET . $path);
+        return asset(ASSET_BACKEND . $path);
     }
 }
 
@@ -68,6 +54,6 @@ if (!function_exists('frontendAsset')) {
      */
     function frontendAsset($path)
     {
-        return asset(FRONTEND_ASSET . $path);
+        return asset(ASSET_FRONTEND . $path);
     }
 }

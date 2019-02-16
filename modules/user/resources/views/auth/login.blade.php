@@ -1,4 +1,4 @@
-@extends('backend::layouts.auth')
+@extends('layouts.auth')
 
 @section('content')
     <div class="container-fluid h-100">
@@ -11,7 +11,7 @@
                     <h4>{{ trans('user::auth.html.sign_in') }}</h4>
                     <p>{{ trans('user::auth.html.see_you_again') }}</p>
 
-                    @include('backend::layouts.messages.alert')
+                    @include('layouts.messages.alert')
 
                     {{ Form::open(['route' => 'auth.login']) }}
                         <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">

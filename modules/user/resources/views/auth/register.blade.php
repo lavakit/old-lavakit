@@ -1,4 +1,4 @@
-@extends('backend::layouts.auth')
+@extends('layouts.auth')
 
 @section('content')
     <div class="container-fluid h-100">
