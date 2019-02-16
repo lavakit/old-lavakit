@@ -82,7 +82,7 @@ return [
                 'use_cdn' => false,
                 'location' => 'top',
                 'src' => [
-                    'local' => FRONTEND_ASSET . 'css/all.css'
+                    'local' => ASSET_FRONTEND . 'css/all.css'
                 ]
             ],
         ]

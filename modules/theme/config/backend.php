@@ -176,14 +176,14 @@ return [
                 'use_cdn' => false,
                 'location' => 'bottom',
                 'src' => [
-                    'local' => BACKEND_ASSET . 'js/theme.js'
+                    'local' => ASSET_BACKEND . 'js/theme.js'
                 ]
             ],
             'core' => [
                 'use_cdn' => false,
                 'location' => 'top',
                 'src' => [
-                    'local' => BACKEND_ASSET . 'js/core.js'
+                    'local' => ASSET_BACKEND . 'js/core.js'
                 ]
             ],
         ],
@@ -277,7 +277,7 @@ return [
                 'use_cdn' => false,
                 'location' => 'top',
                 'src' => [
-                    'local' => BACKEND_ASSET . 'css/all.css'
+                    'local' => ASSET_BACKEND . 'css/all.css'
                 ]
             ],
         ]

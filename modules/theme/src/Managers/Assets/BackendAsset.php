@@ -35,6 +35,6 @@ class BackendAsset extends AssetAbstract implements BackendContract
      */
     public function assetPath()
     {
-        return BACKEND_ASSET;
+        return ASSET_BACKEND;
     }
 }

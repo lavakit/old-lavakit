@@ -35,6 +35,6 @@ class FrontendAsset extends AssetAbstract implements FrontendContract
      */
     public function assetPath()
     {
-        return FRONTEND_ASSET;
+        return ASSET_FRONTEND;
     }
 }

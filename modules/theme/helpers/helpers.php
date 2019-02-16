@@ -41,7 +41,7 @@ if (!function_exists('backendAsset')) {
      */
     function backendAsset($path)
     {
-        return asset(BACKEND_ASSET . $path);
+        return asset(ASSET_BACKEND . $path);
     }
 }
 
@@ -54,6 +54,6 @@ if (!function_exists('frontendAsset')) {
      */
     function frontendAsset($path)
     {
-        return asset(FRONTEND_ASSET . $path);
+        return asset(ASSET_FRONTEND . $path);
     }
 }
