@@ -3,7 +3,6 @@
 namespace Inspire\Theme\Console;
 
 use Illuminate\Console\Command;
-use Inspire\Theme\Contracts\Themes\Frontend as ThemeFrontendContract;
 
 /**
  * Class ThemeListCommand
@@ -18,7 +17,7 @@ class ThemeListCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'theme:list';
+    protected $signature = 'theme:list {type?}';
 
     /**
      * The console command description.
@@ -34,9 +33,10 @@ class ThemeListCommand extends Command
      */
     public function handle()
     {
-        $themes = $this->laravel[ThemeFrontendContract::class]->all();
+        $themes = $this->laravel[$this->loadContract()]->all();
         $headers = ['Name', 'Author', 'Version', 'Parent'];
         $output = [];
+
         foreach ($themes as $theme) {
             $output[] = [
                 'Name'    => $theme->get('name'),
@@ -46,5 +46,34 @@ class ThemeListCommand extends Command
             ];
         }
         $this->table($headers, $output);
+    }
+
+    /**
+     * @return string
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    protected function loadContract()
+    {
+        $type = $this->argument('type');
+
+        if (!is_null($type) && interface_exists($this->getContract($type))) {
+            return $this->getContract($type);
+        }
+
+        return $this->getContract();
+    }
+
+    /**
+     * @param string $type
+     * @return string
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    protected function getContract($type = 'frontend')
+    {
+        $type = ucfirst($type);
+
+        return "Inspire\\Theme\\Contracts\\Themes\\{$type}";
     }
 }
