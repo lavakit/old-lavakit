@@ -70,10 +70,6 @@ class BaseServiceProvider extends ServiceProvider
         $this->app->register(ThemeServiceProvider::class);
         $this->app->register(MenuServiceProvider::class);
 
-        /*Load views Backend*/
-        $pathView = config('theme.theme.backend_path') . '/' . config('theme.theme.active_backend') . '/views';
-        $this->loadViewsFrom($pathView, 'backend');
-
         /*Load translations*/
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'base');
 

@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 
 /** @var $router Router */
-$router->group(['prefix' => 'auth'], function (Router $router) {
+$router->group(['prefix' => 'auth', 'middleware' => 'auth.login'], function (Router $router) {
     $router->get('/login', [
         'as'  => 'login',
         'uses'  => 'AuthController@getLogin'

@@ -3,7 +3,7 @@
 namespace Inspire\Theme\Console;
 
 use Illuminate\Console\Command;
-use Inspire\Theme\Contracts\ThemeContract;
+use Inspire\Theme\Contracts\Themes\Frontend as ThemeFrontendContract;
 
 /**
  * Class ThemeListCommand
@@ -34,7 +34,7 @@ class ThemeListCommand extends Command
      */
     public function handle()
     {
-        $themes = $this->laravel[ThemeContract::class]->all();
+        $themes = $this->laravel[ThemeFrontendContract::class]->all();
         $headers = ['Name', 'Author', 'Version', 'Parent'];
         $output = [];
         foreach ($themes as $theme) {

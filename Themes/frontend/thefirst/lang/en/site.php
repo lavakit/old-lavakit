@@ -1,7 +1,5 @@
 <?php
 
 return [
-
-    "title" => "The first theme"
-
+    "theme_name" => "Theme Default"
 ];

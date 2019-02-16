@@ -1,22 +1,22 @@
 <?php
 
-namespace Inspire\Theme\Managers;
+namespace Inspire\Theme\Managers\Themes;
 
 use Illuminate\Config\Repository;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Translation\Translator;
 use Illuminate\View\ViewFinderInterface;
 use Noodlehaus\Config;
-use Inspire\Theme\Contracts\ThemeContract;
+use Inspire\Theme\Contracts\Themes\ThemeContract;
 use Inspire\Theme\Exceptions\ThemeNotFoundExceptions;
 
 /**
- * Class ThemeManager
+ * Class ThemeAbstract
  * @package Inspire\Theme\Managers
- * @copyright 2018 Inspire Group
- * @author hoatq <tqhoa8th@gmail.com>
+ * @copyright 2019 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com
  */
-class ThemeManager implements ThemeContract
+abstract class ThemeAbstract implements ThemeContract
 {
     /**
      * Theme Root Path
@@ -68,28 +68,11 @@ class ThemeManager implements ThemeContract
     protected $activeTheme = null;
 
     /**
-     * Theme constructor
-     * @param Container             $app
-     * @param ViewFinderInterface   $finder
-     * @param Repository            $config
-     * @param Translator            $lang
-     */
-    public function __construct(Container $app, ViewFinderInterface $finder, Repository $config, Translator $lang)
-    {
-        $this->config   = $config;
-        $this->app      = $app;
-        $this->finder   = $finder;
-        $this->lang     = $lang;
-        $this->basePath = $this->config['theme.theme.frontend_path'];
-
-        $this->scanThemes();
-    }
-
-    /**
      * Set Current theme
      *
      * @param $theme
-     * @author hoatq <tqhoa8th@gmail.com>
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
      */
     public function set($theme)
     {
@@ -106,6 +89,7 @@ class ThemeManager implements ThemeContract
      *
      * @param $theme
      * @return bool
+     * @copyright 2019 Inspire Group
      * @author hoatq <tqhoa8th@gmail.com>
      */
     public function has($theme)
@@ -118,6 +102,7 @@ class ThemeManager implements ThemeContract
      *
      * @param $themeName
      * @return null
+     * @copyright 2019 Inspire Group
      * @author hoatq <tqhoa8th@gmail.com>
      */
     public function getThemeInfo($themeName)
@@ -131,7 +116,8 @@ class ThemeManager implements ThemeContract
      * @param null $theme
      * @param bool $collection
      * @return mixed
-     * @author hoatq <tqhoa8th@gmail.com>
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
      */
     public function get($theme = null, $collection = false)
     {
@@ -146,8 +132,9 @@ class ThemeManager implements ThemeContract
      * Get current active theme name only or theme info collection
      *
      * @param bool $collection
-     * @return null|string
-     * @author hoatq <tqhoa8th@gmail.com>
+     * @return mixed|null|string
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
      */
     public function current($collection = false)
     {
@@ -157,8 +144,9 @@ class ThemeManager implements ThemeContract
     /**
      * Get all theme information
      *
-     * @return \Inspire\Theme\Managers\ThemeManager
-     * @author hoatq <tqhoa8th@gmail.com>
+     * @return mixed
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
      */
     public function all()
     {
@@ -170,7 +158,8 @@ class ThemeManager implements ThemeContract
      *
      * @param $path
      * @param null $secure
-     * @author hoatq <tqhoa8th@gmail.com>
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
      */
     public function assets($path, $secure = null)
     {
@@ -210,9 +199,10 @@ class ThemeManager implements ThemeContract
     /**
      * Get lang content from current theme
      *
-     * @param string $fallback
-     * @return \Illuminate\Contracts\Translation\Translator|string
-     * @author hoatq <tqhoa8th@gmail.com>
+     * @param $fallback
+     * @return array|Translator|mixed|null|string
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
      */
     public function lang($fallback)
     {
@@ -238,9 +228,10 @@ class ThemeManager implements ThemeContract
      * Scan for all available themes
      *
      * @return void
+     * @copyright 2019 Inspire Group
      * @author hoatq <tqhoa8th@gmail.com>
      */
-    private function scanThemes()
+    protected function scanThemes()
     {
         $themeDirectories = glob($this->basePath.'/*', GLOB_ONLYDIR);
         $themes = [];
@@ -266,9 +257,10 @@ class ThemeManager implements ThemeContract
      *
      * @param string $theme
      * @return void
+     * @copyright 2019 Inspire Group
      * @author hoatq <tqhoa8th@gmail.com>
      */
-    private function loadTheme($theme)
+    protected function loadTheme($theme)
     {
         if (is_null($theme)) {
             return;

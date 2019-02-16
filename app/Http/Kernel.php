@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Inspire\Theme\Middleware\WebBackendMiddleware;
 
 class Kernel extends HttpKernel
 {
@@ -35,6 +36,9 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+        'auth.login' => [
+            WebBackendMiddleware::class
         ],
 
         'api' => [

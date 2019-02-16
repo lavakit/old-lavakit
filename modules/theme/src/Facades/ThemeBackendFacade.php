@@ -3,15 +3,15 @@
 namespace Inspire\Theme\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Inspire\Theme\Contracts\ThemeContract;
+use Inspire\Theme\Contracts\Themes\Backend as ThemeBackendContract;
 
 /**
- * Class Theme
+ * Class ThemeBackendFacade
  * @package Inspire\Theme\Facades
  * @copyright 2018 Inspire Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
-class Theme extends Facade
+class ThemeBackendFacade extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -20,6 +20,6 @@ class Theme extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return ThemeContract::class;
+        return ThemeBackendContract::class;
     }
 }

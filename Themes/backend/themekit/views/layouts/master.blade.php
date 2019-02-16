@@ -1,30 +1,30 @@
-@extends('backend::layouts.base')
+@extends('layouts.base')
 
 @section('page')
     <div class="wrapper">
-        @include('backend::layouts.partials.header')
+        @include('layouts.partials.header')
 
         <div class="page-wrap">
             <div class="app-sidebar colored">
-                @include('backend::layouts.partials.sidebar')
+                @include('layouts.partials.sidebar')
             </div>
 
             <div class="main-content">
-                {{--@include('backend::layouts.partials.content')--}}
+                {{--@include('layouts.partials.content')--}}
                 @yield('content')
             </div>
 
             <aside class="right-sidebar">
-                @include('backend::layouts.partials.aside')
+                @include('layouts.partials.aside')
             </aside>
 
             <div class="chat-panel" hidden>
-                @include('backend::layouts.partials.chat')
+                @include('layouts.partials.chat')
             </div>
 
-            @include('backend::layouts.partials.footer')
+            @include('layouts.partials.footer')
         </div>
 
-        @include('backend::layouts.partials.apps_modal')
+        @include('layouts.partials.apps_modal')
     </div>
 @endsection

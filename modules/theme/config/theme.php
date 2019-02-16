@@ -53,7 +53,8 @@ return [
     'types'     => [
         'enable'        => true,
         'middleware'    => [
-            'theme' => env('FRONTEND_DEFAULT', 'default')
+            'frontend' => env('FRONTEND_DEFAULT', 'default'),
+            'backend' => env('BACKEND_DEFAULT', 'themekit')
         ]
     ],
     /*

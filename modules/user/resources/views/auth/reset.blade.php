@@ -1,4 +1,4 @@
-@extends('backend::layouts.auth')
+@extends('layouts.auth')
 
 @section('content')
     <div class="container-fluid h-100">
@@ -11,7 +11,7 @@
                     <h4>{{ trans('user::auth.html.reset') }}</h4>
                     <p>{{ trans('user::auth.html.reset_logan') }}</p>
 
-                    @include('backend::layouts.messages.alert')
+                    @include('layouts.messages.alert')
 
                     {{ Form::open(['route' => 'auth.reset']) }}
                         {{ Form::hidden('token', $token) }}

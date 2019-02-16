@@ -22,6 +22,6 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer(['layouts.master'], AssetFrontendViewComposer::class);
-        view()->composer(['backend::layouts.base'], AssetBackendViewComposer::class);
+        view()->composer(['layouts.base'], AssetBackendViewComposer::class);
     }
 }

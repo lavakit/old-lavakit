@@ -1,4 +1,4 @@
-@extends('backend::layouts.base')
+@extends('layouts.base')
 
 @section('page')
     <div class="auth-wrapper">
