@@ -100,6 +100,7 @@ class ThemeServiceProvider extends ServiceProvider
         $this->publishConfig('theme', 'theme');
         $this->publishConfig('theme', 'frontend');
         $this->publishConfig('theme', 'backend');
+        $this->publishConfig('theme', 'breadcrumbs');
     }
 
     /**
