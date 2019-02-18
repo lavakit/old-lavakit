@@ -1,5 +1,5 @@
 <div class="sidebar-header">
-    <a class="header-brand" href="{{ route('dashboard.index') }}">
+    <a class="header-brand" href="{{ route('admin.dashboards.index') }}">
         <div class="logo-img">
             <img src="{{ backendAsset('images/brand-white.svg') }}" class="header-brand-img" alt="{{ crafted() }}">
         </div>
@@ -14,9 +14,12 @@
 <div class="sidebar-content">
     <div class="nav-container">
         <nav id="main-menu-navigation" class="navigation-main">
-            <div class="nav-lavel">{{ lang('site.sidebar.home', false) }}</div>
+            <div class="nav-lavel">{{ lang('site.sidebars.home', false) }}</div>
             <div class="nav-item active">
-                <a href="index.html"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
+                <a href="{{ route('admin.dashboards.index') }}">
+                    <i class="ik ik-bar-chart-2"></i>
+                    <span>{{ lang('site.sidebars.dashboard', false) }}</span>
+                </a>
             </div>
 
             <div class="nav-lavel">Content</div>
@@ -73,17 +76,28 @@
                 </div>
             </div>
 
-            <div class="nav-lavel">Systems</div>
+            <div class="nav-lavel">{{ lang('site.sidebars.systems.systems', false) }}</div>
             <div class="nav-item has-sub">
-                <a href="#"><i class="ik ik-lock"></i><span>Settings</span></a>
+                <a href="#">
+                    <i class="ik ik-settings"></i>
+                    <span>{{ lang('site.sidebars.systems.settings', false) }}</span>
+                </a>
                 <div class="submenu-content">
-                    <a href="#" class="menu-item">General</a>
-                    <a href="#" class="menu-item">Media</a>
-                    <a href="#" class="menu-item">Email</a>
-                    <a href="#" class="menu-item">Language</a>
-                    <a href="#" class="menu-item">Login</a>
+                    <a href="{{ route('admin.settings.general') }}" class="menu-item">
+                        {{ lang('site.sidebars.systems.general', false) }}
+                    </a>
+                    <a href="{{ route('admin.settings.email') }}" class="menu-item">
+                        {{ lang('site.sidebars.systems.email', false) }}
+                    </a>
+                    <a href="{{ route('admin.settings.media') }}" class="menu-item">
+                        {{ lang('site.sidebars.systems.media', false) }}
+                    </a>
+                    <a href="{{ route('admin.settings.language') }}" class="menu-item">
+                        {{ lang('site.sidebars.systems.language', false) }}
+                    </a>
                 </div>
             </div>
+
             <div class="nav-item has-sub">
                 <a href="#">
                     <i class="ik ik-file-text"></i>

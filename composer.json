@@ -47,13 +47,13 @@
         "psr-4": {
             "App\\": "app/",
             "Inspire\\Base\\": "modules/base/src",
-            "Inspire\\Acl\\": "modules/acl/src",
             "Inspire\\Post\\": "modules/post/src",
             "Inspire\\Page\\": "modules/page/src",
             "Inspire\\Dashboard\\": "modules/dashboard/src",
             "Inspire\\User\\": "modules/user/src",
             "Inspire\\Theme\\": "modules/theme/src",
-            "Inspire\\Menu\\": "modules/menu/src"
+            "Inspire\\Menu\\": "modules/menu/src",
+            "Inspire\\Setting\\": "modules/setting/src"
         }
     },
     "autoload-dev": {
