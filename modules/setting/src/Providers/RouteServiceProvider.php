@@ -1,21 +1,21 @@
 <?php
 
-namespace Inspire\Dashboard\Providers;
+namespace Inspire\Setting\Providers;
 
 use Inspire\Base\Providers\RoutingServiceProvider as BaseRoutingServiceProvider;
 
 /**
  * Class RouteServiceProvider
- * @package Inspire\Dashboard\Providers
- * @copyright 2018 Inspire Group
- * @author hoatq <tqhoa8th@gmail.com>
+ * @package Inspire\Setting\Providers
+ * @copyright 2019 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com
  */
 class RouteServiceProvider extends BaseRoutingServiceProvider
 {
-    protected $namespace = 'Inspire\Dashboard\Http\Controllers';
+    protected $namespace = 'Inspire\Setting\Http\Controllers';
 
     /**
-     * @return bool|string
+     * @return string
      */
     protected function getFrontendRoute()
     {

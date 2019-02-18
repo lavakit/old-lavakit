@@ -13,6 +13,7 @@ use Inspire\Dashboard\Providers\DashboardServiceProvider;
 use Inspire\Menu\Providers\MenuServiceProvider;
 use Inspire\Page\Providers\PageServiceProvider;
 use Inspire\Post\Providers\PostServiceProvider;
+use Inspire\Setting\Providers\SettingServiceProvider;
 use Inspire\Theme\Providers\ThemeServiceProvider;
 use Inspire\User\Providers\UserServiceProvider;
 
@@ -69,6 +70,7 @@ class BaseServiceProvider extends ServiceProvider
         $this->app->register(UserServiceProvider::class);
         $this->app->register(ThemeServiceProvider::class);
         $this->app->register(MenuServiceProvider::class);
+        $this->app->register(SettingServiceProvider::class);
 
         /*Load translations*/
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'base');
