@@ -10,8 +10,10 @@
             </div>
 
             <div class="main-content">
+                <div class="container-fluid">
                 {{--@include('layouts.partials.content')--}}
-                @yield('content')
+                    @yield('content')
+                </div>
             </div>
 
             <aside class="right-sidebar">
