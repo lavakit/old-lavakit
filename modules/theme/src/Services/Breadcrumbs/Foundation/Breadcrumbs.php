@@ -3,12 +3,12 @@
 namespace Inspire\Theme\Services\Breadcrumbs\Foundation;
 
 /**
- * Interface Manager
+ * Interface Breadcrumbs
  * @package Inspire\Theme\Services\Breadcrumbs\Foundation
  * @copyright 2019 Inspire Group
  * @author hoatq <tqhoa8th@gmail.com
  */
-interface Manager
+interface Breadcrumbs
 {
     /**
      * Register a breadcrumb-generating callback for a page.
