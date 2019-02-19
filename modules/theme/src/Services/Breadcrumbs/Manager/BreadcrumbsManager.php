@@ -126,6 +126,7 @@ class BreadcrumbsManager implements BreadcrumbsContract
     public function generate(string $name = null, ...$params)
     {
         $origName = $name;
+
         // Route-bound breadcrumbs
         if ($name === null) {
             try {
@@ -134,9 +135,11 @@ class BreadcrumbsManager implements BreadcrumbsContract
                 if (config('breadcrumbs.unnamed-route-exception')) {
                     throw $e;
                 }
+
                 return new Collection;
             }
         }
+
         // Generate breadcrumbs
         try {
             return $this->generator->generate($this->callbacks, $this->before, $this->after, $name, $params);
@@ -144,9 +147,11 @@ class BreadcrumbsManager implements BreadcrumbsContract
             if ($origName === null && config('breadcrumbs.missing-route-bound-breadcrumb-exception')) {
                 throw $e;
             }
+
             if ($origName !== null && config('breadcrumbs.invalid-named-breadcrumb-exception')) {
                 throw $e;
             }
+
             return new Collection;
         }
     }
@@ -155,6 +160,7 @@ class BreadcrumbsManager implements BreadcrumbsContract
     {
         $breadcrumbs = $this->generate($name, ...$params);
         $html = $this->viewFactory->make($view, compact('breadcrumbs'))->render();
+
         return new HtmlString($html);
     }
 
@@ -168,10 +174,11 @@ class BreadcrumbsManager implements BreadcrumbsContract
      */
     public function render(string $name = null, ...$params)
     {
-        $view = config('breadcrumbs.view');
-        if (! $view) {
-            throw new ViewNotSetException('Breadcrumbs view not specified (check config/breadcrumbs.php)');
+        $view = config('theme.breadcrumbs.view');
+        if (!$view) {
+            throw new ViewNotSetException('Breadcrumbs view not specified (check config/Inspired/breadcrumbs.php)');
         }
+
         return $this->view($view, $name, ...$params);
     }
 

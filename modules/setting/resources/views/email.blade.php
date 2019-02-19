@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+    {!! Breadcrumbs::render('emailSetting', 'Setting', Route::currentRouteName()) !!}
     <div class="page-header">
         <div class="row align-items-end">
             <div class="col-lg-8">

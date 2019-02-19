@@ -47,7 +47,7 @@ class AssetServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton( BackendAssetContract::class, function () {
+        $this->app->singleton(BackendAssetContract::class, function () {
             return new BackendAsset();
         });
 

@@ -11,5 +11,5 @@ return [
     | - 'breadcrumbs::materialize' - The Materialize
     |
     */
-    'view' => 'breadcrumbs::bootstrap4',
+    'view' => 'theme::breadcrumbs.bootstrap',
 ];
