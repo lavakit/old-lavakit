@@ -24,35 +24,21 @@ class BreadcrumbsGenerator implements BreadcrumbsGeneratorContract
      * @param array $callbacks
      * @param string $name
      * @param array $params
-     * @param array $before
-     * @param array $after
      * @return array|Collection|mixed
      * @throws InvalidBreadcrumbException
      */
-    public function generate(array $callbacks, array $before, array $after, string $name, array $params)
+    public function generate(array $callbacks, string $name, array $params)
     {
         $this->breadcrumbs = new Collection();
         $this->callbacks   = $callbacks;
 
-        if (!empty($before)) {
-            foreach ($before as $callback) {
-                $callback($this);
-            }
-        }
-
         $this->call($name, $params);
-
-        if (!empty($after)) {
-            foreach ($after as $callback) {
-                $callback($this);
-            }
-        }
 
         return $this->breadcrumbs;
     }
 
     /**
-     * Call the clouse to generator breadcrumbs for a page
+     * Call the Closure to generator breadcrumbs for a page
      *
      * @param $name
      * @param $params
@@ -62,7 +48,7 @@ class BreadcrumbsGenerator implements BreadcrumbsGeneratorContract
     {
         if (!isset($this->callbacks[$name])) {
             throw new InvalidBreadcrumbException(
-                "Breadcrumb not found with name {$name}"
+                "Breadcrumb not found with name [{$name}]"
             );
         }
 

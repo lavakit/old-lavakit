@@ -28,6 +28,16 @@ class BreadcrumbsProvider extends ServiceProvider
     ];
 
     /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->registerBreadcrumbs();
+    }
+
+    /**
      * Register any application services.
      *
      * @return void
@@ -39,5 +49,28 @@ class BreadcrumbsProvider extends ServiceProvider
         $this->app->bind(Generator::class, BreadcrumbsGenerator::class);
 
         $this->registerFacadeAliases($this->facadeAlias);
+    }
+
+    /**
+     * Register the breadcrumbs
+     *
+     * @copyright 2019 LUCY VN
+     * @author Pencii Team <hoatq@lucy.ne.jp>
+     */
+    protected function registerBreadcrumbs()
+    {
+        BreadcrumbsFacade::register('admin.dashboards.index', function ($breadcrumbs) {
+            $breadcrumbs->push('Dashboard', route('admin.dashboards.index'), ['icon' => '<i class="ik ik-home"></i>']);
+        });
+
+        BreadcrumbsFacade::register('admin.settings', function ($breadcrumbs) {
+            $breadcrumbs->parent('admin.dashboards.index');
+            $breadcrumbs->push('Settings', '#');
+        });
+
+        BreadcrumbsFacade::register('admin.settings.general', function ($breadcrumbs) {
+            $breadcrumbs->parent('admin.settings');
+            $breadcrumbs->push('Email setting' , route('admin.settings.general'));
+        });
     }
 }

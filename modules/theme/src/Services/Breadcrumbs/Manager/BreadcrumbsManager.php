@@ -20,6 +20,15 @@ use Illuminate\Support\HtmlString;
  */
 class BreadcrumbsManager implements BreadcrumbsContract
 {
+    // When route-bound breadcrumbs are used but the current route doesn't have a name (UnnamedRouteException)
+    const UNNAMED = true;
+
+    // When route-bound breadcrumbs are used and the matching breadcrumb doesn't exist (InvalidBreadcrumbException)
+    const MISSING_ROUTE = true;
+
+    //When a named breadcrumb is used but doesn't exist (InvalidBreadcrumbException)
+    const INVALID_NAMED = true;
+
     /**
      * @var BreadcrumbsGenerator
      */
@@ -41,27 +50,17 @@ class BreadcrumbsManager implements BreadcrumbsContract
     protected $callbacks = [];
 
     /**
-     * @var array Closures to call before generating breadcrumbs for the current page.
+     * @var string
      */
-    protected $before = [];
-
-    /**
-     * @var array Closures to call after generating breadcrumbs for the current page.
-     */
-    protected $after = [];
-
-    /**
-     * @var array|null The current route name and parameters.
-     */
-    protected $route;
+    protected $viewName;
 
     /**
      * BreadcrumbsManager constructor.
      * @param BreadcrumbsGenerator $generator
-     * @param Router $router
+     * @param RouteCurrent $router
      * @param ViewFactory $viewFactory
      */
-    public function __construct(BreadcrumbsGenerator $generator, Router $router, ViewFactory $viewFactory)
+    public function __construct(BreadcrumbsGenerator $generator, RouteCurrent $router, ViewFactory $viewFactory)
     {
         $this->generator = $generator;
         $this->router = $router;
@@ -78,40 +77,7 @@ class BreadcrumbsManager implements BreadcrumbsContract
      */
     public function register(string $name, callable $callback)
     {
-        $this->for($name, $callback);
-    }
-
-    /**
-     * Register a closure to call before generating breadcrumbs for the current page.
-     *
-     * @param callable $callback
-     */
-    public function before(callable $callback)
-    {
-        $this->before[] = $callback;
-    }
-
-    /**
-     * Register a closure to call after generating breadcrumbs for the current page.
-     *
-     * @param callable $callback
-     */
-    public function after(callable $callback): void
-    {
-        $this->after[] = $callback;
-    }
-
-    public function exists(string $name = null)
-    {
-        if (is_null($name)) {
-            try {
-                [$name] = $this->getCurrentRoute();
-            } catch (UnnamedRouteException $e) {
-                return false;
-            }
-        }
-
-        return isset($this->callbacks[$name]);
+        $this->handler($name, $callback);
     }
 
     /**
@@ -125,14 +91,14 @@ class BreadcrumbsManager implements BreadcrumbsContract
      */
     public function generate(string $name = null, ...$params)
     {
-        $origName = $name;
+        $originName = $name;
 
         // Route-bound breadcrumbs
-        if ($name === null) {
+        if (is_null($name)) {
             try {
-                [$name, $params] = $this->getCurrentRoute();
+                [$name, $params] = $this->router->get();
             } catch (UnnamedRouteException $e) {
-                if (config('breadcrumbs.unnamed-route-exception')) {
+                if (self::UNNAMED) {
                     throw $e;
                 }
 
@@ -142,13 +108,13 @@ class BreadcrumbsManager implements BreadcrumbsContract
 
         // Generate breadcrumbs
         try {
-            return $this->generator->generate($this->callbacks, $this->before, $this->after, $name, $params);
+            return $this->generator->generate($this->callbacks, $name, $params);
         } catch (InvalidBreadcrumbException $e) {
-            if ($origName === null && config('breadcrumbs.missing-route-bound-breadcrumb-exception')) {
+            if (is_null($originName) && self::MISSING_ROUTE) {
                 throw $e;
             }
 
-            if ($origName !== null && config('breadcrumbs.invalid-named-breadcrumb-exception')) {
+            if (!is_null($originName) && self::INVALID_NAMED) {
                 throw $e;
             }
 
@@ -156,6 +122,14 @@ class BreadcrumbsManager implements BreadcrumbsContract
         }
     }
 
+    /**
+     * @param string $view
+     * @param string|null $name
+     * @param mixed ...$params
+     * @return HtmlString
+     * @throws InvalidBreadcrumbException
+     * @throws UnnamedRouteException
+     */
     public function view(string $view, string $name = null, ...$params)
     {
         $breadcrumbs = $this->generate($name, ...$params);
@@ -170,18 +144,28 @@ class BreadcrumbsManager implements BreadcrumbsContract
      * @param string|null $name
      * @param mixed ...$params
      * @return HtmlString|mixed
+     * @throws InvalidBreadcrumbException
+     * @throws UnnamedRouteException
      * @throws ViewNotSetException
      */
     public function render(string $name = null, ...$params)
     {
-        $view = config('theme.breadcrumbs.view');
-        if (!$view) {
+        if (!$this->viewFactory->exists($this->getView())) {
             throw new ViewNotSetException('Breadcrumbs view not specified (check config/Inspired/breadcrumbs.php)');
         }
 
-        return $this->view($view, $name, ...$params);
+        return $this->view($this->getView(), $name, ...$params);
     }
 
+    /**
+     * Get the last breadcrumb for the current page.
+     *
+     * @return mixed
+     * @throws InvalidBreadcrumbException
+     * @throws UnnamedRouteException
+     * @copyright 2019 LUCY VN
+     * @author Pencii Team <hoatq@lucy.ne.jp>
+     */
     public function current()
     {
         return $this->generate()->where('current', '!==', false)->last();
@@ -191,25 +175,44 @@ class BreadcrumbsManager implements BreadcrumbsContract
      * Set the view of breadcrumbs
      *
      * @param $view
-     * @return mixed
      * @copyright 2019 Inspire Group
      * @author hoatq <tqhoa8th@gmail.com
      */
-    public function setView($view)
+    public function setView(string $view = null)
     {
-        // TODO: Implement setView() method.
+        if (is_null($view)) {
+            $view = config('theme.breadcrumbs.view');
+        }
+
+        $this->viewName = $view;
     }
 
     /**
+     * @return \Illuminate\Config\Repository|mixed|string
+     * @copyright 2019 LUCY VN
+     * @author Pencii Team <hoatq@lucy.ne.jp>
+     */
+    public function getView()
+    {
+        if (!$this->viewName) {
+            $this->viewName = config('theme.breadcrumbs.view');
+        }
+
+        return $this->viewName;
+    }
+
+    /**
+     * Register a breadcrumb-generating callback for a page.
+     *
      * @param string $name
      * @param callable $callback
      * @throws DuplicateBreadcrumbException
      */
-    protected function for(string $name, callable $callback)
+    protected function handler(string $name, callable $callback)
     {
         if (isset($this->callbacks[$name])) {
             throw new DuplicateBreadcrumbException(
-                "Breadcrumb name \"{$name}\" has already been registered"
+                "Breadcrumb name [{$name}] has already been registered"
             );
         }
 
@@ -217,41 +220,24 @@ class BreadcrumbsManager implements BreadcrumbsContract
     }
 
     /**
-     * @return array|null
-     * @throws UnnamedRouteException
+     * Set the current route name and parameters to use when calling render()
+     *
+     * @param string $name
+     * @param mixed ...$params
+     */
+    public function setCurrentRoute(string $name, ...$params): void
+    {
+        $this->router->set($name, $params);
+    }
+
+    /**
+     * Clear the previously set route name and parameters to use when calling render()
+     *
      * @copyright 2019 LUCY VN
      * @author Pencii Team <hoatq@lucy.ne.jp>
      */
-    protected function getCurrentRoute()
-    {
-        if ($this->route) {
-            return $this->route;
-        }
-
-        $route = $this->router->current();
-
-        if ($route === null) {
-            return ['errors.404', []];
-        }
-
-        $name = $route->getName();
-
-        if ($name === null) {
-            $uri = array_first($route->methods()) . ' /' . ltrim($route->uri(), '/');
-            throw new UnnamedRouteException("The current route ($uri) is not named");
-        }
-
-        $params = array_values($route->parameters());
-        return [$name, $params];
-    }
-
-    public function setCurrentRoute(string $name, ...$params): void
-    {
-        $this->route = [$name, $params];
-    }
-
     public function clearCurrentRoute(): void
     {
-        $this->route = null;
+        $this->router->clear();
     }
 }

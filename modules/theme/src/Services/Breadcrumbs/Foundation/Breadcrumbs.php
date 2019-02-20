@@ -38,6 +38,13 @@ interface Breadcrumbs
     public function render(string $name = null, ...$params);
 
     /**
+     * Get the last breadcrumb for the current page.
+     *
+     * @return mixed
+     */
+    public function current();
+
+    /**
      * Set the view of breadcrumbs
      *
      * @param $view
@@ -45,5 +52,5 @@ interface Breadcrumbs
      * @copyright 2019 Inspire Group
      * @author hoatq <tqhoa8th@gmail.com
      */
-    public function setView($view);
+    public function setView(string $view);
 }

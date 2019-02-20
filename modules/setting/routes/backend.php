@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Routing\Router;
-use Breadcrumbs;
+use Inspire\Theme\Services\Breadcrumbs\Facades\Breadcrumbs;
 
 /** @var Router $router */
 $router->group(['prefix' => '/settings'], function (Router $router) {
@@ -44,13 +44,4 @@ $router->group(['prefix' => '/settings'], function (Router $router) {
         'as'    => 'admin.settings.language',
         'uses'  => 'SettingController@postLanguage'
     ]);
-});
-
-Breadcrumbs::register('admin.dashboards.index', function ($breadcrumbs) {
-    $breadcrumbs->push('Dashboard', route('admin.dashboards.index'));
-});
-
-Breadcrumbs::register('emailSetting', function ($breadcrumbs) {
-    $breadcrumbs->parent('admin.dashboards.index');
-    $breadcrumbs->push('Email setting' , route('admin.settings.general'));
 });

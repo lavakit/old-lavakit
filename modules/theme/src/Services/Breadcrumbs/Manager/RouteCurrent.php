@@ -2,8 +2,8 @@
 
 namespace Inspire\Theme\Services\Breadcrumbs\Manager;
 
-use \Illuminate\Contracts\Routing\Registrar as Router;
 use Inspire\Theme\Services\Breadcrumbs\Exceptions\UnnamedRouteException;
+use Illuminate\Routing\Router;
 
 /**
  * Class RouteCurrent
@@ -58,7 +58,7 @@ class RouteCurrent
             $uri = array_first($route->methods()) . ' /' . ltrim($route->uri(), '/');
 
             throw new UnnamedRouteException(
-                "The current route ({$uri}) is not named"
+                "The current route [{$uri} is not named"
             );
         }
 
