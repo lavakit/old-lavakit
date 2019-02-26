@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Routing\Router;
+use Inspire\Theme\Services\Breadcrumbs\Facades\Breadcrumbs;
 
 /** @var Router $router */
 $router->group(['prefix' => '/settings'], function (Router $router) {

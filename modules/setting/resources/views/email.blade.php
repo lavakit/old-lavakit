@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+
     <div class="page-header">
         <div class="row align-items-end">
             <div class="col-lg-8">
@@ -14,18 +15,7 @@
             </div>
             <div class="col-lg-4">
                 <nav class="breadcrumb-container" aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="../../index.html"><i class="ik ik-home"></i></a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="#">UI</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="#">Extra</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">Session Timeout</li>
-                    </ol>
+                    {!! Breadcrumbs::render('admin.settings.general', 'Setting', Route::currentRouteName()) !!}
                 </nav>
             </div>
         </div>

@@ -14,6 +14,7 @@ use Inspire\Theme\Facades\ThemeBackendFacade;
 use Config;
 use Inspire\Theme\Managers\Themes\Frontend as ThemeFrontend;
 use Inspire\Theme\Managers\Themes\Backend as ThemeBackend;
+use Inspire\Theme\Services\Breadcrumbs\Providers\BreadcrumbsProvider;
 
 /**
  * Class ThemeServiceProvider
@@ -63,6 +64,7 @@ class ThemeServiceProvider extends ServiceProvider
 
         $this->app->register(AssetServiceProvider::class);
         $this->app->register(ComposerServiceProvider::class);
+        $this->app->register(BreadcrumbsProvider::class);
 
         //Register aliases
         $this->registerFacadeAliases($this->facadeAliases);

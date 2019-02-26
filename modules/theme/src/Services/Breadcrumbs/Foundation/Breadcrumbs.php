@@ -3,12 +3,12 @@
 namespace Inspire\Theme\Services\Breadcrumbs\Foundation;
 
 /**
- * Interface Manager
+ * Interface Breadcrumbs
  * @package Inspire\Theme\Services\Breadcrumbs\Foundation
  * @copyright 2019 Inspire Group
  * @author hoatq <tqhoa8th@gmail.com
  */
-interface Manager
+interface Breadcrumbs
 {
     /**
      * Register a breadcrumb-generating callback for a page.
@@ -38,6 +38,13 @@ interface Manager
     public function render(string $name = null, ...$params);
 
     /**
+     * Get the last breadcrumb for the current page.
+     *
+     * @return mixed
+     */
+    public function current();
+
+    /**
      * Set the view of breadcrumbs
      *
      * @param $view
@@ -45,5 +52,5 @@ interface Manager
      * @copyright 2019 Inspire Group
      * @author hoatq <tqhoa8th@gmail.com
      */
-    public function setView($view);
+    public function setView(string $view);
 }

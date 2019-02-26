@@ -16,9 +16,7 @@ interface Generator
      * @param array $callbacks
      * @param string $name
      * @param array $params
-     * @param array $before
-     * @param array $after
      * @return mixed
      */
-    public function generate(array $callbacks, string $name, array $params, array $before, array $after);
+    public function generate(array $callbacks, string $name, array $params);
 }
