@@ -185,6 +185,8 @@ class BreadcrumbsManager implements BreadcrumbsContract
         }
 
         $this->viewName = $view;
+
+        return $this;
     }
 
     /**
