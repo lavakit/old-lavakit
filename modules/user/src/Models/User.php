@@ -14,7 +14,8 @@ use Email;
 class User extends Authentication
 {
     /**
-     * The database fields for the model clear
+     * The table associated with the model
+     *
      * @var string
      */
     protected $table = 'users';

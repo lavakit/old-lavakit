@@ -12,13 +12,5 @@ use Inspire\Base\Http\Controllers\Admin\BaseAdminController;
  */
 class MenuController extends BaseAdminController
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
 
-    public function index()
-    {
-        return __CLASS__;
-    }
 }

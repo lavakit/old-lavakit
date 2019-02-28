@@ -24,9 +24,11 @@ return [
     */
     'core-modules' => [
         'base',
-        'post',
-        'page',
         'dashboard',
+        'menu',
+        'page',
+        'post',
+        'setting',
         'theme',
         'user'
     ],
@@ -36,7 +38,7 @@ return [
     | The prefix that'll be used for the administration
     |--------------------------------------------------------------------------
     */
-    'admin-prefix' => env('APP_ADMIN', 'admin'),
+    'admin-prefix' => env('APP_ADMIN_PREFIX', 'admin'),
 
     /*
    |--------------------------------------------------------------------------
