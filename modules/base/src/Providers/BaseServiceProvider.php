@@ -64,13 +64,13 @@ class BaseServiceProvider extends ServiceProvider
         $this->app->register(VendorProvider::class);
 
         /*Load Services on Lucky*/
-        $this->app->register(PostServiceProvider::class);
-        $this->app->register(PageServiceProvider::class);
         $this->app->register(DashboardServiceProvider::class);
-        $this->app->register(UserServiceProvider::class);
-        $this->app->register(ThemeServiceProvider::class);
         $this->app->register(MenuServiceProvider::class);
+        $this->app->register(PageServiceProvider::class);
+        $this->app->register(PostServiceProvider::class);
         $this->app->register(SettingServiceProvider::class);
+        $this->app->register(ThemeServiceProvider::class);
+        $this->app->register(UserServiceProvider::class);
 
         /*Load translations*/
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'base');

@@ -3,7 +3,7 @@
 namespace Inspire\Menu\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Inspire\Post\Models\Post;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Menu
@@ -13,14 +13,31 @@ use Inspire\Post\Models\Post;
  */
 class Menu extends Model
 {
-    protected $table = 'menu';
+    use SoftDeletes;
 
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
+
+    /**
+     * The data fields for the model clear
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+
+    /**
+     * The attributes that are mass assignable
+     *
+     * @var array
+     */
     protected $fillable = [
-        'name', 'is_published'
+        'name',
+        'permalink',
+        'kind',
+        'status'
     ];
-
-    public function post()
-    {
-        return $this->hasMany(Post::class)->select(['title','menu_id']);
-    }
 }
