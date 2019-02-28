@@ -65,8 +65,8 @@ class User extends Authentication
      * Set the user's password is hash.
      *
      * @param $value
-     * @copyright 2018 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
      */
     public function setPasswordAttribute($value)
     {
