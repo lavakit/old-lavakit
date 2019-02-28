@@ -22,6 +22,9 @@ class CreateUsersTable extends Migration
             $table->string('full_name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->boolean('confirmed')->default(0);
+            $table->boolean('registered')->default(0)->comment('1: Registered | 0 Unregistered');
+            $table->string('confirm_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

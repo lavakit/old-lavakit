@@ -8,6 +8,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Session\TokenMismatchException;
 use Illuminate\Validation\ValidationException;
+use FrontendTheme;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -55,19 +56,19 @@ class Handler extends ExceptionHandler
                     case 404:
                         if ($request->is(locate() . '/' . config('base.base.admin-prefix') . '/*')) {
                             return response()->view('backend::errors.404', [], 404);
-                        } else {
-                            return response()->view('theme::errors.404', [], 404);
                         }
-                        break;
+
+                        FrontendTheme::set(config('theme.theme.active'));
+                        return response()->view('errors.404', [], 404);
 
                     case 500:
                     case 503:
                         if ($request->is(locate() . '/' . config('base.base.admin-prefix') . '/*')) {
                             return response()->view('backend::errors.500', [], 500);
-                        } else {
-                            return response()->view('theme::errors.500', [], 500);
                         }
-                        break;
+
+                        FrontendTheme::set(config('theme.theme.active'));
+                        return response()->view('errors.500', [], 500);
                 }
             }
         }

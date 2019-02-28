@@ -3,6 +3,9 @@
 namespace Inspire\User\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Inspire\Base\Traits\CanPublishConfiguration;
+use Inspire\User\Contracts\AuthenticationContract;
+use Inspire\User\Services\Authentication\AuthenticationService;
 
 /**
  * Class UserServiceProvider
@@ -12,6 +15,8 @@ use Illuminate\Support\ServiceProvider;
  */
 class UserServiceProvider extends ServiceProvider
 {
+    use CanPublishConfiguration;
+
     /**
      * Bootstrap the application services.
      *
@@ -50,13 +55,20 @@ class UserServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->publishConfig('user', 'user');
+
         //Load helpers
         $this->loadHelpers();
 
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(RepositoryServiceProvider::class);
+
+        $this->app->bind(AuthenticationContract::class, AuthenticationService::class);
     }
 
+    /**
+     * Load all helpers
+     */
     protected function loadHelpers()
     {
         $helpers = $this->app['files']->glob(__DIR__ . '/../../helpers/*.php');

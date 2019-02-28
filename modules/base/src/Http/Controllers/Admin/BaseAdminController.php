@@ -3,6 +3,7 @@
 namespace Inspire\Base\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use AssetBackend;
 
 /**
  * Class BaseAdminController
@@ -12,10 +13,24 @@ use App\Http\Controllers\Controller;
  */
 class BaseAdminController extends Controller
 {
+    /** @var string */
+
+    protected $module;
+
     /**
      * BaseAdminController constructor.
      */
     public function __construct()
     {
+        $this->addJsModule();
+    }
+
+    /**
+     * @copyright 2018 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    protected function addJsModule()
+    {
+        AssetBackend::addAppModule($this->module);
     }
 }

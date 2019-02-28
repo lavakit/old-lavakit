@@ -35,17 +35,15 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (config('base.cache.cache_enable')) {
-            $this->app->singleton(MenuRepository::class, function () {
+        $this->app->singleton(MenuRepository::class, function () {
+            if (config('base.cache.cache_enable')) {
                 return new MenuCacheDecorator(
                     new MenuEloquentRepository(new Menu()),
-                    new Cache($this->app['cache'], __CLASS__)
+                    new Cache($this->app['cache'], MenuRepository::class)
                 );
-            });
-        } else {
-            $this->app->singleton(MenuRepository::class, function () {
-                return new MenuEloquentRepository(new Menu());
-            });
-        }
+            }
+
+            return new MenuEloquentRepository(new Menu());
+        });
     }
 }

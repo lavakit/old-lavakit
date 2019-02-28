@@ -7,11 +7,14 @@ use Inspire\Base\Traits\CanPublishConfiguration;
 use Inspire\Base\Traits\CanRegisterFacadeAliases;
 use Inspire\Theme\Console\ThemeGeneratorCommand;
 use Inspire\Theme\Console\ThemeListCommand;
-use Inspire\Theme\Contracts\ThemeContract;
-use Inspire\Theme\Facades\Theme;
+use Inspire\Theme\Contracts\Themes\Frontend as ThemeFrontendContract;
+use Inspire\Theme\Contracts\Themes\Backend as ThemeBackendContract;
+use Inspire\Theme\Facades\ThemeFrontendFacade;
+use Inspire\Theme\Facades\ThemeBackendFacade;
 use Config;
-use Inspire\Theme\Managers\ThemeManager;
-use Inspire\Theme\Middleware\RouteMiddleware;
+use Inspire\Theme\Managers\Themes\Frontend as ThemeFrontend;
+use Inspire\Theme\Managers\Themes\Backend as ThemeBackend;
+use Inspire\Theme\Services\Breadcrumbs\Providers\BreadcrumbsProvider;
 
 /**
  * Class ThemeServiceProvider
@@ -31,7 +34,8 @@ class ThemeServiceProvider extends ServiceProvider
      * @var array Facade aliases
      */
     protected $facadeAliases = [
-        'Theme' => Theme::class
+        'ThemeFrontend' => ThemeFrontendFacade::class,
+        'ThemeBackend' => ThemeBackendFacade::class,
     ];
 
     /**
@@ -41,6 +45,7 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //
     }
 
     /**
@@ -58,7 +63,8 @@ class ThemeServiceProvider extends ServiceProvider
         $this->registerMiddleware();
 
         $this->app->register(AssetServiceProvider::class);
-        $this->app->register(ComposerThemeServiceProvider::class);
+        $this->app->register(ComposerServiceProvider::class);
+        $this->app->register(BreadcrumbsProvider::class);
 
         //Register aliases
         $this->registerFacadeAliases($this->facadeAliases);
@@ -78,10 +84,10 @@ class ThemeServiceProvider extends ServiceProvider
             $themeTypes = config('theme.theme.types.middleware');
             foreach ($themeTypes as $middleware => $themeName) {
                 /** Register Middleware */
-                $this->app['router']->aliasMiddleware($middleware, RouteMiddleware::class);
+                $this->app['router']->aliasMiddleware($middleware, "Inspire\\Theme\\Middleware\\Route{$middleware}Middleware");
 
                 /** Push Config middleware theme */
-                Config::push('base.base.middleware.frontend', $middleware . ':' . $themeName);
+                Config::push('base.base.middleware.' . $middleware, $middleware . ':' . $themeName);
             }
         }
     }
@@ -94,7 +100,9 @@ class ThemeServiceProvider extends ServiceProvider
     protected function registerConfig()
     {
         $this->publishConfig('theme', 'theme');
-        $this->publishConfig('theme', 'assets');
+        $this->publishConfig('theme', 'frontend');
+        $this->publishConfig('theme', 'backend');
+        $this->publishConfig('theme', 'breadcrumbs');
     }
 
     /**
@@ -117,8 +125,17 @@ class ThemeServiceProvider extends ServiceProvider
      */
     protected function registerTheme()
     {
-        $this->app->singleton(ThemeContract::class, function ($app) {
-            return new ThemeManager(
+        $this->app->singleton(ThemeFrontendContract::class, function ($app) {
+            return new ThemeFrontend(
+                $app,
+                $this->app['view']->getFinder(),
+                $this->app['config'],
+                $this->app['translator']
+            );
+        });
+
+        $this->app->singleton(ThemeBackendContract::class, function ($app) {
+            return new ThemeBackend(
                 $app,
                 $this->app['view']->getFinder(),
                 $this->app['config'],

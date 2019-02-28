@@ -3,18 +3,17 @@
 namespace Inspire\Base\Providers;
 
 use Illuminate\Contracts\Debug\ExceptionHandler;
-use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Inspire\Base\Exceptions\Handler;
-use Inspire\Base\Facades\PageTitleFacade;
-use Inspire\Base\Http\Middleware\LocalizationMiddleware;
+use Inspire\Base\Facades\EmailFacade;
+use Inspire\Base\Facades\TitleFacade;
 use Inspire\Base\Traits\CanPublishConfiguration;
-use Inspire\Acl\Providers\AclServiceProvider;
 use Inspire\Base\Traits\CanRegisterFacadeAliases;
 use Inspire\Dashboard\Providers\DashboardServiceProvider;
 use Inspire\Menu\Providers\MenuServiceProvider;
 use Inspire\Page\Providers\PageServiceProvider;
 use Inspire\Post\Providers\PostServiceProvider;
+use Inspire\Setting\Providers\SettingServiceProvider;
 use Inspire\Theme\Providers\ThemeServiceProvider;
 use Inspire\User\Providers\UserServiceProvider;
 
@@ -33,7 +32,8 @@ class BaseServiceProvider extends ServiceProvider
      * @var array Facade Aliases
      */
     protected $facadeAliases = [
-        'PageTitle' => PageTitleFacade::class
+        'Title' => TitleFacade::class,
+        'Email' => EmailFacade::class,
     ];
 
     /**
@@ -42,7 +42,7 @@ class BaseServiceProvider extends ServiceProvider
      */
     protected $middleware = [
         'Base' => [
-            'localizationRedirect'  => 'LocalizationMiddleware'
+            'localizationRedirect' => 'LocalizationMiddleware'
         ]
     ];
 
@@ -53,29 +53,27 @@ class BaseServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
         /*Load Config*/
         $this->publishConfig('base', 'base');
         $this->publishConfig('base', 'cache');
+        $this->publishConfig('base', 'mail');
 
         $this->registerMiddleware();
 
-        /*Load Services on Lucky*/
-        $this->app->register(AclServiceProvider::class);
-        $this->app->register(PostServiceProvider::class);
-        $this->app->register(PageServiceProvider::class);
-        $this->app->register(DashboardServiceProvider::class);
-        $this->app->register(UserServiceProvider::class);
-        $this->app->register(ThemeServiceProvider::class);
-        $this->app->register(MenuServiceProvider::class);
+        /*Load Service on Vendor*/
+        $this->app->register(VendorProvider::class);
 
-        /*Load views Backend*/
-        $pathView =  config('theme.theme.backend_path') . '/' . config('theme.theme.active_backend') . '/views';
-        $this->loadViewsFrom($pathView, 'backend');
+        /*Load Services on Lucky*/
+        $this->app->register(DashboardServiceProvider::class);
+        $this->app->register(MenuServiceProvider::class);
+        $this->app->register(PageServiceProvider::class);
+        $this->app->register(PostServiceProvider::class);
+        $this->app->register(SettingServiceProvider::class);
+        $this->app->register(ThemeServiceProvider::class);
+        $this->app->register(UserServiceProvider::class);
 
         /*Load translations*/
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'base');
-
 
         if (app()->runningInConsole()) {
             /*Load migrations*/
@@ -102,6 +100,8 @@ class BaseServiceProvider extends ServiceProvider
 
         //Register aliases
         $this->registerFacadeAliases($this->facadeAliases);
+
+        $this->app->register(EventServiceProvider::class);
     }
 
     /**

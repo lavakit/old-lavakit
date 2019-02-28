@@ -19,16 +19,14 @@ class RouteServiceProvider extends BaseRoutingServiceProvider
 
     /**
      * @return string
-     * @author hoatq <tqhoa8th@gmail.com>
      */
     protected function getFrontendRoute()
     {
-        return __DIR__ . '/../../routes/frontendRoutes.php';
+        return false;
     }
 
     /**
      * @return string
-     * @author hoatq <tqhoa8th@gmail.com>
      */
     protected function getBackendRoute()
     {
@@ -37,7 +35,6 @@ class RouteServiceProvider extends BaseRoutingServiceProvider
 
     /**
      * @return string
-     * @author hoatq <tqhoa8th@gmail.com>
      */
     protected function getApiRoute()
     {

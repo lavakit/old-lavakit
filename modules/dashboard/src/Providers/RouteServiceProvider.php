@@ -14,6 +14,9 @@ class RouteServiceProvider extends BaseRoutingServiceProvider
 {
     protected $namespace = 'Inspire\Dashboard\Http\Controllers';
 
+    /**
+     * @return bool|string
+     */
     protected function getFrontendRoute()
     {
         return false;
@@ -24,7 +27,7 @@ class RouteServiceProvider extends BaseRoutingServiceProvider
      */
     protected function getBackendRoute()
     {
-        return __DIR__ . '/../../routes/backendRoutes.php';
+        return __DIR__ . '/../../routes/backend.php';
     }
 
     /**

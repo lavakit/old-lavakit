@@ -7,9 +7,10 @@ use Inspire\Base\Services\Caches\CacheInterface;
 use Inspire\Menu\Repositories\MenuRepository;
 
 /**
- * Class PostCacheDecorator
- *
- * @package \Inspire\Menu\Repositories\Caches
+ * Class MenuCacheDecorator
+ * @package Inspire\Menu\Repositories\Caches
+ * @copyright 2018 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 class MenuCacheDecorator extends CacheDecorator implements MenuRepository
 {

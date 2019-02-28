@@ -36,7 +36,7 @@ return [
     | then symlink can be false or true as your wish.
     |
     */
-    'symlink'    => false,
+    'symlink' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -53,7 +53,8 @@ return [
     'types'     => [
         'enable'        => true,
         'middleware'    => [
-            'theme' => env('FRONTEND_DEFAULT', 'default')
+            'frontend' => env('FRONTEND_DEFAULT', 'default'),
+            'backend' => env('BACKEND_DEFAULT', 'themekit')
         ]
     ],
     /*
@@ -84,7 +85,7 @@ return [
         'lang/en'   => 'lang/en',
         'css'       => 'assets/css',
         'js'        => 'assets/js',
-        'images'       => 'assets/images',
+        'images'    => 'assets/images',
         'layouts'   => 'views/layouts',
     ],
     /*
