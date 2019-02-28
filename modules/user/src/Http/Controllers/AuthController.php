@@ -138,8 +138,8 @@ class AuthController extends BaseController
      * @param string|null $email
      * @param string|null $token
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
      */
     public function getReset(string $email = null, string $token = null)
     {
@@ -162,8 +162,8 @@ class AuthController extends BaseController
      *
      * @param ResetRequest $request
      * @return mixed
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
      */
     public function reset(ResetRequest $request)
     {

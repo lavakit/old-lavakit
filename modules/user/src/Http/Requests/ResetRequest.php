@@ -7,15 +7,13 @@ use Inspire\Base\Http\Requests\BaseFormRequest;
 /**
  * Class ResetRequest
  * @package Inspire\User\Http\Requests
- * @copyright 2019 LUCY VN
- * @author Pencii Team <hoatq@lucy.ne.jp>
+ * @copyright 2019 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com
  */
 class ResetRequest extends BaseFormRequest
 {
     /**
      * @return array
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
      */
     public function rules()
     {

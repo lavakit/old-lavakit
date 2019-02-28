@@ -77,8 +77,8 @@ interface AuthenticationContract
      *
      * @param object $user
      * @return bool
-     * @copyright 2018 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
      */
     public function hasConfirmed(object $user): bool;
 }

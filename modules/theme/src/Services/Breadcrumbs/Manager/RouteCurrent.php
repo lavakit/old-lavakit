@@ -8,8 +8,8 @@ use Illuminate\Routing\Router;
 /**
  * Class RouteCurrent
  * @package Inspire\Theme\Services\Breadcrumbs\Manager
- * @copyright 2019 LUCY VN
- * @author Pencii Team <hoatq@lucy.ne.jp>
+ * @copyright 2019 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com
  */
 class RouteCurrent
 {
@@ -37,8 +37,8 @@ class RouteCurrent
     /**
      * @return array|null
      * @throws UnnamedRouteException
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
      */
     public function get()
     {
@@ -71,8 +71,8 @@ class RouteCurrent
      *
      * @param $name
      * @param $params
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
      */
     public function set($name, $params): void
     {
@@ -80,8 +80,8 @@ class RouteCurrent
     }
 
     /**
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
      */
     public function clear(): void
     {

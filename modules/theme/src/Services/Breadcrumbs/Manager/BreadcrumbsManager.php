@@ -15,8 +15,8 @@ use Illuminate\Support\HtmlString;
 /**
  * Class BreadcrumbsManager
  * @package Inspire\Theme\Services\Breadcrumbs\Manager
- * @copyright 2019 LUCY VN
- * @author Pencii Team <hoatq@lucy.ne.jp>
+ * @copyright 2019 Inspire Group
+ * @author hoatq <tqhoa8th@gmail.com
  */
 class BreadcrumbsManager implements BreadcrumbsContract
 {
@@ -163,8 +163,8 @@ class BreadcrumbsManager implements BreadcrumbsContract
      * @return mixed
      * @throws InvalidBreadcrumbException
      * @throws UnnamedRouteException
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
      */
     public function current()
     {
@@ -191,8 +191,8 @@ class BreadcrumbsManager implements BreadcrumbsContract
 
     /**
      * @return \Illuminate\Config\Repository|mixed|string
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
      */
     public function getView()
     {
@@ -235,8 +235,8 @@ class BreadcrumbsManager implements BreadcrumbsContract
     /**
      * Clear the previously set route name and parameters to use when calling render()
      *
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
      */
     public function clearCurrentRoute(): void
     {

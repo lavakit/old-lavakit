@@ -102,7 +102,7 @@ class AuthenticationService implements AuthenticationContract
      * @param object $user
      * @return mixed
      * @copyright 2019 Inspire Group
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @author hoatq <tqhoa8th@gmail.com
      */
     public function hasConfirmed(object $user): bool
     {
