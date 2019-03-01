@@ -53,7 +53,8 @@
             "Inspire\\User\\": "modules/user/src",
             "Inspire\\Theme\\": "modules/theme/src",
             "Inspire\\Menu\\": "modules/menu/src",
-            "Inspire\\Setting\\": "modules/setting/src"
+            "Inspire\\Setting\\": "modules/setting/src",
+            "Inspire\\Translation\\": "modules/translation/src"
         }
     },
     "autoload-dev": {
