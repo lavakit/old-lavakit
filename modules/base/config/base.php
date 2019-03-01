@@ -30,6 +30,7 @@ return [
         'post',
         'setting',
         'theme',
+        'translation',
         'user'
     ],
 
