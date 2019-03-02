@@ -15,6 +15,7 @@ use Inspire\Page\Providers\PageServiceProvider;
 use Inspire\Post\Providers\PostServiceProvider;
 use Inspire\Setting\Providers\SettingServiceProvider;
 use Inspire\Theme\Providers\ThemeServiceProvider;
+use Inspire\Translation\Providers\TranslationServiceProvider;
 use Inspire\User\Providers\UserServiceProvider;
 
 /**
@@ -70,6 +71,7 @@ class BaseServiceProvider extends ServiceProvider
         $this->app->register(PostServiceProvider::class);
         $this->app->register(SettingServiceProvider::class);
         $this->app->register(ThemeServiceProvider::class);
+        $this->app->register(TranslationServiceProvider::class);
         $this->app->register(UserServiceProvider::class);
 
         /*Load translations*/
