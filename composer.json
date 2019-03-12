@@ -54,7 +54,8 @@
             "Inspire\\Theme\\": "modules/theme/src",
             "Inspire\\Menu\\": "modules/menu/src",
             "Inspire\\Setting\\": "modules/setting/src",
-            "Inspire\\Translation\\": "modules/translation/src"
+            "Inspire\\Translation\\": "modules/translation/src",
+            "Inspire\\Notification\\": "modules/notification/src"
         }
     },
     "autoload-dev": {

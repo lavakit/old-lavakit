@@ -17,6 +17,7 @@ use Inspire\Setting\Providers\SettingServiceProvider;
 use Inspire\Theme\Providers\ThemeServiceProvider;
 use Inspire\Translation\Providers\TranslationServiceProvider;
 use Inspire\User\Providers\UserServiceProvider;
+use Inspire\Notification\Providers\NotificationServiceProvider;
 
 /**
  * Class BaseServiceProvider
@@ -67,6 +68,7 @@ class BaseServiceProvider extends ServiceProvider
         /*Load Services on Lucky*/
         $this->app->register(DashboardServiceProvider::class);
         $this->app->register(MenuServiceProvider::class);
+        $this->app->register(NotificationServiceProvider::class);
         $this->app->register(PageServiceProvider::class);
         $this->app->register(PostServiceProvider::class);
         $this->app->register(SettingServiceProvider::class);
