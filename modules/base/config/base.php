@@ -26,6 +26,7 @@ return [
         'base',
         'dashboard',
         'menu',
+        'notification',
         'page',
         'post',
         'setting',
