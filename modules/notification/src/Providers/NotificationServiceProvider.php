@@ -3,6 +3,11 @@
 namespace Inspire\Notification\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Inspire\Base\Traits\CanPublishConfiguration;
+use Inspire\Base\Traits\CanRegisterFacadeAliases;
+use Inspire\Notification\Facades\FlashMessageFacade;
+use Inspire\Notification\Services\FlashMessages\Contracts\FlashMessageContract;
+use Inspire\Notification\Services\FlashMessages\FlashMessage;
 
 /**
  * Class NotificationServiceProvider
@@ -12,6 +17,13 @@ use Illuminate\Support\ServiceProvider;
  */
 class NotificationServiceProvider extends ServiceProvider
 {
+    use CanPublishConfiguration;
+    use CanRegisterFacadeAliases;
+
+    protected $facadeAliases = [
+        'FlashMessage' => FlashMessageFacade::class,
+    ];
+
     /**
      * Bootstrap the application services.
      *
@@ -45,8 +57,16 @@ class NotificationServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->publishConfig('notification', 'flash');
+
         //Load helpers
         $this->loadHelpers();
+
+        $this->app->singleton(FlashMessageContract::class, function () {
+            return new FlashMessage($this->app['config']->get('notification.flash'));
+        });
+
+        $this->registerFacadeAliases($this->facadeAliases);
     }
 
     protected function loadHelpers()
