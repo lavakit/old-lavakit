@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspire\Notification\Services\FlashMessages;
+namespace Inspire\Notification\Services\FlashMessages\Abstracts;
 
 use Inspire\Notification\Services\FlashMessages\Contracts\FlashMessageContract;
 
@@ -10,7 +10,7 @@ use Inspire\Notification\Services\FlashMessages\Contracts\FlashMessageContract;
  * @copyright 2019 Inspire Group
  * @author hoatq <tqhoa8th@gmail.com
  */
-class FlashMessage implements FlashMessageContract
+abstract class FlashMessage implements FlashMessageContract
 {
     /** @var array $config */
     protected $config = [
@@ -39,5 +39,25 @@ class FlashMessage implements FlashMessageContract
         $this->config = array_replace($this->config, $config);
 
         return $this;
+    }
+    
+    /**
+     * Empty the flash message collection.
+     *
+     * @return mixed
+     * @copyright 2019 LUCY VN
+     * @author Pencii Team <hoatq@lucy.ne.jp>
+     */
+    abstract public function clear();
+    
+    /**
+     * Flash the flash message collection to the session
+     *
+     * @copyright 2019 LUCY VN
+     * @author Pencii Team <hoatq@lucy.ne.jp>
+     */
+    protected function flash()
+    {
+        app()->session->flash('flash_message');
     }
 }
