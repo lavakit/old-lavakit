@@ -7,7 +7,7 @@ use Inspire\Base\Traits\CanPublishConfiguration;
 use Inspire\Base\Traits\CanRegisterFacadeAliases;
 use Inspire\Notification\Facades\FlashMessageFacade;
 use Inspire\Notification\Services\FlashMessages\Contracts\FlashMessageContract;
-use Inspire\Notification\Services\FlashMessages\FlashMessage;
+use Inspire\Notification\Services\FlashMessages\Toast\FlashMessage as ToastFlashMessage;
 
 /**
  * Class NotificationServiceProvider
@@ -63,7 +63,7 @@ class NotificationServiceProvider extends ServiceProvider
         $this->loadHelpers();
 
         $this->app->singleton(FlashMessageContract::class, function () {
-            return new FlashMessage($this->app['config']->get('notification.flash'));
+            return new ToastFlashMessage($this->app['config']->get('notification.flash'));
         });
 
         $this->registerFacadeAliases($this->facadeAliases);

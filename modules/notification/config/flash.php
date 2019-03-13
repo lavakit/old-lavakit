@@ -8,5 +8,5 @@ return [
     |
     | Supported: "toast_js", "sweet_alert"
     */
-    'driver' => env('FLASH_MESSAGE', 'toast_js'),
+    'driver' => env('FLASH_MESSAGE', 'toast'),
 ];

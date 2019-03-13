@@ -79,5 +79,16 @@ interface FlashMessageContract
      * @copyright 2019 LUCY VN
      * @author Pencii Team <hoatq@lucy.ne.jp>
      */
-    public function important();
+    public function hide();
+
+    /**
+     * Flash an overlay modal
+     *
+     * @param string $message
+     * @param string $title
+     * @return mixed
+     * @copyright 2019 Inspire Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    public function overlay(string $message, $title = 'Notice');
 }
