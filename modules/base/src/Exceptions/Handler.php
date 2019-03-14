@@ -8,7 +8,8 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Session\TokenMismatchException;
 use Illuminate\Validation\ValidationException;
-use FrontendTheme;
+use ThemeFrontend;
+use ThemeBackend;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -42,7 +43,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $ex)
     {
-        if (config('app.debug') === false) {
+        if (!config('app.debug')) {
             if ($ex instanceof ModelNotFoundException) {
                 $ex = new NotFoundHttpException($ex->getMessage(), $ex);
             }
@@ -55,19 +56,21 @@ class Handler extends ExceptionHandler
                 switch ($ex->getStatusCode()) {
                     case 404:
                         if ($request->is(locate() . '/' . config('base.base.admin-prefix') . '/*')) {
-                            return response()->view('backend::errors.404', [], 404);
+                            ThemeBackend::set(config('theme.theme.active_backend'));
+                            return response()->view('errors.404', [], 404);
                         }
 
-                        FrontendTheme::set(config('theme.theme.active'));
+                        ThemeFrontend::set(config('theme.theme.active'));
                         return response()->view('errors.404', [], 404);
 
                     case 500:
                     case 503:
                         if ($request->is(locate() . '/' . config('base.base.admin-prefix') . '/*')) {
-                            return response()->view('backend::errors.500', [], 500);
+                            ThemeBackend::set(config('theme.theme.active_backend'));
+                            return response()->view('errors.500', [], 500);
                         }
 
-                        FrontendTheme::set(config('theme.theme.active'));
+                        ThemeFrontend::set(config('theme.theme.active'));
                         return response()->view('errors.500', [], 500);
                 }
             }
