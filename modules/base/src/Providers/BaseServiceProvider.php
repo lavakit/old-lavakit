@@ -44,7 +44,8 @@ class BaseServiceProvider extends ServiceProvider
      */
     protected $middleware = [
         'Base' => [
-            'localizationRedirect' => 'LocalizationMiddleware'
+            'localizationRedirect' => 'LocalizationMiddleware',
+            'SessionTimeout' => 'SessionTimeoutMiddleware',
         ]
     ];
 
