@@ -13,9 +13,6 @@ use Inspire\Notification\Services\FlashMessages\Toast\Message;
  */
 abstract class FlashMessageAbstract implements FlashMessageContract
 {
-    /** @var array $config */
-    protected $config = [];
-
     /**
      * @var \Illuminate\Support\Collection
      */
@@ -29,21 +26,13 @@ abstract class FlashMessageAbstract implements FlashMessageContract
      * @author Pencii Team <hoatq@lucy.ne.jp>
      */
     abstract public function clear();
-
+    
     /**
-     * Overrides configuration settings
-     *
-     * @param array $config
-     * @return $this
-     * @copyright 2019 Inspire Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * Creates a general flash message.
+     * @copyright 2019 LUCY VN
+     * @author Pencii Team <hoatq@lucy.ne.jp>
      */
-    public function configure(array $config = [])
-    {
-        $this->config = array_replace($this->config, $config);
-
-        return $this;
-    }
+    abstract public function message();
 
     /**
      * Creates a success level flash message
@@ -106,33 +95,6 @@ abstract class FlashMessageAbstract implements FlashMessageContract
         $this->updateLastMessage(["title" => $title]);
 
         return $this;
-    }
-
-    /**
-     * Creates a general flash message.
-     *
-     * @param string $message
-     * @param string $level
-     * @param string|null $title
-     * @return mixed
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
-     */
-    public function message(string $message = null, string $level = null, string $title = null)
-    {
-        $messages = [];
-
-        if (empty($message)) {
-            return $this->updateLastMessage(compact('level'));
-        }
-
-        if (!$message instanceof Message) {
-            $messages = new Message(compact('message', 'level', 'title'));
-        }
-
-        $this->messages->push($messages);
-
-        return $this->flash();
     }
 
     /**

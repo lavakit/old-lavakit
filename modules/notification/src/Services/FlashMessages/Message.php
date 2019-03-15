@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspire\Notification\Services\FlashMessages\Toast;
+namespace Inspire\Notification\Services\FlashMessages;
 
 /**
  * Class Message

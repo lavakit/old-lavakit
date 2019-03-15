@@ -3,7 +3,7 @@
 namespace Inspire\Notification\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Inspire\Notification\Services\FlashMessages\Contracts\FlashMessageContract;
+use Inspire\Notification\Services\FlashMessages\Contracts\FlashMessageManagerContract;
 
 /**
  * Class FlashMessageFacade
@@ -20,6 +20,6 @@ class FlashMessageFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return FlashMessageContract::class;
+        return FlashMessageManagerContract::class;
     }
 }
