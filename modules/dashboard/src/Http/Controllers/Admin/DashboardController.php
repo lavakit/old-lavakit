@@ -17,9 +17,7 @@ class DashboardController extends BaseAdminController
      */
 
     /** @var string */
-    protected $module = [
-        'tables', 'widgets', 'charts'
-    ];
+    protected $module = ['dashboard'];
 
     /**
      * DashboardController constructor.

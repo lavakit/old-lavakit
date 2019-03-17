@@ -26,9 +26,7 @@ let filesStylesheetModules = [
 
 /*Load file Js scss*/
 let filesJsModules = [
-    {module: 'dashboard', file: 'tables'},
-    {module: 'dashboard', file: 'widgets'},
-    {module: 'dashboard', file: 'charts'},
+    {module: 'dashboard', file: 'dashboard'},
     {module: 'user', file: 'auth'},
 ];
 
