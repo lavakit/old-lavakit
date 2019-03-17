@@ -3,6 +3,10 @@
 namespace Inspire\Notification\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Inspire\Base\Traits\CanPublishConfiguration;
+use Inspire\Base\Traits\CanRegisterFacadeAliases;
+use Inspire\Notification\Contracts\Messages\Message as MessageContract;
+use Inspire\Notification\Services\Messages\Message;
 
 /**
  * Class NotificationServiceProvider
@@ -12,6 +16,8 @@ use Illuminate\Support\ServiceProvider;
  */
 class NotificationServiceProvider extends ServiceProvider
 {
+    use CanPublishConfiguration;
+
     /**
      * Bootstrap the application services.
      *
@@ -45,8 +51,14 @@ class NotificationServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->publishConfig('notification', 'flash');
+
         //Load helpers
         $this->loadHelpers();
+
+        $this->app->singleton(MessageContract::class, function () {
+            return $this->app->make(Message::class);
+        });
     }
 
     protected function loadHelpers()
