@@ -51,7 +51,7 @@ class NotificationServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->publishConfig('notification', 'flash');
+        $this->publishConfig('notification', 'message');
 
         //Load helpers
         $this->loadHelpers();
