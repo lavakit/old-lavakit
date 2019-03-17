@@ -36,13 +36,6 @@ class DashboardController extends BaseAdminController
      */
     public function index()
     {
-        \FlashMessage::make('test')->message();
-        
-        echo'<pre>';
-        print_r(\Session::all());
-        echo'</pre>';
-        echo __CLASS__ . ' - ' . __METHOD__ . ' - ' . __LINE__;
-        die;
         return view('dashboard::index');
     }
 }

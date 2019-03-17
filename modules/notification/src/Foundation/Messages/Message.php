@@ -1,10 +1,10 @@
 <?php
 
-namespace Inspire\Notification\Services\FlashMessages;
+namespace Inspire\Notification\Foundation\Messages;
 
 /**
  * Class Message
- * @package Inspire\Notification\Services\FlashMessages\Toast
+ * @package Inspire\Notification\Services\Messages
  * @copyright 2019 Inspire Group
  * @author hoatq <tqhoa8th@gmail.com
  */
@@ -12,18 +12,21 @@ class Message implements \ArrayAccess
 {
     /**
      * Title of the flash message
+     *
      * @var string
      */
     public $title;
 
     /**
      * Content if the flash message
+     *
      * @var string
      */
     public $message;
 
     /**
-     * Level of the flash message
+     * The "level" of the notification (info, success, warning, error).
+     *
      * @var string
      */
     public $level;
@@ -32,7 +35,7 @@ class Message implements \ArrayAccess
      * Whether the message should auto-hide or not
      * @var bool
      */
-    public $hide = true;
+    public $autohide = true;
 
     /**
      *  Whether the message is an overlay
