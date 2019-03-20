@@ -9,10 +9,10 @@
 return [
     'offline' => env('OFFLINE', true),
     'javascript' => [
-        'jquery',
-        'popper',
-        'bootstrap',
-        'perfect-scrollbar',
+        //'jquery',
+        //'popper',
+        //'bootstrap',
+        //'perfect-scrollbar',
         'screenfull',
         //'datatables',
         //'datatables-bs4',
