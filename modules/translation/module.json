@@ -1,9 +1,9 @@
 {
     "alias": "translation",
-    "name": "Inspired translation",
+    "name": "Lavakit translation",
     "author": "hoatq",
     "description": "Translation",
-    "namespace": "Inspire\\Translation",
+    "namespace": "Lavakit\\Translation",
     "version": "1.0",
     "autoload": "psr-4",
     "enabled": true,

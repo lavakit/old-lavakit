@@ -1,14 +1,14 @@
 <?php
 
-namespace Inspire\Theme\Services\Breadcrumbs\Manager;
+namespace Lavakit\Theme\Services\Breadcrumbs\Manager;
 
-use Inspire\Theme\Services\Breadcrumbs\Exceptions\UnnamedRouteException;
+use Lavakit\Theme\Services\Breadcrumbs\Exceptions\UnnamedRouteException;
 use Illuminate\Routing\Router;
 
 /**
  * Class RouteCurrent
- * @package Inspire\Theme\Services\Breadcrumbs\Manager
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Theme\Services\Breadcrumbs\Manager
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class RouteCurrent
@@ -37,7 +37,7 @@ class RouteCurrent
     /**
      * @return array|null
      * @throws UnnamedRouteException
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function get()
@@ -71,7 +71,7 @@ class RouteCurrent
      *
      * @param $name
      * @param $params
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function set($name, $params): void
@@ -80,7 +80,7 @@ class RouteCurrent
     }
 
     /**
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function clear(): void

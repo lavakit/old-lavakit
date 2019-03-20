@@ -1,11 +1,11 @@
 <?php
 
-namespace Inspire\User\Services\Authentication\Users;
+namespace Lavakit\User\Services\Authentication\Users;
 
 /**
  * Class Logout
- * @package Inspire\User\Services\Authentication\Users
- * @copyright 2019 Inspire Group
+ * @package Lavakit\User\Services\Authentication\Users
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class Logout
@@ -15,7 +15,7 @@ class Logout
      *
      * @param array $messages
      * @return \Illuminate\Http\RedirectResponse
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function handler(array $messages = [])

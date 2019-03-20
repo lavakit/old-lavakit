@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Post\Repositories;
+namespace Lavakit\Post\Repositories;
 
-use Inspire\Base\Repositories\BaseRepository;
+use Lavakit\Base\Repositories\BaseRepository;
 
 /**
  * Interface PostRepository
- * @package Inspire\Post\Repositories
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Post\Repositories
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 interface PostRepository extends BaseRepository

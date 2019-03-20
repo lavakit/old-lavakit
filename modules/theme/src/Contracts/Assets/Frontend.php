@@ -1,11 +1,11 @@
 <?php
 
-namespace Inspire\Theme\Contracts\Assets;
+namespace Lavakit\Theme\Contracts\Assets;
 
 /**
  * Interface Frontend
- * @package Inspire\Theme\Contracts\Assets
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Theme\Contracts\Assets
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 interface Frontend extends AssetContract

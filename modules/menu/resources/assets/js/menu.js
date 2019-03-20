@@ -1,4 +1,4 @@
-var InspiredMenu = function () {
+var LavakitMenu = function () {
 
     return {
         init: function () {
@@ -12,5 +12,5 @@ var InspiredMenu = function () {
 };
 
 $(function () {
-    InspiredMenu.init();
+    LavakitMenu.init();
 });

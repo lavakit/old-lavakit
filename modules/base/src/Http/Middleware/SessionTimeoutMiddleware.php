@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspire\Base\Http\Middleware;
+namespace Lavakit\Base\Http\Middleware;
 
 use Closure;
 use Auth;
@@ -9,8 +9,8 @@ use Illuminate\Session\Store;
 
 /**
  * Class SessionTimeoutMiddleware
- * @package Inspire\Base\Http\Middleware
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Base\Http\Middleware
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class SessionTimeoutMiddleware

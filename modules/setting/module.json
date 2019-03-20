@@ -1,9 +1,9 @@
 {
     "alias": "setting",
-    "name": "Inspire setting",
+    "name": "Lavakit setting",
     "author": "hoatq",
     "description": "Setting",
-    "namespace": "Inspire\\Setting",
+    "namespace": "Lavakit\\Setting",
     "version": "1.0",
     "autoload": "psr-4",
     "enabled": true

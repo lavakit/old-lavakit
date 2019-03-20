@@ -1,20 +1,20 @@
 <?php
 
-namespace Inspire\User\Services\Authentication;
+namespace Lavakit\User\Services\Authentication;
 
 use Illuminate\Http\Request;
-use Inspire\User\Contracts\AuthenticationContract;
-use Inspire\User\Services\Authentication\Users\Confirm;
-use Inspire\User\Services\Authentication\Users\Forgot;
-use Inspire\User\Services\Authentication\Users\Login;
-use Inspire\User\Services\Authentication\Users\Logout;
-use Inspire\User\Services\Authentication\Users\Register;
-use Inspire\User\Services\Authentication\Users\Reset;
+use Lavakit\User\Contracts\AuthenticationContract;
+use Lavakit\User\Services\Authentication\Users\Confirm;
+use Lavakit\User\Services\Authentication\Users\Forgot;
+use Lavakit\User\Services\Authentication\Users\Login;
+use Lavakit\User\Services\Authentication\Users\Logout;
+use Lavakit\User\Services\Authentication\Users\Register;
+use Lavakit\User\Services\Authentication\Users\Reset;
 
 /**
  * Class AuthenticationService
- * @package Inspire\User\Services\Authentication
- * @copyright 2019 Inspire Group
+ * @package Lavakit\User\Services\Authentication
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class AuthenticationService implements AuthenticationContract
@@ -25,7 +25,7 @@ class AuthenticationService implements AuthenticationContract
      * @param Request $request
      * @return mixed
      * @throws \Illuminate\Validation\ValidationException
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function login(Request $request)
@@ -38,7 +38,7 @@ class AuthenticationService implements AuthenticationContract
      *
      * @param $request
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function register(Request $request)
@@ -49,7 +49,7 @@ class AuthenticationService implements AuthenticationContract
     /**
      * @param string $email
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function confirm(string $email = null)
@@ -62,7 +62,7 @@ class AuthenticationService implements AuthenticationContract
      *
      * @param Request $request
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function reset(Request $request)
@@ -75,7 +75,7 @@ class AuthenticationService implements AuthenticationContract
      *
      * @param Request $request
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function forgot(Request $request)
@@ -88,7 +88,7 @@ class AuthenticationService implements AuthenticationContract
      *
      * @param array $args
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function logout(array $args = [])
@@ -101,7 +101,7 @@ class AuthenticationService implements AuthenticationContract
      *
      * @param object $user
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function hasConfirmed(object $user): bool

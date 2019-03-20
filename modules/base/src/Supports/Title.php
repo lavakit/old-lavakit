@@ -1,11 +1,11 @@
 <?php
 
-namespace Inspire\Base\Supports;
+namespace Lavakit\Base\Supports;
 
 /**
  * Class Title
- * @package Inspire\Base\Supports
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Base\Supports
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class Title

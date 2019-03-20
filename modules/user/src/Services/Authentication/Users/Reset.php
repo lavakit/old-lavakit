@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspire\User\Services\Authentication\Users;
+namespace Lavakit\User\Services\Authentication\Users;
 
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
@@ -9,8 +9,8 @@ use Illuminate\Support\Str;
 
 /**
  * Class Reset
- * @package Inspire\User\Services\Authentication\Users
- * @copyright 2019 Inspire Group
+ * @package Lavakit\User\Services\Authentication\Users
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class Reset
@@ -20,7 +20,7 @@ class Reset
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function handler(Request $request)
@@ -47,7 +47,7 @@ class Reset
      *
      * @param $user
      * @param $password
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     protected function resetPassword($user, $password)
@@ -66,7 +66,7 @@ class Reset
      *
      * @param  string  $response
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      *
      * Override
@@ -84,7 +84,7 @@ class Reset
      * @param  \Illuminate\Http\Request  $request
      * @param  string  $response
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      *
      * Override

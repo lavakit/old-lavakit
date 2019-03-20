@@ -1,11 +1,11 @@
 <?php
 
-namespace Inspire\Theme\Contracts\Themes;
+namespace Lavakit\Theme\Contracts\Themes;
 
 /**
  * Interface ThemeContract
- * @package Inspire\Theme\Contracts
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Theme\Contracts
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 interface ThemeContract
@@ -14,7 +14,7 @@ interface ThemeContract
      * Set Current theme
      *
      * @param $theme
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function set($theme);
@@ -24,7 +24,7 @@ interface ThemeContract
      *
      * @param $theme
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function has($theme);
@@ -34,7 +34,7 @@ interface ThemeContract
      *
      * @param $name
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function getThemeInfo($name);
@@ -45,7 +45,7 @@ interface ThemeContract
      * @param null $theme
      * @param bool $collection
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function get($theme = null, $collection = false);
@@ -55,7 +55,7 @@ interface ThemeContract
      *
      * @param bool $collection
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function current($collection = false);
@@ -64,7 +64,7 @@ interface ThemeContract
      * Get all theme information
      *
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function all();
@@ -75,7 +75,7 @@ interface ThemeContract
      * @param $path
      * @param null $secure
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function assets($path, $secure = null);
@@ -85,7 +85,7 @@ interface ThemeContract
      *
      * @param $fallback
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function lang($fallback);

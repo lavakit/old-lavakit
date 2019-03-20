@@ -1,14 +1,14 @@
 <?php
 
-namespace Inspire\User\Repositories\Eloquent;
+namespace Lavakit\User\Repositories\Eloquent;
 
-use Inspire\Base\Repositories\Eloquent\BaseEloquentRepository;
-use Inspire\User\Repositories\Interfaces\UserRepository;
+use Lavakit\Base\Repositories\Eloquent\BaseEloquentRepository;
+use Lavakit\User\Repositories\Interfaces\UserRepository;
 
 /**
  * Class UserEloquentRepository
- * @package Inspire\User\Repositories\Eloquent
- * @copyright 2019 Inspire Group
+ * @package Lavakit\User\Repositories\Eloquent
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class UserEloquentRepository extends BaseEloquentRepository implements UserRepository

@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Setting\Http\Controllers\Admin;
+namespace Lavakit\Setting\Http\Controllers\Admin;
 
-use Inspire\Base\Http\Controllers\Admin\BaseAdminController;
+use Lavakit\Base\Http\Controllers\Admin\BaseAdminController;
 
 /**
  * Class SettingController
- * @package Inspire\Setting\Http\Controllers\Admin
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Setting\Http\Controllers\Admin
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class SettingController extends BaseAdminController

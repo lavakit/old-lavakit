@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Theme\Managers\Assets;
+namespace Lavakit\Theme\Managers\Assets;
 
-use Inspire\Theme\Contracts\Assets\Backend as BackendContract;
+use Lavakit\Theme\Contracts\Assets\Backend as BackendContract;
 
 /**
  * Class BackendAsset
- * @package Inspire\Theme\Managers
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Theme\Managers
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class BackendAsset extends AssetAbstract implements BackendContract
@@ -30,7 +30,7 @@ class BackendAsset extends AssetAbstract implements BackendContract
 
     /**
      * @return mixed|string
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com>
      */
     public function assetPath()

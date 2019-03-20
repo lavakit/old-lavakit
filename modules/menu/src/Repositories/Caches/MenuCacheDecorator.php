@@ -1,15 +1,15 @@
 <?php
 
-namespace Inspire\Menu\Repositories\Caches;
+namespace Lavakit\Menu\Repositories\Caches;
 
-use Inspire\Base\Repositories\Caches\CacheDecorator;
-use Inspire\Base\Services\Caches\CacheInterface;
-use Inspire\Menu\Repositories\MenuRepository;
+use Lavakit\Base\Repositories\Caches\CacheDecorator;
+use Lavakit\Base\Services\Caches\CacheInterface;
+use Lavakit\Menu\Repositories\MenuRepository;
 
 /**
  * Class MenuCacheDecorator
- * @package Inspire\Menu\Repositories\Caches
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Menu\Repositories\Caches
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class MenuCacheDecorator extends CacheDecorator implements MenuRepository

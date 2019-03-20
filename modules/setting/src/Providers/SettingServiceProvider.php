@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Setting\Providers;
+namespace Lavakit\Setting\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
 /**
  * Class SettingServiceProvider
- * @package Inspire\Setting\Providers
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Setting\Providers
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class SettingServiceProvider extends ServiceProvider

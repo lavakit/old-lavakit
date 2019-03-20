@@ -1,6 +1,6 @@
-var Inspired = Inspired || {};
+var Lavakit = Lavakit || {};
 
-Inspired.getLanguage = function () {
+Lavakit.getLanguage = function () {
     let lang = '/' + default_language;
 
     return lang;

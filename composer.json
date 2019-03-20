@@ -1,15 +1,15 @@
 {
-    "name": "inspire/lucky",
-    "description": "The Cms Inspire by Passiom on Laravel Framework",
+    "name": "Lavakit/Lavakit",
+    "description": "The Lavakit CMS",
     "keywords": [
-        "inspire",
-        "inspire cms",
-        "inspire lucky"
+        "Lavakit",
+        "Lavakit cms",
+        "Lavakit lucky"
     ],
     "homepage": "http://webnambo.com",
     "support": {
-        "issues": "https://github.com/inspiredby/lucky/issues",
-        "document": "http://inspire.readthedocs.io"
+        "issues": "https://github.com/lavakit/lavakit/issues",
+        "document": "http://lavakit.readthedocs.io"
     },
     "authors": [
         {
@@ -46,16 +46,16 @@
         ],
         "psr-4": {
             "App\\": "app/",
-            "Inspire\\Base\\": "modules/base/src",
-            "Inspire\\Post\\": "modules/post/src",
-            "Inspire\\Page\\": "modules/page/src",
-            "Inspire\\Dashboard\\": "modules/dashboard/src",
-            "Inspire\\User\\": "modules/user/src",
-            "Inspire\\Theme\\": "modules/theme/src",
-            "Inspire\\Menu\\": "modules/menu/src",
-            "Inspire\\Setting\\": "modules/setting/src",
-            "Inspire\\Translation\\": "modules/translation/src",
-            "Inspire\\Notification\\": "modules/notification/src"
+            "Lavakit\\Base\\": "modules/base/src",
+            "Lavakit\\Post\\": "modules/post/src",
+            "Lavakit\\Page\\": "modules/page/src",
+            "Lavakit\\Dashboard\\": "modules/dashboard/src",
+            "Lavakit\\User\\": "modules/user/src",
+            "Lavakit\\Theme\\": "modules/theme/src",
+            "Lavakit\\Menu\\": "modules/menu/src",
+            "Lavakit\\Setting\\": "modules/setting/src",
+            "Lavakit\\Translation\\": "modules/translation/src",
+            "Lavakit\\Notification\\": "modules/notification/src"
         }
     },
     "autoload-dev": {

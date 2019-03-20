@@ -1,15 +1,15 @@
 <?php
 
-namespace Inspire\Translation\Repositories\Caches;
+namespace Lavakit\Translation\Repositories\Caches;
 
-use Inspire\Base\Repositories\Caches\CacheDecorator;
-use Inspire\Base\Services\Caches\CacheInterface;
-use Inspire\Translation\Repositories\Interfaces\TranslationTranslationRepository;
+use Lavakit\Base\Repositories\Caches\CacheDecorator;
+use Lavakit\Base\Services\Caches\CacheInterface;
+use Lavakit\Translation\Repositories\Interfaces\TranslationTranslationRepository;
 
 /**
  * Class TranslationTranslationCacheDecorator
- * @package Inspire\Translation\Repositories\Caches
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Translation\Repositories\Caches
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class TranslationTranslationCacheDecorator extends CacheDecorator implements TranslationTranslationRepository

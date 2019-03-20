@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Post\Http\Controllers\Admin;
+namespace Lavakit\Post\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
 /**
  * Class PostController
- * @package Inspire\Post\Http\Controllers\Admin
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Post\Http\Controllers\Admin
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class PostController extends Controller

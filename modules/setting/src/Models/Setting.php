@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Setting\Models;
+namespace Lavakit\Setting\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Setting
- * @package Inspire\Setting\Models
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Setting\Models
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class Setting extends Model

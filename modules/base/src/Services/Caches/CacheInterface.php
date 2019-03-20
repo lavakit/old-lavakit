@@ -1,11 +1,11 @@
 <?php
 
-namespace Inspire\Base\Services\Caches;
+namespace Lavakit\Base\Services\Caches;
 
 /**
  * Interface CacheInterface
- * @package Inspire\Base\Services\Caches
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Base\Services\Caches
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 interface CacheInterface

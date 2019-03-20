@@ -1,14 +1,14 @@
 <?php
 
-namespace Inspire\Post\Models;
+namespace Lavakit\Post\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Inspire\Menu\Models\Menu;
+use Lavakit\Menu\Models\Menu;
 
 /**
  * Class Post
- * @package Inspire\Post\Models
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Post\Models
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class Post extends Model

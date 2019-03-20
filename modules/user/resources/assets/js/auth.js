@@ -1,4 +1,4 @@
-let InspiredAuth = function () {
+let LavakitdAuth = function () {
     return {
         init: function () {
 
@@ -7,5 +7,5 @@ let InspiredAuth = function () {
 }();
 
 $(function () {
-    InspiredAuth.init();
+    LavakitAuth.init();
 });

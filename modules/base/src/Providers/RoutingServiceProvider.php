@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspire\Base\Providers;
+namespace Lavakit\Base\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;
@@ -8,8 +8,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /**
  * Class RoutingServiceProvider
- * @package Inspire\Base\Providers
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Base\Providers
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 abstract class RoutingServiceProvider extends ServiceProvider

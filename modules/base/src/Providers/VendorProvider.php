@@ -1,18 +1,18 @@
 <?php
 
-namespace Inspire\Base\Providers;
+namespace Lavakit\Base\Providers;
 
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
-use Inspire\Base\Traits\CanRegisterFacadeAliases;
+use Lavakit\Base\Traits\CanRegisterFacadeAliases;
 use Collective\Html\HtmlServiceProvider;
 use Collective\Html\HtmlFacade;
 use Collective\Html\FormFacade;
 
 /**
  * Class VendorProvider
- * @package Inspire\Base\Providers
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Base\Providers
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class VendorProvider extends ServiceProvider

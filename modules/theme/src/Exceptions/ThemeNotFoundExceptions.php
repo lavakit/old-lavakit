@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Theme\Exceptions;
+namespace Lavakit\Theme\Exceptions;
 
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class ThemeNotFoundExceptions
- * @package Inspire\Theme\Exceptions
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Theme\Exceptions
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class ThemeNotFoundExceptions extends NotFoundHttpException

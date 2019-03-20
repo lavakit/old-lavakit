@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Menu\Providers;
+namespace Lavakit\Menu\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
 /**
  * Class MenuServiceProvider
- * @package Inspire\Menu\Providers
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Menu\Providers
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class MenuServiceProvider extends ServiceProvider

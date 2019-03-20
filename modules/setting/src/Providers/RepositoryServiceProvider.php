@@ -1,23 +1,23 @@
 <?php
 
-namespace Inspire\Setting\Providers;
+namespace Lavakit\Setting\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Inspire\Base\Services\Caches\Cache;
-use Inspire\Setting\Models\Setting;
-use Inspire\Setting\Repositories\Caches\SettingCacheDecorator;
-use Inspire\Setting\Repositories\Eloquent\SettingEloquentRepository;
-use Inspire\Setting\Repositories\SettingRepository;
+use Lavakit\Base\Services\Caches\Cache;
+use Lavakit\Setting\Models\Setting;
+use Lavakit\Setting\Repositories\Caches\SettingCacheDecorator;
+use Lavakit\Setting\Repositories\Eloquent\SettingEloquentRepository;
+use Lavakit\Setting\Repositories\SettingRepository;
 
 /**
  * Class RepositoryServiceProvider
- * @package Inspire\Setting\Providers
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Setting\Providers
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class RepositoryServiceProvider extends ServiceProvider
 {
-    protected $module = 'Inspire\Setting';
+    protected $module = 'Lavakit\Setting';
 
     /**
      * Register the application services.
