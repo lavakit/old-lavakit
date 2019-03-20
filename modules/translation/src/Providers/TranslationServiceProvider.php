@@ -1,14 +1,14 @@
 <?php
 
-namespace Inspire\Translation\Providers;
+namespace Lavakit\Translation\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Inspire\Base\Traits\CanPublishConfiguration;
+use Lavakit\Base\Traits\CanPublishConfiguration;
 
 /**
  * Class TranslationServiceProvider
- * @package Inspire\Translation\Providers
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Translation\Providers
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class TranslationServiceProvider extends ServiceProvider

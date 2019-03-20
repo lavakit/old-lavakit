@@ -1,14 +1,14 @@
 <?php
 
-namespace Inspire\Base\Facades;
+namespace Lavakit\Base\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Inspire\Base\Services\Emails\EmailHandler;
+use Lavakit\Base\Services\Emails\EmailHandler;
 
 /**
  * Class EmailFacade
- * @package Inspire\Base\Facades
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Base\Facades
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class EmailFacade extends Facade

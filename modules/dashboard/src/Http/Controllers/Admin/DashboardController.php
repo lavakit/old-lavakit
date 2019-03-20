@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Dashboard\Http\Controllers\Admin;
+namespace Lavakit\Dashboard\Http\Controllers\Admin;
 
-use Inspire\Base\Http\Controllers\Admin\BaseAdminController;
+use Lavakit\Base\Http\Controllers\Admin\BaseAdminController;
 
 /**
  * Class DashboardController
- * @package Inspire\Dashboard\Http\Controllers\Admin
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Dashboard\Http\Controllers\Admin
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class DashboardController extends BaseAdminController
@@ -29,7 +29,7 @@ class DashboardController extends BaseAdminController
     
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function index()

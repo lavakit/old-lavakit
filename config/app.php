@@ -168,9 +168,9 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         /*
-         * LUCKY SERVICES
+         * LAVAKIT SERVICES
          */
-        Inspire\Base\Providers\BaseServiceProvider::class,
+        Lavakit\Base\Providers\BaseServiceProvider::class,
     ],
 
     /*

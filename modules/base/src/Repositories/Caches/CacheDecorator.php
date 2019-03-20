@@ -1,16 +1,16 @@
 <?php
 
-namespace Inspire\Base\Repositories\Caches;
+namespace Lavakit\Base\Repositories\Caches;
 
-use Inspire\Base\Repositories\BaseRepository;
+use Lavakit\Base\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Exception;
 
 /**
  * Class CacheDecorator
- * @package Inspire\Base\Repositories\Caches
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Base\Repositories\Caches
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 abstract class CacheDecorator implements BaseRepository

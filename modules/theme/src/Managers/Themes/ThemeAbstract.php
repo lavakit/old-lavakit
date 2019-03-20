@@ -1,19 +1,19 @@
 <?php
 
-namespace Inspire\Theme\Managers\Themes;
+namespace Lavakit\Theme\Managers\Themes;
 
 use Illuminate\Config\Repository;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Translation\Translator;
 use Illuminate\View\ViewFinderInterface;
 use Noodlehaus\Config;
-use Inspire\Theme\Contracts\Themes\ThemeContract;
-use Inspire\Theme\Exceptions\ThemeNotFoundExceptions;
+use Lavakit\Theme\Contracts\Themes\ThemeContract;
+use Lavakit\Theme\Exceptions\ThemeNotFoundExceptions;
 
 /**
  * Class ThemeAbstract
- * @package Inspire\Theme\Managers
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Theme\Managers
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 abstract class ThemeAbstract implements ThemeContract
@@ -71,7 +71,7 @@ abstract class ThemeAbstract implements ThemeContract
      * Set Current theme
      *
      * @param $theme
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function set($theme)
@@ -89,7 +89,7 @@ abstract class ThemeAbstract implements ThemeContract
      *
      * @param $theme
      * @return bool
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com>
      */
     public function has($theme)
@@ -102,7 +102,7 @@ abstract class ThemeAbstract implements ThemeContract
      *
      * @param $themeName
      * @return null
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com>
      */
     public function getThemeInfo($themeName)
@@ -116,7 +116,7 @@ abstract class ThemeAbstract implements ThemeContract
      * @param null $theme
      * @param bool $collection
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function get($theme = null, $collection = false)
@@ -133,7 +133,7 @@ abstract class ThemeAbstract implements ThemeContract
      *
      * @param bool $collection
      * @return mixed|null|string
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function current($collection = false)
@@ -145,7 +145,7 @@ abstract class ThemeAbstract implements ThemeContract
      * Get all theme information
      *
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function all()
@@ -158,7 +158,7 @@ abstract class ThemeAbstract implements ThemeContract
      *
      * @param $path
      * @param null $secure
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function assets($path, $secure = null)
@@ -201,7 +201,7 @@ abstract class ThemeAbstract implements ThemeContract
      *
      * @param $fallback
      * @return array|Translator|mixed|null|string
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function lang($fallback)
@@ -228,7 +228,7 @@ abstract class ThemeAbstract implements ThemeContract
      * Scan for all available themes
      *
      * @return void
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com>
      */
     protected function scanThemes()
@@ -257,7 +257,7 @@ abstract class ThemeAbstract implements ThemeContract
      *
      * @param string $theme
      * @return void
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com>
      */
     protected function loadTheme($theme)

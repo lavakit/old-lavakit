@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Notification\Services\Messages;
+namespace Lavakit\Notification\Services\Messages;
 
-use Inspire\Notification\Foundation\Messages\MessageAbstract;
+use Lavakit\Notification\Foundation\Messages\MessageAbstract;
 
 /**
  * Class Message
- * @package Inspire\Notification\Services\Messages
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Notification\Services\Messages
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class Message extends MessageAbstract
@@ -34,7 +34,7 @@ class Message extends MessageAbstract
      * Flash all messages to the session
      *
      * @return $this
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     protected function flash()
@@ -49,7 +49,7 @@ class Message extends MessageAbstract
      *
      * @param array $overrides
      * @return $this
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     protected function updateLastMessage(array $overrides = [])

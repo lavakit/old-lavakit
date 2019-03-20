@@ -1,16 +1,16 @@
 <?php
 
-namespace Inspire\Notification\Foundation\Messages;
+namespace Lavakit\Notification\Foundation\Messages;
 
 use Illuminate\Session\Store;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Traits\Macroable;
-use Inspire\Notification\Contracts\Messages\Message as MessageContract;
+use Lavakit\Notification\Contracts\Messages\Message as MessageContract;
 
 /**
  * Class MessageAbstract
- * @package Inspire\Notification\Foundation\Messages
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Notification\Foundation\Messages
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 abstract class MessageAbstract implements MessageContract
@@ -156,7 +156,7 @@ abstract class MessageAbstract implements MessageContract
     /**
      * Flash all messages to the session
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     abstract protected function flash();
@@ -166,7 +166,7 @@ abstract class MessageAbstract implements MessageContract
      *
      * @param array $overrides
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     abstract protected function updateLastMessage(array $overrides = []);

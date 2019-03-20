@@ -1,14 +1,14 @@
 <?php
 
-namespace Inspire\Post\Repositories\Eloquent;
+namespace Lavakit\Post\Repositories\Eloquent;
 
-use Inspire\Base\Repositories\Eloquent\BaseEloquentRepository;
-use Inspire\Post\Repositories\PostRepository;
+use Lavakit\Base\Repositories\Eloquent\BaseEloquentRepository;
+use Lavakit\Post\Repositories\PostRepository;
 
 /**
  * Class PostEloquentRepository
- * @package Inspire\Post\Repositories\Eloquent
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Post\Repositories\Eloquent
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class PostEloquentRepository extends BaseEloquentRepository implements PostRepository

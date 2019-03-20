@@ -1,15 +1,15 @@
 <?php
 
-namespace Inspire\Base\Repositories\Eloquent;
+namespace Lavakit\Base\Repositories\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-use Inspire\Base\Repositories\BaseRepository;
+use Lavakit\Base\Repositories\BaseRepository;
 
 /**
  * Class BaseEloquentRepository
- * @package Inspire\Base\Repositories\Eloquent
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Base\Repositories\Eloquent
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 abstract class BaseEloquentRepository implements BaseRepository

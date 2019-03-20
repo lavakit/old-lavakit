@@ -1,14 +1,14 @@
 <?php
 
-namespace Inspire\User\Services\Authentication\Users;
+namespace Lavakit\User\Services\Authentication\Users;
 
-use Inspire\User\Repositories\Interfaces\UserRepository;
+use Lavakit\User\Repositories\Interfaces\UserRepository;
 use Crypt;
 
 /**
  * Class Confirm
- * @package Inspire\User\Services\Authentication\Users
- * @copyright 2019 Inspire Group
+ * @package Lavakit\User\Services\Authentication\Users
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class Confirm
@@ -28,7 +28,7 @@ class Confirm
     /**
      * @param string|null $token
      * @return \Illuminate\Http\RedirectResponse
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function handler(string $token = null)

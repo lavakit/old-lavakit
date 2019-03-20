@@ -1,9 +1,9 @@
 <?php
 
-namespace Inspire\Theme\Tests\Asset;
+namespace Lavakit\Theme\Tests\Asset;
 
-use Inspire\Base\Tests\BaseTestCase;
-use Inspire\Theme\Managers\AssetManager;
+use Lavakit\Base\Tests\BaseTestCase;
+use Lavakit\Theme\Managers\AssetManager;
 
 class AssetManagerTest extends BaseTestCase
 {

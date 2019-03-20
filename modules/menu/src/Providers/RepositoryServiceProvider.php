@@ -1,23 +1,23 @@
 <?php
 
-namespace Inspire\Menu\Providers;
+namespace Lavakit\Menu\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Inspire\Base\Services\Caches\Cache;
-use Inspire\Menu\Models\Menu;
-use Inspire\Menu\Repositories\Caches\MenuCacheDecorator;
-use Inspire\Menu\Repositories\Eloquent\MenuEloquentRepository;
-use Inspire\Menu\Repositories\MenuRepository;
+use Lavakit\Base\Services\Caches\Cache;
+use Lavakit\Menu\Models\Menu;
+use Lavakit\Menu\Repositories\Caches\MenuCacheDecorator;
+use Lavakit\Menu\Repositories\Eloquent\MenuEloquentRepository;
+use Lavakit\Menu\Repositories\MenuRepository;
 
 /**
  * Class RepositoryServiceProvider
- * @package Inspire\Menu\Providers
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Menu\Providers
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class RepositoryServiceProvider extends ServiceProvider
 {
-    protected $module = 'Inspire\Menu';
+    protected $module = 'Lavakit\Menu';
 
     /**
      * Bootstrap the application services.

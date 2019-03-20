@@ -1,14 +1,14 @@
 <?php
 
-namespace Inspire\Menu\Models;
+namespace Lavakit\Menu\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Menu
- * @package Inspire\Menu\Models
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Menu\Models
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class Menu extends Model

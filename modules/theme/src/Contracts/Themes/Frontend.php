@@ -1,11 +1,11 @@
 <?php
 
-namespace Inspire\Theme\Contracts\Themes;
+namespace Lavakit\Theme\Contracts\Themes;
 
 /**
  * Interface Frontend
- * @package Inspire\Theme\Contracts\Themes
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Theme\Contracts\Themes
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 interface Frontend extends ThemeContract

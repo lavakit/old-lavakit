@@ -1,21 +1,21 @@
 <?php
 
-namespace Inspire\Theme\Providers;
+namespace Lavakit\Theme\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Inspire\Base\Traits\CanRegisterFacadeAliases;
-use Inspire\Theme\Contracts\Assets\Frontend;
-use Inspire\Theme\Contracts\Assets\Backend as BackendAssetContract;
-use Inspire\Theme\Contracts\Assets\Frontend as FrontendAssetContract;
-use Inspire\Theme\Facades\AssetBackendFacade;
-use Inspire\Theme\Facades\AssetFrontendFacade;
-use Inspire\Theme\Managers\Assets\BackendAsset;
-use Inspire\Theme\Managers\Assets\FrontendAsset;
+use Lavakit\Base\Traits\CanRegisterFacadeAliases;
+use Lavakit\Theme\Contracts\Assets\Frontend;
+use Lavakit\Theme\Contracts\Assets\Backend as BackendAssetContract;
+use Lavakit\Theme\Contracts\Assets\Frontend as FrontendAssetContract;
+use Lavakit\Theme\Facades\AssetBackendFacade;
+use Lavakit\Theme\Facades\AssetFrontendFacade;
+use Lavakit\Theme\Managers\Assets\BackendAsset;
+use Lavakit\Theme\Managers\Assets\FrontendAsset;
 
 /**
  * Class AssetServiceProvider
- * @package Inspire\Theme\Providers
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Theme\Providers
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class AssetServiceProvider extends ServiceProvider

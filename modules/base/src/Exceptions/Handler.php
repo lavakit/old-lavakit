@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspire\Base\Exceptions;
+namespace Lavakit\Base\Exceptions;
 
 use App\Exceptions\Handler as ExceptionHandler;
 use Exception;
@@ -15,8 +15,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class Handler
- * @package Inspire\Base\Exceptions
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Base\Exceptions
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class Handler extends ExceptionHandler

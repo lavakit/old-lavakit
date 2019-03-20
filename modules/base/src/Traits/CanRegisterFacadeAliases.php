@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Base\Traits;
+namespace Lavakit\Base\Traits;
 
 use Illuminate\Foundation\AliasLoader;
 
 /**
  * Trait CanRegisterFacadeAliases
- * @package Inspire\Base\Traits
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Base\Traits
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 trait CanRegisterFacadeAliases

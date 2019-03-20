@@ -1,6 +1,6 @@
 <?php
 
-use Inspire\Base\Facades\TitleFacade;
+use Lavakit\Base\Facades\TitleFacade;
 
 if (!function_exists('locate')) {
     /**
@@ -24,7 +24,7 @@ if (!function_exists('locate')) {
 
 if (!function_exists('title')) {
     /**
-     * @return \Inspire\Base\Supports\Title
+     * @return \Lavakit\Base\Supports\Title
      */
     function title()
     {
@@ -35,7 +35,8 @@ if (!function_exists('title')) {
 if (!function_exists('crafted')) {
     /**
      * @return \Illuminate\Config\Repository|mixed
-     * @copyright 2018 Inspire Group
+
+     * @copyright 2018 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com>
      */
     function crafted()

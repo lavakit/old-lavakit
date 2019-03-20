@@ -1,8 +1,8 @@
 <?php
 
-namespace Inspire\Base\Tests\Config;
+namespace Lavakit\Base\Tests\Config;
 
-use Inspire\Base\Tests\BaseTestCase;
+use Lavakit\Base\Tests\BaseTestCase;
 
 class CanPublishConfigurationTest extends BaseTestCase
 {

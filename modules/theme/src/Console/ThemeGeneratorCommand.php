@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspire\Theme\Console;
+namespace Lavakit\Theme\Console;
 
 use Illuminate\Config\Repository;
 use Illuminate\Console\Command;
@@ -8,8 +8,8 @@ use Illuminate\Filesystem\Filesystem as File;
 
 /**
  * Class ThemeGeneratorCommand
- * @package Inspire\Theme\Console
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Theme\Console
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class ThemeGeneratorCommand extends Command

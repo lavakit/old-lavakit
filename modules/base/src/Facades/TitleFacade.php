@@ -1,14 +1,14 @@
 <?php
 
-namespace Inspire\Base\Facades;
+namespace Lavakit\Base\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Inspire\Base\Supports\Title;
+use Lavakit\Base\Supports\Title;
 
 /**
  * Class TitleFacade
- * @package Inspire\Base\Facades
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Base\Facades
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class TitleFacade extends Facade

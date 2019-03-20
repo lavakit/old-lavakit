@@ -1,18 +1,18 @@
 <?php
 
-namespace Inspire\Post\Providers;
+namespace Lavakit\Post\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Inspire\Base\Services\Caches\Cache;
-use Inspire\Post\Models\Post;
-use Inspire\Post\Repositories\Caches\PostCacheDecorator;
-use Inspire\Post\Repositories\Eloquent\PostEloquentRepository;
-use Inspire\Post\Repositories\PostRepository;
+use Lavakit\Base\Services\Caches\Cache;
+use Lavakit\Post\Models\Post;
+use Lavakit\Post\Repositories\Caches\PostCacheDecorator;
+use Lavakit\Post\Repositories\Eloquent\PostEloquentRepository;
+use Lavakit\Post\Repositories\PostRepository;
 
 /**
  * Class RepositoryServiceProvider
- * @package Inspire\Post\Providers
- * @copyright 2018 Inspire Team
+ * @package Lavakit\Post\Providers
+ * @copyright 2018 Lavakit Team
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class RepositoryServiceProvider extends ServiceProvider
@@ -20,7 +20,7 @@ class RepositoryServiceProvider extends ServiceProvider
     /**
      * @var string
      */
-    protected $module = 'Inspire\Post';
+    protected $module = 'Lavakit\Post';
 
     /**
      * Bootstrap the application services

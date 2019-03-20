@@ -1,9 +1,9 @@
 <?php
 
-namespace Inspire\Theme\Services\Breadcrumbs\Manager;
+namespace Lavakit\Theme\Services\Breadcrumbs\Manager;
 
-use Inspire\Theme\Services\Breadcrumbs\Exceptions\InvalidBreadcrumbException;
-use Inspire\Theme\Services\Breadcrumbs\Foundation\Generator as BreadcrumbsGeneratorContract;
+use Lavakit\Theme\Services\Breadcrumbs\Exceptions\InvalidBreadcrumbException;
+use Lavakit\Theme\Services\Breadcrumbs\Foundation\Generator as BreadcrumbsGeneratorContract;
 use Illuminate\Support\Collection;
 
 class BreadcrumbsGenerator implements BreadcrumbsGeneratorContract

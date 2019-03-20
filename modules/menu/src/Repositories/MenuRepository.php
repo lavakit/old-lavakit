@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Menu\Repositories;
+namespace Lavakit\Menu\Repositories;
 
-use Inspire\Base\Repositories\BaseRepository;
+use Lavakit\Base\Repositories\BaseRepository;
 
 /**
  * Interface MenuRepository
- * @package Inspire\Menu\Repositories
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Menu\Repositories
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 interface MenuRepository extends BaseRepository

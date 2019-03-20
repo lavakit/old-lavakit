@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Menu\Http\Controllers\Admin;
+namespace Lavakit\Menu\Http\Controllers\Admin;
 
-use Inspire\Base\Http\Controllers\Admin\BaseAdminController;
+use Lavakit\Base\Http\Controllers\Admin\BaseAdminController;
 
 /**
  * Class MenuController
- * @package Inspire\Menu\Http\Controllers\Admin
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Menu\Http\Controllers\Admin
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class MenuController extends BaseAdminController

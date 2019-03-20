@@ -1,15 +1,15 @@
 <?php
 
-namespace Inspire\Theme\Providers;
+namespace Lavakit\Theme\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Inspire\Theme\Composers\AssetBackendViewComposer;
-use Inspire\Theme\Composers\AssetFrontendViewComposer;
+use Lavakit\Theme\Composers\AssetBackendViewComposer;
+use Lavakit\Theme\Composers\AssetFrontendViewComposer;
 
 /**
  * Class ComposerServiceProvider
- * @package Inspire\Theme\Providers
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Theme\Providers
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class ComposerServiceProvider extends ServiceProvider

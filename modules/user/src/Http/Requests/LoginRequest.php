@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\User\Http\Requests;
+namespace Lavakit\User\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * Class LoginRequest
- * @package Inspire\User\Http\Requests
- * @copyright 2019 Inspire Group
+ * @package Lavakit\User\Http\Requests
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class LoginRequest extends FormRequest

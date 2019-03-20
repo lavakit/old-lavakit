@@ -1,11 +1,11 @@
 <?php
 
-namespace Inspire\Theme\Services\Breadcrumbs\Foundation;
+namespace Lavakit\Theme\Services\Breadcrumbs\Foundation;
 
 /**
  * Interface Breadcrumbs
- * @package Inspire\Theme\Services\Breadcrumbs\Foundation
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Theme\Services\Breadcrumbs\Foundation
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 interface Breadcrumbs
@@ -49,7 +49,7 @@ interface Breadcrumbs
      *
      * @param $view
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function setView(string $view);

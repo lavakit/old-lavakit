@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Base\Services\Caches;
+namespace Lavakit\Base\Services\Caches;
 
 use Illuminate\Cache\CacheManager;
 
 /**
  * Class Cache
- * @package Inspire\Base\Services\Caches
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Base\Services\Caches
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class Cache implements CacheInterface

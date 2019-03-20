@@ -1,17 +1,17 @@
 <?php
 
-namespace Inspire\Notification\Providers;
+namespace Lavakit\Notification\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Inspire\Base\Traits\CanPublishConfiguration;
-use Inspire\Base\Traits\CanRegisterFacadeAliases;
-use Inspire\Notification\Contracts\Messages\Message as MessageContract;
-use Inspire\Notification\Services\Messages\Message;
+use Lavakit\Base\Traits\CanPublishConfiguration;
+use Lavakit\Base\Traits\CanRegisterFacadeAliases;
+use Lavakit\Notification\Contracts\Messages\Message as MessageContract;
+use Lavakit\Notification\Services\Messages\Message;
 
 /**
  * Class NotificationServiceProvider
- * @package Inspire\Notification\Providers
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Notification\Providers
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class NotificationServiceProvider extends ServiceProvider

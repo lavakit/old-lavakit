@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\User\Repositories\Interfaces;
+namespace Lavakit\User\Repositories\Interfaces;
 
-use Inspire\Base\Repositories\BaseRepository;
+use Lavakit\Base\Repositories\BaseRepository;
 
 /**
  * Interface UserRepository
- * @package Inspire\User\Repositories\Interfaces
- * @copyright 2019 Inspire Group
+ * @package Lavakit\User\Repositories\Interfaces
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 interface UserRepository extends BaseRepository

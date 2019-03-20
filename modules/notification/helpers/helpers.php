@@ -4,12 +4,12 @@ if (!function_exists('flash')) {
     /**
      * Initialize for a flash message
      *
-     * @return \Inspire\Notification\Services\Messages\Message
-     * @copyright 2019 Inspire Group
+     * @return \Lavakit\Notification\Services\Messages\Message
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     function flash()
     {
-        return \Inspire\Notification\Facades\MessageFacade::getFacadeRoot();
+        return \Lavakit\Notification\Facades\MessageFacade::getFacadeRoot();
     }
 }

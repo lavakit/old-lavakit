@@ -1,16 +1,16 @@
 <?php
 
-namespace Inspire\User\Providers;
+namespace Lavakit\User\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Inspire\Base\Traits\CanPublishConfiguration;
-use Inspire\User\Contracts\AuthenticationContract;
-use Inspire\User\Services\Authentication\AuthenticationService;
+use Lavakit\Base\Traits\CanPublishConfiguration;
+use Lavakit\User\Contracts\AuthenticationContract;
+use Lavakit\User\Services\Authentication\AuthenticationService;
 
 /**
  * Class UserServiceProvider
- * @package Inspire\User\Providers
- * @copyright 2018 Inspire Group
+ * @package Lavakit\User\Providers
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class UserServiceProvider extends ServiceProvider

@@ -1,14 +1,14 @@
 <?php
 
-namespace Inspire\Notification\Services\Messages;
+namespace Lavakit\Notification\Services\Messages;
 
 /**
  * Class OverlayMessage
- * @package Inspire\Notification\Services\Messages
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Notification\Services\Messages
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
-class OverlayMessage extends \Inspire\Notification\Foundation\Messages\Message
+class OverlayMessage extends \Lavakit\Notification\Foundation\Messages\Message
 {
     /**
      * The title of the message.

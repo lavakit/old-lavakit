@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspire\Base\Services\Emails;
+namespace Lavakit\Base\Services\Emails;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -8,8 +8,8 @@ use Illuminate\Queue\SerializesModels;
 
 /**
  * Class EmailAbstract
- * @package Inspire\Base\Services\Emails
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Base\Services\Emails
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class EmailAbstract extends Mailable
@@ -43,7 +43,7 @@ class EmailAbstract extends Mailable
      * Build the message.
      *
      * @return $this
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function build()

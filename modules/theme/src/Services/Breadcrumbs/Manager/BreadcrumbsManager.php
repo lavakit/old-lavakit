@@ -1,21 +1,21 @@
 <?php
 
-namespace Inspire\Theme\Services\Breadcrumbs\Manager;
+namespace Lavakit\Theme\Services\Breadcrumbs\Manager;
 
 use Illuminate\Routing\Router;
 use Illuminate\View\Factory as ViewFactory;
-use Inspire\Theme\Services\Breadcrumbs\Exceptions\DuplicateBreadcrumbException;
-use Inspire\Theme\Services\Breadcrumbs\Exceptions\InvalidBreadcrumbException;
-use Inspire\Theme\Services\Breadcrumbs\Exceptions\UnnamedRouteException;
-use Inspire\Theme\Services\Breadcrumbs\Exceptions\ViewNotSetException;
-use Inspire\Theme\Services\Breadcrumbs\Foundation\Breadcrumbs as BreadcrumbsContract;
+use Lavakit\Theme\Services\Breadcrumbs\Exceptions\DuplicateBreadcrumbException;
+use Lavakit\Theme\Services\Breadcrumbs\Exceptions\InvalidBreadcrumbException;
+use Lavakit\Theme\Services\Breadcrumbs\Exceptions\UnnamedRouteException;
+use Lavakit\Theme\Services\Breadcrumbs\Exceptions\ViewNotSetException;
+use Lavakit\Theme\Services\Breadcrumbs\Foundation\Breadcrumbs as BreadcrumbsContract;
 use Illuminate\Support\Collection;
 use Illuminate\Support\HtmlString;
 
 /**
  * Class BreadcrumbsManager
- * @package Inspire\Theme\Services\Breadcrumbs\Manager
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Theme\Services\Breadcrumbs\Manager
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class BreadcrumbsManager implements BreadcrumbsContract
@@ -151,7 +151,7 @@ class BreadcrumbsManager implements BreadcrumbsContract
     public function render(string $name = null, ...$params)
     {
         if (!$this->viewFactory->exists($this->getView())) {
-            throw new ViewNotSetException('Breadcrumbs view not specified (check config/Inspired/breadcrumbs.php)');
+            throw new ViewNotSetException('Breadcrumbs view not specified (check config/Lavakit/breadcrumbs.php)');
         }
 
         return $this->view($this->getView(), $name, ...$params);
@@ -163,7 +163,7 @@ class BreadcrumbsManager implements BreadcrumbsContract
      * @return mixed
      * @throws InvalidBreadcrumbException
      * @throws UnnamedRouteException
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function current()
@@ -175,7 +175,7 @@ class BreadcrumbsManager implements BreadcrumbsContract
      * Set the view of breadcrumbs
      *
      * @param $view
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function setView(string $view = null)
@@ -191,7 +191,7 @@ class BreadcrumbsManager implements BreadcrumbsContract
 
     /**
      * @return \Illuminate\Config\Repository|mixed|string
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function getView()
@@ -235,7 +235,7 @@ class BreadcrumbsManager implements BreadcrumbsContract
     /**
      * Clear the previously set route name and parameters to use when calling render()
      *
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function clearCurrentRoute(): void

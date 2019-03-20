@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Base\Events;
+namespace Lavakit\Base\Events;
 
 use Illuminate\Queue\SerializesModels;
 
 /**
  * Class SendMailEvent
- * @package Inspire\Base\Events
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Base\Events
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class SendMailEvent
@@ -40,7 +40,7 @@ class SendMailEvent
      * Get the channels the event should be broadcast on
      *
      * @return array
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function broadcastOn()

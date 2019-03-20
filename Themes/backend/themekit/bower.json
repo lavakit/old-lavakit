@@ -10,7 +10,7 @@
     "Theme",
     "admin"
   ],
-  "homepage": "https://github.com/inspiredby/lucky",
+  "homepage": "https://github.com/lavakit/docs",
   "private": true,
   "ignore": [
     "**/.*",

@@ -1,11 +1,11 @@
 <?php
 
-namespace Inspire\Base\Traits;
+namespace Lavakit\Base\Traits;
 
 /**
  * Trait CanPublishConfiguration
- * @package Inspire\Base\Traits
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Base\Traits
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 trait CanPublishConfiguration
@@ -26,7 +26,7 @@ trait CanPublishConfiguration
         $this->mergeConfigFrom($this->getModuleConfigFilePath($module, $fileName), strtolower("$module.$fileName"));
 
         if (app()->runningInConsole()) {
-            $pathConfig = strtolower("inspire/$module/$fileName") . '.php';
+            $pathConfig = strtolower("Lavakit/$module/$fileName") . '.php';
             $this->publishes([
                 $this->getModuleConfigFilePath($module, $fileName) => config_path($pathConfig)
             ], 'config');

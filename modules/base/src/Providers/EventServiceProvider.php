@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Base\Providers;
+namespace Lavakit\Base\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 /**
  * Class EventServiceProvider
- * @package Inspire\Base\Providers
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Base\Providers
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class EventServiceProvider extends ServiceProvider
@@ -18,8 +18,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'Inspire\Base\Events\SendMailEvent' => [
-            'Inspire\Base\Listeners\SendMailListener'
+        'Lavakit\Base\Events\SendMailEvent' => [
+            'Lavakit\Base\Listeners\SendMailListener'
         ],
     ];
 }

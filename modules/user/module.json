@@ -1,9 +1,9 @@
 {
     "alias": "user",
-    "name": "Inspire user",
+    "name": "Lavakit user",
     "author": "hoatq",
     "description": "User",
-    "namespace": "Inspire\\User",
+    "namespace": "Lavakit\\User",
     "version": "1.0",
     "autoload": "psr-4"
 }

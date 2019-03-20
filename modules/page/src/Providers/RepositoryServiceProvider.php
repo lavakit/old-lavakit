@@ -1,16 +1,16 @@
-<?php namespace Inspire\Page\Providers;
+<?php namespace Lavakit\Page\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
 /**
  * Class RepositoryServiceProvider
- * @package Inspire\Page\Providers
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Page\Providers
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class RepositoryServiceProvider extends ServiceProvider
 {
-    protected $module = 'Inspire\Page';
+    protected $module = 'Lavakit\Page';
 
     /**
      * Bootstrap the application services.

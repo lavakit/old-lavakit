@@ -1,15 +1,15 @@
 <?php
 
-namespace Inspire\Setting\Repositories\Caches;
+namespace Lavakit\Setting\Repositories\Caches;
 
-use Inspire\Base\Repositories\Caches\CacheDecorator;
-use Inspire\Base\Services\Caches\CacheInterface;
-use Inspire\Setting\Repositories\SettingRepository;
+use Lavakit\Base\Repositories\Caches\CacheDecorator;
+use Lavakit\Base\Services\Caches\CacheInterface;
+use Lavakit\Setting\Repositories\SettingRepository;
 
 /**
  * Class SettingCacheDecorator
- * @package Inspire\Setting\Repositories\Caches
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Setting\Repositories\Caches
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class SettingCacheDecorator extends CacheDecorator implements SettingRepository

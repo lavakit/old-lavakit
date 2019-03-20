@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Theme\Console;
+namespace Lavakit\Theme\Console;
 
 use Illuminate\Console\Command;
 
 /**
  * Class ThemeListCommand
- * @package Inspire\Theme\Console
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Theme\Console
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class ThemeListCommand extends Command
@@ -50,7 +50,7 @@ class ThemeListCommand extends Command
 
     /**
      * @return string
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     protected function loadContract()
@@ -67,13 +67,13 @@ class ThemeListCommand extends Command
     /**
      * @param string $type
      * @return string
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     protected function getContract($type = 'frontend')
     {
         $type = ucfirst($type);
 
-        return "Inspire\\Theme\\Contracts\\Themes\\{$type}";
+        return "Lavakit\\Theme\\Contracts\\Themes\\{$type}";
     }
 }

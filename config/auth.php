@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => \Inspire\User\Models\User::class,
+            'model' => \Lavakit\User\Models\User::class,
         ],
 
         // 'users' => [

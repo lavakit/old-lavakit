@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Menu\Providers;
+namespace Lavakit\Menu\Providers;
 
-use Inspire\Base\Providers\RoutingServiceProvider as BaseRoutingServiceProvider;
+use Lavakit\Base\Providers\RoutingServiceProvider as BaseRoutingServiceProvider;
 
 /**
  * Class RouteServiceProvider
- * @package Inspire\Menu\Providers
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Menu\Providers
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class RouteServiceProvider extends BaseRoutingServiceProvider
@@ -15,7 +15,7 @@ class RouteServiceProvider extends BaseRoutingServiceProvider
     /**
      * @var string
      */
-    protected $namespace = 'Inspire\Menu\Http\Controllers';
+    protected $namespace = 'Lavakit\Menu\Http\Controllers';
 
     /**
      * @return string

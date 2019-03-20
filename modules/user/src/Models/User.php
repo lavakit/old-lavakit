@@ -1,14 +1,14 @@
 <?php
 
-namespace Inspire\User\Models;
+namespace Lavakit\User\Models;
 
 use Illuminate\Foundation\Auth\User as Authentication;
 use Email;
 
 /**
  * Class User
- * @package Inspire\User\Models
- * @copyright 2019 Inspire Group
+ * @package Lavakit\User\Models
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class User extends Authentication
@@ -65,7 +65,7 @@ class User extends Authentication
      * Set the user's password is hash.
      *
      * @param $value
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function setPasswordAttribute($value)
@@ -75,7 +75,7 @@ class User extends Authentication
 
     /**
      * @return string
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function setFullNameAttribute()
@@ -85,7 +85,7 @@ class User extends Authentication
 
     /**
      * @param string $token
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function sendPasswordResetNotification($token)

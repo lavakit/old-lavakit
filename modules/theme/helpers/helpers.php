@@ -36,7 +36,7 @@ if (!function_exists('backendAsset')) {
     /**
      * @param $path
      * @return string
-     * @copyright 2018 Inspire Group
+     * @copyright 2018 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com>
      */
     function backendAsset($path)
@@ -49,7 +49,7 @@ if (!function_exists('frontendAsset')) {
     /**
      * @param $path
      * @return string
-     * @copyright 2018 Inspire Group
+     * @copyright 2018 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com>
      */
     function frontendAsset($path)

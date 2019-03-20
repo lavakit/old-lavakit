@@ -1,11 +1,11 @@
 <?php
 
-namespace Inspire\Notification\Foundation\Messages;
+namespace Lavakit\Notification\Foundation\Messages;
 
 /**
  * Class Message
- * @package Inspire\Notification\Services\Messages
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Notification\Services\Messages
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class Message implements \ArrayAccess

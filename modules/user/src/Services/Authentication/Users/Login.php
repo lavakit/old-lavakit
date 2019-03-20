@@ -1,16 +1,16 @@
 <?php
 
-namespace Inspire\User\Services\Authentication\Users;
+namespace Lavakit\User\Services\Authentication\Users;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Inspire\User\Contracts\AuthenticationContract;
+use Lavakit\User\Contracts\AuthenticationContract;
 use Illuminate\Validation\ValidationException;
 
 /**
  * Class Login
- * @package Inspire\User\Services\Authentication\Users
- * @copyright 2019 Inspire Group
+ * @package Lavakit\User\Services\Authentication\Users
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class Login
@@ -33,7 +33,7 @@ class Login
      * @param Request $request
      * @return mixed
      * @throws \Illuminate\Validation\ValidationException
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function handler(Request $request)
@@ -64,7 +64,7 @@ class Login
      *
      * @param Request $request
      * @throws ValidationException
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     protected function sendFailedLoginResponse(Request $request)
@@ -78,7 +78,7 @@ class Login
      * @param Request $request
      * @param $user
      * @return bool
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     protected function authenticated(Request $request, $user)

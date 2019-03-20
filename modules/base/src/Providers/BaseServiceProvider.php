@@ -1,28 +1,28 @@
 <?php
 
-namespace Inspire\Base\Providers;
+namespace Lavakit\Base\Providers;
 
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\ServiceProvider;
-use Inspire\Base\Exceptions\Handler;
-use Inspire\Base\Facades\EmailFacade;
-use Inspire\Base\Facades\TitleFacade;
-use Inspire\Base\Traits\CanPublishConfiguration;
-use Inspire\Base\Traits\CanRegisterFacadeAliases;
-use Inspire\Dashboard\Providers\DashboardServiceProvider;
-use Inspire\Menu\Providers\MenuServiceProvider;
-use Inspire\Page\Providers\PageServiceProvider;
-use Inspire\Post\Providers\PostServiceProvider;
-use Inspire\Setting\Providers\SettingServiceProvider;
-use Inspire\Theme\Providers\ThemeServiceProvider;
-use Inspire\Translation\Providers\TranslationServiceProvider;
-use Inspire\User\Providers\UserServiceProvider;
-use Inspire\Notification\Providers\NotificationServiceProvider;
+use Lavakit\Base\Exceptions\Handler;
+use Lavakit\Base\Facades\EmailFacade;
+use Lavakit\Base\Facades\TitleFacade;
+use Lavakit\Base\Traits\CanPublishConfiguration;
+use Lavakit\Base\Traits\CanRegisterFacadeAliases;
+use Lavakit\Dashboard\Providers\DashboardServiceProvider;
+use Lavakit\Menu\Providers\MenuServiceProvider;
+use Lavakit\Page\Providers\PageServiceProvider;
+use Lavakit\Post\Providers\PostServiceProvider;
+use Lavakit\Setting\Providers\SettingServiceProvider;
+use Lavakit\Theme\Providers\ThemeServiceProvider;
+use Lavakit\Translation\Providers\TranslationServiceProvider;
+use Lavakit\User\Providers\UserServiceProvider;
+use Lavakit\Notification\Providers\NotificationServiceProvider;
 
 /**
  * Class BaseServiceProvider
- * @package Inspire\Base\Providers
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Base\Providers
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class BaseServiceProvider extends ServiceProvider
@@ -131,7 +131,7 @@ class BaseServiceProvider extends ServiceProvider
     {
         foreach ($this->middleware as $module => $middlewares) {
             foreach ($middlewares as $name => $middleware) {
-                $class = "Inspire\\{$module}\\Http\\Middleware\\{$middleware}";
+                $class = "Lavakit\\{$module}\\Http\\Middleware\\{$middleware}";
                 $this->app['router']->aliasMiddleware($name, $class);
             }
         }

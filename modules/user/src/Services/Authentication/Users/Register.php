@@ -1,15 +1,15 @@
 <?php
 
-namespace Inspire\User\Services\Authentication\Users;
+namespace Lavakit\User\Services\Authentication\Users;
 
 use Illuminate\Http\Request;
-use Inspire\User\Repositories\Interfaces\UserRepository;
+use Lavakit\User\Repositories\Interfaces\UserRepository;
 use Email;
 
 /**
  * Class Register
- * @package Inspire\User\Services\Authentication\Users
- * @copyright 2019 Inspire Group
+ * @package Lavakit\User\Services\Authentication\Users
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class Register
@@ -31,7 +31,7 @@ class Register
      *
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function handler(Request $request)

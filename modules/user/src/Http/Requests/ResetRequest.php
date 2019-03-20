@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\User\Http\Requests;
+namespace Lavakit\User\Http\Requests;
 
-use Inspire\Base\Http\Requests\BaseFormRequest;
+use Lavakit\Base\Http\Requests\BaseFormRequest;
 
 /**
  * Class ResetRequest
- * @package Inspire\User\Http\Requests
- * @copyright 2019 Inspire Group
+ * @package Lavakit\User\Http\Requests
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class ResetRequest extends BaseFormRequest

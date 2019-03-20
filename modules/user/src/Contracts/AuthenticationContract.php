@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\User\Contracts;
+namespace Lavakit\User\Contracts;
 
 use Illuminate\Http\Request;
 
 /**
  * Interface AuthenticationContract
- * @package Inspire\User\Contracts
- * @copyright 2019 Inspire Group
+ * @package Lavakit\User\Contracts
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 interface AuthenticationContract
@@ -17,7 +17,7 @@ interface AuthenticationContract
      *
      * @param $request
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function login(Request $request);
@@ -27,7 +27,7 @@ interface AuthenticationContract
      *
      * @param $request
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function register(Request $request);
@@ -37,7 +37,7 @@ interface AuthenticationContract
      *
      * @param string $email
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function confirm(string $email = null);
@@ -47,7 +47,7 @@ interface AuthenticationContract
      *
      * @param Request $request
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function reset(Request $request);
@@ -57,7 +57,7 @@ interface AuthenticationContract
      *
      * @param Request $request
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function forgot(Request $request);
@@ -67,7 +67,7 @@ interface AuthenticationContract
      *
      * @param array $args
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function logout(array $args = []);
@@ -77,7 +77,7 @@ interface AuthenticationContract
      *
      * @param object $user
      * @return bool
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function hasConfirmed(object $user): bool;

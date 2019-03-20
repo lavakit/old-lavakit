@@ -1,17 +1,17 @@
 <?php
 
-namespace Inspire\Theme\Managers\Themes;
+namespace Lavakit\Theme\Managers\Themes;
 
 use Illuminate\Config\Repository;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Translation\Translator;
 use Illuminate\View\ViewFinderInterface;
-use Inspire\Theme\Contracts\Themes\Backend as BackendThemeContract;
+use Lavakit\Theme\Contracts\Themes\Backend as BackendThemeContract;
 
 /**
  * Class Backend
- * @package Inspire\Theme\Managers\Themes
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Theme\Managers\Themes
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class Backend extends ThemeAbstract implements BackendThemeContract
