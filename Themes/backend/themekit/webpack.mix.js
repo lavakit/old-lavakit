@@ -32,8 +32,8 @@ mix.setPublicPath('./../../../public').options({
         processCssUrls: false,
     })
     .js([
-        'assets/js/app.js'
-    ], 'themes/backend/themekit/assets/js/theme.js')
+        'assets/js/themekit.js'
+    ], 'themes/backend/themekit/assets/js/lavakit.js')
     .sass('assets/sass/style.scss', 'themes/backend/themekit/assets/css/build/style.css');
 
 
@@ -61,4 +61,12 @@ mix.copy('assets/images', dir_destination + '/images');
 
 mix.styles(fileStyle, dir_destination + '/css/style.css');
 
-mix.disableNotifications();
+if (mix.inProduction()) {
+    mix.version();
+}
+
+//mix.disableNotifications();
+
+// mix.browserSync({
+//     proxy: 'dev-lucky.local'
+// });

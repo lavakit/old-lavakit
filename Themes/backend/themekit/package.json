@@ -17,6 +17,8 @@
   "devDependencies": {
     "axios": "^0.18",
     "bootstrap": "^4.3.1",
+    "browser-sync": "^2.26.3",
+    "browser-sync-webpack-plugin": "^2.0.1",
     "cross-env": "^5.1",
     "jquery": "^3.3.1",
     "laravel-mix": "^2.0",
@@ -26,6 +28,6 @@
   },
   "dependencies": {
     "perfect-scrollbar": "^1.4.0",
-    "screenfull": "^3.3.3"
+    "screenfull": "^4.1.0"
   }
 }
