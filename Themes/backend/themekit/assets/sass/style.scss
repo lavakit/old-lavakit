@@ -1,10 +1,5 @@
 @charset "utf-8";
 
-/*!
- | Theme name: ThemeKit
- | Copyright 2018 TQ HOA <tqhoa8th@gmail.com>
- */
-
 // Foundation
 // ---------------------------------------
 @import "~bootstrap/scss/bootstrap";
@@ -12,8 +7,12 @@
 @import "~icon-kit/dist/css/iconkit.css";
 @import "~perfect-scrollbar/css/perfect-scrollbar.css";
 
-// Project
-// ---------------------------------------
+/*!
+ | Theme name: ThemeKit
+ | Copyright 2018 TQ HOA <tqhoa8th@gmail.com>
+ */
+//-------------------------------------
+
 @import "foundation/variable";
 @import 'foundation/mixins/mixins';
 @import "foundation/base";

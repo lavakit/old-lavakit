@@ -46,7 +46,7 @@ mix.babel([
 
 /*Javascript in the module*/
 filesJsModules.forEach(function (data) {
-    mix.scripts('./../../../modules/' + data.module + '/resources/assets/js/' + data.file + '.js', dir_destination + '/js/app_modules/' + data.file + '.js');
+    mix.babel('./../../../modules/' + data.module + '/resources/assets/js/' + data.file + '.js', dir_destination + '/js/app_modules/' + data.file + '.js');
 });
 
 /*StyleSheet in the module */
