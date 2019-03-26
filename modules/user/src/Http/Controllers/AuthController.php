@@ -35,9 +35,6 @@ class AuthController extends BaseController
         parent::__construct();
 
         $this->auth = app(AuthenticationContract::class);
-
-        AssetBackend::onlyStylesheets(['bootstrap', 'iconkit', 'core']);
-        AssetBackend::onlyJavascript(['jquery', 'bootstrap']);
         AssetBackend::addAppModule(['auth']);
     }
 

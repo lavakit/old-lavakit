@@ -16,6 +16,7 @@ const dir_destination = './../../../public/themes/backend/themekit/assets';
 /*Load file Js scss*/
 let filesJsModules = [
     {module: 'base', file: 'editor'},
+    {module: 'user', file: 'auth'},
 ];
 
 /*Load file scss*/
@@ -59,6 +60,9 @@ filesStylesheetModules.forEach(function (data) {
 /*Copy an entire Images directory*/
 mix.copy('assets/images', dir_destination + '/images');
 
+/** Copy vendor */
+mix.copy('node_modules/icon-kit/dist/fonts', dir_destination + '/fonts')
+
 mix.styles(fileStyle, dir_destination + '/css/style.css');
 
 if (mix.inProduction()) {
@@ -68,5 +72,5 @@ if (mix.inProduction()) {
 //mix.disableNotifications();
 
 // mix.browserSync({
-//     proxy: 'dev-lucky.local'
+//     proxy: 'lavakit.local'
 // });

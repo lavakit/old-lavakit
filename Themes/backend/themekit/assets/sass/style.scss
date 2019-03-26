@@ -7,12 +7,17 @@
 
 // Foundation
 // ---------------------------------------
+@import "~bootstrap/scss/bootstrap";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~icon-kit/dist/css/iconkit.css";
+@import "~perfect-scrollbar/css/perfect-scrollbar.css";
+
+// Project
+// ---------------------------------------
 @import "foundation/variable";
 @import 'foundation/mixins/mixins';
 @import "foundation/base";
 
-// Project
-// ---------------------------------------
 @import 'project/settings';
 @import 'project/cards';
 @import 'project/widgets';

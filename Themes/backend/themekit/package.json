@@ -27,6 +27,9 @@
     "vue": "^2.5.7"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.8.1",
+    "icon-kit": "git+https://github.com/IconKit/IconKit.git",
+    "ionicons": "^4.5.5",
     "perfect-scrollbar": "^1.4.0",
     "screenfull": "^4.1.0"
   }
