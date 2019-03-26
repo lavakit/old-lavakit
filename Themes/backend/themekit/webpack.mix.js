@@ -69,8 +69,8 @@ if (mix.inProduction()) {
     mix.version();
 }
 
-//mix.disableNotifications();
+mix.browserSync({
+    proxy: 'lavakit.local'
+});
 
-// mix.browserSync({
-//     proxy: 'lavakit.local'
-// });
+//mix.disableNotifications();

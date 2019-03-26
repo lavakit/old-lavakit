@@ -16,6 +16,9 @@ class BaseAdminController extends Controller
     /** @var string */
 
     protected $module;
+    
+    /** @var array */
+    protected $javascripts = [];
 
     /**
      * BaseAdminController constructor.
@@ -31,6 +34,6 @@ class BaseAdminController extends Controller
      */
     protected function addJsModule()
     {
-        AssetBackend::addAppModule($this->module);
+        AssetBackend::addAppModule($this->javascripts);
     }
 }

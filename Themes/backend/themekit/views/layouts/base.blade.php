@@ -17,11 +17,10 @@
         @foreach($cssBackendFiles as $css)
             <link media="all" type="text/css" rel="stylesheet" href="{{ URL::asset($css) }}">
         @endforeach
-        <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 
         @stack('css-stack')
     </head>
-    <body class="no-js">
+    <body>
         <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->

@@ -30,8 +30,6 @@ class AuthController extends BaseController
      */
     public function __construct()
     {
-        ThemeBackend::set('themekit');
-
         parent::__construct();
 
         $this->auth = app(AuthenticationContract::class);
