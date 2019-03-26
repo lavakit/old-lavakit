@@ -8,6 +8,7 @@
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
@@ -16,12 +17,11 @@
         @foreach($cssBackendFiles as $css)
             <link media="all" type="text/css" rel="stylesheet" href="{{ URL::asset($css) }}">
         @endforeach
-
         <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 
         @stack('css-stack')
     </head>
-    <body>
+    <body class="no-js">
         <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
