@@ -398,6 +398,12 @@ p {
 					    display: inline-block;
 					    width: 30px;
 					}
+
+					.text {
+						padding-top: 4px;
+						position: absolute;
+						left: 60px
+					}
 				}
 				.nav-toggle {
 					border: none;
