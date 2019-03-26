@@ -1,7 +1,7 @@
-let LavakitdAuth = function () {
+let LavakitAuth = function () {
     return {
         init: function () {
-
+            console.log('Auth');
         },
     };
 }();
