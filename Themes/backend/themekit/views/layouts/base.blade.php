@@ -33,6 +33,15 @@
         @yield('page')
 
         {{-- Script --}}
+        <script>
+            window.Lavakit = {
+                locales: {!! json_encode(LaravelLocalization::getSupportedLocales()) !!},
+                currentLocale: '{{ locate() }}',
+                adminPrefix: '{{ config('base.base.admin-prefix') }}',
+                hideDefaultLocale: '{{ config('laravellocalization.hideDefaultLocaleInURL') }}',
+                textTranslations: '',
+            }
+        </script>
         @foreach($jsBackendFiles as $js)
             <script src="{{ URL::asset($js) }}" type="text/javascript"></script>
         @endforeach
