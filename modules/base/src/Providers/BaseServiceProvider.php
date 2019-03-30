@@ -2,13 +2,17 @@
 
 namespace Lavakit\Base\Providers;
 
+use Illuminate\Http\Request;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
+use Lavakit\Base\Composers\TranslationsViewComposer;
 use Lavakit\Base\Exceptions\Handler;
 use Lavakit\Base\Facades\EmailFacade;
 use Lavakit\Base\Facades\TitleFacade;
 use Lavakit\Base\Traits\CanPublishConfiguration;
 use Lavakit\Base\Traits\CanRegisterFacadeAliases;
+use Lavakit\Base\Traits\CanRegisterViewComposer;
 use Lavakit\Dashboard\Providers\DashboardServiceProvider;
 use Lavakit\Menu\Providers\MenuServiceProvider;
 use Lavakit\Page\Providers\PageServiceProvider;
@@ -29,6 +33,7 @@ class BaseServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
     use CanRegisterFacadeAliases;
+    use CanRegisterViewComposer;
 
     /**
      * @var array Facade Aliases
@@ -61,6 +66,10 @@ class BaseServiceProvider extends ServiceProvider
         $this->publishConfig('base', 'cache');
         $this->publishConfig('base', 'mail');
 
+        /*Load view composer*/
+        $this->registerViewComposer(['layouts.master'], TranslationsViewComposer::class);
+
+        /*Register middleware*/
         $this->registerMiddleware();
 
         /*Load Service on Vendor*/
@@ -98,6 +107,10 @@ class BaseServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->singleton('lavakit.isBackend', function () {
+            return $this->isBackend();
+        });
+
         //Load helpers
         $this->loadHelpers();
 
@@ -135,5 +148,23 @@ class BaseServiceProvider extends ServiceProvider
                 $this->app['router']->aliasMiddleware($name, $class);
             }
         }
+    }
+
+    /**
+     * Check if the current URL matches the configured backend uri
+     *
+     * @return bool
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    private function isBackend()
+    {
+        $url = app(Request::class)->path();
+
+        if (Str::contains($url, config('base.base.admin-prefix'))) {
+            return true;
+        }
+
+        return false;
     }
 }
