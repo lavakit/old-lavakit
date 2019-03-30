@@ -2,21 +2,21 @@
 
 use Lavakit\Base\Facades\TitleFacade;
 
-if (!function_exists('locate')) {
+if (!function_exists('locale')) {
     /**
      * Get Locale of App
      *
-     * @param null $locate
+     * @param null $locale
      * @return string
      * @author hoatq <tqhoa8th@gmail.com>
      */
-    function locate($locate = null)
+    function locale($locale = null)
     {
-        if (is_null($locate)) {
+        if (is_null($locale)) {
             return app()->getLocale();
         }
 
-        app()->setLocale($locate);
+        app()->setLocale($locale);
 
         return app()->getLocale();
     }
