@@ -9,5 +9,24 @@
     "prod": "npm run production",
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "browser-sync-webpack-plugin": "^2.0.1",
+    "cross-env": "^5.1",
+    "laravel-mix": "^2.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.8.1",
+    "axios": "^0.18",
+    "bootstrap": "^4.3.1",
+    "element-ui": "^2.7.0",
+    "icon-kit": "git+https://github.com/IconKit/IconKit.git",
+    "jquery": "^3.3.1",
+    "lodash": "^4.17.5",
+    "perfect-scrollbar": "^1.4.0",
+    "popper.js": "^1.12",
+    "screenfull": "^4.1.0",
+    "vue": "^2.5.7",
+    "vue-router": "^3.0.2"
+  }
 }
