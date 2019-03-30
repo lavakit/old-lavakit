@@ -3,6 +3,8 @@
 namespace Lavakit\Base\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Support\Arr;
+use Lavakit\Base\Events\LoadBackendTranslations;
 
 /**
  * Class EventServiceProvider
@@ -22,4 +24,15 @@ class EventServiceProvider extends ServiceProvider
             'Lavakit\Base\Listeners\SendMailListener'
         ],
     ];
+
+    /***
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    public function register()
+    {
+        $this->app['events']->listen(LoadBackendTranslations::class, function (LoadBackendTranslations $event) {
+            $event->load('base', Arr::dot(trans('base::base')));
+        });
+    }
 }
