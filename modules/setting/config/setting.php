@@ -22,8 +22,8 @@ return [
 
         'language' => [
             'locales' => [
-                'description' => 'setting::site.language.locales',
-                'view' => 'setting::fields.select-locales',
+                'description' => 'setting::site.language.locale',
+                'view' => 'setting::fields.select_locale',
                 'translatable' => false,
             ],
             'hide_locale' => [
@@ -61,9 +61,6 @@ return [
         ],
     ],
     'medias' => [
-
-    ],
-    'languages' => [
 
     ],
 ];

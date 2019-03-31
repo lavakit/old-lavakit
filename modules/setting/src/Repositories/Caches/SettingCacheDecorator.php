@@ -34,4 +34,74 @@ class SettingCacheDecorator extends CacheDecorator implements SettingRepository
         $this->repository = $repository;
         $this->cache = $cache;
     }
+
+    /**
+     * Find a setting by it's array name field and value
+     *
+     * @example Param $column = ['field' => 'value']
+     *
+     * @param array $column
+     * @return mixed
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    public function findByField(array $column)
+    {
+        return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
+    }
+
+    /**
+     * Return all modules that have settings
+     *
+     * @param $modules
+     * @param $name
+     * @return mixed
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    public function loadAllSettings($modules, $name = null)
+    {
+        // TODO: Implement loadAllSettings() method.
+    }
+
+    /**
+     * Return the saved module settings
+     *
+     * @param $module
+     * @return mixed
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    public function saveSetting($module)
+    {
+        // TODO: Implement saveSetting() method.
+    }
+
+    /**
+     * Return the translatable module setting
+     *
+     * @param $module
+     * @return mixed
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    public function getSettingTranslatable($module)
+    {
+        // TODO: Implement getSettingTranslatable() method.
+    }
+
+    /**
+     * Return the non translatable module settings
+     *
+     * @param $module
+     * @return mixed
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    public function getSettingOriginal($module)
+    {
+        // TODO: Implement getSettingOriginal() method.
+    }
+
+
 }

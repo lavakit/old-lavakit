@@ -3,6 +3,7 @@
 namespace Lavakit\Setting\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Lavakit\Base\Traits\CanPublishConfiguration;
 
 /**
  * Class SettingServiceProvider
@@ -12,6 +13,8 @@ use Illuminate\Support\ServiceProvider;
  */
 class SettingServiceProvider extends ServiceProvider
 {
+    use CanPublishConfiguration;
+
     /**
      * Bootstrap the application services.
      *
@@ -19,6 +22,8 @@ class SettingServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->publishConfig('setting', 'setting');
+
         /*Load views*/
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'setting');
         /*Load translations*/

@@ -29,14 +29,4 @@ $router->group(['prefix' => '/settings'], function (Router $router) {
         'as'    => 'admin.settings.media',
         'uses'  => 'SettingController@postMedia'
     ]);
-
-    $router->get('/language', [
-        'as'    => 'admin.settings.language',
-        'uses'  => 'SettingController@getLanguage'
-    ]);
-
-    $router->post('/language', [
-        'as'    => 'admin.settings.language',
-        'uses'  => 'SettingController@postLanguage'
-    ]);
 });
