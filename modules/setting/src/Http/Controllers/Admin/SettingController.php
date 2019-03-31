@@ -25,9 +25,9 @@ class SettingController extends BaseAdminController
 
     public function getGeneral()
     {
-        title()->set('Setting');
+        title()->set('Setting General');
         $configs = [];
 
-        return view('setting::email')->with(compact('configs'));
+        return view('setting::general')->with(compact('configs'));
     }
 }
