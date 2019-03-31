@@ -2,6 +2,7 @@
 
 namespace Lavakit\Setting\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use Lavakit\Base\Http\Controllers\Admin\BaseAdminController;
 
 /**
@@ -23,11 +24,15 @@ class SettingController extends BaseAdminController
         parent::__construct();
     }
 
-    public function getGeneral()
+    public function general(Request $request)
     {
-        title()->set('Setting General');
-        $configs = [];
+        if ($request->isMethod('get')) {
+            title()->set('Setting General');
+            $configs = [];
 
-        return view('setting::general')->with(compact('configs'));
+            return view('setting::general')->with(compact('configs'));
+        }
+
+        $dataRequest = $request->all();
     }
 }

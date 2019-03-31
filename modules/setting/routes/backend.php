@@ -5,14 +5,9 @@ use Lavakit\Theme\Services\Breadcrumbs\Facades\Breadcrumbs;
 
 /** @var Router $router */
 $router->group(['prefix' => '/settings'], function (Router $router) {
-    $router->get('/general', [
+    $router->match(['get', 'post'], '/general', [
         'as'    => 'admin.settings.general',
-        'uses'  => 'SettingController@getGeneral'
-    ]);
-
-    $router->post('/general', [
-        'as'    => 'admin.settings.general',
-        'uses'  => 'SettingController@postGeneral'
+        'uses'  => 'SettingController@general'
     ]);
 
     $router->get('/email', [

@@ -39,9 +39,42 @@
                     <h3>Language</h3>
                 </div>
                 <div class="card-block">
-                    <p class="m-0">
-                        With these settings, session timeout plugin launches a timeout warning dialog in a fixed amount of time regardless of user activity. In this demo warning dialog appears <b>after 3 seconds</b>                                                            of page load.
-                    </p>
+                    {{ Form::open(['route' => 'admin.settings.general']) }}
+                        <div class="form-group">
+                            <label for="exampleInputName1">Site locales</label>
+                            <input type="text" class="form-control" id="locale" name="locale" placeholder="Locale">
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox-fade fade-in-success">
+                                <label>
+                                    <input type="checkbox" name="hide_locale" value="1">
+                                    <span class="cr">
+                                        <i class="cr-icon ik ik-check txt-success"></i>
+                                    </span>
+                                    <span>Hide default locale in Uri</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox-fade fade-in-success">
+                                <label>
+                                    <input type="checkbox" name="use_icon" value="1">
+                                    <span class="cr">
+                                        <i class="cr-icon ik ik-check txt-success"></i>
+                                    </span>
+                                    <span>Show icon</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName1">Text Position</label>
+                            <input type="text" class="form-control" id="position" name="position" placeholder="Text position">
+                        </div>
+                        <button type="submit" class="btn btn-danger mr-2 float-right">
+                            <i class="ik ik-check-circle"></i>
+                            Save
+                        </button>
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>
