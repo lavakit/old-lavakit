@@ -13,7 +13,6 @@ return [
             'general' => 'General',
             'media' => 'Media',
             'email' => 'Email',
-            'language' => 'Language',
         ],
     ],
 ];

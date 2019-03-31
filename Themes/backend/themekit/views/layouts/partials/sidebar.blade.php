@@ -92,9 +92,6 @@
                     <a href="{{ route('admin.settings.media') }}" class="menu-item">
                         {{ lang('site.sidebars.systems.media', false) }}
                     </a>
-                    <a href="{{ route('admin.settings.language') }}" class="menu-item">
-                        {{ lang('site.sidebars.systems.language', false) }}
-                    </a>
                 </div>
             </div>
 

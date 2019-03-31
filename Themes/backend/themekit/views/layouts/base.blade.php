@@ -39,7 +39,7 @@
                 currentLocale: '{{ locale() }}',
                 adminPrefix: '{{ config('base.base.admin-prefix') }}',
                 hideDefaultLocale: '{{ config('laravellocalization.hideDefaultLocaleInURL') }}',
-                textTranslations: {!! $textTranslations !!},
+                textTranslations: {!! $textTranslations ?? '' !!},
             }
         </script>
         @foreach($jsBackendFiles as $js)

@@ -10,6 +10,5 @@ return [
         'general' => 'Tổng qua',
         'media' => 'Media',
         'email' => 'Email',
-        'language' => 'Ngôn ngữ',
     ],
 ];

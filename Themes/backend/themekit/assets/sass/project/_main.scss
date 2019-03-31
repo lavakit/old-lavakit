@@ -626,7 +626,7 @@ p {
 		    }
 		}
 		.main-content {
-		    padding: 30px 0;
+		    padding: 15px 0;
 		    background-color: #F6F7FB;
 		    min-height: calc(100vh - 120px);
 		    margin-top: 60px;
@@ -638,21 +638,13 @@ p {
 		        padding-right: 0;
 		    }
 		    .page-header {
-			    margin-bottom: 30px;
+			    margin-bottom: 15px;
 			    .page-header-title {
-			    	i {
+					padding: 11px 10px 11px 0px;
+						i {
 			    		float: left;
-					    width: 40px;
-					    height: 40px;
-					    border-radius: 5px;
-					    margin-right: 20px;
-					    vertical-align: middle;
+					    margin-right: 10px;
 				        font-size: 22px;
-				        color: #fff;
-				        display: inline-flex;
-				        @include justify-content(center);
-				        @include align-items(center);
-				        @include box-shadow(0 2px 12px -3px rgba(0,0,0,0.5));
 			    	}
 			    	h5 {
 			    		margin-bottom: 0;
