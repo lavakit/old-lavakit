@@ -59,11 +59,26 @@ class SettingCacheDecorator extends CacheDecorator implements SettingRepository
      * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
-    public function loadAllSettings($modules, $name = null)
+    public function loadSettings($modules, $name = null)
     {
-        // TODO: Implement loadAllSettings() method.
+        return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
     }
-
+    
+    /**
+     * Return all module that have settings with view separate between non translatable and translatable
+     *
+     * @param $module
+     * @param null $name
+     * @return mixed
+     * @copyright 2019 LUCY VN
+     * @author Pencii Team <hoatq@lucy.ne.jp>
+     */
+    public function separateViewSettings($module, $name = null)
+    {
+        return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
+    }
+    
+    
     /**
      * Return the saved module settings
      *
@@ -81,27 +96,27 @@ class SettingCacheDecorator extends CacheDecorator implements SettingRepository
      * Return the translatable module setting
      *
      * @param $module
+     * @param $name
      * @return mixed
      * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
-    public function getSettingTranslatable($module)
+    public function getSettingTranslatable($module, $name = null)
     {
-        // TODO: Implement getSettingTranslatable() method.
+        return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
     }
 
     /**
      * Return the non translatable module settings
      *
      * @param $module
+     * @param $name
      * @return mixed
      * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
-    public function getSettingOriginal($module)
+    public function getSettingOriginal($module, $name = null)
     {
-        // TODO: Implement getSettingOriginal() method.
+        return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
     }
-
-
 }

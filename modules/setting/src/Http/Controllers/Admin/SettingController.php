@@ -33,15 +33,11 @@ class SettingController extends BaseAdminController
 
     public function general(Request $request)
     {
-        echo'<pre>';
-            print_r($this->repository->loadAllSettings('setting', __FUNCTION__));
-        echo'</pre>';
-        die;
-
+        $configs = $this->repository->separateViewSettings($this->module, __FUNCTION__);
+        
         if ($request->isMethod('get')) {
             title()->set('Setting General');
-            $configs = [];
-
+            
             return view('setting::admins.general')->with(compact('configs'));
         }
 

@@ -44,3 +44,16 @@ if (!function_exists('crafted')) {
         return config('base.base.crafted');
     }
 }
+
+if (!function_exists('getSupportedLocales')) {
+    
+    /**
+     * Return an array of all supported Locales.
+     *
+     * @return array
+     */
+    function getSupportedLocales()
+    {
+        return LaravelLocalization::getSupportedLocales();
+    }
+}

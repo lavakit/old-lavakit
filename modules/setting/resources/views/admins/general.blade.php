@@ -21,18 +21,67 @@
     </div>
 
     <div class="row">
-        <div class="col-xl-6 col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h3>General</h3>
-                </div>
-                <div class="card-block">
-                    <p class="m-0">
-                        With these settings, session timeout plugin launches a timeout warning dialog in a fixed amount of time regardless of user activity. In this demo warning dialog appears <b>after 3 seconds</b>                                                            of page load.
-                    </p>
+        @foreach ($configs as $tab => $config)
+            <div class="col-xl-6 col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>{{ trans('setting::site.' . $tab) }}</h3>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($config as $type => $fields)
+                            @if (!empty($fields))
+                                <h4 class="sub-title">{{ trans('setting::site.' . $type) }}</h4>
+                                @if ($type === 'is_translatable')
+                                    @include('layouts.partials.form_tab_header_locale', ['prefix' => $tab])
+                                    <div class="tab-content" id="pills-tabContent">
+                                        @foreach (getSupportedLocales() as $locale => $language)
+                                            <div class="tab-pane fade {{ locale() === $locale ? 'active show' : '' }}"
+                                                 id="current-{{ $tab . '-' . $locale }}"
+                                            >
+                                                <div class="card-body">
+                                                    @include ('setting::admins.partials.fields', ['fields' => $fields, 'prefix' => $tab])
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @else
+                                    @include ('setting::admins.partials.fields', ['fields' => $fields])
+                                @endif
+                            @endif
+                        @endforeach
+                    </div>
                 </div>
             </div>
-        </div>
+        @endforeach
+
+        {{--<div class="col-xl-6 col-md-6">--}}
+            {{--<div class="card">--}}
+                {{--<div class="card-header">--}}
+                    {{--<h3>General</h3>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--@include('layouts.partials.form_tab_header_locale', ['prefix' => 'general'])--}}
+                    {{--<div class="tab-content" id="pills-tabContent">--}}
+                        {{--<div class="tab-pane fade active show" id="current-month">--}}
+                            {{--<div class="card-body">--}}
+                                {{--Tab 1--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="tab-pane fade" id="last-month">--}}
+                            {{--<div class="card-body">--}}
+                                {{--Tab 2--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="tab-pane fade" id="previous-month">--}}
+                            {{--<div class="card-body">--}}
+                                {{--Tab 3--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+
         <div class="col-xl-6 col-md-6">
             <div class="card">
                 <div class="card-header">
