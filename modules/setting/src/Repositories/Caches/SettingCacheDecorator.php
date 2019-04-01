@@ -51,6 +51,18 @@ class SettingCacheDecorator extends CacheDecorator implements SettingRepository
     }
 
     /**
+     * Find setting name
+     *
+     * @param  string $name
+     * @return mixed
+     */
+    public function findBySetting($name)
+    {
+        return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
+    }
+
+
+    /**
      * Return all modules that have settings
      *
      * @param $modules
@@ -80,16 +92,16 @@ class SettingCacheDecorator extends CacheDecorator implements SettingRepository
     
     
     /**
-     * Return the saved module settings
+     * Return the saved settings
      *
-     * @param $module
+     * @param $name
      * @return mixed
      * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
-    public function saveSetting($module)
+    public function loadDbSetting($name)
     {
-        // TODO: Implement saveSetting() method.
+        return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace Lavakit\Setting\Models;
 
+use Dimsav\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -12,28 +13,16 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Setting extends Model
 {
+    use Translatable;
+
+    public $translatedAttributes = ['value', 'description'];
+
     /**
      * The database table used by the model
      *
      * @var string
      */
     protected $table = 'settings';
-
-    /**
-     * The attribute that should be hidden for arrays
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'package',
-        'module',
-        'control',
-        'key',
-        'name',
-        'value',
-        'options',
-        'is_admin',
-    ];
 
     /**
      * The data fields for the model clear
@@ -47,14 +36,5 @@ class Setting extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'value'];
-
-    /**
-     * The attributes that should be casted to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'options' => 'array',
-    ];
+    protected $fillable = ['name', 'value', 'description', 'plain_value', 'is_translatable'];
 }

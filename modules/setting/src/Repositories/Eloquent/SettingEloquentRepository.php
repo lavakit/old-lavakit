@@ -35,6 +35,17 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
     }
 
     /**
+     * Find setting name
+     *
+     * @param  string $name
+     * @return mixed
+     */
+    public function findBySetting($name)
+    {
+        return $this->model->where('name', 'LIKE', $name . '::%')->get();
+    }
+
+    /**
      * Return all modules that have settings
      *
      * @param $modules
@@ -87,16 +98,22 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
     }
     
     /**
-     * Return the saved module settings
+     * Return the saved settings with name
      *
-     * @param $module
+     * @param $name
      * @return mixed
      * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
-    public function saveSetting($module)
+    public function loadDbSetting($name)
     {
-        // TODO: Implement saveSetting() method.
+        $dbSettings = [];
+
+        foreach ($this->findBySetting($name) as $setting) {
+            $dbSettings[$setting->name] = $setting;
+        }
+
+        return $dbSettings;
     }
 
     /**

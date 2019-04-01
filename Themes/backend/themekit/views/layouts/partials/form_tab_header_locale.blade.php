@@ -10,7 +10,7 @@
                    id="pills-tab-{{ $prefix . '-' . $locale }}"
                    data-toggle="pill"
                    href="#current-{{ $prefix . '-' . $locale }}">
-                    {{ strtolower($language['name']) }}
+                    {{ trans('setting::site.tab.locales.' . strtolower($language['name'])) }}
                 </a>
             </li>
         @endforeach

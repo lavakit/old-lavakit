@@ -3,16 +3,17 @@
 
     @if(isset($dbSettings[$fieldName]))
         {!!
-            Form::text($fieldName . "[$lang]", old($fieldName . "[$lang]", valueDbSetting($dbSettings[$fieldName], $lang)
-            ), [
+            Form::textarea($fieldName . "[$lang]", old($fieldName . "[$lang]", valueDbSetting($dbSettings[$fieldName], $lang)), [
                 'class' => 'form-control',
+                'row' => 5,
                 'placeholder' => trans($fieldInfo['placeholder'] ?? $fieldInfo['description'])
             ])
         !!}
     @else
         {!!
-            Form::text($fieldName . "[$lang]", old($fieldName . "[$lang]"), [
+            Form::textarea($fieldName . "[$lang]", old($fieldName . "[$lang]"), [
                 'class' => 'form-control',
+                'rows' => 4,
                 'placeholder' => trans($fieldInfo['placeholder'] ?? $fieldInfo['description'])
             ])
         !!}

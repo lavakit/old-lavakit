@@ -2,6 +2,7 @@
 
 namespace Lavakit\Setting\Http\Controllers\Admin;
 
+use Dimsav\Translatable\Translatable;
 use Illuminate\Http\Request;
 use Lavakit\Base\Http\Controllers\Admin\BaseAdminController;
 use Lavakit\Setting\Repositories\SettingRepository;
@@ -33,12 +34,13 @@ class SettingController extends BaseAdminController
 
     public function general(Request $request)
     {
-        $configs = $this->repository->separateViewSettings($this->module, __FUNCTION__);
-        
+        $settings = $this->repository->separateViewSettings($this->module, __FUNCTION__);
+        $dbSettings = $this->repository->loadDbSetting(__FUNCTION__);
+
         if ($request->isMethod('get')) {
             title()->set('Setting General');
             
-            return view('setting::admins.general')->with(compact('configs'));
+            return view('setting::admins.general')->with(compact('settings', 'dbSettings'));
         }
 
         $dataRequest = $request->all();

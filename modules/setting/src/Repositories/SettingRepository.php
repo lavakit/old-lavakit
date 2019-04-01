@@ -25,6 +25,14 @@ interface SettingRepository extends BaseRepository
     public function findByField(array $column);
 
     /**
+     * Find setting name
+     *
+     * @param  string $name
+     * @return mixed
+     */
+    public function findBySetting($name);
+
+    /**
      * Return all modules that have settings
      *
      * @param $modules
@@ -47,14 +55,14 @@ interface SettingRepository extends BaseRepository
     public function separateViewSettings($module, $name = null);
 
     /**
-     * Return the saved module settings
+     * Return the saved settings
      *
-     * @param $module
+     * @param $name
      * @return mixed
      * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
-    public function saveSetting($module);
+    public function loadDbSetting($name);
 
     /**
      * Return the translatable module setting

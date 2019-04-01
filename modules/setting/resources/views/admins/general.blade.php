@@ -21,14 +21,14 @@
     </div>
 
     <div class="row">
-        @foreach ($configs as $tab => $config)
+        @foreach ($settings as $tab => $setting)
             <div class="col-xl-6 col-md-6">
                 <div class="card">
                     <div class="card-header">
                         <h3>{{ trans('setting::site.' . $tab) }}</h3>
                     </div>
                     <div class="card-body">
-                        @foreach ($config as $type => $fields)
+                        @foreach ($setting as $type => $fields)
                             @if (!empty($fields))
                                 <h4 class="sub-title">{{ trans('setting::site.' . $type) }}</h4>
                                 @if ($type === 'is_translatable')
@@ -36,9 +36,8 @@
                                     <div class="tab-content" id="pills-tabContent">
                                         @foreach (getSupportedLocales() as $locale => $language)
                                             <div class="tab-pane fade {{ locale() === $locale ? 'active show' : '' }}"
-                                                 id="current-{{ $tab . '-' . $locale }}"
-                                            >
-                                                <div class="card-body">
+                                                 id="current-{{ $tab . '-' . $locale }}">
+                                                <div class="card-body cart-none-left-right">
                                                     @include ('setting::admins.partials.fields', ['fields' => $fields, 'prefix' => $tab])
                                                 </div>
                                             </div>
