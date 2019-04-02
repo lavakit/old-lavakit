@@ -2,7 +2,18 @@ import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 import VueRouter from 'vue-router';
 import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 import locale from 'element-ui/lib/locale/lang/en';
+import lavakitLayout from './compoments/layout';
+import settingCompoments from './../../../../../modules/setting/resources/assets/js/setting';
+
+settingCompoments.forEach(component => {
+    Vue.component(component.name, component);
+});
+
+lavakitLayout.forEach(compoment => {
+    Vue.component(compoment.name, compoment);
+});
 
 Vue.use(ElementUI, { locale });
 Vue.use(VueI18n);
