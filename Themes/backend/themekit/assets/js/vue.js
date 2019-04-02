@@ -18,7 +18,7 @@ const router = new VueRouter({
     'base': makeBaseUrl()
 });
 
-let makeBaseUrl = function () {
+function makeBaseUrl() {
     if (window.Lavakit.hideDefaultLocale == 1) {
         return adminPrefix;
     }

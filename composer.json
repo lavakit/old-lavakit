@@ -21,6 +21,7 @@
     "type": "project",
     "require": {
         "php": ">=7.2",
+        "dimsav/laravel-translatable": "^9.4",
         "fideloper/proxy": "^4.0",
         "hassankhan/config": "^1.0",
         "laravel/framework": "5.6.*",

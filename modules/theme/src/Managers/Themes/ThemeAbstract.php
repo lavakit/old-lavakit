@@ -154,6 +154,21 @@ abstract class ThemeAbstract implements ThemeContract
     }
 
     /**
+     * Return all name of Theme
+     *
+     * @return mixed
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    public function allThemeName()
+    {
+        $themes = $this->all();
+
+        return array_keys($themes);
+    }
+
+
+    /**
      * Find asset file for theme asset
      *
      * @param $path

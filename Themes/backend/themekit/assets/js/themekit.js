@@ -11,6 +11,8 @@ window.PerfectScrollbar = require('perfect-scrollbar').default;
 
 window._ = window.screenfull = require('screenfull');
 
+window.Selectize = require('selectize');
+
 require('./theme');
 
 require('./bootstrap');

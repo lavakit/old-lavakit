@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('page')
-    <div class="wrapper">
+    <div class="wrapper" id="app">
         @include('layouts.partials.header')
 
         <div class="page-wrap">

@@ -16,14 +16,9 @@ class CreateSettingsTable extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('package', 200);
-            $table->string('module', 200);
-            $table->string('control', 200);
-            $table->string('key', 200);
             $table->string('name', 200);
-            $table->text('value')->nullable();
-            $table->text('options')->nullable();
-            $table->boolean('is_admin')->default(false);
+            $table->text('plain_value')->nullable();
+            $table->boolean('is_translatable');
             $table->timestamps();
         });
     }
