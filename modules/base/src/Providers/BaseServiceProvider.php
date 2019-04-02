@@ -26,7 +26,7 @@ use Lavakit\Notification\Providers\NotificationServiceProvider;
 /**
  * Class BaseServiceProvider
  * @package Lavakit\Base\Providers
- * @copyright 2018 Lavakit Group
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class BaseServiceProvider extends ServiceProvider
@@ -65,6 +65,7 @@ class BaseServiceProvider extends ServiceProvider
         $this->publishConfig('base', 'base');
         $this->publishConfig('base', 'cache');
         $this->publishConfig('base', 'mail');
+        $this->publishConfig('base', 'available_locales');
 
         /*Load view composer*/
         $this->registerViewComposer(['layouts.master'], TranslationsViewComposer::class);
@@ -120,6 +121,7 @@ class BaseServiceProvider extends ServiceProvider
         $this->registerFacadeAliases($this->facadeAliases);
 
         $this->app->register(EventServiceProvider::class);
+        $this->app->register(ComposerServiceProvider::class);
     }
 
     /**

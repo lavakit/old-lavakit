@@ -35,7 +35,7 @@ class SettingController extends BaseAdminController
     public function general(Request $request)
     {
         $settings = $this->repository->separateViewSettings($this->module, __FUNCTION__);
-        $dbSettings = $this->repository->loadDbSetting(__FUNCTION__);
+        $dbSettings = $this->repository->loadDbSetting('locale');
 
         if ($request->isMethod('get')) {
             title()->set('Setting General');

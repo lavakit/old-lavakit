@@ -31,11 +31,11 @@ return [
         ],
 
         'language' => [
-//            'locales' => [
-//                'description' => 'setting::site.language.locale',
-//                'view' => 'setting::fields.select_locale',
-//                'translatable' => false,
-//            ],
+            'locales' => [
+                'description' => 'setting::site.language.locale',
+                'view' => 'setting::admins.fields.originals.select_locale',
+                'translatable' => false,
+            ],
 //            'hide_locale' => [
 //                'description' => 'setting::site.language.hie_locale',
 //                'view' => 'checkbox',
