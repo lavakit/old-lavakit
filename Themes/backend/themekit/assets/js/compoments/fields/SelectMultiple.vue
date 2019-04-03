@@ -1,5 +1,5 @@
 <template>
-    <el-select v-model="value" placeholder="Select">
+    <el-select v-model="value5" multiple placeholder="Select">
         <el-option
                 v-for="item in options"
                 :key="item.value"
@@ -11,7 +11,7 @@
 
 <script>
     export default {
-        name: 'lavakit-form-select',
+        name: 'lavakit-form-select-multiple',
         data() {
             return {
                 options: [{
@@ -30,7 +30,7 @@
                     value: 'Option5',
                     label: 'Option5'
                 }],
-                value: 'Option1'
+                value5: ['Option1', 'Option2'],
             }
         }
     }

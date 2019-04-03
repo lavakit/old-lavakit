@@ -22,7 +22,7 @@
                     <h3>Session Timeout</h3>
                 </div>
                 <div class="card-block">
-                    <lavakit-form-select></lavakit-form-select>
+                    <lavakit-form-select-multiple></lavakit-form-select-multiple>
                 </div>
             </div>
         </div>
