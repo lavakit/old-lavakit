@@ -10,14 +10,9 @@ $router->group(['prefix' => '/settings'], function (Router $router) {
         'uses'  => 'SettingController@general'
     ]);
 
-    $router->get('/email', [
+    $router->match(['get', 'post'], '/email', [
         'as'    => 'admin.settings.email',
-        'uses'  => 'SettingController@getEmail'
-    ]);
-
-    $router->post('/email', [
-        'as'    => 'admin.settings.email',
-        'uses'  => 'SettingController@postEmail'
+        'uses'  => 'SettingController@email'
     ]);
 
     $router->get('/media', [

@@ -45,4 +45,13 @@ class SettingController extends BaseAdminController
 
         $dataRequest = $request->all();
     }
+
+    public function email(Request $request)
+    {
+        if ($request->isMethod('get')) {
+            title()->set('Setting Email');
+
+            return view('setting::admins.email');
+        }
+    }
 }

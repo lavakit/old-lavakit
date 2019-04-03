@@ -35,6 +35,7 @@ mix.setPublicPath('./../../../public').options({
     .js([
         'assets/js/themekit.js'
     ], 'themes/backend/themekit/assets/js/lavakit.js')
+    .extract(['vue', 'jquery'])
     .sass('assets/sass/style.scss', 'themes/backend/themekit/assets/css/build/style.css');
 
 
