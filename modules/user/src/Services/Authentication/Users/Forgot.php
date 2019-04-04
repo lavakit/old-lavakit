@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspire\User\Services\Authentication\Users;
+namespace Lavakit\User\Services\Authentication\Users;
 
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\Request;
@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Password;
 
 /**
  * Class Forgot
- * @package Inspire\User\Services\Authentication\Users
- * @copyright 2019 Inspire Group
+ * @package Lavakit\User\Services\Authentication\Users
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class Forgot
@@ -20,7 +20,7 @@ class Forgot
      *
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function handler(Request $request)
@@ -47,7 +47,7 @@ class Forgot
      * Override
      * @see SendsPasswordResetEmails::sendResetLinkResponse();
      *
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     protected function sendResetLinkResponse($response)
@@ -65,7 +65,7 @@ class Forgot
      * Override
      * @see SendsPasswordResetEmails::sendResetLinkFailedResponse();
      *
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     protected function sendResetLinkFailedResponse(Request $request, $response)

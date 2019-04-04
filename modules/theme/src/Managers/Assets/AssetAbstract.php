@@ -1,14 +1,14 @@
 <?php
 
-namespace Inspire\Theme\Managers\Assets;
+namespace Lavakit\Theme\Managers\Assets;
 
 use Config;
-use Inspire\Theme\Contracts\Assets\AssetContract;
+use Lavakit\Theme\Contracts\Assets\AssetContract;
 
 /**
  * Class AssetManager
- * @package Inspire\Theme\Managers
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Theme\Managers
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 abstract class AssetAbstract implements AssetContract
@@ -55,7 +55,7 @@ abstract class AssetAbstract implements AssetContract
      * Define The  JS path with theme current
      *
      * @return mixed
-     * @copyright 2018 Inspire Group
+     * @copyright 2018 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com>
      */
     abstract function assetPath();
@@ -282,7 +282,7 @@ abstract class AssetAbstract implements AssetContract
 
     /**
      * @param $assets
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function onlyStylesheets($assets)
@@ -296,7 +296,7 @@ abstract class AssetAbstract implements AssetContract
 
     /**
      * @param $assets
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function onlyJavascript($assets)

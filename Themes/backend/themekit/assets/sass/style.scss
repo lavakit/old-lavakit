@@ -1,18 +1,23 @@
 @charset "utf-8";
 
+// Foundation
+// ---------------------------------------
+@import "~bootstrap/scss/bootstrap";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~icon-kit/dist/css/iconkit.css";
+@import "~perfect-scrollbar/css/perfect-scrollbar.css";
+@import "~selectize/dist/css/selectize.default.css";
+
 /*!
  | Theme name: ThemeKit
  | Copyright 2018 TQ HOA <tqhoa8th@gmail.com>
  */
+//-------------------------------------
 
-// Foundation
-// ---------------------------------------
 @import "foundation/variable";
 @import 'foundation/mixins/mixins';
 @import "foundation/base";
 
-// Project
-// ---------------------------------------
 @import 'project/settings';
 @import 'project/cards';
 @import 'project/widgets';

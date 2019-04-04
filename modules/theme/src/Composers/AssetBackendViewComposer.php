@@ -1,14 +1,14 @@
 <?php
 
-namespace Inspire\Theme\Composers;
+namespace Lavakit\Theme\Composers;
 
 use Illuminate\View\View;
 use AssetBackend;
 
 /**
  * Class AssetBackendViewComposer
- * @package Inspire\Theme\Providers
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Theme\Providers
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class AssetBackendViewComposer

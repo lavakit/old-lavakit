@@ -1,7 +1,7 @@
 <div class="sidebar-header">
     <a class="header-brand" href="{{ route('admin.dashboards.index') }}">
         <div class="logo-img">
-            <img src="{{ backendAsset('images/brand-white.svg') }}" class="header-brand-img" alt="{{ crafted() }}">
+            <img src="{{ backendAsset('images/brand-white.png') }}" class="header-brand-img" alt="{{ crafted() }}">
         </div>
         <span class="text">{{ crafted() }}</span>
     </a>
@@ -91,9 +91,6 @@
                     </a>
                     <a href="{{ route('admin.settings.media') }}" class="menu-item">
                         {{ lang('site.sidebars.systems.media', false) }}
-                    </a>
-                    <a href="{{ route('admin.settings.language') }}" class="menu-item">
-                        {{ lang('site.sidebars.systems.language', false) }}
                     </a>
                 </div>
             </div>

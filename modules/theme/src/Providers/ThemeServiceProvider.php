@@ -1,25 +1,25 @@
 <?php
 
-namespace Inspire\Theme\Providers;
+namespace Lavakit\Theme\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Inspire\Base\Traits\CanPublishConfiguration;
-use Inspire\Base\Traits\CanRegisterFacadeAliases;
-use Inspire\Theme\Console\ThemeGeneratorCommand;
-use Inspire\Theme\Console\ThemeListCommand;
-use Inspire\Theme\Contracts\Themes\Frontend as ThemeFrontendContract;
-use Inspire\Theme\Contracts\Themes\Backend as ThemeBackendContract;
-use Inspire\Theme\Facades\ThemeFrontendFacade;
-use Inspire\Theme\Facades\ThemeBackendFacade;
+use Lavakit\Base\Traits\CanPublishConfiguration;
+use Lavakit\Base\Traits\CanRegisterFacadeAliases;
+use Lavakit\Theme\Console\ThemeGeneratorCommand;
+use Lavakit\Theme\Console\ThemeListCommand;
+use Lavakit\Theme\Contracts\Themes\Frontend as ThemeFrontendContract;
+use Lavakit\Theme\Contracts\Themes\Backend as ThemeBackendContract;
+use Lavakit\Theme\Facades\ThemeFrontendFacade;
+use Lavakit\Theme\Facades\ThemeBackendFacade;
 use Config;
-use Inspire\Theme\Managers\Themes\Frontend as ThemeFrontend;
-use Inspire\Theme\Managers\Themes\Backend as ThemeBackend;
-use Inspire\Theme\Services\Breadcrumbs\Providers\BreadcrumbsProvider;
+use Lavakit\Theme\Managers\Themes\Frontend as ThemeFrontend;
+use Lavakit\Theme\Managers\Themes\Backend as ThemeBackend;
+use Lavakit\Theme\Services\Breadcrumbs\Providers\BreadcrumbsProvider;
 
 /**
  * Class ThemeServiceProvider
- * @package Inspire\Theme\Providers
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Theme\Providers
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class ThemeServiceProvider extends ServiceProvider
@@ -84,7 +84,7 @@ class ThemeServiceProvider extends ServiceProvider
             $themeTypes = config('theme.theme.types.middleware');
             foreach ($themeTypes as $middleware => $themeName) {
                 /** Register Middleware */
-                $this->app['router']->aliasMiddleware($middleware, "Inspire\\Theme\\Middleware\\Route{$middleware}Middleware");
+                $this->app['router']->aliasMiddleware($middleware, "Lavakit\\Theme\\Middleware\\Route{$middleware}Middleware");
 
                 /** Push Config middleware theme */
                 Config::push('base.base.middleware.' . $middleware, $middleware . ':' . $themeName);

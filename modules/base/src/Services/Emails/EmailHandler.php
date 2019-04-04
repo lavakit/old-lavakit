@@ -1,16 +1,16 @@
 <?php
 
-namespace Inspire\Base\Services\Emails;
+namespace Lavakit\Base\Services\Emails;
 
-use Inspire\Base\Events\SendMailEvent;
+use Lavakit\Base\Events\SendMailEvent;
 use Exception;
 use Symfony\Component\Debug\Exception\FlattenException;
 use Symfony\Component\Debug\ExceptionHandler;
 
 /**
  * Class EmailHandler
- * @package Inspire\Base\Services\Emails
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Base\Services\Emails
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class EmailHandler
@@ -20,7 +20,7 @@ class EmailHandler
      *
      * @param string $view
      * @return $this
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function setTemplate(string $view)
@@ -34,7 +34,7 @@ class EmailHandler
      * @param string $subject
      * @param string $body
      * @param array $args
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function send(string $subject, string $body, array $args = [])
@@ -48,7 +48,7 @@ class EmailHandler
 
     /**
      * @param Exception $exception
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function sendErrorException(Exception $exception)

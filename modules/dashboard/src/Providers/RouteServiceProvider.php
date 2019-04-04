@@ -1,18 +1,18 @@
 <?php
 
-namespace Inspire\Dashboard\Providers;
+namespace Lavakit\Dashboard\Providers;
 
-use Inspire\Base\Providers\RoutingServiceProvider as BaseRoutingServiceProvider;
+use Lavakit\Base\Providers\RoutingServiceProvider as BaseRoutingServiceProvider;
 
 /**
  * Class RouteServiceProvider
- * @package Inspire\Dashboard\Providers
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Dashboard\Providers
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class RouteServiceProvider extends BaseRoutingServiceProvider
 {
-    protected $namespace = 'Inspire\Dashboard\Http\Controllers';
+    protected $namespace = 'Lavakit\Dashboard\Http\Controllers';
 
     /**
      * @return bool|string

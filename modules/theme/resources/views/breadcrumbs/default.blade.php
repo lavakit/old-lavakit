@@ -8,7 +8,7 @@
                     <a href="{{ $breadcrumb->url }}">
 
                         @isset($breadcrumb->icon)
-                            <fa class="{{ $breadcrumb->icon }}"></fa>
+                            <i class="{{ $breadcrumb->icon }}"></i>
                         @endisset
 
                         {{ $breadcrumb->title }}

@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Translation\Repositories\Interfaces;
+namespace Lavakit\Translation\Repositories\Interfaces;
 
-use Inspire\Base\Repositories\BaseRepository;
+use Lavakit\Base\Repositories\BaseRepository;
 
 /**
  * Interface TranslationTranslationRepository
- * @package Inspire\Translation\Repositories\Interfaces
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Translation\Repositories\Interfaces
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 interface TranslationTranslationRepository extends BaseRepository

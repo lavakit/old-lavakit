@@ -1,0 +1,11 @@
+{
+    "alias": "notification",
+    "name": "Lavakit notification",
+    "author": "hoatq",
+    "description": "Notification",
+    "namespace": "Lavakit\\Notification",
+    "version": "1.0",
+    "autoload": "psr-4",
+    "enabled": true,
+    "installed": true
+}

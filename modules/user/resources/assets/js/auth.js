@@ -1,11 +1,11 @@
-let InspiredAuth = function () {
+let LavakitAuth = function () {
     return {
         init: function () {
-
+            console.log('Auth');
         },
     };
 }();
 
 $(function () {
-    InspiredAuth.init();
+    LavakitAuth.init();
 });

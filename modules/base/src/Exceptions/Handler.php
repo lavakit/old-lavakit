@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspire\Base\Exceptions;
+namespace Lavakit\Base\Exceptions;
 
 use App\Exceptions\Handler as ExceptionHandler;
 use Exception;
@@ -8,14 +8,15 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Session\TokenMismatchException;
 use Illuminate\Validation\ValidationException;
-use FrontendTheme;
+use ThemeFrontend;
+use ThemeBackend;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class Handler
- * @package Inspire\Base\Exceptions
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Base\Exceptions
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class Handler extends ExceptionHandler
@@ -42,7 +43,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $ex)
     {
-        if (config('app.debug') === false) {
+        if (!config('app.debug')) {
             if ($ex instanceof ModelNotFoundException) {
                 $ex = new NotFoundHttpException($ex->getMessage(), $ex);
             }
@@ -54,20 +55,22 @@ class Handler extends ExceptionHandler
             if ($this->isHttpException($ex)) {
                 switch ($ex->getStatusCode()) {
                     case 404:
-                        if ($request->is(locate() . '/' . config('base.base.admin-prefix') . '/*')) {
-                            return response()->view('backend::errors.404', [], 404);
+                        if ($request->is(locale() . '/' . config('base.base.admin-prefix') . '/*')) {
+                            ThemeBackend::set(config('theme.theme.active_backend'));
+                            return response()->view('errors.404', [], 404);
                         }
 
-                        FrontendTheme::set(config('theme.theme.active'));
+                        ThemeFrontend::set(config('theme.theme.active'));
                         return response()->view('errors.404', [], 404);
 
                     case 500:
                     case 503:
-                        if ($request->is(locate() . '/' . config('base.base.admin-prefix') . '/*')) {
-                            return response()->view('backend::errors.500', [], 500);
+                        if ($request->is(locale() . '/' . config('base.base.admin-prefix') . '/*')) {
+                            ThemeBackend::set(config('theme.theme.active_backend'));
+                            return response()->view('errors.500', [], 500);
                         }
 
-                        FrontendTheme::set(config('theme.theme.active'));
+                        ThemeFrontend::set(config('theme.theme.active'));
                         return response()->view('errors.500', [], 500);
                 }
             }

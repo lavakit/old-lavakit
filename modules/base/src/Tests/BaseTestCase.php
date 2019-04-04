@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspire\Base\Tests;
+namespace Lavakit\Base\Tests;
 
 use Illuminate\Foundation\Testing\TestCase;
 use Tests\CreatesApplication;

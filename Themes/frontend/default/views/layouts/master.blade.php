@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ locate() }}">
+<html lang="{{ locale() }}">
 <head>
     <base src="{{ URL::asset('/') }}" />
     <meta charset="utf-8">

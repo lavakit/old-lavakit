@@ -1,27 +1,27 @@
 <?php
 
-namespace Inspire\Translation\Providers;
+namespace Lavakit\Translation\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Inspire\Base\Services\Caches\Cache;
-use Inspire\Translation\Models\Translation;
-use Inspire\Translation\Models\TranslationTranslation;
-use Inspire\Translation\Repositories\Caches\TranslationCacheDecorator;
-use Inspire\Translation\Repositories\Caches\TranslationTranslationCacheDecorator;
-use Inspire\Translation\Repositories\Eloquent\TranslationEloquentRepository;
-use Inspire\Translation\Repositories\Eloquent\TranslationTranslationEloquentRepository;
-use Inspire\Translation\Repositories\Interfaces\TranslationRepository;
-use Inspire\Translation\Repositories\Interfaces\TranslationTranslationRepository;
+use Lavakit\Base\Services\Caches\Cache;
+use Lavakit\Translation\Models\Translation;
+use Lavakit\Translation\Models\TranslationTranslation;
+use Lavakit\Translation\Repositories\Caches\TranslationCacheDecorator;
+use Lavakit\Translation\Repositories\Caches\TranslationTranslationCacheDecorator;
+use Lavakit\Translation\Repositories\Eloquent\TranslationEloquentRepository;
+use Lavakit\Translation\Repositories\Eloquent\TranslationTranslationEloquentRepository;
+use Lavakit\Translation\Repositories\Interfaces\TranslationRepository;
+use Lavakit\Translation\Repositories\Interfaces\TranslationTranslationRepository;
 
 /**
  * Class RepositoryServiceProvider
- * @package Inspire\Translation\Providers
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Translation\Providers
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class RepositoryServiceProvider extends ServiceProvider
 {
-    protected $module = 'Inspire\Translation';
+    protected $module = 'Lavakit\Translation';
 
     /**
      * Bootstrap the application services.

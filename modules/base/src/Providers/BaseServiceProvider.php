@@ -1,33 +1,39 @@
 <?php
 
-namespace Inspire\Base\Providers;
+namespace Lavakit\Base\Providers;
 
+use Illuminate\Http\Request;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\ServiceProvider;
-use Inspire\Base\Exceptions\Handler;
-use Inspire\Base\Facades\EmailFacade;
-use Inspire\Base\Facades\TitleFacade;
-use Inspire\Base\Traits\CanPublishConfiguration;
-use Inspire\Base\Traits\CanRegisterFacadeAliases;
-use Inspire\Dashboard\Providers\DashboardServiceProvider;
-use Inspire\Menu\Providers\MenuServiceProvider;
-use Inspire\Page\Providers\PageServiceProvider;
-use Inspire\Post\Providers\PostServiceProvider;
-use Inspire\Setting\Providers\SettingServiceProvider;
-use Inspire\Theme\Providers\ThemeServiceProvider;
-use Inspire\Translation\Providers\TranslationServiceProvider;
-use Inspire\User\Providers\UserServiceProvider;
+use Illuminate\Support\Str;
+use Lavakit\Base\Composers\TranslationsViewComposer;
+use Lavakit\Base\Exceptions\Handler;
+use Lavakit\Base\Facades\EmailFacade;
+use Lavakit\Base\Facades\TitleFacade;
+use Lavakit\Base\Traits\CanPublishConfiguration;
+use Lavakit\Base\Traits\CanRegisterFacadeAliases;
+use Lavakit\Base\Traits\CanRegisterViewComposer;
+use Lavakit\Dashboard\Providers\DashboardServiceProvider;
+use Lavakit\Menu\Providers\MenuServiceProvider;
+use Lavakit\Page\Providers\PageServiceProvider;
+use Lavakit\Post\Providers\PostServiceProvider;
+use Lavakit\Setting\Providers\SettingServiceProvider;
+use Lavakit\Theme\Providers\ThemeServiceProvider;
+use Lavakit\Translation\Providers\TranslationServiceProvider;
+use Lavakit\User\Providers\UserServiceProvider;
+use Lavakit\Notification\Providers\NotificationServiceProvider;
 
 /**
  * Class BaseServiceProvider
- * @package Inspire\Base\Providers
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Base\Providers
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class BaseServiceProvider extends ServiceProvider
 {
     use CanPublishConfiguration;
     use CanRegisterFacadeAliases;
+    use CanRegisterViewComposer;
 
     /**
      * @var array Facade Aliases
@@ -43,7 +49,8 @@ class BaseServiceProvider extends ServiceProvider
      */
     protected $middleware = [
         'Base' => [
-            'localizationRedirect' => 'LocalizationMiddleware'
+            'localizationRedirect' => 'LocalizationMiddleware',
+            'SessionTimeout' => 'SessionTimeoutMiddleware',
         ]
     ];
 
@@ -58,7 +65,12 @@ class BaseServiceProvider extends ServiceProvider
         $this->publishConfig('base', 'base');
         $this->publishConfig('base', 'cache');
         $this->publishConfig('base', 'mail');
+        $this->publishConfig('base', 'available_locales');
 
+        /*Load view composer*/
+        $this->registerViewComposer(['layouts.master'], TranslationsViewComposer::class);
+
+        /*Register middleware*/
         $this->registerMiddleware();
 
         /*Load Service on Vendor*/
@@ -67,6 +79,7 @@ class BaseServiceProvider extends ServiceProvider
         /*Load Services on Lucky*/
         $this->app->register(DashboardServiceProvider::class);
         $this->app->register(MenuServiceProvider::class);
+        $this->app->register(NotificationServiceProvider::class);
         $this->app->register(PageServiceProvider::class);
         $this->app->register(PostServiceProvider::class);
         $this->app->register(SettingServiceProvider::class);
@@ -95,6 +108,10 @@ class BaseServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->singleton('lavakit.isBackend', function () {
+            return $this->isBackend();
+        });
+
         //Load helpers
         $this->loadHelpers();
 
@@ -104,6 +121,7 @@ class BaseServiceProvider extends ServiceProvider
         $this->registerFacadeAliases($this->facadeAliases);
 
         $this->app->register(EventServiceProvider::class);
+        $this->app->register(ComposerServiceProvider::class);
     }
 
     /**
@@ -128,9 +146,27 @@ class BaseServiceProvider extends ServiceProvider
     {
         foreach ($this->middleware as $module => $middlewares) {
             foreach ($middlewares as $name => $middleware) {
-                $class = "Inspire\\{$module}\\Http\\Middleware\\{$middleware}";
+                $class = "Lavakit\\{$module}\\Http\\Middleware\\{$middleware}";
                 $this->app['router']->aliasMiddleware($name, $class);
             }
         }
+    }
+
+    /**
+     * Check if the current URL matches the configured backend uri
+     *
+     * @return bool
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    private function isBackend()
+    {
+        $url = app(Request::class)->path();
+
+        if (Str::contains($url, config('base.base.admin-prefix'))) {
+            return true;
+        }
+
+        return false;
     }
 }

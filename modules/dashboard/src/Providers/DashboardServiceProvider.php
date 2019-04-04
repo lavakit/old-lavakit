@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Dashboard\Providers;
+namespace Lavakit\Dashboard\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
 /**
  * Class DashboardServiceProvider
- * @package Inspire\Dashboard\Providers
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Dashboard\Providers
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class DashboardServiceProvider extends ServiceProvider

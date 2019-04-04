@@ -1,14 +1,14 @@
 <?php
 
-namespace Inspire\Translation\Repositories\Eloquent;
+namespace Lavakit\Translation\Repositories\Eloquent;
 
-use Inspire\Base\Repositories\Eloquent\BaseEloquentRepository;
-use Inspire\Translation\Repositories\Interfaces\TranslationRepository;
+use Lavakit\Base\Repositories\Eloquent\BaseEloquentRepository;
+use Lavakit\Translation\Repositories\Interfaces\TranslationRepository;
 
 /**
  * Class TranslationEloquentRepository
- * @package Inspire\Translation\Repositories\Eloquent
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Translation\Repositories\Eloquent
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class TranslationEloquentRepository extends BaseEloquentRepository implements TranslationRepository

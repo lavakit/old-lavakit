@@ -1,22 +1,22 @@
 <?php
 
-namespace Inspire\User\Providers;
+namespace Lavakit\User\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Inspire\User\Models\User;
-use Inspire\User\Repositories\Eloquent\UserEloquentRepository;
-use Inspire\User\Repositories\Interfaces\UserRepository;
+use Lavakit\User\Models\User;
+use Lavakit\User\Repositories\Eloquent\UserEloquentRepository;
+use Lavakit\User\Repositories\Interfaces\UserRepository;
 
 /**
  * Class RepositoryServiceProvider
- * @package Inspire\User\Providers
- * @copyright 2018 Inspire Group
+ * @package Lavakit\User\Providers
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class RepositoryServiceProvider extends ServiceProvider
 {
     /** @var string */
-    protected $module = 'Inspire\User';
+    protected $module = 'Lavakit\User';
 
     /**
      * Bootstrap the application services.

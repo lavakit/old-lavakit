@@ -1,10 +1,10 @@
 <?php
 
-namespace Inspire\Theme\Services\Breadcrumbs\Providers;
+namespace Lavakit\Theme\Services\Breadcrumbs\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Breadcrumbs;
-use Inspire\Theme\Services\Breadcrumbs\Manager\BreadcrumbsGenerator;
+use Lavakit\Theme\Services\Breadcrumbs\Manager\BreadcrumbsGenerator;
 
 class RegisterBreadcrumbsProvider extends ServiceProvider
 {
@@ -12,7 +12,7 @@ class RegisterBreadcrumbsProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      *
-     * @throws \Inspire\Theme\Services\Breadcrumbs\Facades\DuplicateBreadcrumbException
+     * @throws \Lavakit\Theme\Services\Breadcrumbs\Facades\DuplicateBreadcrumbException
      */
     public function boot()
     {
@@ -22,7 +22,7 @@ class RegisterBreadcrumbsProvider extends ServiceProvider
     /**
      * Register the breadcrumbs
      *
-     * @throws \Inspire\Theme\Services\Breadcrumbs\Facades\DuplicateBreadcrumbException
+     * @throws \Lavakit\Theme\Services\Breadcrumbs\Facades\DuplicateBreadcrumbException
      */
     protected function registerBreadcrumbs()
     {

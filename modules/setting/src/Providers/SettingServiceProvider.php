@@ -1,17 +1,20 @@
 <?php
 
-namespace Inspire\Setting\Providers;
+namespace Lavakit\Setting\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Lavakit\Base\Traits\CanPublishConfiguration;
 
 /**
  * Class SettingServiceProvider
- * @package Inspire\Setting\Providers
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Setting\Providers
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 class SettingServiceProvider extends ServiceProvider
 {
+    use CanPublishConfiguration;
+
     /**
      * Bootstrap the application services.
      *
@@ -19,6 +22,8 @@ class SettingServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->publishConfig('setting', 'setting');
+
         /*Load views*/
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'setting');
         /*Load translations*/

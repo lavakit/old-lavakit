@@ -1,14 +1,14 @@
 <?php
 
-namespace Inspire\Theme\Middleware;
+namespace Lavakit\Theme\Middleware;
 
 use Closure;
 use ThemeFrontend;
 
 /**
  * Class RouteFrontendMiddleware
- * @package Inspire\Theme\Middleware
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Theme\Middleware
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class RouteFrontendMiddleware

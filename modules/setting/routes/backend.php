@@ -1,28 +1,18 @@
 <?php
 
 use Illuminate\Routing\Router;
-use Inspire\Theme\Services\Breadcrumbs\Facades\Breadcrumbs;
+use Lavakit\Theme\Services\Breadcrumbs\Facades\Breadcrumbs;
 
 /** @var Router $router */
 $router->group(['prefix' => '/settings'], function (Router $router) {
-    $router->get('/general', [
+    $router->match(['get', 'post'], '/general', [
         'as'    => 'admin.settings.general',
-        'uses'  => 'SettingController@getGeneral'
+        'uses'  => 'SettingController@general'
     ]);
 
-    $router->post('/general', [
-        'as'    => 'admin.settings.general',
-        'uses'  => 'SettingController@postGeneral'
-    ]);
-
-    $router->get('/email', [
+    $router->match(['get', 'post'], '/email', [
         'as'    => 'admin.settings.email',
-        'uses'  => 'SettingController@getEmail'
-    ]);
-
-    $router->post('/email', [
-        'as'    => 'admin.settings.email',
-        'uses'  => 'SettingController@postEmail'
+        'uses'  => 'SettingController@email'
     ]);
 
     $router->get('/media', [
@@ -33,15 +23,5 @@ $router->group(['prefix' => '/settings'], function (Router $router) {
     $router->post('/media', [
         'as'    => 'admin.settings.media',
         'uses'  => 'SettingController@postMedia'
-    ]);
-
-    $router->get('/language', [
-        'as'    => 'admin.settings.language',
-        'uses'  => 'SettingController@getLanguage'
-    ]);
-
-    $router->post('/language', [
-        'as'    => 'admin.settings.language',
-        'uses'  => 'SettingController@postLanguage'
     ]);
 });

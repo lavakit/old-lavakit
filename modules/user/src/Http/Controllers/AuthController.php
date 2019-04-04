@@ -1,20 +1,20 @@
 <?php
 
-namespace Inspire\User\Http\Controllers;
+namespace Lavakit\User\Http\Controllers;
 
-use Inspire\Base\Http\Controllers\BaseController;
+use Lavakit\Base\Http\Controllers\BaseController;
 use AssetBackend;
-use Inspire\User\Contracts\AuthenticationContract;
-use Inspire\User\Http\Requests\ForgotRequest;
-use Inspire\User\Http\Requests\LoginRequest;
-use Inspire\User\Http\Requests\RegisterRequest;
-use Inspire\User\Http\Requests\ResetRequest;
+use Lavakit\User\Contracts\AuthenticationContract;
+use Lavakit\User\Http\Requests\ForgotRequest;
+use Lavakit\User\Http\Requests\LoginRequest;
+use Lavakit\User\Http\Requests\RegisterRequest;
+use Lavakit\User\Http\Requests\ResetRequest;
 use ThemeBackend;
 
 /**
  * Class AuthController
- * @package Inspire\User\Http\Controllers
- * @copyright 2019 Inspire Group
+ * @package Lavakit\User\Http\Controllers
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class AuthController extends BaseController
@@ -30,14 +30,9 @@ class AuthController extends BaseController
      */
     public function __construct()
     {
-        ThemeBackend::set('themekit');
-
         parent::__construct();
 
         $this->auth = app(AuthenticationContract::class);
-
-        AssetBackend::onlyStylesheets(['bootstrap', 'iconkit', 'core']);
-        AssetBackend::onlyJavascript(['jquery', 'bootstrap']);
         AssetBackend::addAppModule(['auth']);
     }
 
@@ -45,7 +40,7 @@ class AuthController extends BaseController
      * Show the view login page
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @copyright 2018 Inspire Group
+     * @copyright 2018 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com>
      */
     public function getLogin()
@@ -58,7 +53,7 @@ class AuthController extends BaseController
     /**
      * @param LoginRequest $request
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function login(LoginRequest $request)
@@ -70,7 +65,7 @@ class AuthController extends BaseController
      * Show the view register page
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function getRegister()
@@ -85,7 +80,7 @@ class AuthController extends BaseController
      *
      * @param RegisterRequest $request
      * @return \Illuminate\Support\ServiceProvider|mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function register(RegisterRequest $request)
@@ -98,7 +93,7 @@ class AuthController extends BaseController
      *
      * @param string|null $email
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function confirm(string $email = null)
@@ -109,7 +104,7 @@ class AuthController extends BaseController
     /**
      * Get the view forgot password
      *
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function getForgot()
@@ -124,7 +119,7 @@ class AuthController extends BaseController
      *
      * @param ForgotRequest $request
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function forgot(ForgotRequest $request)
@@ -138,7 +133,7 @@ class AuthController extends BaseController
      * @param string|null $email
      * @param string|null $token
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function getReset(string $email = null, string $token = null)
@@ -162,7 +157,7 @@ class AuthController extends BaseController
      *
      * @param ResetRequest $request
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function reset(ResetRequest $request)
@@ -172,7 +167,7 @@ class AuthController extends BaseController
 
     /**
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function logout()

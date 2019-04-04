@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Base\Http\Requests;
+namespace Lavakit\Base\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * Class BaseFormRequest
- * @package Inspire\Base\Http\Requests
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Base\Http\Requests
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
 abstract class BaseFormRequest extends FormRequest

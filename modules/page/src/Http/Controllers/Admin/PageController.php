@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Page\Http\Controllers\Admin;
+namespace Lavakit\Page\Http\Controllers\Admin;
 
-use Inspire\Base\Http\Controllers\BaseController;
+use Lavakit\Base\Http\Controllers\BaseController;
 
 /**
  * Class PageController
- * @package Inspire\Page\Http\Controllers\Admin
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Page\Http\Controllers\Admin
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class PageController extends BaseController

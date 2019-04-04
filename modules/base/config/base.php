@@ -7,14 +7,14 @@ return [
     |--------------------------------------------------------------------------
     */
     'version' => env('VERSION', 'v1.0'),
-    'crafted' => env('APP_CRAFTED', 'Cms Inspired'),
+    'crafted' => env('APP_CRAFTED', 'Lavakit'),
 
     /*
     |--------------------------------------------------------------------------
     | App name
     |--------------------------------------------------------------------------
     */
-    'app_name' => env('APP_NAME', 'Inspired'),
+    'app_name' => env('APP_NAME', 'Lavakit'),
 
     /*
     |--------------------------------------------------------------------------
@@ -26,6 +26,7 @@ return [
         'base',
         'dashboard',
         'menu',
+        'notification',
         'page',
         'post',
         'setting',
@@ -51,7 +52,8 @@ return [
    */
     'middleware' => [
         'backend' => [
-            'auth'
+            'auth',
+            'SessionTimeout'
         ],
         'frontend' => [
         ],

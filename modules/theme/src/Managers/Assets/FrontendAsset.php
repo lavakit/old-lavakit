@@ -1,13 +1,13 @@
 <?php
 
-namespace Inspire\Theme\Managers\Assets;
+namespace Lavakit\Theme\Managers\Assets;
 
-use Inspire\Theme\Contracts\Assets\Frontend as FrontendContract;
+use Lavakit\Theme\Contracts\Assets\Frontend as FrontendContract;
 
 /**
  * Class FrontendAsset
- * @package Inspire\Theme\Managers
- * @copyright 2019 Inspire Group
+ * @package Lavakit\Theme\Managers
+ * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class FrontendAsset extends AssetAbstract implements FrontendContract
@@ -30,7 +30,7 @@ class FrontendAsset extends AssetAbstract implements FrontendContract
 
     /**
      * @return mixed
-     * @copyright 2019 Inspire Group
+     * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com>
      */
     public function assetPath()

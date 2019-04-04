@@ -1,14 +1,14 @@
 <?php
 
-namespace Inspire\Theme\Facades;
+namespace Lavakit\Theme\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Inspire\Theme\Contracts\Themes\Backend as ThemeBackendContract;
+use Lavakit\Theme\Contracts\Themes\Backend as ThemeBackendContract;
 
 /**
  * Class ThemeBackendFacade
- * @package Inspire\Theme\Facades
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Theme\Facades
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class ThemeBackendFacade extends Facade

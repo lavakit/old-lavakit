@@ -1,14 +1,14 @@
 <?php
 
-namespace Inspire\Page\Providers;
+namespace Lavakit\Page\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Inspire\Base\Traits\CanPublishConfiguration;
+use Lavakit\Base\Traits\CanPublishConfiguration;
 
 /**
  * Class PageServiceProvider
- * @package Inspire\Page\Providers
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Page\Providers
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class PageServiceProvider extends ServiceProvider

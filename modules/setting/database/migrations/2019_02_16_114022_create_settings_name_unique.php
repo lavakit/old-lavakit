@@ -13,8 +13,8 @@ class CreateSettingsNameUnique extends Migration
     public function up()
     {
         Schema::table('settings', function (Blueprint $table) {
-            $table->unique('key', 'settings_key_unique');
-            $table->index('key', 'settings_key_index');
+            $table->unique('name', 'settings_name_unique');
+            $table->index('name', 'settings_name_index');
         });
     }
 
@@ -25,8 +25,8 @@ class CreateSettingsNameUnique extends Migration
     public function down()
     {
         Schema::table('settings', function (Blueprint $table) {
-            $table->dropUnique('settings_key_unique');
-            $table->dropIndex('settings_key_index');
+            $table->dropUnique('settings_name_unique');
+            $table->dropIndex('settings_name_index');
         });
     }
 }

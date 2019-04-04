@@ -1,15 +1,15 @@
 <?php
 
-namespace Inspire\Post\Repositories\Caches;
+namespace Lavakit\Post\Repositories\Caches;
 
-use Inspire\Base\Repositories\Caches\CacheDecorator;
-use Inspire\Post\Repositories\PostRepository;
-use Inspire\Base\Services\Caches\CacheInterface;
+use Lavakit\Base\Repositories\Caches\CacheDecorator;
+use Lavakit\Post\Repositories\PostRepository;
+use Lavakit\Base\Services\Caches\CacheInterface;
 
 /**
  * Class PostCacheDecorator
- * @package Inspire\Post\Repositories\Caches
- * @copyright 2018 Inspire Group
+ * @package Lavakit\Post\Repositories\Caches
+ * @copyright 2018 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
 class PostCacheDecorator extends CacheDecorator implements PostRepository

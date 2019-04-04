@@ -1,8 +1,8 @@
 <?php
 
-namespace Inspire\Post\Providers;
+namespace Lavakit\Post\Providers;
 
-use Inspire\Base\Providers\RoutingServiceProvider as BaseRoutingServiceProvider;
+use Lavakit\Base\Providers\RoutingServiceProvider as BaseRoutingServiceProvider;
 
 class RouteServiceProvider extends BaseRoutingServiceProvider
 {
@@ -10,7 +10,7 @@ class RouteServiceProvider extends BaseRoutingServiceProvider
      * The root namespace to assume when generating URLs to actions.
      * @var string
      */
-    protected $namespace = 'Inspire\Post\Http\Controllers';
+    protected $namespace = 'Lavakit\Post\Http\Controllers';
 
     /**
      * @return string
