@@ -3,12 +3,11 @@ import VueI18n from 'vue-i18n';
 import VueRouter from 'vue-router';
 import ElementUI from 'element-ui';
 import locale from 'element-ui/lib/locale/lang/en';
+import App from './App';
 
 Vue.use(ElementUI, {locale});
 Vue.use(VueI18n);
 Vue.use(VueRouter);
-
-Vue.component('vue-screenfull', require('./compoments/Screenfull'));
 
 const currentLocale = window.Lavakit.currentLocale;
 const adminPrefix = window.Lavakit.adminPrefix;
