@@ -8,7 +8,7 @@ Vue.use(ElementUI, {locale});
 Vue.use(VueI18n);
 Vue.use(VueRouter);
 
-Vue.component('vue-screen-full', require('./compoments/Screenfull'));
+Vue.component('vue-screenfull', require('./compoments/Screenfull'));
 
 const currentLocale = window.Lavakit.currentLocale;
 const adminPrefix = window.Lavakit.adminPrefix;

@@ -1,39 +1,50 @@
 <template>
     <div>
-        <fullscreen ref="fullscreen" @change="fullscreenChange">
-            Content
-        </fullscreen>
-        <!--  deprecated
-          <fullscreen :fullscreen.sync="fullscreen">
-            Content
-          </fullscreen>
-        -->
-        <button type="button" @click="toggle" >Fullscreen</button>
-        <vue-screenfull>
-
-        </vue-screenfull>
-
-        <!--<button type="button" id="navbar-fullscreen" class="nav-link"><i class="ik ik-maximize"></i></button>-->
+        <button type="button" id="navbar-fullscreen" class="nav-link" @click="click">
+            <i v-if="isScreenFull" class="ik ik-minimize"></i>
+            <i v-else class="ik ik-maximize"></i>
+        </button>
     </div>
 </template>
 
 <script>
-    import fullscreen from 'vue-fullscreen'
-    import Vue from 'vue'
-    Vue.use(fullscreen)
+    import screenfull  from 'screenfull';
+
     export default {
-        methods: {
-            toggle () {
-                this.$refs['fullscreen'].toggle() // recommended
-                // this.fullscreen = !this.fullscreen // deprecated
-            },
-            fullscreenChange (fullscreen) {
-                this.fullscreen = fullscreen
-            }
-        },
         data() {
             return {
-                fullscreen: false
+                isScreenFull: false
+            }
+        },
+        mounted() {
+            this.init()
+        },
+        beforeDestroy() {
+            this.destroy()
+        },
+        methods: {
+            click() {
+                if (!screenfull.enabled) {
+                    this.$message({
+                        message: 'you browser can not work',
+                        type: 'warning'
+                    });
+                    return false
+                }
+                screenfull.toggle()
+            },
+            change() {
+                this.isScreenFull = screenfull.isScreenFull
+            },
+            init() {
+                if (screenfull.enabled) {
+                    screenfull.on('change', this.change)
+                }
+            },
+            destroy() {
+                if (screenfull.enabled) {
+                    screenfull.off('change', this.change)
+                }
             }
         }
     }
