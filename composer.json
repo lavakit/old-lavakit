@@ -1,12 +1,12 @@
 {
-    "name": "Lavakit/Lavakit",
+    "name": "lavakit/lavakit",
     "description": "The Lavakit CMS",
     "keywords": [
         "Lavakit",
         "Lavakit cms",
-        "Lavakit lucky"
+        "LavaTheme"
     ],
-    "homepage": "http://webnambo.com",
+    "homepage": "http://lavakit.info",
     "support": {
         "issues": "https://github.com/lavakit/lavakit/issues",
         "document": "http://lavakit.readthedocs.io"
@@ -14,7 +14,7 @@
     "authors": [
         {
             "name": "Trinh Quoc Hoa",
-            "email": "webnambo@gmail.com"
+            "email": "tqhoa8th@gmail.com"
         }
     ],
     "license": "MIT",
