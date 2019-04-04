@@ -12,7 +12,7 @@ return [
         'manifest',
         'vendor',
         'lavakit',
-        'core'
+        //'core'
     ],
     'stylesheets' => [
         'lavakit'

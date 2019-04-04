@@ -15,10 +15,13 @@ const dir_destination = './../../../public/themes/backend/lavatheme/assets';
 
 mix.setPublicPath('./../../../public');
 
-mix.js('assets/js/lavatheme.js', 'themes/backend/lavatheme/assets/js/lavatheme.js').extract(['jquery', 'vue'])
+mix.js('assets/js/lavatheme.js', 'themes/backend/lavatheme/assets/js/lavakit.js').extract(['jquery', 'vue'])
     .sass('./assets/sass/style.scss', 'themes/backend/lavatheme/assets/css/style.css').options({
     processCssUrls: false,
 });
 
 /** Copy vendor */
-mix.copy('node_modules/icon-kit/dist/fonts', dir_destination + '/fonts')
+mix.copy('node_modules/icon-kit/dist/fonts', dir_destination + '/fonts');
+
+/*Copy an entire Images directory*/
+mix.copy('assets/images', dir_destination + '/images');

@@ -6,6 +6,6 @@ try {
     require('bootstrap');
 } catch (e) {}
 
-//require('./bootstrap');
+require('./bootstrap');
 
-//require('./vue');
+require('./vue');
