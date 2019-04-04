@@ -6,6 +6,8 @@ try {
     require('bootstrap');
 } catch (e) {}
 
-require('./bootstrap');
+window.PerfectScrollbar = require('perfect-scrollbar').default;
 
+require('./theme');
+require('./bootstrap');
 require('./vue');
