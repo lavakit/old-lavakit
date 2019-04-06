@@ -9,8 +9,7 @@
                         <a v-bind:href="parent.uri">
                             <i v-bind:class="['ik', parent.icon]"></i>
                             <span>{{ parent.name }}</span>
-                            <span v-if="parent.number > 3" class="badge badge-success">{{ parent.number }}</span>
-                            <span v-else class="badge badge-danger">{{ parent.number }}</span>
+                            <span v-if="parent.number" class="badge badge-success">{{ parent.number }}</span>
                         </a>
                         <div v-if="parent.hasSub" class="submenu-content" v-for="menuChild in parent.menuChild">
                             <a v-bind:href="menuChild.uri" class="menu-item">{{ menuChild.name}}</a>

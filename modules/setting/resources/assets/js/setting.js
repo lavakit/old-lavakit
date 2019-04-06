@@ -1,5 +1,11 @@
-import SettingEmail from './compoments/SettingEmail';
+import EmailSetting from './compoments/EmailSetting';
+
+const locales = window.Lavakit.locales;
 
 export default [
-    SettingEmail
+    {
+        path: '/settings/email',
+        name: 'admin.settings.email',
+        component: EmailSetting
+    }
 ];

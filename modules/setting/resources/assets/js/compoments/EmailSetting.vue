@@ -16,7 +16,6 @@
 
 <script>
     export default {
-        name: 'setting-email',
         data () {
             return {
                 msg: 'Hello world!'
