@@ -1,4 +1,3 @@
-$ff: 'Nunito Sans', sans-serif;
 body {
     color: #212121;
     font-size: $font-size;
@@ -126,6 +125,7 @@ p {
 	    left: auto;
 	}
 }
+
 .wrapper {
 	.header-top {
 		background-color: $white;
@@ -727,7 +727,7 @@ p {
 								    display: none;
 								    z-index: 3;
 								    padding-left: 10px;
-								    @include transform(translateY(-50%)); 
+								    @include transform(translateY(-50%));
 								    a {
 									    width: 30px;
 									    height: 30px;
@@ -860,7 +860,7 @@ p {
 							span {
 							    line-height: 1em;
 							    @include flexbox();
-							    @include justify-content(end);
+							    @include justify-content(center);
 							    @include flex-direction(column);
 							    .name {
 								    font-size: 14px;
@@ -886,6 +886,7 @@ p {
 		    width: 310px;
 		    z-index: 9999;
 		    @include transform(translateY(-100%) translateX(14.0625rem));
+
 			.card {
 			    border: none;
 			    margin-bottom: 1.42857em;
