@@ -6,7 +6,9 @@ import VueEvents from 'vue-events';
 import locale from 'element-ui/lib/locale/lang/en';
 import VueSimplemde from 'vue-simplemde';
 
-//import SettingRoutes from '../../../../../../modules/setting/resources/assets/js/setting';
+import LayoutScreenfull from './Components/Screenfull';
+import LayoutSidebar from './Components/Sidebar';
+import SettingRoutes from '../../../../../../modules/setting/resources/assets/js/setting';
 
 Vue.use(ElementUI, {locale});
 Vue.use(VueI18n);
@@ -28,7 +30,7 @@ const router = new VueRouter({
     mode: 'history',
     base: makeBaseUrl(),
     routes: [
-        //...SettingRoutes
+        ...SettingRoutes
     ],
 });
 
@@ -41,8 +43,8 @@ const i18n = new VueI18n({
     messages,
 });
 
-Vue.component('vue-sidebar', require('./Components/Screenfull'));
-Vue.component('vue-sidebar', require('./Components/Sidebar'));
+Vue.component('vue-screenfull', LayoutScreenfull);
+Vue.component('vue-sidebar', LayoutSidebar);
 
 const app = new Vue({
     el: '#app',

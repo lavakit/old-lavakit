@@ -14,7 +14,12 @@
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
-    "laravel-mix": "^3.0"
+    "css-loader": "^2.1.1",
+    "laravel-mix": "^4.0",
+    "sass": "^1.17.4",
+    "sass-loader": "^7.1.0",
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
     "axios": "^0.18.0",
