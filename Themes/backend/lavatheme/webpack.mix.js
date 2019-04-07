@@ -10,17 +10,17 @@ let mix = require('laravel-mix');
  |
  */
 
-const dir_destination = './../../../public/themes/backend/lavatheme/assets';
+//const dir_destination = './../../../public/themes/backend/lavatheme/assets';
 
-mix.setPublicPath('./../../../public');
+mix.setPublicPath('./');
 
-mix.js('assets/js/lavatheme.js', 'themes/backend/lavatheme/assets/js/lavakit.js').extract(['jquery', 'vue'])
-    .sass('./assets/sass/style.scss', 'themes/backend/lavatheme/assets/css/style.css').options({
+mix.js('resources/src/js/lavatheme.js', 'assets/js/lavakit.js').extract(['vue'])
+    .sass('resources/src/sass/style.scss', 'assets/css/style.css').options({
     processCssUrls: false,
 });
 
 /** Copy vendor */
-mix.copy('node_modules/icon-kit/dist/fonts', dir_destination + '/fonts');
+mix.copy('node_modules/icon-kit/dist/fonts', 'assets/fonts');
 
 /*Copy an entire Images directory*/
-mix.copy('assets/images', dir_destination + '/images');
+mix.copy('resources/src/images', 'assets/images');
