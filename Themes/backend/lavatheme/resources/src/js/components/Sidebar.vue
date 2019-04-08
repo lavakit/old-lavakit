@@ -1,37 +1,62 @@
 <template>
-    <div class="nav-container">
-        <nav id="main-menu-navigation" class="navigation-main">
+    <div class="app-sidebar colored">
+        <div class="sidebar-header">
+            <router-link class="header-brand" :to="{ name: 'admin.dashboards.index'}">
+                <div class="logo-img">
+                    <img :src="logo" class="header-brand-img" :alt="crafted">
+                </div>
+                <span class="text">{{ crafted }}</span>
+            </router-link>
+            <button type="button" class="nav-toggle">
+                <i data-toggle="expanded" class="ik ik-toggle-right toggle-icon"></i>
+            </button>
+            <button id="sidebarClose" class="nav-close"><i class="ik ik-x"></i></button>
+        </div>
+
+        <div class="sidebar-content">
             <div class="nav-container">
-                <template v-for="menu in Menus">
-                    <div class="nav-lavel">{{ menu.name }}</div>
-                    <div v-bind:class="['nav-item', {'active': parent.active, 'has-sub': parent.hasSub }]"
-                         v-for="parent in menu.menuParent">
-                        <a v-bind:href="parent.uri">
-                            <i v-bind:class="['ik', parent.icon]"></i>
-                            <span>{{ parent.name }}</span>
-                            <span v-if="parent.number" class="badge badge-success">{{ parent.number }}</span>
-                        </a>
-                        <div v-if="parent.hasSub" class="submenu-content" v-for="menuChild in parent.menuChild">
-                            <a v-bind:href="menuChild.uri" class="menu-item">{{ menuChild.name}}</a>
-                        </div>
+                <nav id="main-menu-navigation" class="navigation-main">
+                    <div class="nav-container">
+                        <template v-for="menu in Menus">
+                            <div class="nav-lavel">{{ menu.name }}</div>
+                            <div v-bind:class="['nav-item', {'active': parent.active, 'has-sub': parent.hasSub }]"
+                                 v-for="parent in menu.menuParent">
+                                <router-link :to="{ name: parent.uri}">
+                                    <i v-bind:class="['ik', parent.icon]"></i>
+                                    <span>{{ parent.name }}</span>
+                                    <span v-if="parent.number" class="badge badge-success">{{ parent.number }}</span>
+                                </router-link>
+                                <div v-if="parent.hasSub" class="submenu-content" v-for="menuChild in parent.menuChild">
+                                    <router-link class="menu-item" :to="{ name: menuChild.uri}">
+                                        {{ menuChild.name}}
+                                    </router-link>
+                                </div>
+                            </div>
+                        </template>
                     </div>
-                </template>
+                </nav>
             </div>
-        </nav>
+        </div>
     </div>
 </template>
 
 <script>
+    const CRAFTED = window.Lavakit.created;
+    const LOGO = window.Lavakit.logo;
+
     export default {
         data() {
             return {
+                crafted: CRAFTED,
+                logo: LOGO,
                 Menus: [
                     {
                         name: 'Home',
                         menuParent: [
-                            {uri: '/admin', icon: 'k-bar-chart-2', name: 'Dashboard', active: true, hasSub: false}
+                            {uri: 'admin.dashboards.index', icon: 'k-bar-chart-2', name: 'Dashboard', active: true, hasSub: false}
                         ]
                     },
+
                     {
                         name: 'Content',
                         menuParent: [
@@ -104,7 +129,7 @@
                                 hasSub: true,
                                 menuChild: [
                                     {uri: '/admin/settings/general', name: 'General'},
-                                    {uri: '/admin/settings/email', name: 'Email'},
+                                    {uri: 'admin.settings.email', name: 'Email'},
                                     {uri: '/admin/settings/email', name: 'Media'}
                                 ]
                             },

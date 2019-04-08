@@ -5,9 +5,9 @@ import ElementUI from 'element-ui';
 import VueEvents from 'vue-events';
 import locale from 'element-ui/lib/locale/lang/en';
 import VueSimplemde from 'vue-simplemde';
+import App from './App';
 
-import LayoutScreenfull from './Components/Screenfull';
-import LayoutSidebar from './Components/Sidebar';
+import DashboardRoutes from '../../../../../../modules/dashboard/resources/assets/js/dashboard';
 import SettingRoutes from '../../../../../../modules/setting/resources/assets/js/setting';
 
 Vue.use(ElementUI, {locale});
@@ -30,7 +30,8 @@ const router = new VueRouter({
     mode: 'history',
     base: makeBaseUrl(),
     routes: [
-        ...SettingRoutes
+        ...DashboardRoutes,
+        ...SettingRoutes,
     ],
 });
 
@@ -43,13 +44,12 @@ const i18n = new VueI18n({
     messages,
 });
 
-Vue.component('vue-screenfull', LayoutScreenfull);
-Vue.component('vue-sidebar', LayoutSidebar);
-
 const app = new Vue({
     el: '#app',
     router,
     i18n,
+    components: { App },
+    template: '<App/>'
 });
 
 window.axios.interceptors.response.use(null, (error) => {
