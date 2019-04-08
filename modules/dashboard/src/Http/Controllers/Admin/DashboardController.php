@@ -34,6 +34,8 @@ class DashboardController extends BaseAdminController
      */
     public function index()
     {
+        title()->set('Dashboard');
+
         return view('dashboard::index');
     }
 }
