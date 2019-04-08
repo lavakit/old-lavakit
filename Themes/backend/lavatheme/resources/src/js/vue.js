@@ -5,6 +5,7 @@ import ElementUI from 'element-ui';
 import VueEvents from 'vue-events';
 import locale from 'element-ui/lib/locale/lang/en';
 import VueSimplemde from 'vue-simplemde';
+import 'element-ui/lib/theme-chalk/index.css';
 import App from './App';
 
 import DashboardRoutes from '../../../../../../modules/dashboard/resources/assets/js/dashboard';
