@@ -12,7 +12,7 @@ return [
     |
     */
     'active'            =>  env('FRONTEND_DEFAULT', 'default'),
-    'active_backend'    =>  env('BACKEND_DEFAULT', 'adminlte'),
+    'active_backend'    =>  env('BACKEND_DEFAULT', 'lavatheme'),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return [
         'enable'        => true,
         'middleware'    => [
             'frontend' => env('FRONTEND_DEFAULT', 'default'),
-            'backend' => env('BACKEND_DEFAULT', 'themekit')
+            'backend' => env('BACKEND_DEFAULT', 'lavatheme')
         ]
     ],
     /*
