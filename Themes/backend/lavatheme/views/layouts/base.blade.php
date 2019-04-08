@@ -40,6 +40,7 @@
                 adminPrefix: '{{ config('base.base.admin-prefix') }}',
                 hideDefaultLocale: '{{ config('laravellocalization.hideDefaultLocaleInURL') }}',
                 textTranslations: {!! $textTranslations ?? '' !!},
+                pageTitle: '{!! title()->get(false) !!}'
             }
         </script>
         @foreach($jsBackendFiles as $js)
