@@ -1,5 +1,6 @@
 <template>
     <div class="wrapper" id="app">
+        <vue-top-progress></vue-top-progress>
         <vue-header></vue-header>
 
         <div class="page-wrap">
@@ -29,6 +30,7 @@
     import Aside from './components/Aside';
     import Chat from './components/Chat';
     import AppModal from './components/AppModal';
+    import TopProgress from './components/Topprogress';
 
     export default {
         name: 'App',
@@ -39,6 +41,7 @@
             'vue-aside': Aside,
             'vue-chat':Chat,
             'vue-app-modal': AppModal,
+            'vue-top-progress': TopProgress,
         },
         data() {
             return {}
