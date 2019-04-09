@@ -8,8 +8,17 @@
 // Foundation
 // ---------------------------------------
 @import "~bootstrap/scss/bootstrap";
-@import "~icon-kit/dist/css/iconkit.css";
-@import "~perfect-scrollbar/css/perfect-scrollbar.css";
+@import "~icon-kit/dist/css/iconkit";
+@import "~font-awesome/scss/font-awesome";
+@import "~perfect-scrollbar/css/perfect-scrollbar";
+@import "~element-ui/lib/theme-chalk/index";
+
+@font-face {
+	font-family: element-icons;
+	src: url(../fonts/element-icons.woff) format("woff"), url(../fonts/element-icons.ttf) format("truetype");
+	font-weight: 400;
+	font-style: normal;
+}
 //-------------------------------------
 
 @import "foundation/variable";
