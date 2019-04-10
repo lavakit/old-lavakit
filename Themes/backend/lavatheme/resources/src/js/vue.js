@@ -6,6 +6,7 @@ import VueEvents from 'vue-events';
 import locale from 'element-ui/lib/locale/lang/en';
 import VueSimplemde from 'vue-simplemde';
 import App from './App';
+import store from './store';
 
 import DashboardRoutes from '../../../../../../modules/dashboard/resources/assets/js/dashboard';
 import SettingRoutes from '../../../../../../modules/setting/resources/assets/js/setting';
@@ -48,6 +49,7 @@ const app = new Vue({
     el: '#app',
     router,
     i18n,
+    store: store,
     components: { App },
     template: '<App/>'
 });

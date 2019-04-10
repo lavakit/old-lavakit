@@ -1,4 +1,7 @@
 let mix = require('laravel-mix');
+const { version } = require('./package.json')
+const webpack = require('webpack');
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -9,6 +12,12 @@ let mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
+
+mix.webpackConfig({
+    plugins: [
+        new webpack.DefinePlugin({ __VERSION: JSON.stringify(version) }),
+    ]
+});
 
 mix.setPublicPath('./');
 
