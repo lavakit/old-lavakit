@@ -1,8 +1,9 @@
 @extends('layouts.base')
 
 @section('page')
-    <div class="auth-wrapper">
-        @yield('content')
+    <div id="app" class="auth-wrapper">
+        {{--@yield('content')--}}
+        <router-view></router-view>
     </div>
 @endsection
 

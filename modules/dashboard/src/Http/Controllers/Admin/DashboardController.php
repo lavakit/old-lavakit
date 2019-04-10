@@ -34,6 +34,18 @@ class DashboardController extends BaseAdminController
      */
     public function index()
     {
+        title()->set('Admin');
+
+        return view('dashboard::index');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    public function dashboard()
+    {
         title()->set('Dashboard');
 
         return view('dashboard::index');

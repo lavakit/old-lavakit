@@ -10,6 +10,7 @@ import store from './store';
 import { APP_CONFIG } from "./config";
 import coreLavakit from './core';
 
+import LoginRoutes from '../../../../../../modules/user/resources/assets/js/auth';
 import DashboardRoutes from '../../../../../../modules/dashboard/resources/assets/js/dashboard';
 import SettingRoutes from '../../../../../../modules/setting/resources/assets/js/setting';
 
@@ -23,6 +24,7 @@ const router = new VueRouter({
     mode: 'history',
     base: coreLavakit.makeBaseUrl(),
     routes: [
+        ...LoginRoutes,
         ...DashboardRoutes,
         ...SettingRoutes,
     ],
