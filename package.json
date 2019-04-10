@@ -9,9 +9,7 @@
     "prod": "npm run production",
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
-  "devDependencies": {
-
-  },
+  "devDependencies": {},
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
@@ -26,6 +24,8 @@
     "vue-events": "^3.1.0",
     "vue-i18n": "^8.10.0",
     "vue-router": "^3.0.2",
-    "vue-simplemde": "^0.5.1"
+    "vue-simplemde": "^0.5.1",
+    "vuex": "^3.1.0",
+    "vuex-easy-access": "^3.1.6"
   }
 }
