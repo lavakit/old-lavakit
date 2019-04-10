@@ -7,6 +7,8 @@ import locale from 'element-ui/lib/locale/lang/en';
 import VueSimplemde from 'vue-simplemde';
 import App from './App';
 import store from './store';
+import { APP_CONFIG } from "./config";
+import coreLavakit from './core';
 
 import DashboardRoutes from '../../../../../../modules/dashboard/resources/assets/js/dashboard';
 import SettingRoutes from '../../../../../../modules/setting/resources/assets/js/setting';
@@ -17,19 +19,9 @@ Vue.use(VueRouter);
 Vue.use(VueEvents);
 Vue.use(VueSimplemde);
 
-const currentLocale = window.Lavakit.currentLocale;
-const adminPrefix = window.Lavakit.adminPrefix;
-
-function makeBaseUrl() {
-    if (window.Lavakit.hideDefaultLocale == 1) {
-        return adminPrefix;
-    }
-    return `${currentLocale}/${adminPrefix}`;
-}
-
 const router = new VueRouter({
     mode: 'history',
-    base: makeBaseUrl(),
+    base: coreLavakit.makeBaseUrl(),
     routes: [
         ...DashboardRoutes,
         ...SettingRoutes,
@@ -37,11 +29,11 @@ const router = new VueRouter({
 });
 
 const messages = {
-    [currentLocale]: window.Lavakit.textTranslations,
+    [APP_CONFIG.CURRENT_LOCALE]: APP_CONFIG.TEXT_TRANSLATION,
 };
 
 const i18n = new VueI18n({
-    locale: currentLocale,
+    locale: APP_CONFIG.CURRENT_LOCALE,
     messages,
 });
 

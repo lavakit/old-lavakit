@@ -2,9 +2,10 @@
     window.Lavakit = {
         locales: {!! json_encode(LaravelLocalization::getSupportedLocales()) !!},
         currentLocale: '{{ locale() }}',
+        isAdmin: true,
         adminPrefix: '{{ config('base.base.admin-prefix') }}',
         hideDefaultLocale: '{{ config('laravellocalization.hideDefaultLocaleInURL') }}',
-        textTranslations: {!! $textTranslations ?? '' !!},
+        textTranslations: {!! $textTranslations ?? '{}' !!},
         logo: '{{ backendAsset('images/brand-white.png') }}',
         created: '{{ crafted() }}',
         version: '{{ config('base.base.version') }}',
