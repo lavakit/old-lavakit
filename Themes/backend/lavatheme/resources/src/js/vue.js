@@ -6,13 +6,13 @@ import VueEvents from 'vue-events';
 import locale from 'element-ui/lib/locale/lang/en';
 import VueSimplemde from 'vue-simplemde';
 import App from './App';
-import store from './store';
-import { APP_CONFIG } from "./config";
-import coreLavakit from './core';
+import store from '@modules/user/resources/assets/js/store';
+import { APP_CONFIG } from "@modules/base/resources/assets/js/config";
+import coreLavakit from '@modules/base/resources/assets/js/core';
 
-import LoginRoutes from '../../../../../../modules/user/resources/assets/js/auth';
-import DashboardRoutes from '../../../../../../modules/dashboard/resources/assets/js/dashboard';
-import SettingRoutes from '../../../../../../modules/setting/resources/assets/js/setting';
+import LoginRoutes from '@modules/user/resources/assets/js/auth';
+import DashboardRoutes from '@modules/dashboard/resources/assets/js/dashboard';
+import SettingRoutes from '@modules/setting/resources/assets/js/setting';
 
 Vue.use(ElementUI, {locale});
 Vue.use(VueI18n);

@@ -1,4 +1,4 @@
-import coreLavakit from '../../../../../Themes/backend/lavatheme/resources/src/js/core';
+import coreLavakit from '@modules/base/resources/assets/js/core';
 import Login from './components/auth/Login';
 
 const pageTitle = window.Lavakit.pageTitle;

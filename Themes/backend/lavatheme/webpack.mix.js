@@ -1,5 +1,5 @@
 let mix = require('laravel-mix');
-const { version } = require('./package.json')
+const { version, name } = require('./package.json')
 const webpack = require('webpack');
 const path = require('path');
 
@@ -17,11 +17,15 @@ const path = require('path');
 mix.webpackConfig({
     resolve:{
         alias: {
-            '@modules': path.resolve(__dirname, '../../../modules/')
+            '@modules': path.resolve(__dirname, '../../../modules/'),
+            '@layouts': path.resolve(__dirname, './../../../Themes/backend/lavatheme/resources/src/js/views/'),
         }
     },
     plugins: [
-        new webpack.DefinePlugin({ __VERSION: JSON.stringify(version) }),
+        new webpack.DefinePlugin({
+            THEME_VERSION: JSON.stringify(version),
+            THEME_NAME: JSON.stringify(name),
+        }),
     ]
 });
 

@@ -1,6 +1,6 @@
-import coreLavakit from '../../../../../Themes/backend/lavatheme/resources/src/js/core';
+import coreLavakit from '@modules/base/resources/assets/js/core';
 import Dashboard from './components/Dashboard';
-import Layout from './../../../../../Themes/backend/lavatheme/resources/src/js/views/layout';
+import Layout from '@layouts/layout';
 
 const locales = window.Lavakit.locales;
 const pageTitle = window.Lavakit.pageTitle;

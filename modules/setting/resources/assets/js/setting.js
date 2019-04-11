@@ -1,5 +1,5 @@
-import coreLavakit from '../../../../../Themes/backend/lavatheme/resources/src/js/core';
-import Layout from './../../../../../Themes/backend/lavatheme/resources/src/js/views/layout';
+import coreLavakit from '@modules/base/resources/assets/js/core';
+import Layout from '@layouts/layout';
 import EmailSetting from './compoments/EmailSetting';
 
 const locales = window.Lavakit.locales;
