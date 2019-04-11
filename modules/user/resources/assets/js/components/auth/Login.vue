@@ -1,6 +1,6 @@
 <template>
     <div>
-        Login
+        {{ trans('base.modal.title') }}
     </div>
 </template>
 

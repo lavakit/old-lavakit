@@ -8,7 +8,6 @@ const pageTitle = window.Lavakit.pageTitle;
 export default [
     {
         path: '/',
-        name: 'admin.dashboards.index',
         component: Layout,
         beforeEnter: coreLavakit.requireAdmin,
         children: [

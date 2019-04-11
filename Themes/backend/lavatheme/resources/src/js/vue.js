@@ -19,6 +19,7 @@ Vue.use(VueI18n);
 Vue.use(VueRouter);
 Vue.use(VueEvents);
 Vue.use(VueSimplemde);
+require('./mixins/translation-helper');
 
 const router = new VueRouter({
     mode: 'history',
