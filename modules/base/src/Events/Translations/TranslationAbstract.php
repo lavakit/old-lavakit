@@ -1,27 +1,29 @@
 <?php
 
-namespace Lavakit\Base\Events;
+namespace Lavakit\Base\Composers;
+
+use Lavakit\Base\Contracts\Composers\Translation;
 
 /**
- * Class LoadBackendTranslations
- * @package Lavakit\Base\Events
+ * Class TranslationsAbstract
+ * @package Lavakit\Base\Composers
  * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
-class LoadBackendTranslations
+abstract class TranslationsAbstract implements Translation
 {
-    private $translations = [];
-
+    protected $translations = [];
+    
     /**
      * Get the translations
      *
      * @return array
      */
-    public function getTranslations() : array
+    public function getTranslations(): array
     {
         return $this->translations;
     }
-
+    
     /**
      * Load the translation
      *
@@ -32,10 +34,10 @@ class LoadBackendTranslations
     public function load($key, array $translations)
     {
         $this->translations = array_merge($this->translations, [$key => $translations]);
-
+    
         return $this;
     }
-
+    
     /**
      * load the multi translations
      *
@@ -45,7 +47,7 @@ class LoadBackendTranslations
     public function loads(array $translations)
     {
         $this->translations = array_merge($this->translations, $translations);
-
+    
         return $this;
     }
 }
