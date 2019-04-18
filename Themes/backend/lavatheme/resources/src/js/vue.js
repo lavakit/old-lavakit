@@ -62,7 +62,7 @@ window.axios.interceptors.response.use(null, (error) => {
             message: 'Content unauthorized'
         });
 
-        window.location =  router('admin.dashboards.index');
+        window.location =  route('admin.dashboards.index');
     }
 
     if (error.response.status === 401) {
@@ -71,7 +71,7 @@ window.axios.interceptors.response.use(null, (error) => {
             message: 'Content Unauthenticated',
         });
 
-        window.location = router('login');
+        window.location = route('login');
     }
 
     return Promise.reject(error);

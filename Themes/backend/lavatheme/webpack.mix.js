@@ -19,6 +19,7 @@ mix.webpackConfig({
         alias: {
             '@modules': path.resolve(__dirname, '../../../modules/'),
             '@layouts': path.resolve(__dirname, './../../../Themes/backend/lavatheme/resources/src/js/views/'),
+            '@packages': path.resolve(__dirname, './node_modules/')
         }
     },
     plugins: [
