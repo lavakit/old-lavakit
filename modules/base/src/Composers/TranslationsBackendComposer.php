@@ -3,7 +3,7 @@
 namespace Lavakit\Base\Composers;
 
 use Illuminate\Contracts\View\View;
-use Lavakit\Base\Events\LoadBackendTranslations;
+use Lavakit\Base\Events\Translations\LoadBackendTranslation;
 
 /**
  * Class TranslationsViewComposer
@@ -11,7 +11,7 @@ use Lavakit\Base\Events\LoadBackendTranslations;
  * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
-class TranslationsViewComposer
+class TranslationsBackendComposer
 {
     /**
      * Bind data to the view
@@ -23,7 +23,7 @@ class TranslationsViewComposer
             return;
         }
 
-        event($textTranslations = new LoadBackendTranslations());
+        event($textTranslations = new LoadBackendTranslation());
 
         $view->with('textTranslations', json_encode($textTranslations->getTranslations()));
     }

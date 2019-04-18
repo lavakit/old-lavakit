@@ -1,6 +1,6 @@
 <?php
 
-namespace Lavakit\Base\Composers;
+namespace Lavakit\Base\Events\Translations;
 
 use Lavakit\Base\Contracts\Composers\Translation;
 
@@ -10,7 +10,7 @@ use Lavakit\Base\Contracts\Composers\Translation;
  * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
-abstract class TranslationsAbstract implements Translation
+abstract class TranslationAbstract implements Translation
 {
     protected $translations = [];
     

@@ -3,7 +3,6 @@
 @section('page')
     <div id="app" class="auth-wrapper">
         {{--@yield('content')--}}
-        <router-view></router-view>
     </div>
 @endsection
 

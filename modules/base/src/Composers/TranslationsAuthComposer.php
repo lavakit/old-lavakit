@@ -3,15 +3,15 @@
 namespace Lavakit\Base\Composers;
 
 use Illuminate\Contracts\View\View;
-use Lavakit\Base\Events\Translations\LoadBackendTranslation;
+use Lavakit\Base\Events\Translations\LoadAuthTranslation;
 
 /**
- * Class TranslationsViewComposer
+ * Class TranslationsAuthComposer
  * @package Lavakit\Base\Composers
  * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
-class TranslationsBackendComposer
+class TranslationsAuthComposer
 {
     /**
      * Bind data to the view
@@ -19,11 +19,11 @@ class TranslationsBackendComposer
      */
     public function compose(View $view)
     {
-        if (!app('lavakit.isBackend')) {
+        if (!app('lavakit.isPageAuth')) {
             return;
         }
 
-        event($textTranslations = new LoadBackendTranslation());
+        event($textTranslations = new LoadAuthTranslation());
 
         $view->with('textTranslations', json_encode($textTranslations->getTranslations()));
     }

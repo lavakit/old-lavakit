@@ -3,7 +3,7 @@
         <div class="sidebar-header">
             <router-link class="header-brand" :to="{ name: 'admin.dashboards.index'}">
                 <div class="logo-img">
-                    <img :src="logo" class="header-brand-img" :alt="crafted">
+                    <img :src="assets('images/brand-white.png')" class="header-brand-img" :alt="crafted">
                 </div>
                 <span class="text">{{ crafted }}</span>
             </router-link>
@@ -42,13 +42,11 @@
 
 <script>
     const CRAFTED = window.Lavakit.created;
-    const LOGO = window.Lavakit.logo;
 
     export default {
         data() {
             return {
                 crafted: CRAFTED,
-                logo: LOGO,
                 Menus: [
                     {
                         name: 'Home',

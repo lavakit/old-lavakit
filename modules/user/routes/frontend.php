@@ -4,7 +4,7 @@ use Illuminate\Routing\Router;
 
 /** @var $router Router */
 $router->group([
-    'prefix' => 'auth',
+    'prefix' => config('user.user.auth-prefix'),
     'middleware' => 'backend:' . config('theme.theme.types.middleware.backend')
 ], function (Router $router) {
     $router->get('/login', [
