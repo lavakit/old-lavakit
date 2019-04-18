@@ -103,6 +103,9 @@
                 this.form.post(route('api.auth.login'))
                     .then((response) => {
                         this.loading = false;
+
+                        window.localStorage.setItem('access_token', response.data.access_token);
+
                         this.$message({
                             type: 'success',
                             message: response.message,

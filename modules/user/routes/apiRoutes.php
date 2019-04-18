@@ -8,4 +8,11 @@ $router->group(['prefix' => '/auth'], function (Router $router) {
         'as'    => 'api.auth.login',
         'uses'  => 'AuthController@login',
     ]);
+
+    //$router->group(['middleware' => 'auth:api'], function (Router $router) {
+        $router->get('/getUser', [
+            'as'    => 'api.auth.getUser',
+            'uses'  => 'AuthController@getUser',
+        ]);
+    //});
 });

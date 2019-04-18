@@ -4,12 +4,12 @@
 const ACCESS_TOKEN = 'access_token';
 let local_storage = window.localStorage;
 let location = window.location;
-let api_url = location.protocol + '//' + location.host + 'api';
+let api_url = location.protocol + '//' + location.host + '/en/api';
 
 export const APP_CONFIG = {
     API_URL: api_url,
     API_TIMEOUT: 1000,
-    API_URL_GET_USER: '/users/getUer',
+    API_URL_GET_USER: '/users/getUser',
     ACCESS_TOKEN: ACCESS_TOKEN,
     LOCAL_STORAGE: local_storage,
 
