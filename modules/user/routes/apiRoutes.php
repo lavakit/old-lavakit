@@ -9,10 +9,10 @@ $router->group(['prefix' => '/auth'], function (Router $router) {
         'uses'  => 'AuthController@login',
     ]);
 
-    //$router->group(['middleware' => 'auth:api'], function (Router $router) {
+    $router->group(['middleware' => 'auth:api'], function (Router $router) {
         $router->get('/getUser', [
             'as'    => 'api.auth.getUser',
             'uses'  => 'AuthController@getUser',
         ]);
-    //});
+    });
 });

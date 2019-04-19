@@ -9,7 +9,7 @@ let api_url = location.protocol + '//' + location.host + '/en/api';
 export const APP_CONFIG = {
     API_URL: api_url,
     API_TIMEOUT: 1000,
-    API_URL_GET_USER: '/users/getUser',
+    API_URL_GET_USER: '/user/getUser',
     ACCESS_TOKEN: ACCESS_TOKEN,
     LOCAL_STORAGE: local_storage,
 

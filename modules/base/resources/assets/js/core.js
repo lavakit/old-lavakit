@@ -52,7 +52,7 @@ let requireAdmin = (to, from, next) => {
         // Verify the stored access token
         store.dispatch(APP_CONFIG.API_URL_GET_USER)
         store.watch(store.getters[APP_CONFIG.API_URL_GET_USER], n => {
-            if( store.get('user/userLoadStatus') === 2 && AuthMixin.methods.hasRole(store.get('user/user'), 'admin')){
+            if( store.get('user/userLoadStatus') === 2 ){
                 next();
             } else {
                 next('/403');

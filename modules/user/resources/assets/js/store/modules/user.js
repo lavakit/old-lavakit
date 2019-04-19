@@ -18,11 +18,11 @@ const getters = {
 
 const actions = {
     getUser({ commit }) {
-        commit('userStatus', 1);
+        commit('userLoadStatus', 1);
 
         UserAPI.getUser().then((response) => {
             commit('userLoadStatus', 2)
-            commit('user', response.data.data)
+            commit('user', response.data)
         }).catch(function (e) {
             if (e.request && e.request.status && e.request.status === 401) {
                 //Done

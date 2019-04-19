@@ -95,6 +95,11 @@
                 loading: false,
             };
         },
+        created () {
+            if (window.localStorage.getItem('access_token')){
+                this.$store.dispatch('user/getUser')
+            }
+        },
         methods: {
             onSubmit() {
                 this.form = new Form(this.auth);
@@ -103,13 +108,13 @@
                 this.form.post(route('api.auth.login'))
                     .then((response) => {
                         this.loading = false;
-
                         window.localStorage.setItem('access_token', response.data.access_token);
 
                         this.$message({
                             type: 'success',
                             message: response.message,
                         });
+
                         this.$router.push({ name: 'admin.dashboards.index' });
                     })
                     .catch((error) => {
