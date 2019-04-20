@@ -8,7 +8,7 @@
 </template>
 
 <script>
-    import screenfull  from 'screenfull';
+    import screenfull  from '@packages/screenfull';
 
     export default {
         data() {

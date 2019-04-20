@@ -1,6 +1,6 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import EasyAccess from 'vuex-easy-access';
+import Vue from '@packages/vue';
+import Vuex from '@packages/vuex';
+import EasyAccess from '@packages/vuex-easy-access';
 
 import state from './state';
 import mutations from './mutations';

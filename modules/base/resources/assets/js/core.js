@@ -1,6 +1,6 @@
 import { APP_CONFIG } from './config';
-import store from './../../../../../modules/user/resources/assets/js/store/index';
-import { AuthMixin } from './../../../../../modules/user/resources/assets/js/mixins/auth-mixin';
+import store from '@modules/user/resources/assets/js/store/index';
+import { AuthMixin } from '@modules/user/resources/assets/js/mixins/auth-mixin';
 
 let makeBaseUrl = () => {
     if (APP_CONFIG.HIDE_DEFAULT_LOCALE === 1) {

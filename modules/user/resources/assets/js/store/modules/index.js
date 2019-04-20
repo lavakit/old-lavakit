@@ -1,4 +1,4 @@
-import cameCase from 'lodash/camelCase';
+import cameCase from '@packages/lodash/camelCase';
 
 const requireModule = require.context('.', false, /\.js$/);
 const modules = {};

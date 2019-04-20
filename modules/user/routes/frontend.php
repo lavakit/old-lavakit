@@ -12,11 +12,6 @@ $router->group([
         'uses'  => 'AuthController@getLogin'
     ]);
 
-    $router->post('/login', [
-        'as'    => 'auth.login',
-        'uses'  => 'AuthController@login'
-    ]);
-
     if (config('user.user.allow_register')) {
         $router->get('/register', [
             'as' => 'register',

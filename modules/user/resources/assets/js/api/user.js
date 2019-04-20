@@ -1,6 +1,6 @@
 import { APP_CONFIG } from '@modules/base/resources/assets/js/config';
 
-import axios from 'axios';
+import axios from '@packages/axios';
 
 export default {
     /*

@@ -117,7 +117,8 @@
                                 message: response.message,
                             });
 
-                            this.$router.push({ name: 'admin.dashboards.index' });
+                            //this.$router.push({ name: 'admin.dashboards.index' });
+                            window.location = route('admin.dashboards.index');
                         } else {
                             this.$message({
                                 type: 'warning',

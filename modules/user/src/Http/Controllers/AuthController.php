@@ -3,13 +3,10 @@
 namespace Lavakit\User\Http\Controllers;
 
 use Lavakit\Base\Http\Controllers\BaseController;
-use AssetBackend;
 use Lavakit\User\Contracts\AuthenticationContract;
 use Lavakit\User\Http\Requests\ForgotRequest;
-use Lavakit\User\Http\Requests\LoginRequest;
 use Lavakit\User\Http\Requests\RegisterRequest;
 use Lavakit\User\Http\Requests\ResetRequest;
-use ThemeBackend;
 
 /**
  * Class AuthController
@@ -33,7 +30,6 @@ class AuthController extends BaseController
         parent::__construct();
 
         $this->auth = app(AuthenticationContract::class);
-        AssetBackend::addAppModule(['auth']);
     }
 
     /**
@@ -48,17 +44,6 @@ class AuthController extends BaseController
         title()->set('Login-Authenticate');
 
         return view('user::auth.login');
-    }
-
-    /**
-     * @param LoginRequest $request
-     * @return mixed
-     * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
-     */
-    public function login(LoginRequest $request)
-    {
-        return $this->auth->login($request);
     }
 
     /**
