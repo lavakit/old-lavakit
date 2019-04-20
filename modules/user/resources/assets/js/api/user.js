@@ -1,5 +1,7 @@
 import { APP_CONFIG } from '@modules/base/resources/assets/js/config';
 
+import axios from 'axios';
+
 export default {
     /*
       GET /api/user
@@ -10,7 +12,10 @@ export default {
         const instance = axios.create({
             baseURL: APP_CONFIG.API_URL,
             timeout: APP_CONFIG.API_TIMEOUT,
-            header: {'Authorization': 'Bearer ' + window.localStorage.getItem('access_token')}
+            headers: {
+                'Accept':'application/json',
+                'Authorization': 'Bearer ' + window.localStorage.getItem('access_token'),
+            }
         });
 
         return instance.get('/auth/getUser');

@@ -108,21 +108,31 @@
                 this.form.post(route('api.auth.login'))
                     .then((response) => {
                         this.loading = false;
-                        window.localStorage.setItem('access_token', response.data.access_token);
 
-                        this.$message({
-                            type: 'success',
-                            message: response.message,
-                        });
+                        if (response.success) {
+                            window.localStorage.setItem('access_token', response.data.access_token);
 
-                        this.$router.push({ name: 'admin.dashboards.index' });
+                            this.$message({
+                                type: 'success',
+                                message: response.message,
+                            });
+
+                            this.$router.push({ name: 'admin.dashboards.index' });
+                        } else {
+                            this.$message({
+                                type: 'warning',
+                                message: response.message
+                            });
+                        }
                     })
                     .catch((error) => {
                         this.loading = false;
-                        this.$notify.error({
-                            title: 'Error',
-                            message: 'There are some errors in the form.',
-                        });
+                        if (error.response.status === 422) {
+                            this.$notify.error({
+                                title: 'Error',
+                                message: 'There are some errors in the form.',
+                            });
+                        }
                     });
             }
         }

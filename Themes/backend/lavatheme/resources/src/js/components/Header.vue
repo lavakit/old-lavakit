@@ -94,7 +94,7 @@
                                 <i class="ik ik-mail dropdown-icon"></i> Inbox
                             </a>
                             <a class="dropdown-item" href="#"><i class="ik ik-navigation dropdown-icon"></i> Message</a>
-                            <a class="dropdown-item" href="/auth/logout">
+                            <a class="dropdown-item" href="javascript:void(0)" @click="logout()">
                                 <i class="ik ik-power dropdown-icon"></i> Logout
                             </a>
                         </div>
@@ -107,11 +107,57 @@
 
 <script>
     import Screenfull from './Screenfull';
+    import store from '@modules/user/resources/assets/js/store/index';
+    import AuthApi from '@modules/user/resources/assets/js/api/auth.js';
+    import { APP_CONFIG } from '@modules/base/resources/assets/js/config.js';
 
     export default {
         name: 'vue-header',
         components: {
             'vue-screenfull': Screenfull
-        }
+        },
+
+        data: () => {
+            return {
+                user: null
+            }
+        },
+        created () {
+            this.user = store.get('user/user');
+        },
+        methods: {
+            logout() {
+                AuthApi.logout()
+                    .then((response) => {
+                        if (response.data && response.data.success) {
+                            APP_CONFIG.LOCAL_STORAGE.removeItem(APP_CONFIG.ACCESS_TOKEN);
+                            window.location = route('login');
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(JSON.stringify(error));
+                    });
+            }
+        },
+        mounted: function () {
+            ! function(e, s, i) {
+                "use strict";
+                i(s).ready(function () {
+                    i(".search-btn").on('click', function () {
+                        i(".header-search").addClass('open');
+                        i('.header-search .form-control').animate({
+                            'width': '180px',
+                        });
+                    }), i('.search-close').on('click', function () {
+                        i('.header-search .form-control').animate({
+                            'width': '0',
+                        });
+                        setTimeout(function() {
+                            i(".header-search").removeClass('open');
+                        }, 300);
+                    })
+                });
+            }(window, document, jQuery);
+        },
     }
 </script>

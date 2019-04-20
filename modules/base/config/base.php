@@ -52,8 +52,8 @@ return [
     */
     'middleware' => [
         'backend' => [
-            'auth',
-            'SessionTimeout'
+            //'auth',
+            //'SessionTimeout'
         ],
         'frontend' => [
         ],

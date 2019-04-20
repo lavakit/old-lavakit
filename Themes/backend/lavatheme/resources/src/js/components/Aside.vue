@@ -39,12 +39,12 @@
                     </a>
                     <a href="javascript:void(0)" class="list-group-item" data-chat-user="Mason Grant">
                         <figure class="user--offline">
-                            <img src="/themes/backend/lavatheme/assets/images/users/6.jpg" class="rounded-circle" alt="">
+                            <img src="/themes/backend/lavatheme/assets/images/users/1.jpg" class="rounded-circle" alt="">
                         </figure><span><span class="name">Mason Grant</span>  <span class="username">@masongrant</span> </span>
                     </a>
                     <a href="javascript:void(0)" class="list-group-item" data-chat-user="Shelly Sullivan">
                         <figure class="user--offline">
-                            <img src="/themes/backend/lavatheme/assets/images/users/7.jpg" class="rounded-circle" alt="">
+                            <img src="/themes/backend/lavatheme/assets/images/users/2.jpg" class="rounded-circle" alt="">
                         </figure><span><span class="name">Shelly Sullivan</span>  <span class="username">@shelly</span></span>
                     </a>
                 </div>

@@ -31,6 +31,7 @@
     import Chat from './../components/Chat';
     import AppModal from './../components/AppModal';
     import TopProgress from './../components/Topprogress';
+    import store from '@modules/user/resources/assets/js/store';
 
     export default {
         name: 'Layout',
@@ -43,8 +44,11 @@
             'vue-app-modal': AppModal,
             'vue-top-progress': TopProgress,
         },
-        data() {
+        data () {
             return {}
+        },
+        created () {
+            store.dispatch('user/getUser');
         }
     }
 </script>

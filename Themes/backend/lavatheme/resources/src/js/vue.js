@@ -71,7 +71,7 @@ window.axios.interceptors.response.use(null, (error) => {
             message: 'Content Unauthenticated',
         });
 
-        window.location = route('login');
+        //window.location = route('login');
     }
 
     return Promise.reject(error);

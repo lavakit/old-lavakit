@@ -14,5 +14,10 @@ $router->group(['prefix' => '/auth'], function (Router $router) {
             'as'    => 'api.auth.getUser',
             'uses'  => 'AuthController@getUser',
         ]);
+
+        $router->get('/logout', [
+            'as' => 'api.auth.logout',
+            'uses' => 'AuthController@logout'
+        ]);
     });
 });
