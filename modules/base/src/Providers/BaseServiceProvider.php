@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
-use Lavakit\Base\Composers\TranslationsViewComposer;
+use Lavakit\Base\Composers\TranslationsAuthComposer;
+use Lavakit\Base\Composers\TranslationsBackendComposer;
 use Lavakit\Base\Exceptions\Handler;
 use Lavakit\Base\Facades\EmailFacade;
 use Lavakit\Base\Facades\TitleFacade;
-use Lavakit\Base\Services\Caches\Cache;
 use Lavakit\Base\Traits\CanPublishConfiguration;
 use Lavakit\Base\Traits\CanRegisterFacadeAliases;
 use Lavakit\Base\Traits\CanRegisterViewComposer;
@@ -74,7 +74,8 @@ class BaseServiceProvider extends ServiceProvider
         $this->publishConfig('base', 'available_locales');
         
         /*Load view composer*/
-        $this->registerViewComposer(['layouts.master'], TranslationsViewComposer::class);
+        $this->registerViewComposer(['layouts.master'], TranslationsBackendComposer::class);
+        $this->registerViewComposer(['layouts.auth', 'layouts.master'], TranslationsAuthComposer::class);
         
         /*Register middleware*/
         $this->registerMiddleware();
@@ -117,6 +118,10 @@ class BaseServiceProvider extends ServiceProvider
     {
         $this->app->singleton('lavakit.isBackend', function () {
             return $this->isBackend();
+        });
+    
+        $this->app->singleton('lavakit.isPageAuth', function () {
+            return $this->isPageAuth();
         });
         
         $this->app->singleton('lavakit.isInstalled', function () {
@@ -178,6 +183,24 @@ class BaseServiceProvider extends ServiceProvider
             return true;
         }
         
+        return false;
+    }
+    
+    /**
+     * Check if the current URL matches the configured Authentication uri
+     *
+     * @return bool
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    private function isPageAuth()
+    {
+        $url = app(Request::class)->path();
+    
+        if (Str::contains($url, config('user.user.auth-prefix'))) {
+            return true;
+        }
+    
         return false;
     }
     

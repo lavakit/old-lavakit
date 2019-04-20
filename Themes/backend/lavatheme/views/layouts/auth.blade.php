@@ -1,7 +1,11 @@
 @extends('layouts.base')
 
 @section('page')
-    <div class="auth-wrapper">
-        @yield('content')
+    <div id="app" class="auth-wrapper">
+        {{--@yield('content')--}}
     </div>
 @endsection
+
+@push('js-global')
+    @include('layouts.javascript_variables')
+@endpush

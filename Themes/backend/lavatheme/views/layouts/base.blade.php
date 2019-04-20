@@ -24,6 +24,7 @@
         @endforeach
 
         @stack('css-stack')
+        @routes
     </head>
     <body>
         <!--[if lt IE 8]>

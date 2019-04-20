@@ -4,7 +4,8 @@ namespace Lavakit\Base\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Arr;
-use Lavakit\Base\Events\LoadBackendTranslations;
+use Lavakit\Base\Events\Translations\LoadAuthTranslation;
+use Lavakit\Base\Events\Translations\LoadBackendTranslation;
 
 /**
  * Class EventServiceProvider
@@ -31,8 +32,13 @@ class EventServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app['events']->listen(LoadBackendTranslations::class, function (LoadBackendTranslations $event) {
-            $event->load('base', Arr::dot(trans('base::base')));
+        $this->app['events']->listen(LoadBackendTranslation::class, function (LoadBackendTranslation $event) {
+            $event->load('base::base', Arr::dot(trans('base::base')));
+        });
+    
+        $this->app['events']->listen(LoadAuthTranslation::class, function (LoadAuthTranslation $event) {
+            $event->load('user::auth', Arr::dot(trans('user::auth')));
+            $event->load('user::email', Arr::dot(trans('user::email')));
         });
     }
 }

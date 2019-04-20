@@ -23,7 +23,7 @@
                         <div class="message media">
                             <figure class="user--online">
                                 <a href="#">
-                                    <img src="/themes/backend/lavatheme/assets/images/users/1.jpg}" class="rounded-circle" alt="">
+                                    <img src="/themes/backend/lavatheme/assets/images/users/1.jpg" class="rounded-circle" alt="">
                                 </a>
                             </figure>
                             <div class="message-body media-body">

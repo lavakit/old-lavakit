@@ -1,5 +1,8 @@
 window._ = require('lodash');
 
+// Lodash Improvement
+window._.mixin({ pascalCase: _.flow(_.camelCase, _.upperFirst) })
+
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -18,10 +21,10 @@ if (token) {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
-let userApiToken = document.head.querySelector('meta[name="user-api-token"]');
-
-if (userApiToken) {
-    window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + userApiToken.content;
-} else {
-    console.error('User API token not found in a meta tag.');
-}
+// let userApiToken = document.head.querySelector('meta[name="user-api-token"]');
+//
+// if (userApiToken) {
+//     window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + userApiToken.content;
+// } else {
+//     console.error('User API token not found in a meta tag.');
+// }

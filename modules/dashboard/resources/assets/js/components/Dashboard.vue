@@ -4,8 +4,6 @@
 
 <script>
 
-    import axios from 'axios';
-
     export default {
         name: "vue-dashboard",
         data() {

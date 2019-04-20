@@ -4,6 +4,7 @@ namespace Lavakit\User\Models;
 
 use Illuminate\Foundation\Auth\User as Authentication;
 use Email;
+use Laravel\Passport\HasApiTokens;
 
 /**
  * Class User
@@ -13,6 +14,8 @@ use Email;
  */
 class User extends Authentication
 {
+    use HasApiTokens;
+
     /**
      * The table associated with the model
      *

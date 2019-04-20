@@ -4,8 +4,7 @@
         currentLocale: '{{ locale() }}',
         adminPrefix: '{{ config('base.base.admin-prefix') }}',
         hideDefaultLocale: '{{ config('laravellocalization.hideDefaultLocaleInURL') }}',
-        textTranslations: {!! $textTranslations ?? '' !!},
-        logo: '{{ backendAsset('images/brand-white.png') }}',
+        textTranslations: {!! $textTranslations ?? '{}' !!},
         created: '{{ crafted() }}',
         version: '{{ config('base.base.version') }}',
         pageTitle: '{!! title()->get(false) !!}'

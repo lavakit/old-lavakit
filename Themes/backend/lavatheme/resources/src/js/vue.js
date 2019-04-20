@@ -6,42 +6,38 @@ import VueEvents from 'vue-events';
 import locale from 'element-ui/lib/locale/lang/en';
 import VueSimplemde from 'vue-simplemde';
 import App from './App';
-import store from './store';
+import store from '@modules/user/resources/assets/js/store';
+import { APP_CONFIG } from "@modules/base/resources/assets/js/config";
+import coreLavakit from '@modules/base/resources/assets/js/core';
 
-import DashboardRoutes from '../../../../../../modules/dashboard/resources/assets/js/dashboard';
-import SettingRoutes from '../../../../../../modules/setting/resources/assets/js/setting';
+import LoginRoutes from '@modules/user/resources/assets/js/auth';
+import DashboardRoutes from '@modules/dashboard/resources/assets/js/dashboard';
+import SettingRoutes from '@modules/setting/resources/assets/js/setting';
 
 Vue.use(ElementUI, {locale});
 Vue.use(VueI18n);
 Vue.use(VueRouter);
 Vue.use(VueEvents);
 Vue.use(VueSimplemde);
-
-const currentLocale = window.Lavakit.currentLocale;
-const adminPrefix = window.Lavakit.adminPrefix;
-
-function makeBaseUrl() {
-    if (window.Lavakit.hideDefaultLocale == 1) {
-        return adminPrefix;
-    }
-    return `${currentLocale}/${adminPrefix}`;
-}
+require('./mixins/translation-helper');
+require('./mixins/assets-helper');
 
 const router = new VueRouter({
     mode: 'history',
-    base: makeBaseUrl(),
+    base: coreLavakit.makeBaseUrl(),
     routes: [
+        ...LoginRoutes,
         ...DashboardRoutes,
         ...SettingRoutes,
     ],
 });
 
 const messages = {
-    [currentLocale]: window.Lavakit.textTranslations,
+    [APP_CONFIG.CURRENT_LOCALE]: APP_CONFIG.TEXT_TRANSLATION,
 };
 
 const i18n = new VueI18n({
-    locale: currentLocale,
+    locale: APP_CONFIG.CURRENT_LOCALE,
     messages,
 });
 
@@ -66,7 +62,7 @@ window.axios.interceptors.response.use(null, (error) => {
             message: 'Content unauthorized'
         });
 
-        window.location =  router('admin.dashboards.index');
+        window.location =  route('admin.dashboards.index');
     }
 
     if (error.response.status === 401) {
@@ -75,7 +71,7 @@ window.axios.interceptors.response.use(null, (error) => {
             message: 'Content Unauthenticated',
         });
 
-        window.location = router('login');
+        //window.location = route('login');
     }
 
     return Promise.reject(error);

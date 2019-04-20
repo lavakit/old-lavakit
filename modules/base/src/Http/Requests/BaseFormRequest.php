@@ -2,7 +2,10 @@
 
 namespace Lavakit\Base\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Foundation\Http\FormRequest;
+use Lavakit\Base\Services\JsonResponse as LavakitJsonResponse;
 
 /**
  * Class BaseFormRequest
@@ -28,4 +31,21 @@ abstract class BaseFormRequest extends FormRequest
      * @return array
      */
     abstract public function rules();
+    
+    /**
+     * Handle a failed validation attempt.
+     *
+     * @param Validator $validator
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    protected function failedValidation(Validator $validator)
+    {
+        $response = new JsonResponse([
+            'success' => false,
+            'message' => 'The given data is invalid',
+            'errors' => $validator->errors()
+        ], LavakitJsonResponse::HTTP_UNPROCESSABLE_ENTITY);
+        
+        throw new \Illuminate\Validation\ValidationException($validator, $response);
+    }
 }

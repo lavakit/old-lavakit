@@ -8,6 +8,5 @@ try {
 
 window.PerfectScrollbar = require('perfect-scrollbar').default;
 
-require('./theme');
 require('./bootstrap');
 require('./vue');

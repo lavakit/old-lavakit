@@ -11,7 +11,7 @@ requireModule.keys().forEach((fileName) => {
     const moduleName = cameCase(fileName.replace(/(\.\/|\.js)/g, ''));
 
     modules[moduleName] = {
-        namespace: true,
+        namespaced: true,
         ...requireModule(fileName).default,
     }
 });
