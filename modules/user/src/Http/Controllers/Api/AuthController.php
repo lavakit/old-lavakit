@@ -5,6 +5,7 @@ namespace Lavakit\User\Http\Controllers\Api;
 use Carbon\Carbon;
 use Lavakit\Base\Http\Controllers\BaseController;
 use Lavakit\User\Contracts\AuthorizationContract;
+use Lavakit\User\Http\Requests\ForgotRequest;
 use Lavakit\User\Http\Requests\LoginRequest;
 use Lavakit\Base\Services\JsonResponse;
 use Illuminate\Http\Request;
@@ -60,6 +61,19 @@ class AuthController extends BaseController
     public function confirm(string $token)
     {
         return $this->auth->confirm($token);
+    }
+
+    /**
+     * Forgot password
+     *
+     * @param ForgotRequest $request
+     * @return mixed
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    public function forgot(ForgotRequest $request)
+    {
+        return $this->auth->forgot($request);
     }
 
     /**

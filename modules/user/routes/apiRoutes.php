@@ -20,6 +20,10 @@ $router->group(['prefix' => '/auth'], function (Router $router) {
         'uses'  => 'AuthController@confirm'
     ]);
 
+    $router->post('/forgot', [
+        'as'    => 'api.auth.forgot',
+        'uses'  => 'AuthController@forgot'
+    ]);
 
     $router->group(['middleware' => 'auth:api'], function (Router $router) {
         $router->get('/getUser', [

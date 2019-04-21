@@ -24,11 +24,6 @@ $router->group([
         'uses'  => 'AuthController@getForgot'
     ]);
 
-    $router->post('/forgot', [
-        'as'    => 'auth.forgot',
-        'uses'  => 'AuthController@forgot'
-    ]);
-
     $router->get('/reset/{email?}/{token?}', [
         'as'    => 'password.reset',
         'uses'  => 'AuthController@getReset'
