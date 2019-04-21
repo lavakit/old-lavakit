@@ -82,6 +82,7 @@
 
 <script>
     import Form from '@packages/form-backend-validation';
+    import { APP_CONFIG } from "@modules/base/resources/assets/js/config";
 
     export default {
         name: "vue-login",
@@ -95,11 +96,6 @@
                 loading: false,
             };
         },
-        created () {
-            if (window.localStorage.getItem('access_token')){
-                this.$store.dispatch('user/getUser')
-            }
-        },
         methods: {
             onSubmit() {
                 this.form = new Form(this.auth);
@@ -110,15 +106,14 @@
                         this.loading = false;
 
                         if (response.success) {
-                            window.localStorage.setItem('access_token', response.data.access_token);
+                            APP_CONFIG.LOCAL_STORAGE.setItem(APP_CONFIG.ACCESS_TOKEN, response.data.access_token);
 
                             this.$message({
                                 type: 'success',
                                 message: response.message,
                             });
 
-                            //this.$router.push({ name: 'admin.dashboards.index' });
-                            window.location = route('admin.dashboards.index');
+                            this.$router.push({ name: 'admin.dashboards.index' });
                         } else {
                             this.$message({
                                 type: 'warning',

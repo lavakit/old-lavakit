@@ -2,8 +2,9 @@ import { APP_CONFIG } from "@modules/base/resources/assets/js/config";
 
 export default {
     /**
-        POST /api/auth/logout
-        Logout
+     * Logout
+     *
+     * POST /api/auth/logout
      */
     logout: function() {
         const instance = axios.create({
@@ -11,7 +12,7 @@ export default {
             timeout: APP_CONFIG.API_TIMEOUT,
             headers: {
                 'Accept':'application/json',
-                'Authorization': 'Bearer ' + window.localStorage.getItem('access_token')
+                'Authorization': 'Bearer ' + APP_CONFIG.LOCAL_STORAGE.getItem(APP_CONFIG.ACCESS_TOKEN),
             }
         });
 
