@@ -11,7 +11,7 @@ return [
         'see_you_again' => 'Rất vui được gặp lại bạn',
         'remember' => 'Ghi nhớ',
         'forgot_password' => 'Quên mật khẩu ?',
-        'not_account' => 'Chưa có tài khoản?',
+        'not_account' => 'Chưa có tài khoản ?',
         'create_account' => 'Tạo tài khoản',
         'register' => 'Đăng kí',
         'join_step' => 'Tham gia với chúng tôi ngay hôm nay! Chỉ mất vài bước',
@@ -44,6 +44,7 @@ return [
         ],
         'auth' => [
             'failed' => 'These credentials do not match our records',
+            'token_invalid' => 'This activation token is invalid',
         ],
     ],
 

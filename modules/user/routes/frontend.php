@@ -17,17 +17,7 @@ $router->group([
             'as' => 'register',
             'uses' => 'AuthController@getRegister'
         ]);
-
-        $router->post('/register', [
-            'as' => 'auth.register',
-            'uses' => 'AuthController@register'
-        ]);
     }
-
-    $router->get('/confirm/{email?}', [
-        'as'    => 'auth.confirm',
-        'uses'  => 'AuthController@confirm'
-    ]);
 
     $router->get('/forgot', [
         'as'    => 'forgot',
@@ -47,10 +37,5 @@ $router->group([
     $router->post('/reset', [
         'as'    => 'auth.reset',
         'uses'  => 'AuthController@reset'
-    ]);
-
-    $router->get('/logout', [
-        'as'    => 'auth.logout',
-        'uses'  => 'AuthController@logout'
     ]);
 });
