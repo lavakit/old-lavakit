@@ -67,4 +67,11 @@ return [
         'confirmed' => ':attribute xác nhận không trùng khớp',
         'password_regex' => 'Mật khẩu có thể có các ký tự chữ và số, cũng như các ký hiệu [. - _]',
     ],
+
+    'authorizations' => [
+        'unauthorized' => 'Ủy quyền',
+        'unauthorized_access' => 'Bạn không có quyền thích hợp để truy cập',
+        'unauthenticated' => 'Xác thực',
+        'unauthenticated_message' => 'Bạn cần phải đăng nhập để có thể truy cập',
+    ],
 ];

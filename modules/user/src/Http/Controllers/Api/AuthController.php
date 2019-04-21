@@ -3,61 +3,57 @@
 namespace Lavakit\User\Http\Controllers\Api;
 
 use Carbon\Carbon;
-use Illuminate\Routing\Controller;
+use Lavakit\Base\Http\Controllers\BaseController;
+use Lavakit\User\Contracts\AuthorizationContract;
 use Lavakit\User\Http\Requests\LoginRequest;
 use Lavakit\Base\Services\JsonResponse;
 use Illuminate\Http\Request;
 
-class AuthController extends Controller
+class AuthController extends BaseController
 {
+    /** @var AuthorizationContract */
+    protected $auth;
+
+    /**
+     * AuthController constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->auth = app(AuthorizationContract::class);
+    }
+
+    /**
+     * @param LoginRequest $request
+     * @return mixed
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
     public function login(LoginRequest $request)
     {
-        $credentials = request(['email', 'password']);
-        $credentials['confirmed'] = true;
-        
-        if (!\Auth::attempt($credentials)) {
-            return response()->json([
-                'success' => JsonResponse::STATUS_FAILURE,
-                'message' => 'Wrong combination of email and password or email has not been verified'
-            ], JsonResponse::HTTP_OK);
-        }
-
-        $user = $request->user();
-        $tokenResult = $user->createToken('Personal Access Token');
-        $token = $tokenResult->token;
-        $token->expires_at = Carbon::now()->addWeeks(1);
-        $token->save();
-
-        $data = [
-            'access_token' => $tokenResult->accessToken,
-            'token_type' => 'Bearer',
-            'expires_at' => Carbon::parse(
-                $tokenResult->token->expires_at
-            )->toDateTimeString()
-        ];
-
-        return response()->json([
-            'success' => JsonResponse::STATUS_SUCCESS,
-            'data' => $data,
-            'message' => 'Login OK'
-        ], JsonResponse::HTTP_OK);
+        return $this->auth->login($request);
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
     public function getUser(Request $request)
     {
-        return response()->json([
-            'success' => JsonResponse::STATUS_SUCCESS,
-            'data' => $request->user()
-        ], JsonResponse::HTTP_OK);
+        return $this->auth->user($request);
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
     public function logout(Request $request)
     {
-        $request->user()->token()->delete();
-
-        return response()->json([
-            'success' => JsonResponse::STATUS_SUCCESS,
-            'message' => 'Successfully logged out'
-        ], JsonResponse::HTTP_OK);
+        return $this->auth->logout($request);
     }
 }

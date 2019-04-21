@@ -3,12 +3,12 @@
 namespace Lavakit\Base\Events\Translations;
 
 /**
- * Class LoadAuthTranslation
+ * Class LoadFrontendTranslation
  * @package Lavakit\Base\Events\Translations
  * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com
  */
-class LoadAuthTranslation extends TranslationAbstract
+class LoadFrontendTranslation extends TranslationAbstract
 {
     
 }

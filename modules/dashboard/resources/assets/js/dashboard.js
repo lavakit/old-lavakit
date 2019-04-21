@@ -1,4 +1,5 @@
 import coreLavakit from '@modules/base/resources/assets/js/core';
+import { APP_CONFIG } from "@modules/base/resources/assets/js/config";
 import Dashboard from './components/Dashboard';
 import Layout from '@layouts/layout';
 
@@ -7,11 +8,11 @@ const pageTitle = window.Lavakit.pageTitle;
 
 export default [
     {
-        path: '/admin',
+        path: '/' + APP_CONFIG.ADMIN_PREFIX,
         name: 'admin.dashboards.index',
         component: Layout,
         beforeEnter: coreLavakit.requireAdmin,
-        redirect: '/admin/dashboard',
+        redirect: '/' + APP_CONFIG.ADMIN_PREFIX + '/dashboard',
         children: [
             {
                 path: 'dashboard',

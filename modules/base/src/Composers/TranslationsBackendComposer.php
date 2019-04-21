@@ -19,7 +19,7 @@ class TranslationsBackendComposer
      */
     public function compose(View $view)
     {
-        if (!app('lavakit.isBackend')) {
+        if (!app('lavakit.isBackend') && !app('lavakit.isPageAuth')) {
             return;
         }
 

@@ -41,8 +41,6 @@
 </template>
 
 <script>
-    import $ from 'jquery';
-
     const CRAFTED = window.Lavakit.created;
 
     export default {

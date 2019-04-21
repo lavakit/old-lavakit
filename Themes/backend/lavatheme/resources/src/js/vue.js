@@ -58,17 +58,17 @@ window.axios.interceptors.response.use(null, (error) => {
 
     if (error.response.status === 403) {
         app.$notify.error({
-            title: 'Title unauthorized',
-            message: 'Content unauthorized'
+            title: app.$t(`${'user::auth'}['${'authorizations.unauthorized_access'}']`),
+            message: app.$t(`${'user::auth'}['${'authorizations.unauthorized_access'}']`),
         });
 
-        window.location =  route('admin.dashboards.index');
+        //window.location =  route('admin.dashboards.index');
     }
 
     if (error.response.status === 401) {
         app.$notify.error({
-            title: 'Title Unauthenticated',
-            message: 'Content Unauthenticated',
+            title: app.$t(`${'user::auth'}['${'authorizations.unauthorized'}']`),
+            message: app.$t(`${'user::auth'}['${'authorizations.unauthenticated_message'}']`),
         });
 
         //window.location = route('login');

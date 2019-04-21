@@ -68,4 +68,11 @@ return [
         'confirmed' => 'The :attribute confirmation does not match',
         'password_regex' => 'The Password may have alpha-numeric characters, as well as symbols (only . - _)',
     ],
+
+    'authorizations' => [
+        'unauthorized' => 'Unauthorized',
+        'unauthorized_access' => 'You do not have the appropriate permissions to access that page.',
+        'unauthenticated' => 'Not logged',
+        'unauthenticated_message' => 'You need to be logged in to be able to view this page',
+    ],
 ];

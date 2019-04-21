@@ -1,4 +1,4 @@
-import { defaultMutations } from 'vuex-easy-access';
+import { defaultMutations } from '@packages/vuex-easy-access';
 import { APP_CONFIG } from '@modules/base/resources/assets/js/config';
 import  UserAPI from './../../api/user';
 

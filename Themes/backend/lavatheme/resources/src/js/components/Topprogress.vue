@@ -3,7 +3,7 @@
 </template>
 
 <script>
-    import { vueTopprogress } from 'vue-top-progress'
+    import { vueTopprogress } from '@packages/vue-top-progress'
 
     export default {
         mounted () {
