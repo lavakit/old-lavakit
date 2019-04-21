@@ -2,9 +2,9 @@
 
 namespace Lavakit\User\Http\Requests;
 
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Lavakit\Base\Http\Requests\BaseFormRequest;
-use Crypt;
 
 /**
  * Class RegisterRequest
@@ -21,8 +21,8 @@ class RegisterRequest extends BaseFormRequest
      */
     protected function prepareForValidation()
     {
-        $confirmToken = Crypt::encrypt($this->request->get('email'));
-        $this->merge(['confirm_token' => $confirmToken, 'full_name' => null]);
+        $confirmToken = Str::random(60);
+        $this->merge(['registered' => true, 'confirm_token' => $confirmToken, 'full_name' => null]);
     }
 
     /**

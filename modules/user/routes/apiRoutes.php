@@ -9,6 +9,18 @@ $router->group(['prefix' => '/auth'], function (Router $router) {
         'uses'  => 'AuthController@login',
     ]);
 
+
+    $router->post('/register', [
+        'as'    => 'api.auth.register',
+        'uses'  => 'AuthController@register',
+    ]);
+
+    $router->get('/confirm/{token}', [
+        'as'    => 'api.auth.confirm',
+        'uses'  => 'AuthController@confirm'
+    ]);
+
+
     $router->group(['middleware' => 'auth:api'], function (Router $router) {
         $router->get('/getUser', [
             'as'    => 'api.auth.getUser',

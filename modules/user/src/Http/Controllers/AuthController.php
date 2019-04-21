@@ -61,32 +61,6 @@ class AuthController extends BaseController
     }
 
     /**
-     * Registration request for the application
-     *
-     * @param RegisterRequest $request
-     * @return \Illuminate\Support\ServiceProvider|mixed
-     * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
-     */
-    public function register(RegisterRequest $request)
-    {
-        return $this->auth->register($request);
-    }
-
-    /**
-     * Confirmation
-     *
-     * @param string|null $email
-     * @return mixed
-     * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
-     */
-    public function confirm(string $email = null)
-    {
-        return $this->auth->confirm($email);
-    }
-
-    /**
      * Get the view forgot password
      *
      * @copyright 2019 Lavakit Group
@@ -148,15 +122,5 @@ class AuthController extends BaseController
     public function reset(ResetRequest $request)
     {
         return $this->auth->reset($request);
-    }
-
-    /**
-     * @return mixed
-     * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
-     */
-    public function logout()
-    {
-        return $this->auth->logout();
     }
 }

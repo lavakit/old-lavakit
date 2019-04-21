@@ -5,5 +5,5 @@ return [
     'name' => env('MAIL_FROM_NAME', 'Info'),
 
     /** Email template */
-    'template' => 'backend::layouts.emails.auth',
+    'template' => 'user::emails.auth',
 ];

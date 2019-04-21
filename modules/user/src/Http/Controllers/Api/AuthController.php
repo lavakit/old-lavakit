@@ -8,6 +8,7 @@ use Lavakit\User\Contracts\AuthorizationContract;
 use Lavakit\User\Http\Requests\LoginRequest;
 use Lavakit\Base\Services\JsonResponse;
 use Illuminate\Http\Request;
+use Lavakit\User\Http\Requests\RegisterRequest;
 
 class AuthController extends BaseController
 {
@@ -33,6 +34,32 @@ class AuthController extends BaseController
     public function login(LoginRequest $request)
     {
         return $this->auth->login($request);
+    }
+
+    /**
+     * Registration request for the application
+     *
+     * @param RegisterRequest $request
+     * @return \Illuminate\Support\ServiceProvider|mixed
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    public function register(RegisterRequest $request)
+    {
+        return $this->auth->register($request);
+    }
+
+    /**
+     * Confirmation
+     *
+     * @param string $token
+     * @return mixed
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com
+     */
+    public function confirm(string $token)
+    {
+        return $this->auth->confirm($token);
     }
 
     /**

@@ -61,7 +61,6 @@
                         <div class="register">
                             <p>
                                 {{ trans('user::auth.html.not_account')}}
-                                &nbsp;&nbsp;
                                 <router-link :to="{ name: 'admin.register' }">
                                     {{ trans('user::auth.html.create_account')}}
                                 </router-link>

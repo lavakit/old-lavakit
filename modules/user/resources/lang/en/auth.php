@@ -12,13 +12,13 @@ return [
         'see_you_again' => 'Happy to see you again!',
         'remember' => 'Remember Me',
         'forgot_password' => 'Forgot Password ?',
-        'not_account' => 'Don\'t have an account?',
+        'not_account' => 'Don\'t have an account ?',
         'create_account' => 'Create an account',
         'register' => 'Register',
         'join_step' => 'Join us today! It takes only few steps',
         'accept' => 'I Accept',
         'term_condition' => 'Terms and Conditions',
-        'has_account' => 'Already have an account',
+        'has_account' => 'Already have an account ?',
         'forgot' => 'Forgot Password',
         'forgot_logan' => 'We will send you a link to reset password.',
         'reset' => 'Reset Password',
@@ -45,6 +45,7 @@ return [
         ],
         'auth' => [
             'failed' => 'These credentials do not match our records',
+            'token_invalid' => 'This activation token is invalid',
         ],
     ],
 

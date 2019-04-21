@@ -4,8 +4,10 @@ namespace Lavakit\User\Services\Authorization;
 
 use Illuminate\Http\Request;
 use Lavakit\User\Contracts\AuthorizationContract;
+use Lavakit\User\Services\Authorization\Users\Confirm;
 use Lavakit\User\Services\Authorization\Users\Login;
 use Lavakit\User\Services\Authorization\Users\Logout;
+use Lavakit\User\Services\Authorization\Users\Register;
 use Lavakit\User\Services\Authorization\Users\User;
 
 /**
@@ -39,20 +41,20 @@ class AuthorizationServices implements AuthorizationContract
      */
     public function register(Request $request)
     {
-        // TODO: Implement register() method.
+        return app(Register::class)->handle($request);
     }
 
     /**
      * Confirmation
      *
-     * @param string $email
+     * @param string $token
      * @return mixed
      * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
-    public function confirm(string $email = null)
+    public function confirm(string $token)
     {
-        // TODO: Implement confirm() method.
+        return app(Confirm::class)->handle($token);
     }
 
     /**

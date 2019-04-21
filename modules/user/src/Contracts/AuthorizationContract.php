@@ -35,12 +35,12 @@ interface AuthorizationContract
     /**
      * Confirmation
      *
-     * @param string $email
+     * @param string $token
      * @return mixed
      * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
-    public function confirm(string $email = null);
+    public function confirm(string $token);
 
     /**
      * Reset password
