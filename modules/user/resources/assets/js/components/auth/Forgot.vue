@@ -67,7 +67,7 @@
                 form: new Form(),
                 loading: false,
                 allowRegister: window.Lavakit.allowRegister,
-                message: 'There are some errors in the form.',
+                message: this.$t(`${'base::base'}['${'notify.message.error.form'}']`)
             }
         },
         methods: {
@@ -81,22 +81,25 @@
 
                         if (response.success) {
                             this.$notify.success({
-                                title: 'Success',
+                                title: this.$t(`${'base::base'}['${'notify.title.success'}']`),
                                 message: response.message
                             });
                         }
                     })
                     .catch((error) => {
                         this.loading = false;
+                        if (error.response && error.response.data) {
+                            if (error.response.status === 400) {
+                                this.message = error.response.data.message;
+                            }
 
-                        if (error.response.status === 400) {
-                            this.message = error.response.data.message;
+                            this.$notify.error({
+                                title: 'Error',
+                                message: this.message,
+                            });
+                        } else {
+                            console.log(JSON.stringify(error));
                         }
-
-                        this.$notify.error({
-                            title: 'Error',
-                            message: this.message,
-                        });
                     });
             },
         },

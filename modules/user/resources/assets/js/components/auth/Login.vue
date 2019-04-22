@@ -36,7 +36,8 @@
                             <div class="row">
                                 <div class="col text-left">
                                     <label class="custom-control custom-checkbox">
-                                        <input type="checkbox" name="remember" value="1" class="custom-control-input" />
+                                        <input type="checkbox" name="remember" value="1" class="custom-control-input"
+                                               v-model="auth.remember"/>
                                         <span class="custom-control-label">
                                             &nbsp;{{ trans('user::auth.html.remember') }}
                                         </span>
@@ -89,11 +90,13 @@
             return {
                 auth: {
                     email: '',
-                    password: ''
+                    password: '',
+                    remember: '',
                 },
                 form: new Form(),
                 loading: false,
                 allowRegister: window.Lavakit.allowRegister,
+                message: this.$t(`${'base::base'}['${'notify.message.error.form'}']`)
             };
         },
         methods: {
@@ -108,26 +111,25 @@
                         if (response.success) {
                             APP_CONFIG.LOCAL_STORAGE.setItem(APP_CONFIG.ACCESS_TOKEN, response.data.access_token);
 
-                            this.$message({
-                                type: 'success',
+                            this.$notify.success({
+                                title: this.$t(`${'base::base'}['${'notify.title.success'}']`),
                                 message: response.message,
                             });
 
                             this.$router.push({ name: 'admin.dashboards.index' });
-                        } else {
-                            this.$message({
-                                type: 'warning',
-                                message: response.message
-                            });
                         }
                     })
                     .catch((error) => {
                         this.loading = false;
-                        if (error.response.status === 422) {
-                            this.$notify.error({
-                                title: 'Error',
-                                message: 'There are some errors in the form.',
-                            });
+                        if (error.response && error.response.data) {
+                            if (error.response.status === 422) {
+                                this.$notify.error({
+                                    title: this.$t(`${'base::base'}['${'notify.title.error'}']`),
+                                    message: this.message,
+                                });
+                            }
+                        } else {
+                            console.log(JSON.stringify(error));
                         }
                     });
             }

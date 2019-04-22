@@ -35,7 +35,7 @@ $router->group(['prefix' => '/auth'], function (Router $router) {
     ]);
 
     $router->group(['middleware' => 'auth:api'], function (Router $router) {
-        $router->get('/getUser', [
+        $router->get('/get-user', [
             'as'    => 'api.auth.getUser',
             'uses'  => 'AuthController@getUser',
         ]);
