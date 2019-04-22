@@ -6,7 +6,7 @@ namespace Lavakit\Notification\Contracts\Messages;
  * Interface Message
  * @package Lavakit\Notification\Contracts\Messages
  * @copyright 2019 Lavakit Group
- * @author hoatq <tqhoa8th@gmail.com
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 interface Message
 {
@@ -22,7 +22,7 @@ interface Message
      * @param string|null $message
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function success(string $message = null);
 
@@ -32,7 +32,7 @@ interface Message
      * @param string|null $message
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function info(string $message = null);
 
@@ -42,7 +42,7 @@ interface Message
      * @param string|null $message
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function error(string $message = null);
 
@@ -52,7 +52,7 @@ interface Message
      * @param string|null $message
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function warning(string $message = null);
 
@@ -62,7 +62,7 @@ interface Message
      * @param string|null $title
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function title(string $title = null);
 
@@ -73,7 +73,7 @@ interface Message
      * @param string $level
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function message(string $message = null, string $level = 'info');
 
@@ -82,7 +82,7 @@ interface Message
      *
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function important();
 }

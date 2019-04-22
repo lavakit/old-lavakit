@@ -18,8 +18,8 @@ if (!function_exists('getViewFieldSetting')) {
     /**
      * @param array $settingInfo
      * @return mixed|string
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     function getViewFieldSetting(array $settingInfo)
     {
@@ -36,7 +36,7 @@ if (!function_exists('valueDbSetting')) {
      * @param $locale
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     function valueDbSetting($dbSetting, $locale)
     {

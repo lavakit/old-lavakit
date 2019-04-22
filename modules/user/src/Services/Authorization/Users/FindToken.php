@@ -27,8 +27,8 @@ class FindToken
     /**
      * @param $token
      * @return \Illuminate\Http\JsonResponse
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function handler($token)
     {
