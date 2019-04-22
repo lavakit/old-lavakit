@@ -31,7 +31,7 @@ return [
     'messages' => [
         'confirms' => [
             'subject' => 'Register Confirmation',
-            'content' => 'Your registration is completed. Please click link to get access',
+            'body' => 'Your registration is completed. Please click link to get access',
             'check_email' => 'Confirmation email has been send. Please check your email',
             'completed' => 'Your activation is completed',
             'confirm_email' => 'Please confirm your email',
@@ -45,6 +45,10 @@ return [
         'auth' => [
             'failed' => 'These credentials do not match our records',
             'token_invalid' => 'This activation token is invalid',
+        ],
+        'forgot' => [
+            'subject' => 'Reset Password Notification',
+            'body' => 'You are receiving this email because we received a password reset request for your account.',
         ],
     ],
 

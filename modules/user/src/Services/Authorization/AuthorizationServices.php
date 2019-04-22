@@ -5,6 +5,7 @@ namespace Lavakit\User\Services\Authorization;
 use Illuminate\Http\Request;
 use Lavakit\User\Contracts\AuthorizationContract;
 use Lavakit\User\Services\Authorization\Users\Confirm;
+use Lavakit\User\Services\Authorization\Users\Forgot;
 use Lavakit\User\Services\Authorization\Users\Login;
 use Lavakit\User\Services\Authorization\Users\Logout;
 use Lavakit\User\Services\Authorization\Users\Register;
@@ -80,7 +81,7 @@ class AuthorizationServices implements AuthorizationContract
      */
     public function forgot(Request $request)
     {
-        // TODO: Implement forgot() method.
+        return app(Forgot::class)->handle($request);
     }
 
     /**
@@ -95,20 +96,7 @@ class AuthorizationServices implements AuthorizationContract
     {
         return app(Logout::class)->handle($request);
     }
-
-    /**
-     * Check if the user has been confirmed
-     *
-     * @param object $user
-     * @return bool
-     * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
-     */
-    public function hasConfirmed(object $user): bool
-    {
-        // TODO: Implement hasConfirmed() method.
-    }
-
+    
     /**
      * Get the user detail
      *

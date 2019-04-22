@@ -58,7 +58,7 @@
                             </div>
                         </el-form>
 
-                        <div class="register">
+                        <div class="register" v-if="allowRegister">
                             <p>
                                 {{ trans('user::auth.html.not_account')}}
                                 <router-link :to="{ name: 'admin.register' }">
@@ -93,6 +93,7 @@
                 },
                 form: new Form(),
                 loading: false,
+                allowRegister: window.Lavakit.allowRegister,
             };
         },
         methods: {
