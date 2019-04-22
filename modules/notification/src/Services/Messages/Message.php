@@ -8,7 +8,7 @@ use Lavakit\Notification\Foundation\Messages\MessageAbstract;
  * Class Message
  * @package Lavakit\Notification\Services\Messages
  * @copyright 2019 Lavakit Group
- * @author hoatq <tqhoa8th@gmail.com
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 class Message extends MessageAbstract
 {
@@ -35,7 +35,7 @@ class Message extends MessageAbstract
      *
      * @return $this
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     protected function flash()
     {
@@ -50,7 +50,7 @@ class Message extends MessageAbstract
      * @param array $overrides
      * @return $this
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     protected function updateLastMessage(array $overrides = [])
     {

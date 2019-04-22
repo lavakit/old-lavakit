@@ -9,7 +9,7 @@ use Lavakit\Base\Services\JsonResponse;
  * Class Confirm
  * @package Lavakit\User\Services\Authorization\Users
  * @copyright 2019 Lavakit Group
- * @author hoatq <tqhoa8th@gmail.com
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 class Confirm
 {

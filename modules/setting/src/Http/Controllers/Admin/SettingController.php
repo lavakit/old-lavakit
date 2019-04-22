@@ -11,7 +11,7 @@ use Lavakit\Setting\Repositories\SettingRepository;
  * Class SettingController
  * @package Lavakit\Setting\Http\Controllers\Admin
  * @copyright 2019 Lavakit Group
- * @author hoatq <tqhoa8th@gmail.com
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 class SettingController extends BaseAdminController
 {

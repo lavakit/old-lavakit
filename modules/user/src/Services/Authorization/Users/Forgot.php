@@ -9,8 +9,8 @@ use Email;
 /**
  * Class Forgot
  * @package Lavakit\User\Services\Authorization\Users
- * @copyright 2019 LUCY VN
- * @author Pencii Team <hoatq@lucy.ne.jp>
+ * @copyright 2019 Lavakit Group
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 class Forgot
 {
@@ -30,8 +30,8 @@ class Forgot
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function handler(Request $request)
     {

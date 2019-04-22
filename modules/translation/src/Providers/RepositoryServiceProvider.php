@@ -17,7 +17,7 @@ use Lavakit\Translation\Repositories\Interfaces\TranslationTranslationRepository
  * Class RepositoryServiceProvider
  * @package Lavakit\Translation\Providers
  * @copyright 2019 Lavakit Group
- * @author hoatq <tqhoa8th@gmail.com
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 class RepositoryServiceProvider extends ServiceProvider
 {

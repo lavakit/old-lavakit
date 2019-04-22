@@ -10,7 +10,7 @@ use Lavakit\Translation\Repositories\Interfaces\TranslationTranslationRepository
  * Class TranslationTranslationCacheDecorator
  * @package Lavakit\Translation\Repositories\Caches
  * @copyright 2019 Lavakit Group
- * @author hoatq <tqhoa8th@gmail.com
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 class TranslationTranslationCacheDecorator extends CacheDecorator implements TranslationTranslationRepository
 {
