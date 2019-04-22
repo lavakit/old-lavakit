@@ -2,6 +2,7 @@ import coreLavakit from '@modules/base/resources/assets/js/core';
 import Login from './components/auth/Login';
 import Forgot from './components/auth/Forgot';
 import Register from './components/auth/Register';
+import Reset from './components/auth/Reset';
 
 export default [
     {
@@ -21,5 +22,11 @@ export default [
         name: 'admin.register',
         component: Register,
         beforeEnter: coreLavakit.requireNonAuth,
-    }
+    },
+    {
+        path:'/auth/reset/:token',
+        name: 'admin.reset',
+        component: Reset,
+        beforeEnter: coreLavakit.requireNonAuth,
+    },
 ];

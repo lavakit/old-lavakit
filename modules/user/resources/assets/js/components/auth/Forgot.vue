@@ -67,6 +67,7 @@
                 form: new Form(),
                 loading: false,
                 allowRegister: window.Lavakit.allowRegister,
+                message: 'There are some errors in the form.',
             }
         },
         methods: {
@@ -88,9 +89,13 @@
                     .catch((error) => {
                         this.loading = false;
 
+                        if (error.response.status === 400) {
+                            this.message = error.response.data.message;
+                        }
+
                         this.$notify.error({
                             title: 'Error',
-                            message: 'There are some errors in the form.',
+                            message: this.message,
                         });
                     });
             },

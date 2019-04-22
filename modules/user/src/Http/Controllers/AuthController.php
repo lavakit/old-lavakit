@@ -76,26 +76,20 @@ class AuthController extends BaseController
     /**
      * Get the view reset password
      *
-     * @param string|null $email
      * @param string|null $token
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
-    public function getReset(string $email = null, string $token = null)
+    public function getReset(string $token = null)
     {
-        if (is_null($email)) {
-            return redirect()->route('login');
-        }
-
         if (is_null($token)) {
             return redirect()->route('forgot');
         }
 
         title()->set('Reset-Password');
-        $email = base64_decode($email);
 
-        return view('user::auth.reset', compact('token', 'email'));
+        return view('user::auth.reset');
     }
 
     /**

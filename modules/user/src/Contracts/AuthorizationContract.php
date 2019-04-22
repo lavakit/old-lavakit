@@ -71,17 +71,7 @@ interface AuthorizationContract
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function logout(Request $request);
-
-    /**
-     * Check if the user has been confirmed
-     *
-     * @param object $user
-     * @return bool
-     * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
-     */
-    public function hasConfirmed(object $user): bool;
-
+    
     /**
      * Get the user detail
      *

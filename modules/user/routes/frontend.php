@@ -24,13 +24,13 @@ $router->group([
         'uses'  => 'AuthController@getForgot'
     ]);
 
-    $router->get('/reset/{email?}/{token?}', [
-        'as'    => 'password.reset',
+    $router->get('/reset/{token}', [
+        'as'    => 'auth.reset',
         'uses'  => 'AuthController@getReset'
     ]);
 
     $router->post('/reset', [
-        'as'    => 'auth.reset',
+        'as'    => 'api.auth.reset',
         'uses'  => 'AuthController@reset'
     ]);
 });
