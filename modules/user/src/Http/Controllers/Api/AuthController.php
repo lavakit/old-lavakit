@@ -2,15 +2,20 @@
 
 namespace Lavakit\User\Http\Controllers\Api;
 
-use Carbon\Carbon;
 use Lavakit\Base\Http\Controllers\BaseController;
 use Lavakit\User\Contracts\AuthorizationContract;
 use Lavakit\User\Http\Requests\ForgotRequest;
 use Lavakit\User\Http\Requests\LoginRequest;
-use Lavakit\Base\Services\JsonResponse;
 use Illuminate\Http\Request;
 use Lavakit\User\Http\Requests\RegisterRequest;
+use Lavakit\User\Http\Requests\ResetRequest;
 
+/**
+ * Class AuthController
+ * @package Lavakit\User\Http\Controllers\Api
+ * @copyright 2019 Lavakit Group
+ * @author hoatq <tqhoa8th@gmail.com>
+ */
 class AuthController extends BaseController
 {
     /** @var AuthorizationContract */
@@ -30,7 +35,7 @@ class AuthController extends BaseController
      * @param LoginRequest $request
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function login(LoginRequest $request)
     {
@@ -43,7 +48,7 @@ class AuthController extends BaseController
      * @param RegisterRequest $request
      * @return \Illuminate\Support\ServiceProvider|mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function register(RegisterRequest $request)
     {
@@ -56,7 +61,7 @@ class AuthController extends BaseController
      * @param string $token
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function confirm(string $token)
     {
@@ -69,18 +74,46 @@ class AuthController extends BaseController
      * @param ForgotRequest $request
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function forgot(ForgotRequest $request)
     {
         return $this->auth->forgot($request);
     }
+    
+    /**
+     * Find token
+     *
+     * @param $token
+     * @return mixed
+     * @copyright 2019 LUCY VN
+     * @author Pencii Team <hoatq@lucy.ne.jp>
+     */
+    public function findToken($token)
+    {
+        return $this->auth->findToken($token);
+    }
 
     /**
+     * Reset password
+     *
+     * @param ResetRequest $request
+     * @return mixed
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    public function reset(ResetRequest $request)
+    {
+        return $this->auth->reset($request);
+    }
+
+    /**
+     * Get current user information by request
+     *
      * @param Request $request
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function getUser(Request $request)
     {
@@ -88,6 +121,8 @@ class AuthController extends BaseController
     }
 
     /**
+     * Logout
+     *
      * @param Request $request
      * @return mixed
      * @copyright 2019 Lavakit Group

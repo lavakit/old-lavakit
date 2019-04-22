@@ -31,7 +31,7 @@ class Confirm
      * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
-    public function handle(string $token)
+    public function handler(string $token)
     {
         $user = $this->repository->getFirstBy(['confirm_token' => $token]);
 

@@ -9,7 +9,6 @@ $router->group(['prefix' => '/auth'], function (Router $router) {
         'uses'  => 'AuthController@login',
     ]);
 
-
     $router->post('/register', [
         'as'    => 'api.auth.register',
         'uses'  => 'AuthController@register',
@@ -23,6 +22,16 @@ $router->group(['prefix' => '/auth'], function (Router $router) {
     $router->post('/forgot', [
         'as'    => 'api.auth.forgot',
         'uses'  => 'AuthController@forgot'
+    ]);
+    
+    $router->post('/reset', [
+        'as'    => 'api.auth.reset',
+        'uses'  => 'AuthController@reset'
+    ]);
+    
+    $router->get('/token/find/{token}', [
+        'as'    => 'api.auth.token',
+        'uses'  => 'AuthController@findToken'
     ]);
 
     $router->group(['middleware' => 'auth:api'], function (Router $router) {

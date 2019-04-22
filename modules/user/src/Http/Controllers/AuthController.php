@@ -91,17 +91,4 @@ class AuthController extends BaseController
 
         return view('user::auth.reset');
     }
-
-    /**
-     * Reset password
-     *
-     * @param ResetRequest $request
-     * @return mixed
-     * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
-     */
-    public function reset(ResetRequest $request)
-    {
-        return $this->auth->reset($request);
-    }
 }

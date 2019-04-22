@@ -33,7 +33,7 @@ class Forgot
      * @copyright 2019 LUCY VN
      * @author Pencii Team <hoatq@lucy.ne.jp>
      */
-    public function handle(Request $request)
+    public function handler(Request $request)
     {
         $user = $this->passwordBroker->getUser($request->only('email'));
         
@@ -45,6 +45,10 @@ class Forgot
         }
         
         $token = $this->passwordBroker->createToken($user);
+        
+        //Updated token for Users table
+        $user->confirm_token = $token;
+        $user->save();
         
         //Sent mail reset request
         $subject = trans('user::auth.messages.forgot.subject');
@@ -61,6 +65,5 @@ class Forgot
             'success' => JsonResponse::STATUS_SUCCESS,
             'message' => trans('user::auth.messages.passwords.sent')
         ], JsonResponse::HTTP_OK);
-        
     }
 }

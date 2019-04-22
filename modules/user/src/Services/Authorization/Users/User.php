@@ -21,7 +21,7 @@ class User
      * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
-    public function handle(Request $request)
+    public function handler(Request $request)
     {
         return response()->json([
             'success' => JsonResponse::STATUS_SUCCESS,
