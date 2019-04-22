@@ -75,6 +75,17 @@ class AuthController extends BaseController
     {
         return $this->auth->forgot($request);
     }
+    
+    /**
+     * @param $token
+     * @return mixed
+     * @copyright 2019 LUCY VN
+     * @author Pencii Team <hoatq@lucy.ne.jp>
+     */
+    public function findToken($token)
+    {
+        return $this->auth->findToken($token);
+    }
 
     /**
      * @param Request $request

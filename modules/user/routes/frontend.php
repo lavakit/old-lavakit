@@ -28,9 +28,4 @@ $router->group([
         'as'    => 'auth.reset',
         'uses'  => 'AuthController@getReset'
     ]);
-
-    $router->post('/reset', [
-        'as'    => 'api.auth.reset',
-        'uses'  => 'AuthController@reset'
-    ]);
 });

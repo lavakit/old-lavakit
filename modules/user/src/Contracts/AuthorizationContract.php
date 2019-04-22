@@ -81,4 +81,14 @@ interface AuthorizationContract
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function user(Request $request);
+    
+    /**
+     * Find token
+     *
+     * @param $token
+     * @return mixed
+     * @copyright 2019 LUCY VN
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    public function findToken($token);
 }
