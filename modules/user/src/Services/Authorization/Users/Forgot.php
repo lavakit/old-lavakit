@@ -65,6 +65,5 @@ class Forgot
             'success' => JsonResponse::STATUS_SUCCESS,
             'message' => trans('user::auth.messages.passwords.sent')
         ], JsonResponse::HTTP_OK);
-        
     }
 }

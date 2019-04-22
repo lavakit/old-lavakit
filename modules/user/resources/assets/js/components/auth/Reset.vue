@@ -133,7 +133,36 @@
 
             onSubmit() {
                 this.form = new Form(this.auth);
-                this.loading = false;
+                this.loading = true;
+
+                this.form.post(route('api.auth.reset'))
+                    .then((response) => {
+                        this.loading = false;
+                        if (response.success) {
+                            this.$notify.success({
+                                title: 'Success',
+                                message: response.message
+                            });
+
+                            this.$router.push({name: 'admin.login'});
+                        }
+                    })
+                    .catch((error) => {
+                        this.loading = false;
+
+                        if (error.response && error.response.data) {
+                            if (error.response.status === 400) {
+                                this.message = error.response.data.message;
+                            }
+
+                            this.$notify.error({
+                                title: 'Error',
+                                message: this.message,
+                            });
+                        } else {
+                            console.log(JSON.stringify(error));
+                        }
+                    });
             }
         }
     }

@@ -45,11 +45,15 @@ return [
         ],
         'auth' => [
             'failed' => 'These credentials do not match our records',
-            'token_invalid' => 'This activation token is invalid',
+            'token_invalid' => 'This confirmation token is invalid',
         ],
         'forgot' => [
-            'subject' => 'Reset Password Notification',
+            'subject' => 'Reset Password Request',
             'body' => 'You are receiving this email because we received a password reset request for your account.',
+        ],
+        'reset' => [
+            'subject' => 'Password Reset Success',
+            'body' => 'You have reset your password successfully.',
         ],
     ],
 
