@@ -3,10 +3,6 @@
 namespace Lavakit\User\Http\Controllers;
 
 use Lavakit\Base\Http\Controllers\BaseController;
-use Lavakit\User\Contracts\AuthenticationContract;
-use Lavakit\User\Http\Requests\ForgotRequest;
-use Lavakit\User\Http\Requests\RegisterRequest;
-use Lavakit\User\Http\Requests\ResetRequest;
 
 /**
  * Class AuthController
@@ -19,17 +15,12 @@ class AuthController extends BaseController
     /** @var string */
     protected $module = 'user';
 
-    /** @var AuthenticationContract */
-    protected $auth;
-
     /**
      * AuthController constructor.
      */
     public function __construct()
     {
         parent::__construct();
-
-        $this->auth = app(AuthenticationContract::class);
     }
 
     /**
@@ -81,12 +72,8 @@ class AuthController extends BaseController
      * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
-    public function getReset(string $token = null)
+    public function getReset(string $token)
     {
-        if (is_null($token)) {
-            return redirect()->route('forgot');
-        }
-
         title()->set('Reset-Password');
 
         return view('user::auth.reset');
