@@ -53,6 +53,10 @@ return [
         'reset' => [
             'subject' => 'Password Reset Success',
             'body' => 'You have reset your password successfully.',
+            'token_not_found' => 'Token not found',
+        ],
+        'login' => [
+            'success' => 'Logged in successfully',
         ],
     ],
 

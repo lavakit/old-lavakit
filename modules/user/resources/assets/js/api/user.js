@@ -17,6 +17,6 @@ export default {
             }
         });
 
-        return instance.get('/auth/getUser');
+        return instance.get('/auth/get-user');
     },
 }

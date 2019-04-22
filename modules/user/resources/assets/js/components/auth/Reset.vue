@@ -84,8 +84,8 @@
             
             if (!this.params.token) {
                 this.$notify.error({
-                    title: 'Error',
-                    message: 'Token not found'
+                    title: this.$t(`${'base::base'}['${'notify.title.error'}']`),
+                    message: this.$t(`${'user::auth'}['${'messages.reset.token_not_found'}']`),
                 });
             }
 
@@ -106,7 +106,7 @@
                 allowRegister: window.Lavakit.allowRegister,
                 form:  new Form(),
                 loading: false,
-                message: 'There are some errors in the form.'
+                message: this.$t(`${'base::base'}['${'notify.message.error.form'}']`)
             }
         },
         methods: {
@@ -124,7 +124,7 @@
                         this.loading = false;
                         if (error.response.status === 400) {
                             this.$notify.error({
-                                title: 'Error',
+                                title: this.$t(`${'base::base'}['${'notify.title.error'}']`),
                                 message: error.response.data.message
                             });
                         }
@@ -140,7 +140,7 @@
                         this.loading = false;
                         if (response.success) {
                             this.$notify.success({
-                                title: 'Success',
+                                title: this.$t(`${'base::base'}['${'notify.title.success'}']`),
                                 message: response.message
                             });
 
@@ -156,7 +156,7 @@
                             }
 
                             this.$notify.error({
-                                title: 'Error',
+                                title: this.$t(`${'base::base'}['${'notify.title.error'}']`),
                                 message: this.message,
                             });
                         } else {

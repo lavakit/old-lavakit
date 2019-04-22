@@ -122,6 +122,7 @@
                 },
                 form: new Form(),
                 loading: false,
+                message: this.$t(`${'base::base'}['${'notify.message.error.form'}']`)
             }
         },
         methods: {
@@ -135,7 +136,7 @@
 
                         if (response.success) {
                             this.$notify.success({
-                                title: 'Success',
+                                title: this.$t(`${'base::base'}['${'notify.title.success'}']`),
                                 message: response.message
                             });
                         }
@@ -144,10 +145,15 @@
                     })
                     .catch((error) => {
                         this.loading = false;
-                        this.$notify.error({
-                            title: 'Error',
-                            message: 'There are some errors in the form.',
-                        });
+
+                        if (error.response && error.response.data) {
+                            this.$notify.error({
+                                title: this.$t(`${'base::base'}['${'notify.title.error'}']`),
+                                message: this.message,
+                            });
+                        } else {
+                            console.log(JSON.stringify(error));
+                        }
                     });
             },
         },

@@ -35,7 +35,11 @@ class Login
         $user = $request->user();
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
-        $token->expires_at = Carbon::now()->addWeeks(1);
+
+        if (!$request->get('remember')) {
+            $token->expires_at = Carbon::now()->addDay(1);
+        }
+
         $token->save();
 
         $data = [
@@ -49,7 +53,7 @@ class Login
         return response()->json([
             'success' => JsonResponse::STATUS_SUCCESS,
             'data' => $data,
-            'message' => 'Login OK'
+            'message' => trans('user::auth.messages.login.success')
         ], JsonResponse::HTTP_OK);
     }
 }

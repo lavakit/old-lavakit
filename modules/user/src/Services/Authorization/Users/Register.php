@@ -38,6 +38,22 @@ class Register
         $user = $this->repository->create($request->all());
 
         //Send mail
+        $this->sendMailRegister($user);
+
+        return response()->json([
+            'success' => JsonResponse::STATUS_SUCCESS,
+            'data' => $user,
+            'message' => trans('user::auth.messages.confirms.check_email')
+        ], JsonResponse::HTTP_OK);
+    }
+
+    /**
+     * @param $user
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    protected function sendMailRegister($user)
+    {
         $subject = trans('user::auth.messages.confirms.subject');
         $body = trans('user::auth.messages.confirms.body');
         $args = [
@@ -47,11 +63,5 @@ class Register
         ];
 
         Email::send($subject, $body, $args);
-
-        return response()->json([
-            'success' => JsonResponse::STATUS_SUCCESS,
-            'data' => $user,
-            'message' => trans('user::auth.messages.confirms.check_email')
-        ], JsonResponse::HTTP_OK);
     }
 }
