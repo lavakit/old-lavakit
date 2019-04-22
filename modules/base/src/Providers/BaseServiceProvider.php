@@ -75,7 +75,6 @@ class BaseServiceProvider extends ServiceProvider
         
         /*Load view composer*/
         $this->registerViewComposer(['layouts.master'], TranslationsBackendComposer::class);
-        //$this->registerViewComposer(['layouts.auth', 'layouts.master'], TranslationsAuthComposer::class);
         
         /*Register middleware*/
         $this->registerMiddleware();
