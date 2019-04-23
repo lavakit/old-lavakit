@@ -4,6 +4,7 @@ namespace Lavakit\User\Http\Controllers\Api;
 
 use Lavakit\Base\Http\Controllers\BaseController;
 use Lavakit\User\Contracts\AuthorizationContract;
+use Lavakit\User\Http\Requests\ChangePasswordRequest;
 use Lavakit\User\Http\Requests\ForgotRequest;
 use Lavakit\User\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
@@ -422,5 +423,67 @@ class AuthController extends BaseController
     public function logout(Request $request)
     {
         return $this->auth->logout($request);
+    }
+    
+    /**
+     * @param ChangePasswordRequest $request
+     * @return mixed
+     * @copyright 2019 LUCY VN
+     * @author hoatq <tqhoa8th@gmail.com>
+     *
+     * @OA\Post(
+     *         path="/api/auth/password/change",
+     *         tags={"Authentication"},
+     *         summary="Change password",
+     *         description="Change an user's password (requires current password) and send notification mail",
+     *         operationId="changePassword",
+     *         security={
+     *           {"bearerAuth": {}}
+     *         },
+     *         @OA\Response(
+     *             response=200,
+     *             description="Successful operation"
+     *         ),
+     *         @OA\Response(
+     *             response=422,
+     *             description="Invalid input"
+     *         ),
+     *         @OA\Response(
+     *             response=401,
+     *             description="Wrong combination of email and password or email not verified"
+     *         ),
+     *         @OA\Response(
+     *             response=500,
+     *             description="Server error"
+     *         ),
+     *         @OA\RequestBody(
+     *             required=true,
+     *             @OA\MediaType(
+     *                 mediaType="application/x-www-form-urlencoded",
+     *                 @OA\Schema(
+     *                     type="object",
+     *                      @OA\Property(
+     *                         property="password",
+     *                         description="Password",
+     *                         type="string",
+     *                     ),
+     *                     @OA\Property(
+     *                         property="new_password",
+     *                         description="New password",
+     *                         type="string",
+     *                     ),
+     *                     @OA\Property(
+     *                         property="new_password_confirmation",
+     *                         description="Confirm new password",
+     *                         type="string",
+     *                     ),
+     *                 )
+     *             )
+     *         )
+     * )
+     */
+    public function changePassWord(ChangePasswordRequest $request)
+    {
+        return $this->auth->changePassword($request);
     }
 }

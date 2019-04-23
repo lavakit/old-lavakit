@@ -58,8 +58,8 @@ window.axios.interceptors.response.use(null, (error) => {
 
     if (error.response.status === 403) {
         app.$notify.error({
-            title: app.$t(`${'user::auth'}['${'authorizations.unauthorized_access'}']`),
-            message: app.$t(`${'user::auth'}['${'authorizations.unauthorized_access'}']`),
+            title: app.$t(`${'user::auth'}['${'messages.auth.unauthorized_access'}']`),
+            message: app.$t(`${'user::auth'}['${'messages.auth.unauthorized_access'}']`),
         });
 
         //window.location =  route('admin.dashboards.index');
@@ -67,8 +67,8 @@ window.axios.interceptors.response.use(null, (error) => {
 
     if (error.response.status === 401) {
         app.$notify.error({
-            title: app.$t(`${'user::auth'}['${'authorizations.unauthorized'}']`),
-            message: app.$t(`${'user::auth'}['${'authorizations.unauthenticated_message'}']`),
+            title: app.$t(`${'user::auth'}['${'messages.auth.unauthorized'}']`),
+            message: app.$t(`${'user::auth'}['${'messages.auth.failed'}']`),
         });
 
         //window.location = route('login');

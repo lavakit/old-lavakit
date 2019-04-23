@@ -91,4 +91,14 @@ interface AuthorizationContract
      * @author hoatq <tqhoa8th@gmail.com>
      */
     public function findToken($token);
+    
+    /**
+     * Change password by User request
+     *
+     * @param Request $request
+     * @return mixed
+     * @copyright 2019 LUCY VN
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    public function changePassword(Request $request);
 }

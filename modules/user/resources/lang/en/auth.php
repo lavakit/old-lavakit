@@ -8,6 +8,7 @@ return [
         'last_name' => 'Last Name',
         'email' => 'E-mail',
         'password' => 'Password',
+        'new_password' => 'New Password',
         'password_confirm' => 'Confirm Password',
         'see_you_again' => 'Happy to see you again!',
         'remember' => 'Remember Me',
@@ -42,10 +43,16 @@ return [
             'token' => 'This password reset token is invalid',
             'reset' => 'Your password has been reset',
             'sent' => 'We have e-mailed your password reset link',
+            'success' => 'Change password successfully',
+            'subject' => 'Change Password',
+            'body' => 'You have changed your password successfully.'
         ],
         'auth' => [
             'failed' => 'These credentials do not match our records',
             'token_invalid' => 'This confirmation token is invalid',
+            'unauthorized' => 'Unauthorized',
+            'unauthorized_access' => 'You do not have the appropriate permissions to access that page.',
+            'unauthenticated' => 'Not logged',
         ],
         'forgot' => [
             'subject' => 'Reset Password Request',
@@ -80,12 +87,5 @@ return [
         'unique' => 'The :attribute you have entered is already registered',
         'confirmed' => 'The :attribute confirmation does not match',
         'password_regex' => 'The Password may have alpha-numeric characters, as well as symbols (only . - _)',
-    ],
-
-    'authorizations' => [
-        'unauthorized' => 'Unauthorized',
-        'unauthorized_access' => 'You do not have the appropriate permissions to access that page.',
-        'unauthenticated' => 'Not logged',
-        'unauthenticated_message' => 'You need to be logged in to be able to view this page',
     ],
 ];

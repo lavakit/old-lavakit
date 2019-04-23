@@ -7,6 +7,7 @@ return [
         'last_name' => 'Tên',
         'email' => 'Hộp thư',
         'password' => 'Mật khẩu',
+        'new_password' => 'Mật khẩu mới',
         'password_confirm' => 'Xác nhận mật khẩu',
         'see_you_again' => 'Rất vui được gặp lại bạn',
         'remember' => 'Ghi nhớ',
@@ -45,6 +46,10 @@ return [
         'auth' => [
             'failed' => 'These credentials do not match our records',
             'token_invalid' => 'This activation token is invalid',
+            'unauthorized' => 'Ủy quyền',
+            'unauthorized_access' => 'Bạn không có quyền thích hợp để truy cập',
+            'unauthenticated' => 'Xác thực',
+            'success' => 'Thay đổi mật khẩu thành công',
         ],
         'forgot' => [
             'subject' => 'Reset Password Notification',
@@ -79,12 +84,5 @@ return [
         'unique' => ':attribute đã được đăng ký',
         'confirmed' => ':attribute xác nhận không trùng khớp',
         'password_regex' => 'Mật khẩu có thể có các ký tự chữ và số, cũng như các ký hiệu [. - _]',
-    ],
-
-    'authorizations' => [
-        'unauthorized' => 'Ủy quyền',
-        'unauthorized_access' => 'Bạn không có quyền thích hợp để truy cập',
-        'unauthenticated' => 'Xác thực',
-        'unauthenticated_message' => 'Bạn cần phải đăng nhập để có thể truy cập',
     ],
 ];

@@ -20,4 +20,8 @@ return [
             ],
         ],
     ],
+    
+    'forms' => [
+        'data_invalid' => 'Dữ liệu đã cho không hợp lệ',
+    ],
 ];
