@@ -51,6 +51,22 @@ class Forgot
         $user->save();
         
         //Sent mail reset request
+        $this->sentMail($user, $token);
+    
+        return response()->json([
+            'success' => JsonResponse::STATUS_SUCCESS,
+            'message' => trans('user::auth.messages.passwords.sent')
+        ], JsonResponse::HTTP_OK);
+    }
+    
+    /**
+     * @param $user
+     * @param string $token
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    public function sentMail($user, string $token)
+    {
         $subject = trans('user::auth.messages.forgot.subject');
         $body = trans('user::auth.messages.forgot.body');
         $args = [
@@ -60,10 +76,5 @@ class Forgot
         ];
     
         Email::send($subject, $body, $args);
-    
-        return response()->json([
-            'success' => JsonResponse::STATUS_SUCCESS,
-            'message' => trans('user::auth.messages.passwords.sent')
-        ], JsonResponse::HTTP_OK);
     }
 }
