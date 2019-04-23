@@ -69,10 +69,15 @@ class Forgot
     {
         $subject = trans('user::auth.messages.forgot.subject');
         $body = trans('user::auth.messages.forgot.body');
+        $btnName = trans('user::auth.messages.forgot.btn_name');
+        $btnLink = route('auth.reset', $token);
+        
         $args = [
             'to' => $user->email,
             'name' => $user->full_name,
-            'btn_link' => route('auth.reset', $token)
+            'btn_name' => $btnName,
+            'btn_link' => $btnLink,
+            'subcopy' => trans('user::email.subcopy', ['button' => $btnName, 'link' => $btnLink]),
         ];
     
         Email::send($subject, $body, $args);
