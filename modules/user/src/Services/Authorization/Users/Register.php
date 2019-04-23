@@ -56,10 +56,15 @@ class Register
     {
         $subject = trans('user::auth.messages.confirms.subject');
         $body = trans('user::auth.messages.confirms.body');
+        $btnName = trans('user::auth.messages.confirms.btn_name');
+        $btnLink = route('api.auth.confirm', $user->confirm_token);
+        
         $args = [
             'to' => $user->email,
             'name' => $user->full_name,
-            'btn_link' => route('api.auth.confirm', $user->confirm_token)
+            'btn_name' => $btnName,
+            'btn_link' => $btnLink,
+            'subcopy' => trans('user::email.subcopy', ['button' => $btnName, 'link' => $btnLink])
         ];
 
         Email::send($subject, $body, $args);

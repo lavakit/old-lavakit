@@ -48,7 +48,7 @@ class EmailAbstract extends Mailable
      */
     public function build()
     {
-        return $this->from(config('base.mail.from'), config('base.mail.name'))
+        return $this->from(config('base.mail.from.address'), config('base.mail.from.name'))
             ->to($this->args['to'], $this->args['name'])
             ->subject($this->title)
             ->markdown(config('base.mail.template'))

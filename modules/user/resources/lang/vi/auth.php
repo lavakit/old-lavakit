@@ -50,10 +50,12 @@ return [
             'unauthorized_access' => 'Bạn không có quyền thích hợp để truy cập',
             'unauthenticated' => 'Xác thực',
             'success' => 'Thay đổi mật khẩu thành công',
+            'btn_name' => 'Xác nhận đã đăng ký',
         ],
         'forgot' => [
             'subject' => 'Reset Password Notification',
             'body' => 'You are receiving this email because we received a password reset request for your account.',
+            'btn_name' => 'Reset Password',
         ],
         'reset' => [
             'subject' => 'Password Reset Success',

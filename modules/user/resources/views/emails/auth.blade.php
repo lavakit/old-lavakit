@@ -10,4 +10,10 @@
 @endisset
 
 Regards!,
+
+@isset($args['subcopy'])
+@component('mail::subcopy')
+    {!! $args['subcopy'] !!}
+@endcomponent
+@endisset
 @endcomponent

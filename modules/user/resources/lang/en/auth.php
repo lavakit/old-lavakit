@@ -37,6 +37,7 @@ return [
             'check_email' => 'Confirmation email has been send. Please check your email',
             'completed' => 'Your activation is completed',
             'confirm_email' => 'Please confirm your email',
+            'btn_name' => 'Confirm Registered',
         ],
         'passwords' => [
             'user' => 'We can\'t find a user with that e-mail address',
@@ -57,6 +58,7 @@ return [
         'forgot' => [
             'subject' => 'Reset Password Request',
             'body' => 'You are receiving this email because we received a password reset request for your account.',
+            'btn_name' => 'Reset Password',
         ],
         'reset' => [
             'subject' => 'Password Reset Success',
