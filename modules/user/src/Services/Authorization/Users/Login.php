@@ -28,7 +28,7 @@ class Login
         if (!\Auth::attempt($credentials)) {
             return response()->json([
                 'success' => JsonResponse::STATUS_FAILURE,
-                'message' => trans('user::auth.authorizations.unauthenticated_message')
+                'message' => trans('user::auth.messages.auth.failed')
             ], JsonResponse::HTTP_UNAUTHORIZED);
         }
 

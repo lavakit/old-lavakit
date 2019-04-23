@@ -39,6 +39,11 @@ $router->group(['prefix' => '/auth'], function (Router $router) {
             'as'    => 'api.auth.getUser',
             'uses'  => 'AuthController@getUser',
         ]);
+        
+        $router->post('password/change', [
+            'as'    => 'api.auth.password.change',
+            'uses'  => 'AuthController@changePassword',
+        ]);
 
         $router->get('/logout', [
             'as' => 'api.auth.logout',

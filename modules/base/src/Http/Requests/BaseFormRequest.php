@@ -41,8 +41,8 @@ abstract class BaseFormRequest extends FormRequest
     protected function failedValidation(Validator $validator)
     {
         $response = new JsonResponse([
-            'success' => false,
-            'message' => 'The given data is invalid',
+            'success' => LavakitJsonResponse::STATUS_FAILURE,
+            'message' => trans('base::base.forms.data_invalid'),
             'errors' => $validator->errors()
         ], LavakitJsonResponse::HTTP_UNPROCESSABLE_ENTITY);
         

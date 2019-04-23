@@ -20,4 +20,8 @@ return [
             ],
         ],
     ],
+    
+    'forms' => [
+        'data_invalid' => 'The given data is invalid',
+    ],
 ];

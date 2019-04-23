@@ -4,6 +4,7 @@ namespace Lavakit\User\Services\Authorization;
 
 use Illuminate\Http\Request;
 use Lavakit\User\Contracts\AuthorizationContract;
+use Lavakit\User\Services\Authorization\Users\ChangePassword;
 use Lavakit\User\Services\Authorization\Users\Confirm;
 use Lavakit\User\Services\Authorization\Users\FindToken;
 use Lavakit\User\Services\Authorization\Users\Forgot;
@@ -123,5 +124,18 @@ class AuthorizationServices implements AuthorizationContract
     public function findToken($token)
     {
         return app(FindToken::class)->handler($token);
+    }
+    
+    /**
+     * Change password by User request
+     *
+     * @param Request $request
+     * @return mixed
+     * @copyright 2019 LUCY VN
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    public function changePassword(Request $request)
+    {
+        return app(ChangePassword::class)->handler($request);
     }
 }
