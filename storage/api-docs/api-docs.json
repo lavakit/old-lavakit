@@ -14,7 +14,7 @@
         "/api/auth/login": {
             "post": {
                 "tags": [
-                    "Authentication-1"
+                    "Authentication"
                 ],
                 "summary": "Login",
                 "description": "Login an user",
