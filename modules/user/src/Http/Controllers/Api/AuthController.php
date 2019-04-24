@@ -2,7 +2,7 @@
 
 namespace Lavakit\User\Http\Controllers\Api;
 
-use Lavakit\Base\Http\Controllers\BaseController;
+use Lavakit\Base\Http\Controllers\Api\BaseApiController;
 use Lavakit\User\Contracts\AuthorizationContract;
 use Lavakit\User\Http\Requests\ChangePasswordRequest;
 use Lavakit\User\Http\Requests\ForgotRequest;
@@ -17,7 +17,7 @@ use Lavakit\User\Http\Requests\ResetRequest;
  * @copyright 2019 Lavakit Group
  * @author hoatq <tqhoa8th@gmail.com>
  */
-class AuthController extends BaseController
+class AuthController extends BaseApiController
 {
     /** @var AuthorizationContract */
     protected $auth;
