@@ -2,12 +2,8 @@
 
 namespace Lavakit\Base\Providers;
 
-use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 use Lavakit\Base\Traits\CanRegisterFacadeAliases;
-use Collective\Html\HtmlServiceProvider;
-use Collective\Html\HtmlFacade;
-use Collective\Html\FormFacade;
 
 /**
  * Class VendorProvider
@@ -22,10 +18,7 @@ class VendorProvider extends ServiceProvider
     /**
      * @var array $facadeAlias
      */
-    protected $facadeAlias = [
-        'Form' => FormFacade::class,
-        'Html' => HtmlFacade::class,
-    ];
+    protected $facadeAlias = [];
 
     /**
      * Bootstrap the application services.
@@ -34,7 +27,7 @@ class VendorProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->register(HtmlServiceProvider::class);
+        //
     }
 
     /**

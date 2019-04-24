@@ -8,4 +8,11 @@ return [
      */
 
     'allow_register' => env('ALLOW_REGISTER', true),
+    
+    /*
+    |--------------------------------------------------------------------------
+    | The prefix that'll be used for the administration
+    |--------------------------------------------------------------------------
+    */
+    'auth-prefix' => env('APP_AUTH_PREFIX', 'auth'),
 ];

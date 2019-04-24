@@ -13,13 +13,24 @@
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "browser-sync-webpack-plugin": "2.0.1",
     "cross-env": "^5.2.0",
-    "laravel-mix": "^3.0"
+    "css-loader": "^2.1.1",
+    "laravel-mix": "^4.0.7",
+    "postcss-loader": "^3.0.0",
+    "resolve-url-loader": "^3.1.0",
+    "sass": "^1.17.4",
+    "sass-loader": "^7.1.0",
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "element-ui": "^2.7.2",
+    "font-awesome": "^4.7.0",
+    "form-backend-validation": "^2.3.6",
     "icon-kit": "^1.0.0",
     "jquery": "^3.3.1",
     "lodash": "^4.17.11",
@@ -27,7 +38,12 @@
     "popper.js": "^1.14.7",
     "screenfull": "^4.2.0",
     "vue": "^2.6.10",
+    "vue-events": "^3.1.0",
     "vue-i18n": "^8.10.0",
-    "vue-router": "^3.0.2"
+    "vue-router": "^3.0.2",
+    "vue-simplemde": "^0.5.1",
+    "vue-top-progress": "^0.7.0",
+    "vuex": "^3.1.0",
+    "vuex-easy-access": "^3.1.6"
   }
 }

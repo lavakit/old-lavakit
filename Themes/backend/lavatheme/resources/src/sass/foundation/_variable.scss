@@ -1,0 +1,38 @@
+$empty: transparent;
+$default: #d6d6d6;
+$primary: #007bff;
+$success: #2dce89;
+$info: #11cdef;
+$warning: #fb6340;
+$danger: #f5365c;
+$muted: #6c757d;
+$inverse: #4c5667;
+$purple: #BF55EC;
+$pink: #f76397;
+$white: #ffffff;
+$dark: #212121;
+$grey: #9aa0ac;
+$aqua: #3ec5d6;
+$blue: #19B5FE;
+$light-blue: #89CFF0;
+$teal: #008081;
+$yellow: #F7CA18;
+$orange: #FF8000;
+$green: #26C281;
+$lime: #cad900;
+$red: #F22613;
+$fuchsia: #df2de3;
+$navy: #000080;
+
+$theme: #ef4153;
+$facebook: #3b579d;
+$twitter: #1da1f2;
+$dribbble: #ea4c89;
+$linkedin: #0177b4;
+$google: #dc4a38;
+$instagram: #fb3958;
+$behance: #053eff;
+$element-color: 'primary' $primary, 'warning' $warning, 'danger' $danger, 'success' $success, 'inverse' $inverse, 'info' $info;
+
+$font-size: 14px;
+$ff: 'Nunito Sans', sans-serif;

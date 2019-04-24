@@ -43,17 +43,17 @@ return [
     'admin-prefix' => env('APP_ADMIN_PREFIX', 'admin'),
 
     /*
-   |--------------------------------------------------------------------------
-   | Middleware
-   |--------------------------------------------------------------------------
-   | You can customise the Middleware that should be loaded.
-   | The localizationRedirect middleware is automatically loaded for both
-   | Backend and Frontend routes.
-   */
+    |--------------------------------------------------------------------------
+    | Middleware
+    |--------------------------------------------------------------------------
+    | You can customise the Middleware that should be loaded.
+    | The localizationRedirect middleware is automatically loaded for both
+    | Backend and Frontend routes.
+    */
     'middleware' => [
         'backend' => [
-            'auth',
-            'SessionTimeout'
+            //'auth',
+            //'SessionTimeout'
         ],
         'frontend' => [
         ],
@@ -61,4 +61,11 @@ return [
             'api',
         ],
     ],
+    
+   /*
+    |--------------------------------------------------------------------------
+    | Check if Lavakit was installed
+    |--------------------------------------------------------------------------
+    */
+    'is_installed' => env('APP_INSTALLED', false),
 ];

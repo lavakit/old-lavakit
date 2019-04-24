@@ -3,7 +3,7 @@
 namespace Lavakit\User\Models;
 
 use Illuminate\Foundation\Auth\User as Authentication;
-use Email;
+use Laravel\Passport\HasApiTokens;
 
 /**
  * Class User
@@ -13,6 +13,8 @@ use Email;
  */
 class User extends Authentication
 {
+    use HasApiTokens;
+
     /**
      * The table associated with the model
      *
@@ -74,33 +76,11 @@ class User extends Authentication
     }
 
     /**
-     * @return string
      * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
     public function setFullNameAttribute()
     {
         $this->attributes['full_name'] = ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
-    }
-
-    /**
-     * @param string $token
-     * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
-     */
-    public function sendPasswordResetNotification($token)
-    {
-        $emailReset = $this->getEmailForPasswordReset();
-
-        $subject = 'Reset Password Notification';
-        $body = 'You are receiving this email because we received a password reset request for your account.';
-        $args = [
-            'to' => $emailReset,
-            'name' => 'GET NAME',
-            'btn_link' => route('password.reset', ['email' => base64_encode($emailReset), 'token' => $token]),
-            'btn_name' => trans('user::auth.html.btn.forgot')
-        ];
-
-        Email::send($subject, $body, $args);
     }
 }

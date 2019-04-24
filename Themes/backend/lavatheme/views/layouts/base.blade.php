@@ -24,6 +24,7 @@
         @endforeach
 
         @stack('css-stack')
+        @routes
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -33,15 +34,7 @@
         @yield('page')
 
         {{-- Script --}}
-        <script>
-            window.Lavakit = {
-                locales: {!! json_encode(LaravelLocalization::getSupportedLocales()) !!},
-                currentLocale: '{{ locale() }}',
-                adminPrefix: '{{ config('base.base.admin-prefix') }}',
-                hideDefaultLocale: '{{ config('laravellocalization.hideDefaultLocaleInURL') }}',
-                textTranslations: {!! $textTranslations ?? '' !!},
-            }
-        </script>
+        @stack('js-global')
         @foreach($jsBackendFiles as $js)
             <script src="{{ URL::asset($js) }}" type="text/javascript"></script>
         @endforeach

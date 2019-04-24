@@ -14,7 +14,7 @@ if (!defined('FRONTEND_VENDOR')) {
 }
 
 if (!defined('ASSET_BACKEND')) {
-    define('ASSET_BACKEND', '/themes/backend/' . env('BACKEND_DEFAULT', 'adminlte') . '/assets/');
+    define('ASSET_BACKEND', '/themes/backend/' . env('BACKEND_DEFAULT', 'lavatheme') . '/assets/');
 }
 
 if (!defined('BACKEND_VENDOR')) {

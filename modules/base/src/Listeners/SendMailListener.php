@@ -37,7 +37,7 @@ class SendMailListener implements ShouldQueue
     {
         try {
             $this->mailer->send(new EmailAbstract($event->subject, $event->body, $event->args));
-            info('Send mail to' . $event->args['to'] . 'successfully');
+            info('Send mail to [' . $event->args['to'] . '] successfully');
         } catch (\Exception $ex) {
             Log::error($ex->getMessage());
         }

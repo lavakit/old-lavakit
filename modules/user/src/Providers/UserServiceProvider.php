@@ -5,7 +5,8 @@ namespace Lavakit\User\Providers;
 use Illuminate\Support\ServiceProvider;
 use Lavakit\Base\Traits\CanPublishConfiguration;
 use Lavakit\User\Contracts\AuthenticationContract;
-use Lavakit\User\Services\Authentication\AuthenticationService;
+use Lavakit\User\Contracts\AuthorizationContract;
+use Lavakit\User\Services\Authorization\AuthorizationServices;
 
 /**
  * Class UserServiceProvider
@@ -63,7 +64,7 @@ class UserServiceProvider extends ServiceProvider
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(RepositoryServiceProvider::class);
 
-        $this->app->bind(AuthenticationContract::class, AuthenticationService::class);
+        $this->app->bind(AuthorizationContract::class, AuthorizationServices::class);
     }
 
     /**

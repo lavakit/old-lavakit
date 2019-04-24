@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+/*!
+ | Theme name: LavaTheme
+ | Copyright 2019 TQ HOA <tqhoa8th@gmail.com>
+ */
+
+// Foundation
+// ---------------------------------------
+@import "~bootstrap/scss/bootstrap";
+@import "~icon-kit/dist/css/iconkit";
+@import "~font-awesome/scss/font-awesome";
+@import "~perfect-scrollbar/css/perfect-scrollbar";
+@import "~element-ui/lib/theme-chalk/index";
+
+@font-face {
+	font-family: element-icons;
+	src: url(../fonts/element-icons.woff) format("woff"), url(../fonts/element-icons.ttf) format("truetype");
+	font-weight: 400;
+	font-style: normal;
+}
+//-------------------------------------
+
+@import "foundation/variable";
+@import 'foundation/mixins/mixins';
+@import "foundation/base";
+//
+@import 'project/settings';
+@import 'project/cards';
+@import 'project/widgets';
+@import 'project/tables';
+@import 'project/badges';
+@import 'project/navigation';
+@import 'project/buttons';
+@import 'project/modal';
+@import 'project/forms';
+@import 'project/carousel';
+@import 'project/calendar';
+@import 'project/alert';
+@import 'project/rating';
+@import 'project/range-slider';
+@import 'project/layout';
+@import 'project/auth';
+@import 'project/main';

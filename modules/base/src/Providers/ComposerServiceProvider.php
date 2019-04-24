@@ -8,8 +8,8 @@ use Lavakit\Base\Composers\LocalesComposer;
 /**
  * Class ComposerServiceProvider
  * @package Lavakit\Base\Providers
- * @copyright 2019 LUCY VN
- * @author Pencii Team <hoatq@lucy.ne.jp>
+ * @copyright 2019 Lavakit Group
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 class ComposerServiceProvider extends ServiceProvider
 {

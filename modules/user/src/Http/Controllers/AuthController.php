@@ -3,13 +3,6 @@
 namespace Lavakit\User\Http\Controllers;
 
 use Lavakit\Base\Http\Controllers\BaseController;
-use AssetBackend;
-use Lavakit\User\Contracts\AuthenticationContract;
-use Lavakit\User\Http\Requests\ForgotRequest;
-use Lavakit\User\Http\Requests\LoginRequest;
-use Lavakit\User\Http\Requests\RegisterRequest;
-use Lavakit\User\Http\Requests\ResetRequest;
-use ThemeBackend;
 
 /**
  * Class AuthController
@@ -22,18 +15,12 @@ class AuthController extends BaseController
     /** @var string */
     protected $module = 'user';
 
-    /** @var AuthenticationContract */
-    protected $auth;
-
     /**
      * AuthController constructor.
      */
     public function __construct()
     {
         parent::__construct();
-
-        $this->auth = app(AuthenticationContract::class);
-        AssetBackend::addAppModule(['auth']);
     }
 
     /**
@@ -51,17 +38,6 @@ class AuthController extends BaseController
     }
 
     /**
-     * @param LoginRequest $request
-     * @return mixed
-     * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
-     */
-    public function login(LoginRequest $request)
-    {
-        return $this->auth->login($request);
-    }
-
-    /**
      * Show the view register page
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -73,32 +49,6 @@ class AuthController extends BaseController
         title()->set('Register-Authenticate');
 
         return view('user::auth.register');
-    }
-
-    /**
-     * Registration request for the application
-     *
-     * @param RegisterRequest $request
-     * @return \Illuminate\Support\ServiceProvider|mixed
-     * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
-     */
-    public function register(RegisterRequest $request)
-    {
-        return $this->auth->register($request);
-    }
-
-    /**
-     * Confirmation
-     *
-     * @param string|null $email
-     * @return mixed
-     * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
-     */
-    public function confirm(string $email = null)
-    {
-        return $this->auth->confirm($email);
     }
 
     /**
@@ -115,63 +65,17 @@ class AuthController extends BaseController
     }
 
     /**
-     * Forgot password
-     *
-     * @param ForgotRequest $request
-     * @return mixed
-     * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
-     */
-    public function forgot(ForgotRequest $request)
-    {
-        return $this->auth->forgot($request);
-    }
-
-    /**
      * Get the view reset password
      *
-     * @param string|null $email
      * @param string|null $token
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com
      */
-    public function getReset(string $email = null, string $token = null)
+    public function getReset(string $token)
     {
-        if (is_null($email)) {
-            return redirect()->route('login');
-        }
-
-        if (is_null($token)) {
-            return redirect()->route('forgot');
-        }
-
         title()->set('Reset-Password');
-        $email = base64_decode($email);
 
-        return view('user::auth.reset', compact('token', 'email'));
-    }
-
-    /**
-     * Reset password
-     *
-     * @param ResetRequest $request
-     * @return mixed
-     * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
-     */
-    public function reset(ResetRequest $request)
-    {
-        return $this->auth->reset($request);
-    }
-
-    /**
-     * @return mixed
-     * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
-     */
-    public function logout()
-    {
-        return $this->auth->logout();
+        return view('user::auth.reset');
     }
 }

@@ -15,7 +15,7 @@ interface ThemeContract
      *
      * @param $theme
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function set($theme);
 
@@ -25,7 +25,7 @@ interface ThemeContract
      * @param $theme
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function has($theme);
 
@@ -35,7 +35,7 @@ interface ThemeContract
      * @param $name
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function getThemeInfo($name);
 
@@ -46,7 +46,7 @@ interface ThemeContract
      * @param bool $collection
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function get($theme = null, $collection = false);
 
@@ -56,7 +56,7 @@ interface ThemeContract
      * @param bool $collection
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function current($collection = false);
 
@@ -65,7 +65,7 @@ interface ThemeContract
      *
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function all();
 
@@ -74,7 +74,7 @@ interface ThemeContract
      *
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function allThemeName();
 
@@ -85,7 +85,7 @@ interface ThemeContract
      * @param null $secure
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function assets($path, $secure = null);
 
@@ -95,7 +95,7 @@ interface ThemeContract
      * @param $fallback
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function lang($fallback);
 }

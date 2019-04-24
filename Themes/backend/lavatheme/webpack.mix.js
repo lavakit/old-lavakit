@@ -1,4 +1,7 @@
 let mix = require('laravel-mix');
+const { version, name } = require('./package.json')
+const webpack = require('webpack');
+const path = require('path');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,17 +14,46 @@ let mix = require('laravel-mix');
  |
  */
 
-const dir_destination = './../../../public/themes/backend/lavatheme/assets';
-
-mix.setPublicPath('./../../../public');
-
-mix.js('assets/js/lavatheme.js', 'themes/backend/lavatheme/assets/js/lavakit.js').extract(['jquery', 'vue'])
-    .sass('./assets/sass/style.scss', 'themes/backend/lavatheme/assets/css/style.css').options({
-    processCssUrls: false,
+mix.webpackConfig({
+    resolve:{
+        alias: {
+            '@modules': path.resolve(__dirname, '../../../modules/'),
+            '@layouts': path.resolve(__dirname, './../../../Themes/backend/lavatheme/resources/src/js/views/'),
+            '@packages': path.resolve(__dirname, './node_modules/')
+        }
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            THEME_VERSION: JSON.stringify(version),
+            THEME_NAME: JSON.stringify(name),
+        }),
+    ]
 });
 
+mix.setPublicPath('./');
+
+mix.js('resources/src/js/lavatheme.js', 'assets/js/lavakit.js').extract(['vue'])
+    .sass('resources/src/sass/style.scss', 'assets/css/style.css').options({
+        processCssUrls: false,
+
+    });
+
 /** Copy vendor */
-mix.copy('node_modules/icon-kit/dist/fonts', dir_destination + '/fonts');
+mix.copy('node_modules/icon-kit/dist/fonts', 'assets/fonts');
+mix.copy('node_modules/font-awesome/fonts', 'assets/fonts');
+mix.copy('node_modules/element-ui/lib/theme-chalk/fonts', 'assets/fonts');
 
 /*Copy an entire Images directory*/
-mix.copy('assets/images', dir_destination + '/images');
+mix.copy('resources/src/images', 'assets/images');
+
+/** Publish*/
+mix.copy('assets','./../../../public/themes/backend/lavatheme/assets');
+
+if (mix.inProduction) {
+    mix.version();
+    mix.disableNotifications();
+}
+
+mix.browserSync({
+    proxy: 'lavakit.local'
+});

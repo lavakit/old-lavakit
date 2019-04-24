@@ -9,14 +9,14 @@ use Lavakit\Notification\Contracts\Messages\Message;
  * Class MessageFacade
  * @package Lavakit\Notification\Facades
  * @copyright 2019 Lavakit Group
- * @author hoatq <tqhoa8th@gmail.com
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 class MessageFacade extends Facade
 {
     /**
      * @return string
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     protected static function getFacadeAccessor()
     {

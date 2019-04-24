@@ -7,11 +7,12 @@ return [
         'last_name' => 'Tên',
         'email' => 'Hộp thư',
         'password' => 'Mật khẩu',
+        'new_password' => 'Mật khẩu mới',
         'password_confirm' => 'Xác nhận mật khẩu',
         'see_you_again' => 'Rất vui được gặp lại bạn',
         'remember' => 'Ghi nhớ',
         'forgot_password' => 'Quên mật khẩu ?',
-        'not_account' => 'Chưa có tài khoản?',
+        'not_account' => 'Chưa có tài khoản ?',
         'create_account' => 'Tạo tài khoản',
         'register' => 'Đăng kí',
         'join_step' => 'Tham gia với chúng tôi ngay hôm nay! Chỉ mất vài bước',
@@ -31,7 +32,7 @@ return [
     'messages' => [
         'confirms' => [
             'subject' => 'Register Confirmation',
-            'content' => 'Your registration is completed. Please click link to get access',
+            'body' => 'Your registration is completed. Please click link to get access',
             'check_email' => 'Confirmation email has been send. Please check your email',
             'completed' => 'Your activation is completed',
             'confirm_email' => 'Please confirm your email',
@@ -44,6 +45,25 @@ return [
         ],
         'auth' => [
             'failed' => 'These credentials do not match our records',
+            'token_invalid' => 'This activation token is invalid',
+            'unauthorized' => 'Ủy quyền',
+            'unauthorized_access' => 'Bạn không có quyền thích hợp để truy cập',
+            'unauthenticated' => 'Xác thực',
+            'success' => 'Thay đổi mật khẩu thành công',
+            'btn_name' => 'Xác nhận đã đăng ký',
+        ],
+        'forgot' => [
+            'subject' => 'Reset Password Notification',
+            'body' => 'You are receiving this email because we received a password reset request for your account.',
+            'btn_name' => 'Reset Password',
+        ],
+        'reset' => [
+            'subject' => 'Password Reset Success',
+            'body' => 'You have reset your password successfully.',
+            'token_not_found' => 'Token not found',
+        ],
+        'login' => [
+            'success' => 'Logged in successfully',
         ],
     ],
 

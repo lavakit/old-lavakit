@@ -10,7 +10,7 @@ use Lavakit\Setting\Repositories\SettingRepository;
  * Class SettingCacheDecorator
  * @package Lavakit\Setting\Repositories\Caches
  * @copyright 2019 Lavakit Group
- * @author hoatq <tqhoa8th@gmail.com
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 class SettingCacheDecorator extends CacheDecorator implements SettingRepository
 {
@@ -43,7 +43,7 @@ class SettingCacheDecorator extends CacheDecorator implements SettingRepository
      * @param array $column
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function findByField(array $column)
     {
@@ -69,7 +69,7 @@ class SettingCacheDecorator extends CacheDecorator implements SettingRepository
      * @param $name
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function loadSettings($modules, $name = null)
     {
@@ -82,8 +82,8 @@ class SettingCacheDecorator extends CacheDecorator implements SettingRepository
      * @param $module
      * @param null $name
      * @return mixed
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function separateViewSettings($module, $name = null)
     {
@@ -97,7 +97,7 @@ class SettingCacheDecorator extends CacheDecorator implements SettingRepository
      * @param $name
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function loadDbSetting($name)
     {
@@ -111,7 +111,7 @@ class SettingCacheDecorator extends CacheDecorator implements SettingRepository
      * @param $name
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function getSettingTranslatable($module, $name = null)
     {
@@ -125,7 +125,7 @@ class SettingCacheDecorator extends CacheDecorator implements SettingRepository
      * @param $name
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function getSettingOriginal($module, $name = null)
     {

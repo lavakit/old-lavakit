@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Setting
  * @package Lavakit\Setting\Models
  * @copyright 2019 Lavakit Group
- * @author hoatq <tqhoa8th@gmail.com
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 class Setting extends Model
 {

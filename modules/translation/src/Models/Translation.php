@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * Class Translation
  * @package Lavakit\Translation\Models
  * @copyright 2019 Lavakit Group
- * @author hoatq <tqhoa8th@gmail.com
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 class Translation extends Model
 {

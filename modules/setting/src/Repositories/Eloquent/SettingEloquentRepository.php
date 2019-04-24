@@ -11,7 +11,7 @@ use Lavakit\Setting\Repositories\SettingRepository;
  * Class SettingEloquentRepository
  * @package Lavakit\Setting\Repositories\Eloquent
  * @copyright 2019 Lavakit Group
- * @author hoatq <tqhoa8th@gmail.com
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 class SettingEloquentRepository extends BaseEloquentRepository implements SettingRepository
 {
@@ -27,7 +27,7 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
      * @param array $column
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function findByField(array $column)
     {
@@ -52,7 +52,7 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
      * @param $name
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function loadSettings($modules, $name = null)
     {
@@ -81,8 +81,8 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
      * @param $module
      * @param null $name
      * @return mixed
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function separateViewSettings($module, $name = null)
     {
@@ -103,7 +103,7 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
      * @param $name
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function loadDbSetting($name)
     {
@@ -123,7 +123,7 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
      * @param $name
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function getSettingTranslatable($module, $name = null)
     {
@@ -144,7 +144,7 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
      * @param $name
      * @return mixed
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function getSettingOriginal($module, $name = null)
     {
@@ -161,8 +161,8 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
     /**
      * @param $settings
      * @return array
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     private function loadTranslatable($settings)
     {
@@ -174,8 +174,8 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
     /**
      * @param $settings
      * @return array
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     private function loadOriginal($settings)
     {

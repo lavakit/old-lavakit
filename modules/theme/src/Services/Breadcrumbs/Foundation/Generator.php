@@ -6,7 +6,7 @@ namespace Lavakit\Theme\Services\Breadcrumbs\Foundation;
  * Interface Generator
  * @package Lavakit\Theme\Services\Breadcrumbs\Foundation
  * @copyright 2019 Lavakit Group
- * @author hoatq <tqhoa8th@gmail.com
+ * @author hoatq <tqhoa8th@gmail.com>
  */
 interface Generator
 {
