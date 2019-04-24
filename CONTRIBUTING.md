@@ -14,12 +14,10 @@ We accept contributions via Pull Requests on [Github](https://github.com/lavakit
 - **Create feature branches** - Don't ask us to pull from your develop branch.
 - **One pull request per feature** - If you want to do more than one thing, send multiple pull requests.
 
-##Running Tests
+## Running Tests
 
 ``` bash
 $ phpunit
 ```
 
-
-
-####Happy coding!
+#### Happy coding!
