@@ -8,6 +8,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Lavakit\Base\Composers\TranslationsAuthComposer;
 use Lavakit\Base\Composers\TranslationsBackendComposer;
+use Lavakit\Base\Console\InstallCommand;
 use Lavakit\Base\Exceptions\Handler;
 use Lavakit\Base\Facades\EmailFacade;
 use Lavakit\Base\Facades\TitleFacade;
@@ -126,6 +127,8 @@ class BaseServiceProvider extends ServiceProvider
         $this->app->singleton('lavakit.isInstalled', function () {
             return $this->isInstalled();
         });
+    
+        $this->registerCommands();
         
         //Load helpers
         $this->loadHelpers();
@@ -137,6 +140,13 @@ class BaseServiceProvider extends ServiceProvider
         
         $this->app->register(EventServiceProvider::class);
         $this->app->register(ComposerServiceProvider::class);
+    }
+    
+    private function registerCommands()
+    {
+        $this->commands([
+            InstallCommand::class
+        ]);
     }
     
     /**
