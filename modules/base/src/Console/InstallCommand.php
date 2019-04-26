@@ -62,7 +62,7 @@ class InstallCommand extends Command
     public function handle()
     {
         $this->blockMessage('WellCome!', 'Starting the installation processing...', 23);
-        
+
         $this->installer->stack([
             ProtectInstaller::class,
             CreateEnvFile::class,
@@ -72,11 +72,11 @@ class InstallCommand extends Command
             PassportInstall::class,
             Installed::class
         ]);
-        
+
         $this->listInstall($this->installer->getScripts());
-    
+
         $success = $this->installer->install($this);
-    
+
         if ($success) {
             $this->blockMessage('Platform ready!', 'You can now login with your username and password at backend.');
         }
