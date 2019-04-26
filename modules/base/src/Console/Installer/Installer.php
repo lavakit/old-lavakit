@@ -52,7 +52,7 @@ class Installer
     }
     
     /**
-     * Fire install scripts
+     * Run install scripts
      *
      * @param Command $command
      * @return bool
@@ -61,7 +61,7 @@ class Installer
     {
         foreach ($this->scripts as $script) {
             try {
-                $this->app->make($script)->fire($command);
+                $this->app->make($script)->run($command);
             } catch (\Exception $ex) {
                 $command->error($ex->getMessage());
                 
@@ -70,5 +70,13 @@ class Installer
         }
         
         return true;
+    }
+    
+    /**
+     * @return array
+     */
+    public function getScripts()
+    {
+        return $this->scripts;
     }
 }
