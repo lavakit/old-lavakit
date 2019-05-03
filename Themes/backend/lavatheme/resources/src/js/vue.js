@@ -32,6 +32,8 @@ const router = new VueRouter({
     ],
 });
 
+router.beforeEach(coreLavakit.setPageTitle);
+
 const messages = {
     [APP_CONFIG.CURRENT_LOCALE]: APP_CONFIG.TEXT_TRANSLATION,
 };

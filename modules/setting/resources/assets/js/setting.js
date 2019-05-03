@@ -29,6 +29,9 @@ export default [
                     locales,
                     pageTitle
                 },
+                meta: {
+                    title: 'title email'
+                }
             },
         ]
     }
