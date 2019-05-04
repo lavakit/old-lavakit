@@ -11,9 +11,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <nav class="breadcrumb-container" aria-label="breadcrumb">
-                        Breadcrumb
-                    </nav>
+                    <lavakit-breadcrumb :list="list"></lavakit-breadcrumb>
                 </div>
             </div>
         </div>
@@ -37,12 +35,16 @@
 
 <script>
     import SettingApi from '@modules/setting/resources/assets/js/api/setting.js';
+    import LavakitBreadcrumb from '@modules/base/resources/assets/js/components/Breadcrumb';
 
     export default {
         name: 'lavakit-setting-email',
         props: {
             locales: {default: null},
             pageTitle: {default: null, String},
+        },
+        components: {
+            LavakitBreadcrumb
         },
         data () {
             return {
@@ -70,6 +72,11 @@
                         this.customError(error);
                     });
             },
+        },
+        computed: {
+            list() {
+                return this.$route.matched;
+            }
         },
     }
 </script>

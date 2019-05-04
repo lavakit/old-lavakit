@@ -15,8 +15,11 @@ export default [
                 path: 'dashboard',
                 name: 'admin.dashboards.dashboard',
                 component: Dashboard,
+                meta: {
+                    breadcrumb: 'dashboard::dashboard.page_title.dashboard',
+                },
                 props: {
-                    pageTitle: 'Dashboard'
+                    pageTitle: 'dashboard::dashboard.page_title.dashboard',
                 },
             },
         ]
