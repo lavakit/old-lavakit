@@ -85,7 +85,13 @@
     import { APP_CONFIG } from "@modules/base/resources/assets/js/config";
 
     export default {
-        name: "vue-login",
+        name: "lavakit-login",
+        props: {
+            pageTitle: {default: null, String},
+        },
+        created () {
+            document.title = this.trans(this.pageTitle);
+        },
         data() {
             return {
                 auth: {

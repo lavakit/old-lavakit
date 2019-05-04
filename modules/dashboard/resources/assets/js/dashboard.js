@@ -3,9 +3,6 @@ import { APP_CONFIG } from "@modules/base/resources/assets/js/config";
 import Dashboard from './components/Dashboard';
 import Layout from '@layouts/layout';
 
-const locales = window.Lavakit.locales;
-const pageTitle = window.Lavakit.pageTitle;
-
 export default [
     {
         path: '/' + APP_CONFIG.ADMIN_PREFIX,
@@ -19,8 +16,7 @@ export default [
                 name: 'admin.dashboards.dashboard',
                 component: Dashboard,
                 props: {
-                    locales,
-                    pageTitle
+                    pageTitle: 'Dashboard'
                 },
             },
         ]

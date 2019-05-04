@@ -51,7 +51,7 @@ const app = new Vue({
 });
 
 window.axios.interceptors.response.use(null, (error) => {
-    if (error.response === undefined) {
+    if (typeof error.response === undefined) {
         console.log(error);
         return;
     }
