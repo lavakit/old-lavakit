@@ -90,7 +90,7 @@
             pageTitle: {default: null, String},
         },
         created () {
-            this.setPageTitle(this.trans(this.pageTitle));
+            thithis.trans(this.pageTitle);
         },
         data() {
             return {

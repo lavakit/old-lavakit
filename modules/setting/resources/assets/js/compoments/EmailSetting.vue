@@ -67,6 +67,7 @@
                     })
                     .catch((error) => {
                         this.loading = false;
+                        this.customError(error);
                     });
             },
         },
