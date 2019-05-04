@@ -1,7 +1,7 @@
 import { APP_CONFIG } from "@modules/base/resources/assets/js/config";
-import Page403 from './compoments/pages/403';
-import Page404 from './compoments/pages/404';
-import Page500 from './compoments/pages/500';
+import Page403 from './components/pages/403';
+import Page404 from './components/pages/404';
+import Page500 from './components/pages/500';
 
 const baseErrorURL = '/' + APP_CONFIG.ADMIN_PREFIX;
 
