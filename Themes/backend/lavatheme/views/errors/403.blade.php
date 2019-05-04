@@ -5,8 +5,8 @@
         <div class="row flex-row h-100 bg-white">
             <div class="col-xl-4 col-lg-6 col-md-7 my-auto p-0">
                 <div class="authentication-form page-error mx-auto">
-                    <h1>404</h1>
-                    <p>Sorry, the page tou are looking for could not be found</p>
+                    <h1>403</h1>
+                    <p>Sorry, the page tou are authorized to access this page</p>
                     <a href="{{ route('admin.dashboards.dashboard') }}" class="btn btn-outline-secondary">Go Home</a>
                 </div>
             </div>
