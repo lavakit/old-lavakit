@@ -83,7 +83,7 @@
             pageTitle: {default: null, String},
         },
         created () {
-            document.title = this.trans(this.pageTitle);
+            this.setPageTitle(this.trans(this.pageTitle));
             this.params.token = this.$route.params.token;
             
             if (!this.params.token) {

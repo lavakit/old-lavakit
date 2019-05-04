@@ -19,8 +19,9 @@ Vue.use(VueI18n);
 Vue.use(VueRouter);
 Vue.use(VueEvents);
 Vue.use(VueSimplemde);
-require('./mixins/translation-helper');
-require('./mixins/assets-helper');
+require('./mixins/translation-helper.js');
+require('./mixins/assets-helper.js');
+require('./mixins/pagetitle-helper.js');
 
 const router = new VueRouter({
     mode: 'history',
