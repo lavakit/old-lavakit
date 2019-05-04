@@ -50,7 +50,7 @@
             }
         },
         created () {
-            document.title = this.trans(this.pageTitle);
+            this.setPageTitle(this.trans(this.pageTitle));
             this.fetchData();
         },
         methods: {
