@@ -32,8 +32,6 @@ const router = new VueRouter({
     ],
 });
 
-router.beforeEach(coreLavakit.setPageTitle);
-
 const messages = {
     [APP_CONFIG.CURRENT_LOCALE]: APP_CONFIG.TEXT_TRANSLATION,
 };
@@ -53,7 +51,7 @@ const app = new Vue({
 });
 
 window.axios.interceptors.response.use(null, (error) => {
-    if (error.response === undefined) {
+    if (typeof error.response === undefined) {
         console.log(error);
         return;
     }

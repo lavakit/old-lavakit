@@ -8,6 +8,5 @@
         allowRegister: '{{ config('user.user.allow_register') }}',
         created: '{{ crafted() }}',
         version: '{{ config('base.base.version') }}',
-        pageTitle: '{!! title()->get(false) !!}'
     }
 </script>

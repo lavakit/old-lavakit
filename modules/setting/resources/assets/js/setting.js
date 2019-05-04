@@ -4,7 +4,6 @@ import GeneralSetting from './compoments/GeneralSetting';
 import EmailSetting from './compoments/EmailSetting';
 
 const locales = window.Lavakit.locales;
-const pageTitle = window.Lavakit.pageTitle;
 
 export default [
     {
@@ -18,7 +17,7 @@ export default [
                 component: GeneralSetting,
                 props: {
                     locales,
-                    pageTitle
+                    pageTitle: 'setting::setting.generals.page_title',
                 },
             },
             {
@@ -26,12 +25,8 @@ export default [
                 name: 'admin.settings.email',
                 component: EmailSetting,
                 props: {
-                    locales,
-                    pageTitle
+                    pageTitle: 'setting::setting.emails.page_title',
                 },
-                meta: {
-                    title: 'title email'
-                }
             },
         ]
     }

@@ -58,7 +58,13 @@
     import Form from '@packages/form-backend-validation';
 
     export default {
-        name: "vue-forgot",
+        name: "lavakit-forgot-password",
+        props: {
+            pageTitle: {default: null, String},
+        },
+        created () {
+            document.title = this.trans(this.pageTitle);
+        },
         data () {
             return {
                 auth: {

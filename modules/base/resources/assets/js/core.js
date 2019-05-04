@@ -47,22 +47,9 @@ let requireAdmin = (to, from, next) => {
     }
 };
 
-let setPageTitle = (to, from, next) => {
-    let title = to.meta.title;
-
-    if (typeof title === "undefined") {
-        title = to.name;
-    }
-
-    document.title = title;
-
-    next();
-};
-
 export default {
     makeBaseUrl,
     requireAdmin,
     requireAuth,
     requireNonAuth,
-    setPageTitle,
 };

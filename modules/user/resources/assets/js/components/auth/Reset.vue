@@ -78,8 +78,12 @@
     import axios from '@packages/axios';
 
     export default {
-        name: "vue-reset",
+        name: "lavakit-reset-password",
+        props: {
+            pageTitle: {default: null, String},
+        },
         created () {
+            document.title = this.trans(this.pageTitle);
             this.params.token = this.$route.params.token;
             
             if (!this.params.token) {

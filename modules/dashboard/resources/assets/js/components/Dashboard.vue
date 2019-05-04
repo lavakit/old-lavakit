@@ -1,39 +1,30 @@
 <template>
-    <el-select v-model="value" placeholder="Select"><el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option></el-select>
+    <div v-loading.fullscreen="loading">
+        {{ message }}
+    </div>
 </template>
 
 <script>
 
     export default {
-        name: "vue-dashboard",
+        name: "lavakit-dashboard",
+        props: {
+            pageTitle: {default: null, String},
+        },
+        created () {
+            document.title = this.trans(this.pageTitle);
+        },
         data() {
             return {
                 message: 'Dashboard',
-                loading: true,
-                options: [{
-                    value: 'Option1',
-                    label: 'Option1'
-                }, {
-                    value: 'Option2',
-                    label: 'Option2'
-                }, {
-                    value: 'Option3',
-                    label: 'Option3'
-                }, {
-                    value: 'Option4',
-                    label: 'Option4'
-                }, {
-                    value: 'Option5',
-                    label: 'Option5'
-                }],
-                value: ''
+                loading: true
             }
         },
         methods: {
             loadingTimeout() {
                 setTimeout(() => {
                     this.loading = false
-                }, 300);
+                }, 1000);
             },
 
         },

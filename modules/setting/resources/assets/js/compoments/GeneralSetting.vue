@@ -6,7 +6,7 @@
                     <div class="page-header-title">
                         <i class="ik ik-settings"></i>
                         <div class="d-inline">
-                            <h5>{{ pageTitle }}</h5>
+                            <h5>{{ trans(pageTitle) }}</h5>
                         </div>
                     </div>
                 </div>
@@ -37,10 +37,15 @@
 
 <script>
     export default {
+        name: 'lavakit-setting-general',
         props: {
             locales: {default: null},
             pageTitle: {default: null, String}
         },
+        created () {
+            document.title = this.trans(this.pageTitle);
+        },
+
         data () {
             return {
                 msg: 'Hello world!'

@@ -87,4 +87,11 @@ return [
         'confirmed' => ':attribute xác nhận không trùng khớp',
         'password_regex' => 'Mật khẩu có thể có các ký tự chữ và số, cũng như các ký hiệu [. - _]',
     ],
+
+    'page_title' => [
+        'login' => 'Đăng Nhập',
+        'register' => 'Đăng Ký',
+        'forgot' => 'Quên mật khẩu',
+        'reset' => 'Khôi phục mật khẩu',
+    ],
 ];
