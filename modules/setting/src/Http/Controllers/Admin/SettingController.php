@@ -2,10 +2,7 @@
 
 namespace Lavakit\Setting\Http\Controllers\Admin;
 
-use Dimsav\Translatable\Translatable;
-use Illuminate\Http\Request;
 use Lavakit\Base\Http\Controllers\Admin\BaseAdminController;
-use Lavakit\Setting\Repositories\SettingRepository;
 
 /**
  * Class SettingController
@@ -18,40 +15,35 @@ class SettingController extends BaseAdminController
     /** @var string */
     protected $module = 'setting';
 
-    /** @var SettingRepository */
-    protected $repository;
-
     /**
      * SettingController constructor.
-     * @param SettingRepository $repository
      */
-    public function __construct(SettingRepository $repository)
+    public function __construct()
     {
         parent::__construct();
-
-        $this->repository = $repository;
     }
 
-    public function general(Request $request)
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    public function general()
     {
-        $settings = $this->repository->separateViewSettings($this->module, __FUNCTION__);
-        $dbSettings = $this->repository->loadDbSetting('locale');
+        title()->set(trans('setting::setting.generals.page_title'));
 
-        if ($request->isMethod('get')) {
-            title()->set('Setting General');
-            
-            return view('setting::admins.general')->with(compact('settings', 'dbSettings'));
-        }
-
-        $dataRequest = $request->all();
+        return view('setting::admins.general');
     }
 
-    public function email(Request $request)
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    public function email()
     {
-        if ($request->isMethod('get')) {
-            title()->set('Setting Email');
+        title()->set(trans('setting::setting.emails.page_title'));
 
-            return view('setting::admins.email');
-        }
+        return view('setting::admins.email');
     }
 }
