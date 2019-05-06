@@ -3,15 +3,20 @@
         <lavakit-text v-if="infoField.view === 'text'"
                       :locale="locale"
                       :input-name="nameField"
-                      :input-info="pushInfo" />
+                      :input-info="pushInfo"></lavakit-text>
 
-        <lavakit-checkbox v-if="infoField.view === 'checkbox'" />
+        <lavakit-checkbox v-if="infoField.view === 'checkbox'"></lavakit-checkbox>
 
-        <lavakit-select v-if="infoField.view === 'select'" />
+        <lavakit-select v-if="infoField.view === 'select'"></lavakit-select>
 
-        <lavakit-textarea v-if="infoField.view === 'textarea'" />
+        <lavakit-textarea v-if="infoField.view === 'textarea'"
+                          :locale="locale"
+                          :input-name="nameField"
+                          :input-info="pushInfo"></lavakit-textarea>
 
-        <lavakit-select-frontend-template v-if="infoField.view === 'select-frontend-template'" />
+        <lavakit-select-frontend-template v-if="infoField.view === 'select-frontend-template'"
+                                          :input-name="nameField"
+                                          :input-info="pushInfo"></lavakit-select-frontend-template>
     </div>
 </template>
 

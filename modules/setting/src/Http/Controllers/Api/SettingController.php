@@ -2,6 +2,7 @@
 
 namespace Lavakit\Setting\Http\Controllers\Api;
 
+use Illuminate\Http\Request;
 use Lavakit\Base\Http\Controllers\Api\BaseApiController;
 use Lavakit\Base\Services\JsonResponse;
 use Lavakit\Setting\Repositories\SettingRepository;
@@ -63,6 +64,14 @@ class SettingController extends BaseApiController
             'message' => trans('base::base.response.message.success'),
             'data' => ['settings' => $settings, 'dbSettings' => $dbSettings]
         ], JsonResponse::HTTP_OK);
+    }
+
+    public function postGeneral(Request $request)
+    {
+        echo'<pre>';
+            print_r($request->all());
+        echo'</pre>';
+        die;
     }
 
     /**

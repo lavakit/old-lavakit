@@ -29,7 +29,21 @@
                                     <template v-for="(locale, shortLang) in locales">
                                         <el-tab-pane :label="trans(`setting::setting.tab.locales.${locale.name}`)" :name="shortLang">
                                             <template v-for="(field, name) in fields">
-                                                <lavakit-form-filed :locale="shortLang" :name-field="name" :info-field="field" />
+                                                <!--<lavakit-form-filed :locale="shortLang"-->
+                                                                    <!--:name-field="name"-->
+                                                                     <!--:info-field="field" />-->
+
+
+                                                <div class="form-group">
+                                                    <label>
+                                                        Site name
+                                                    </label>
+
+                                                <input type="text" v-model="general[shortLang].site_name"
+                                                       placeholder="Site name"
+                                                    class="form-control">
+                                                </div>
+
                                             </template>
                                         </el-tab-pane>
                                     </template>
@@ -47,54 +61,59 @@
                                 </el-tabs>
                             </template>
                         </template>
-                    </div>
-                </div>
-            </div>
 
-
-            <div class="col-xl-6 col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Language</h3>
-                    </div>
-                    <div class="card-block">
-                        <div class="form-group">
-                            <label> Site locales</label>
-                            <input type="text" class="form-control" id="locale" name="locale" placeholder="Locale">
-                        </div>
-                        <div class="form-group">
-                            <div class="checkbox-fade fade-in-success">
-                                <label>
-                                    <input type="checkbox" name="hide_locale" value="1">
-                                    <span class="cr">
-                                        <i class="cr-icon ik ik-check txt-success"></i>
-                                    </span>
-                                    <span>Hide default locale in Uri</span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="checkbox-fade fade-in-success">
-                                <label>
-                                    <input type="checkbox" name="use_icon" value="1">
-                                    <span class="cr">
-                                        <i class="cr-icon ik ik-check txt-success"></i>
-                                    </span>
-                                    <span>Show icon</span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Text Position</label>
-                            <input type="text" class="form-control" id="position" name="position" placeholder="Text position">
-                        </div>
-                        <button type="submit" class="btn btn-danger mr-2 float-right">
+                        <button type="submit" class="btn btn-danger mr-2 float-right" @click="onSubmitGeneral()">
                             <i class="ik ik-check-circle"></i>
                             Save
                         </button>
                     </div>
                 </div>
             </div>
+
+            <!--<div class="col-xl-6 col-md-6">-->
+                <!--<div class="card">-->
+                    <!--<div class="card-header">-->
+                        <!--<h3>Language</h3>-->
+                    <!--</div>-->
+                    <!--<div class="card-block">-->
+                        <!--<div class="form-group">-->
+                            <!--<label> Site locales</label>-->
+                            <!--<input type="text" class="form-control" id="locale" name="locale" placeholder="Locale">-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<div class="checkbox-fade fade-in-success">-->
+                                <!--<label>-->
+                                    <!--<input type="checkbox" name="hide_locale" value="1">-->
+                                    <!--<span class="cr">-->
+                                        <!--<i class="cr-icon ik ik-check txt-success"></i>-->
+                                    <!--</span>-->
+                                    <!--<span>Hide default locale in Uri</span>-->
+                                <!--</label>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<div class="checkbox-fade fade-in-success">-->
+                                <!--<label>-->
+                                    <!--<input type="checkbox" name="use_icon" value="1">-->
+                                    <!--<span class="cr">-->
+                                        <!--<i class="cr-icon ik ik-check txt-success"></i>-->
+                                    <!--</span>-->
+                                    <!--<span>Show icon</span>-->
+                                <!--</label>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<label>Text Position</label>-->
+                            <!--<input type="text" class="form-control" id="position" name="position" placeholder="Text position">-->
+                        <!--</div>-->
+                        <!--<button type="submit" class="btn btn-danger mr-2 float-right">-->
+                            <!--<i class="ik ik-check-circle"></i>-->
+                            <!--Save-->
+                        <!--</button>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
         </div>
     </div>
 </template>
@@ -104,6 +123,7 @@
     import SettingApi from '@modules/setting/resources/assets/js/api/setting.js';
     import LavakitBreadcrumb from '@modules/base/resources/assets/js/components/Breadcrumb';
     import LavakitFormFiled from '@modules/base/resources/assets/js/components/FormField';
+    import Form from '@packages/form-backend-validation';
 
     export default {
         name: 'lavakit-setting-general',
@@ -125,6 +145,9 @@
         data () {
             return {
                 loading: false,
+                form: new Form(),
+                tags: {},
+                message: this.$t(`${'base::base'}['${'notify.message.error.form'}']`),
                 settings: {
                     type: Array,
                     required: true,
@@ -137,7 +160,14 @@
                 },
                 activeTranslatable: CURRENT_LOCALE,
                 activeNonTranslatable: 'first',
-            }
+                general: _(this.locales)
+                    .keys()
+                    .map(locale => [locale , {
+                        site_name: '',
+                    }])
+                    .fromPairs()
+                    .value(),
+            };
         },
 
         methods: {
@@ -158,6 +188,37 @@
                         this.customError(error);
                     });
             },
+
+            onSubmitGeneral() {
+                this.form = new Form(_.merge(this.general, {tags: this.tags}));
+                this.loading = true;
+
+                this.form.post(route('api.settings.post_general'))
+                    .then((response) => {
+                        this.loading = false;
+
+                        if (response.success) {
+                            this.$notify.success({
+                                title: this.$t(`${'base::base'}['${'notify.title.success'}']`),
+                                message: response.message
+                            });
+                        }
+
+                    })
+                    .catch((error) => {
+                        this.loading = false;
+
+                        if (error.response && error.response.data) {
+                            this.$notify.error({
+                                title: this.$t(`${'base::base'}['${'notify.title.error'}']`),
+                                message: this.message,
+                            });
+                        } else {
+                            console.log(JSON.stringify(error));
+                        }
+                    });
+
+            }
         },
 
         computed: {

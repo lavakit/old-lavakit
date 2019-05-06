@@ -13,4 +13,16 @@ $router->group(['prefix' => '/settings'], function (Router $router) {
         'as'    => 'api.settings.email',
         'uses'  => 'SettingController@email',
     ]);
+
+    $router->post('post-general', [
+        'as'    => 'api.settings.post_general',
+        'uses'  => 'SettingController@postGeneral',
+    ]);
+
+//    $router->group(['middleware' => 'auth:api'], function (Router $router) {
+//        $router->post('post-general', [
+//            'as'    => 'api.settings.post_general',
+//            'uses'  => 'SettingController@postVeneral',
+//        ]);
+//    });
 });

@@ -14,7 +14,11 @@
         <label :for="nameKey">
             {{ trans(`setting::setting.generals.${inputName}`) }}
         </label>
-        <input type="text" class="form-control" :id="nameKey" :name="nameKey" placeholder="Text position">
+        <input type="text"
+               class="form-control"
+               :id="nameKey"
+               :name="nameKey"
+               :placeholder="trans(inputInfo.description)">
     </div>
 </template>
 
