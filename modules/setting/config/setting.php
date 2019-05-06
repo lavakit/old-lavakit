@@ -4,37 +4,43 @@ return [
     'generals' => [
         'general' => [
             'site_name' => [
-                'description' => 'setting::site.generals.site_name',
+                'description' => 'setting::setting.generals.site_name',
                 'view' => 'text',
                 'translatable' => true,
+                'group_name' => 'general',
             ],
             'seo_title' => [
-                'description' => 'setting::site.generals.seo_title',
+                'description' => 'setting::setting.generals.seo_title',
                 'view' => 'text',
                 'translatable' => true,
+                'group_name' => 'general',
             ],
             'seo_keyword' => [
-                'description' => 'setting::site.generals.seo_keyword',
+                'description' => 'setting::setting.generals.seo_keyword',
                 'view' => 'text',
                 'translatable' => true,
+                'group_name' => 'general',
             ],
             'seo_description' => [
-                'description' => 'setting::site.generals.seo_description',
+                'description' => 'setting::setting.generals.seo_description',
                 'view' => 'textarea',
                 'translatable' => true,
+                'group_name' => 'general',
             ],
             'site_frontend_template' => [
-                'description' => 'setting::site.generals.site_frontend_template',
-                'view' => 'setting::admins.fields.originals.select_frontend_template',
+                'description' => 'setting::setting.generals.site_frontend_template',
+                'view' => 'select-frontend-template',
                 'translatable' => false,
+                'group_name' => 'general',
             ]
         ],
 
         'language' => [
             'locales' => [
-                'description' => 'setting::site.language.locale',
+                'description' => 'setting::setting.language.locale',
                 'view' => 'setting::admins.fields.originals.select_locale',
                 'translatable' => false,
+                'group_name' => 'language',
             ],
 //            'hide_locale' => [
 //                'description' => 'setting::site.language.hie_locale',

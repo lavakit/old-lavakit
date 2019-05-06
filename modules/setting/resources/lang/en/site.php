@@ -20,12 +20,4 @@ return [
             'vietnamese' => 'Vietnamese'
         ],
     ],
-
-    'generals' => [
-        'site_name' => 'Site name',
-        'seo_title' => 'Seo Title',
-        'seo_keyword' => 'Seo keyword',
-        'seo_description' => 'Seo description',
-        'site_frontend_template' => 'Frontend template'
-    ],
 ];

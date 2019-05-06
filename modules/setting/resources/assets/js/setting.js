@@ -1,9 +1,8 @@
+import { LOCALES } from '@modules/base/resources/assets/js/config';
 import coreLavakit from '@modules/base/resources/assets/js/core';
 import Layout from '@layouts/layout';
 import GeneralSetting from './components/GeneralSetting';
 import EmailSetting from './components/EmailSetting';
-
-const locales = window.Lavakit.locales;
 
 export default [
     {
@@ -21,7 +20,7 @@ export default [
                 name: 'admin.settings.general',
                 component: GeneralSetting,
                 props: {
-                    locales,
+                    locales: LOCALES,
                     pageTitle: 'setting::setting.generals.page_title',
                 },
                 meta: {
@@ -33,6 +32,7 @@ export default [
                 name: 'admin.settings.email',
                 component: EmailSetting,
                 props: {
+                    locales: LOCALES,
                     pageTitle: 'setting::setting.emails.page_title',
                 },
                 meta: {
