@@ -39,7 +39,7 @@
                                                         Site name
                                                     </label>
 
-                                                <input type="text" v-model="general[shortLang].site_name"
+                                                <input type="text" v-model="general[shortLang][name]"
                                                        placeholder="Site name"
                                                     class="form-control">
                                                 </div>
@@ -70,50 +70,50 @@
                 </div>
             </div>
 
-            <!--<div class="col-xl-6 col-md-6">-->
-                <!--<div class="card">-->
-                    <!--<div class="card-header">-->
-                        <!--<h3>Language</h3>-->
-                    <!--</div>-->
-                    <!--<div class="card-block">-->
-                        <!--<div class="form-group">-->
-                            <!--<label> Site locales</label>-->
-                            <!--<input type="text" class="form-control" id="locale" name="locale" placeholder="Locale">-->
-                        <!--</div>-->
-                        <!--<div class="form-group">-->
-                            <!--<div class="checkbox-fade fade-in-success">-->
-                                <!--<label>-->
-                                    <!--<input type="checkbox" name="hide_locale" value="1">-->
-                                    <!--<span class="cr">-->
-                                        <!--<i class="cr-icon ik ik-check txt-success"></i>-->
-                                    <!--</span>-->
-                                    <!--<span>Hide default locale in Uri</span>-->
-                                <!--</label>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="form-group">-->
-                            <!--<div class="checkbox-fade fade-in-success">-->
-                                <!--<label>-->
-                                    <!--<input type="checkbox" name="use_icon" value="1">-->
-                                    <!--<span class="cr">-->
-                                        <!--<i class="cr-icon ik ik-check txt-success"></i>-->
-                                    <!--</span>-->
-                                    <!--<span>Show icon</span>-->
-                                <!--</label>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="form-group">-->
-                            <!--<label>Text Position</label>-->
-                            <!--<input type="text" class="form-control" id="position" name="position" placeholder="Text position">-->
-                        <!--</div>-->
-                        <!--<button type="submit" class="btn btn-danger mr-2 float-right">-->
-                            <!--<i class="ik ik-check-circle"></i>-->
-                            <!--Save-->
-                        <!--</button>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-
+            <!--<div class="col-xl-6 col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Language</h3>
+                    </div>
+                    <div class="card-block">
+                        <div class="form-group">
+                            <label> Site locales</label>
+                            <input type="text" class="form-control" id="locale" name="locale" placeholder="Locale">
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox-fade fade-in-success">
+                                <label>
+                                    <input type="checkbox" name="hide_locale" value="1">
+                                    <span class="cr">
+                                        <i class="cr-icon ik ik-check txt-success"></i>
+                                    </span>
+                                    <span>Hide default locale in Uri</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox-fade fade-in-success">
+                                <label>
+                                    <input type="checkbox" name="use_icon" value="1">
+                                    <span class="cr">
+                                        <i class="cr-icon ik ik-check txt-success"></i>
+                                    </span>
+                                    <span>Show icon</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Text Position</label>
+                            <input type="text" class="form-control" id="position" name="position" placeholder="Text position">
+                        </div>
+                        <button type="submit" class="btn btn-danger mr-2 float-right">
+                            <i class="ik ik-check-circle"></i>
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+            -->
         </div>
     </div>
 </template>
@@ -140,13 +140,23 @@
         created () {
             this.setPageTitle(this.trans(this.pageTitle));
             this.fetchData();
+
+            const data = {
+                site_name: null,
+                seo_title: null,
+            };
+
+            this.general = _(this.locales)
+                .keys()
+                .map(locale => [locale, { ...data}])
+                .fromPairs()
+                .value();
         },
 
         data () {
             return {
                 loading: false,
                 form: new Form(),
-                tags: {},
                 message: this.$t(`${'base::base'}['${'notify.message.error.form'}']`),
                 settings: {
                     type: Array,
@@ -160,13 +170,8 @@
                 },
                 activeTranslatable: CURRENT_LOCALE,
                 activeNonTranslatable: 'first',
-                general: _(this.locales)
-                    .keys()
-                    .map(locale => [locale , {
-                        site_name: '',
-                    }])
-                    .fromPairs()
-                    .value(),
+                general: {},
+                tags: {},
             };
         },
 
@@ -218,7 +223,7 @@
                         }
                     });
 
-            }
+            },
         },
 
         computed: {

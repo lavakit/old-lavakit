@@ -8,29 +8,30 @@ return [
                 'view' => 'text',
                 'translatable' => true,
                 'group_name' => 'general',
-            ],'seo_title' => [
+            ],
+            'seo_title' => [
                 'description' => 'setting::setting.generals.seo_title',
                 'view' => 'text',
                 'translatable' => true,
                 'group_name' => 'general',
             ],
-            'seo_keyword' => [
-                'description' => 'setting::setting.generals.seo_keyword',
-                'view' => 'text',
-                'translatable' => true,
-                'group_name' => 'general',
-            ],
-            'seo_description' => [
-                'description' => 'setting::setting.generals.seo_description',
-                'view' => 'textarea',
-                'translatable' => true,
-                'group_name' => 'general',
-            ],
-            'site_frontend_template' => [
-                'view' => 'select-frontend-template',
-                'translatable' => false,
-                'group_name' => 'general',
-            ]
+//            'seo_keyword' => [
+//                'description' => 'setting::setting.generals.seo_keyword',
+//                'view' => 'text',
+//                'translatable' => true,
+//                'group_name' => 'general',
+//            ],
+//            'seo_description' => [
+//                'description' => 'setting::setting.generals.seo_description',
+//                'view' => 'textarea',
+//                'translatable' => true,
+//                'group_name' => 'general',
+//            ],
+//            'site_frontend_template' => [
+//                'view' => 'select-frontend-template',
+//                'translatable' => false,
+//                'group_name' => 'general',
+//            ]
 
         ],
 
