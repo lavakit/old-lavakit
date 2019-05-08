@@ -15,49 +15,49 @@ return [
                 'translatable' => true,
                 'group_name' => 'general',
             ],
-//            'seo_keyword' => [
-//                'description' => 'setting::setting.generals.seo_keyword',
-//                'view' => 'text',
-//                'translatable' => true,
-//                'group_name' => 'general',
-//            ],
-//            'seo_description' => [
-//                'description' => 'setting::setting.generals.seo_description',
-//                'view' => 'textarea',
-//                'translatable' => true,
-//                'group_name' => 'general',
-//            ],
-//            'site_frontend_template' => [
-//                'view' => 'select-frontend-template',
-//                'translatable' => false,
-//                'group_name' => 'general',
-//            ]
-
-        ],
-
-        'language' => [
-            'locales' => [
-                'description' => 'setting::setting.language.locale',
-                'view' => 'setting::admins.fields.originals.select_locale',
-                'translatable' => false,
-                'group_name' => 'language',
+            'seo_keyword' => [
+                'description' => 'setting::setting.generals.seo_keyword',
+                'view' => 'text',
+                'translatable' => true,
+                'group_name' => 'general',
             ],
-//            'hide_locale' => [
-//                'description' => 'setting::site.language.hie_locale',
-//                'view' => 'checkbox',
-//                'translatable' => false,
-//            ],
-//            'show_icon' => [
-//                'description' => 'setting::site.language.show_icon',
-//                'view' => 'checkbox',
-//                'translatable' => false,
-//            ],
-//            'position' => [
-//                'description' => 'setting::site.language.position',
-//                'view' => 'select',
-//                'translatable' => false,
-//            ]
+            'seo_description' => [
+                'description' => 'setting::setting.generals.seo_description',
+                'view' => 'textarea',
+                'translatable' => true,
+                'group_name' => 'general',
+            ],
+            'site_frontend_template' => [
+                'view' => 'select-frontend-template',
+                'translatable' => false,
+                'group_name' => 'general',
+            ]
+
         ],
+
+//        'language' => [
+////            'locales' => [
+////                'description' => 'setting::setting.language.locale',
+////                'view' => 'select-locale',
+////                'translatable' => false,
+////                'group_name' => 'language',
+////            ],
+////            'hide_locale' => [
+////                'description' => 'setting::site.language.hie_locale',
+////                'view' => 'checkbox',
+////                'translatable' => false,
+////            ],
+////            'show_icon' => [
+////                'description' => 'setting::site.language.show_icon',
+////                'view' => 'checkbox',
+////                'translatable' => false,
+////            ],
+////            'position' => [
+////                'description' => 'setting::site.language.position',
+////                'view' => 'select',
+////                'translatable' => false,
+////            ]
+//        ],
     ],
 
     'emails' => [

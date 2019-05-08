@@ -20,7 +20,7 @@
             <div class="col-xl-6 col-md-6" v-for="(setting, nameWidget) in settings">
                 <div class="card">
                     <div class="card-header">
-                        <h3>{{ nameWidget }}</h3>
+                        <h3>{{ trans(`setting::setting.tab.${nameWidget}`) }}</h3>
                     </div>
                     <div class="card-body">
                         <template v-for="(fields, translatable) in setting">
@@ -29,21 +29,9 @@
                                     <template v-for="(locale, shortLang) in locales">
                                         <el-tab-pane :label="trans(`setting::setting.tab.locales.${locale.name}`)" :name="shortLang">
                                             <template v-for="(field, name) in fields">
-                                                <!--<lavakit-form-filed :locale="shortLang"-->
-                                                                    <!--:name-field="name"-->
-                                                                     <!--:info-field="field" />-->
-
-
-                                                <div class="form-group">
-                                                    <label>
-                                                        Site name
-                                                    </label>
-
-                                                <input type="text" v-model="general[shortLang][name]"
-                                                       placeholder="Site name"
-                                                    class="form-control">
-                                                </div>
-
+                                                <lavakit-form-filed
+                                                        v-model="general[shortLang][name]"
+                                                        :locale="shortLang" :name-field="name" :info-field="field" />
                                             </template>
                                         </el-tab-pane>
                                     </template>
@@ -55,7 +43,21 @@
                                     <el-tab-pane :label="trans('setting::setting.tab.locales.' + translatable)"
                                                  name="first">
                                         <template v-for="(field, name) in fields">
-                                            <lavakit-form-filed :name-field="name" :info-field="field" />
+
+                                            <el-select v-if="field.view === 'select-locale'"
+                                                       v-model="optionLocale"
+                                                       multiple
+                                                       size="larg"
+                                                       placeholder="Select">
+                                                <el-option
+                                                        v-for="item in options"
+                                                        :key="item.value"
+                                                        :label="item.label"
+                                                        :value="item.value">
+                                                </el-option>
+                                            </el-select>
+
+                                            <lavakit-form-filed v-else :name-field="name" :info-field="field" />
                                         </template>
                                     </el-tab-pane>
                                 </el-tabs>
@@ -122,7 +124,7 @@
     import { CURRENT_LOCALE } from "@modules/base/resources/assets/js/config";
     import SettingApi from '@modules/setting/resources/assets/js/api/setting.js';
     import LavakitBreadcrumb from '@modules/base/resources/assets/js/components/Breadcrumb';
-    import LavakitFormFiled from '@modules/base/resources/assets/js/components/FormField';
+    import LavakitFormFiled from './FormField';
     import Form from '@packages/form-backend-validation';
 
     export default {
@@ -141,16 +143,20 @@
             this.setPageTitle(this.trans(this.pageTitle));
             this.fetchData();
 
-            const data = {
-                site_name: null,
-                seo_title: null,
-            };
+            // const data = {
+            //     site_name: null,
+            //     seo_title: null
+            // };
+            //
+            // this.general = _(this.locales)
+            //     .keys()
+            //     .map(locale => [locale, { ...data}])
+            //     .fromPairs()
+            //     .value();
+        },
 
-            this.general = _(this.locales)
-                .keys()
-                .map(locale => [locale, { ...data}])
-                .fromPairs()
-                .value();
+        watch: {
+            '$route': 'fetchData'
         },
 
         data () {
@@ -158,11 +164,7 @@
                 loading: false,
                 form: new Form(),
                 message: this.$t(`${'base::base'}['${'notify.message.error.form'}']`),
-                settings: {
-                    type: Array,
-                    required: true,
-                    default: () => []
-                },
+                settings: {},
                 dbSettings: {
                     type: Array,
                     required: true,
@@ -172,6 +174,14 @@
                 activeNonTranslatable: 'first',
                 general: {},
                 tags: {},
+                filterData: {},
+
+                options: [
+                    {value: 'Option1', label: 'Option1'},
+                    {value: 'Option2', label: 'Option2'},
+                    {value: 'Option3', label: 'Option3'},
+                ],
+                optionLocale: [],
             };
         },
 
@@ -184,6 +194,7 @@
                         if (response.data && response.data.success) {
                             this.settings = response.data.data.settings;
                             this.dbSettings = response.data.data.dbSettings;
+                            this.filterData =  response.data.data.objectFilterData;
                         }
 
                         this.loading = false;
@@ -231,5 +242,18 @@
                 return this.$route.matched;
             },
         },
+
+        beforeUpdate() {
+            const data = {
+                site_name: null,
+                seo_title: null
+            };
+
+            this.general = _(this.locales)
+                .keys()
+                .map(locale => [locale, { ...this.filterData}])
+                .fromPairs()
+                .value();
+        }
     }
 </script>

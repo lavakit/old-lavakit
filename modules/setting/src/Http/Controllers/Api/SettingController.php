@@ -42,9 +42,9 @@ class SettingController extends BaseApiController
         $loadSettings = $this->repository->separateViewSettings($this->module, __FUNCTION__);
 
         //Changed name key
-        array_walk($loadSettings, function (&$value, $key) use (&$settings) {
-            return $settings[trans('setting::setting.tab.' . $key)] = $value;
-        });
+//        array_walk($loadSettings, function (&$value, $key) use (&$settings) {
+//            return $settings[trans('setting::setting.tab.' . $key)] = $value;
+//        });
 
         //Remove empty array
         $settings = array_map(function ($data) {
@@ -55,14 +55,19 @@ class SettingController extends BaseApiController
             }
 
             return $data;
-        }, $settings);
+        }, $loadSettings);
 
         $dbSettings = $this->repository->loadDbSetting('locale');
+        
+        $objectFilterData = [
+            'site_title' => null,
+            'seo_name' => null
+        ];
 
         return response()->json([
             'success' => JsonResponse::STATUS_SUCCESS,
             'message' => trans('base::base.response.message.success'),
-            'data' => ['settings' => $settings, 'dbSettings' => $dbSettings]
+            'data' => ['settings' => $settings, 'dbSettings' => $dbSettings, 'objectFilterData' => $objectFilterData]
         ], JsonResponse::HTTP_OK);
     }
 
