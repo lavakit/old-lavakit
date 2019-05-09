@@ -57,6 +57,7 @@ class UserServiceProvider extends ServiceProvider
     public function register()
     {
         $this->publishConfig('user', 'user');
+        $this->publishConfig('user', 'setting');
 
         //Load helpers
         $this->loadHelpers();

@@ -2,80 +2,53 @@
 
 return [
     'generals' => [
-        'general' => [
-            'site_name' => [
-                'description' => 'setting::setting.generals.site_name',
-                'view' => 'text',
-                'translatable' => true,
-                'group_name' => 'general',
-            ],
-            'seo_title' => [
-                'description' => 'setting::setting.generals.seo_title',
-                'view' => 'text',
-                'translatable' => true,
-                'group_name' => 'general',
-            ],
-            'seo_keyword' => [
-                'description' => 'setting::setting.generals.seo_keyword',
-                'view' => 'text',
-                'translatable' => true,
-                'group_name' => 'general',
-            ],
-            'seo_description' => [
-                'description' => 'setting::setting.generals.seo_description',
-                'view' => 'textarea',
-                'translatable' => true,
-                'group_name' => 'general',
-            ],
-            'site_frontend_template' => [
-                'view' => 'select-frontend-template',
-                'translatable' => false,
-                'group_name' => 'general',
-            ]
+        'site_name' => [
+            'description' => 'setting::setting.generals.site_name',
+            'view' => 'text',
+            'translatable' => true,
         ],
+        'seo_title' => [
+            'description' => 'setting::setting.generals.seo_title',
+            'view' => 'text',
+            'translatable' => true,
+        ],
+        'seo_keyword' => [
+            'description' => 'setting::setting.generals.seo_keyword',
+            'view' => 'text',
+            'translatable' => true,
+        ],
+        'seo_description' => [
+            'description' => 'setting::setting.generals.seo_description',
+            'view' => 'textarea',
+            'translatable' => true,
+        ],
+        'site_frontend_template' => [
+            'view' => 'select-frontend-template',
+            'translatable' => false,
+        ]
+    ],
 
-//        'language' => [
-////            'locales' => [
-////                'description' => 'setting::setting.language.locale',
-////                'view' => 'select-locale',
-////                'translatable' => false,
-////                'group_name' => 'language',
-////            ],
-////            'hide_locale' => [
-////                'description' => 'setting::site.language.hie_locale',
-////                'view' => 'checkbox',
-////                'translatable' => false,
-////            ],
-////            'show_icon' => [
-////                'description' => 'setting::site.language.show_icon',
-////                'view' => 'checkbox',
-////                'translatable' => false,
-////            ],
-////            'position' => [
-////                'description' => 'setting::site.language.position',
-////                'view' => 'select',
-////                'translatable' => false,
-////            ]
+//    'languages' => [
+//        'locales' => [
+//            'description' => 'setting::setting.language.locale',
+//            'view' => 'select-locale',
+//            'translatable' => false,
+//            'group_name' => 'language',
 //        ],
-    ],
-
-    'emails' => [
-        [
-            'package' => 'Main',
-            'module' => 'setting',
-            'control' => 'text',
-            'key' => 'smtp_from_name',
-            'name' => trans('setting::form.emails.smtp.from_email'),
-            'value' => '',
-            'options' => [
-                'class' => 'form-control',
-                'placeholder' => 'info@example.info',
-                'description' => trans('setting::form.email.smtp.description.from_email')
-            ],
-            'is_admin' => false
-        ],
-    ],
-    'medias' => [
-
-    ],
+//        'hide_locale' => [
+//            'description' => 'setting::site.language.hie_locale',
+//            'view' => 'checkbox',
+//            'translatable' => false,
+//        ],
+//        'show_icon' => [
+//            'description' => 'setting::site.language.show_icon',
+//            'view' => 'checkbox',
+//            'translatable' => false,
+//        ],
+//        'position' => [
+//            'description' => 'setting::site.language.position',
+//            'view' => 'select',
+//            'translatable' => false,
+//        ]
+//    ],
 ];

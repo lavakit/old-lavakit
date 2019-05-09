@@ -4,6 +4,15 @@ use Illuminate\Routing\Router;
 
 /** @var Router $router */
 $router->group(['prefix' => '/settings'], function (Router $router) {
+
+    $router->get('/setting/{type?}', [
+        'as' => 'api.settings.setting',
+        'uses' => 'SettingController@setting'
+    ]);
+
+
+
+
     $router->get('/general', [
         'as'    => 'api.settings.general',
         'uses'  => 'SettingController@general',

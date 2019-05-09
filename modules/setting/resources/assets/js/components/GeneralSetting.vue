@@ -140,7 +140,7 @@
         },
 
         beforeRouteEnter(to, from, next) {
-            SettingApi.getSettingGeneral()
+            SettingApi.getSetting()
                 .then((response) => {
                     next(app => {
                         app.setSettings(response.data);
