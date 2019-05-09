@@ -32,7 +32,6 @@ return [
                 'translatable' => false,
                 'group_name' => 'general',
             ]
-
         ],
 
 //        'language' => [

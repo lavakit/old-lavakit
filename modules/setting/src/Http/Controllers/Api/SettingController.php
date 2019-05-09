@@ -59,15 +59,26 @@ class SettingController extends BaseApiController
 
         $dbSettings = $this->repository->loadDbSetting('locale');
         
-        $objectFilterData = [
-            'site_title' => null,
-            'seo_name' => null
+        $filterData = [
+            'en' => [
+                'site_name' => 'Site name [en]',
+                'seo_title' => 'Seo title [en]',
+                'seo_keyword' => 'Seo keyword [en]',
+                'seo_description' => 'Seo description [en]'
+            ],
+            'vi' => [
+                'site_name' => 'Site name [vi]',
+                'seo_title' => 'Seo title [vi]',
+                'seo_keyword' => 'Seo keyword [vi]',
+                'seo_description' => 'Seo description [vi]'
+            ],
+            'site_frontend_template' => 'default'
         ];
 
         return response()->json([
             'success' => JsonResponse::STATUS_SUCCESS,
             'message' => trans('base::base.response.message.success'),
-            'data' => ['settings' => $settings, 'dbSettings' => $dbSettings, 'objectFilterData' => $objectFilterData]
+            'data' => ['settings' => $settings, 'filterData' => $filterData]
         ], JsonResponse::HTTP_OK);
     }
 

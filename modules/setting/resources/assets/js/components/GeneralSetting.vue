@@ -30,7 +30,7 @@
                                         <el-tab-pane :label="trans(`setting::setting.tab.locales.${locale.name}`)" :name="shortLang">
                                             <template v-for="(field, name) in fields">
                                                 <lavakit-form-filed
-                                                        v-model="general[shortLang][name]"
+                                                        v-model="formData[shortLang][name]"
                                                         :locale="shortLang" :name-field="name" :info-field="field" />
                                             </template>
                                         </el-tab-pane>
@@ -64,7 +64,7 @@
                             </template>
                         </template>
 
-                        <button type="submit" class="btn btn-danger mr-2 float-right" @click="onSubmitGeneral()">
+                        <button type="button" class="btn btn-danger mr-2 float-right" @click="onSubmitGeneral()">
                             <i class="ik ik-check-circle"></i>
                             Save
                         </button>
@@ -139,41 +139,35 @@
             pageTitle: {default: null, String}
         },
 
-        created () {
-            this.setPageTitle(this.trans(this.pageTitle));
-            this.fetchData();
-
-            // const data = {
-            //     site_name: null,
-            //     seo_title: null
-            // };
-            //
-            // this.general = _(this.locales)
-            //     .keys()
-            //     .map(locale => [locale, { ...data}])
-            //     .fromPairs()
-            //     .value();
+        beforeRouteEnter(to, from, next) {
+            SettingApi.getSettingGeneral()
+                .then((response) => {
+                    next(app => {
+                        app.setSettings(response.data);
+                        app.setFilterData();
+                    });
+                })
+                .catch((error) => {
+                    next(app => {
+                        app.customError(error);
+                    });
+                });
         },
 
-        watch: {
-            '$route': 'fetchData'
+        created () {
+            this.setPageTitle(this.trans(this.pageTitle));
         },
 
         data () {
             return {
-                loading: false,
-                form: new Form(),
+                loading: true,
                 message: this.$t(`${'base::base'}['${'notify.message.error.form'}']`),
                 settings: {},
-                dbSettings: {
-                    type: Array,
-                    required: true,
-                    default: () => []
-                },
                 activeTranslatable: CURRENT_LOCALE,
                 activeNonTranslatable: 'first',
-                general: {},
-                tags: {},
+
+                form: new Form(),
+                formData: {},
                 filterData: {},
 
                 options: [
@@ -186,27 +180,8 @@
         },
 
         methods: {
-            fetchData () {
-                this.loading = true;
-
-                SettingApi.getSettingGeneral()
-                    .then((response) => {
-                        if (response.data && response.data.success) {
-                            this.settings = response.data.data.settings;
-                            this.dbSettings = response.data.data.dbSettings;
-                            this.filterData =  response.data.data.objectFilterData;
-                        }
-
-                        this.loading = false;
-                    })
-                    .catch((error) => {
-                        this.loading = false;
-                        this.customError(error);
-                    });
-            },
-
             onSubmitGeneral() {
-                this.form = new Form(_.merge(this.general, {tags: this.tags}));
+                this.form = new Form(this.formData);
                 this.loading = true;
 
                 this.form.post(route('api.settings.post_general'))
@@ -235,6 +210,20 @@
                     });
 
             },
+            setSettings(data) {
+                this.settings = data.data.settings;
+                this.filterData = data.data.filterData;
+            },
+
+            setFilterData() {
+                this.formData = {...this.filterData};
+            }
+        },
+
+        mounted () {
+            setTimeout(() => {
+                this.loading = false;
+            }, 2000)
         },
 
         computed: {
@@ -242,18 +231,5 @@
                 return this.$route.matched;
             },
         },
-
-        beforeUpdate() {
-            const data = {
-                site_name: null,
-                seo_title: null
-            };
-
-            this.general = _(this.locales)
-                .keys()
-                .map(locale => [locale, { ...this.filterData}])
-                .fromPairs()
-                .value();
-        }
     }
 </script>
