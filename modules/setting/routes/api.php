@@ -9,23 +9,10 @@ $router->group(['prefix' => '/settings'], function (Router $router) {
         'as' => 'api.settings.setting',
         'uses' => 'SettingController@setting'
     ]);
-
-
-
-
-    $router->get('/general', [
-        'as'    => 'api.settings.general',
-        'uses'  => 'SettingController@general',
-    ]);
-
-    $router->get('/email', [
-        'as'    => 'api.settings.email',
-        'uses'  => 'SettingController@email',
-    ]);
-
-    $router->post('post-general', [
-        'as'    => 'api.settings.post_general',
-        'uses'  => 'SettingController@postGeneral',
+    
+    $router->post('post-setting', [
+        'as'    => 'api.settings.post_setting',
+        'uses'  => 'SettingController@postSetting',
     ]);
 
 //    $router->group(['middleware' => 'auth:api'], function (Router $router) {

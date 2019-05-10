@@ -28,27 +28,27 @@ return [
         ]
     ],
 
-//    'languages' => [
-//        'locales' => [
-//            'description' => 'setting::setting.language.locale',
-//            'view' => 'select-locale',
-//            'translatable' => false,
-//            'group_name' => 'language',
-//        ],
-//        'hide_locale' => [
-//            'description' => 'setting::site.language.hie_locale',
-//            'view' => 'checkbox',
-//            'translatable' => false,
-//        ],
-//        'show_icon' => [
-//            'description' => 'setting::site.language.show_icon',
-//            'view' => 'checkbox',
-//            'translatable' => false,
-//        ],
-//        'position' => [
-//            'description' => 'setting::site.language.position',
-//            'view' => 'select',
-//            'translatable' => false,
-//        ]
-//    ],
+    'languages' => [
+        'locales' => [
+            'description' => 'setting::setting.language.locale',
+            'view' => 'select-locale',
+            'translatable' => false,
+            'group_name' => 'language',
+        ],
+        'hide_locale' => [
+            'description' => 'setting::site.language.hie_locale',
+            'view' => 'checkbox',
+            'translatable' => false,
+        ],
+        'show_icon' => [
+            'description' => 'setting::site.language.show_icon',
+            'view' => 'checkbox',
+            'translatable' => false,
+        ],
+        'position' => [
+            'description' => 'setting::site.language.position',
+            'view' => 'select',
+            'translatable' => false,
+        ]
+    ],
 ];

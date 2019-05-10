@@ -27,7 +27,11 @@
                                     <span v-if="parent.number" class="badge badge-success">{{ parent.number }}</span>
                                 </router-link>
                                 <div v-if="parent.hasSub" class="submenu-content" v-for="menuChild in parent.menuChild">
-                                    <router-link class="menu-item" :to="{ name: menuChild.uri}">
+                                    <router-link v-if="menuChild.params" class="menu-item"
+                                                 :to="{ name: menuChild.uri, params: {...menuChild.params}}">
+                                        {{ menuChild.name}}
+                                    </router-link>
+                                    <router-link v-else class="menu-item" :to="{ name: menuChild.uri}">
                                         {{ menuChild.name}}
                                     </router-link>
                                 </div>
@@ -128,9 +132,8 @@
                                 active: false,
                                 hasSub: true,
                                 menuChild: [
-                                    {uri: 'admin.settings.general', name: 'General'},
-                                    {uri: 'admin.settings.email', name: 'Email'},
-                                    //{uri: '/admin/settings/media', name: 'Media'}
+                                    {uri: 'admin.settings.setting', name: 'Setting', params: {type: 'setting'}},
+                                    {uri: 'admin.settings.setting', name: 'User', params: {type: 'user'}},
                                 ]
                             },
 

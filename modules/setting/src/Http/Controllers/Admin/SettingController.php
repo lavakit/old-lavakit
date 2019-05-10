@@ -2,6 +2,7 @@
 
 namespace Lavakit\Setting\Http\Controllers\Admin;
 
+use Illuminate\Support\Str;
 use Lavakit\Base\Http\Controllers\Admin\BaseAdminController;
 
 /**
@@ -22,28 +23,17 @@ class SettingController extends BaseAdminController
     {
         parent::__construct();
     }
-
+    
     /**
+     * @param null $type
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com>
+     * @copyright 2019 LUCY VN
+     * @author Pencii Team <hoatq@lucy.ne.jp>
      */
-    public function general()
+    public function setting($type = null)
     {
-        title()->set(trans('setting::setting.generals.page_title'));
-
-        return view('setting::admins.general');
-    }
-
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com>
-     */
-    public function email()
-    {
-        title()->set(trans('setting::setting.emails.page_title'));
-
-        return view('setting::admins.email');
+        title()->set(Str::finish('Settings', '-') . $type);
+    
+        return view('setting::admins.setting');
     }
 }

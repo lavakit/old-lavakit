@@ -9,25 +9,7 @@ export default {
      *
      * GET /api/settings/setting/setting
      */
-    getSetting: function() {
-        return client.get(route('api.settings.setting'));
-    },
-
-    /**
-     * Get data general setting
-     *
-     * GET /api/setting/general
-     */
-    getSettingGeneral: function() {
-        return client.get(route('api.settings.general'));
-    },
-
-    /**
-     * Get data email setting
-     *
-     * GET /api/setting/email
-     */
-    getSettingEmail: function() {
-        return client.get(route('api.settings.email'));
+    getSetting: function(type) {
+        return client.get(route('api.settings.setting', {type: type}));
     },
 }

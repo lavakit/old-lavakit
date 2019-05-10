@@ -116,6 +116,7 @@
                 </div>
             </div>
             -->
+
         </div>
     </div>
 </template>
@@ -128,7 +129,7 @@
     import Form from '@packages/form-backend-validation';
 
     export default {
-        name: 'lavakit-setting-general',
+        name: 'lavakit-setting',
         components: {
             LavakitBreadcrumb,
             LavakitFormFiled,
@@ -140,7 +141,7 @@
         },
 
         beforeRouteEnter(to, from, next) {
-            SettingApi.getSetting()
+            SettingApi.getSetting(to.params.type)
                 .then((response) => {
                     next(app => {
                         app.setSettings(response.data);
@@ -152,6 +153,21 @@
                         app.customError(error);
                     });
                 });
+        },
+
+        beforeRouteUpdate(to, from, next) {
+            this.loading = true;
+            SettingApi.getSetting(to.params.type)
+                .then((response) => {
+                    this.loading = false;
+                    this.setSettings(response.data);
+                    this.setFilterData();
+                })
+                .catch((error) => {
+                    this.loading = false;
+                    this.customError(error);
+                });
+            next();
         },
 
         created () {
@@ -184,7 +200,7 @@
                 this.form = new Form(this.formData);
                 this.loading = true;
 
-                this.form.post(route('api.settings.post_general'))
+                this.form.post(route('api.settings.post_setting'))
                     .then((response) => {
                         this.loading = false;
 

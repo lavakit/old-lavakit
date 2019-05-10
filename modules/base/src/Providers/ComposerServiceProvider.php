@@ -20,6 +20,6 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('setting::admins.fields.originals.select_locale', LocalesComposer::class);
+        view()->composer(['layouts.base'], LocalesComposer::class);
     }
 }
