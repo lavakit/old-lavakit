@@ -25,13 +25,14 @@
                     <div class="card-body">
                         <template v-for="(fields, translatable) in setting">
                             <template v-if="translatable === 'is_translatable'">
-                                <el-tabs v-model="activeTranslatable">
+                                <el-tabs v-model="activeTranslatable[nameWidget]">
                                     <template v-for="(locale, shortLang) in locales">
                                         <el-tab-pane :label="trans(`setting::setting.tab.locales.${locale.name}`)" :name="shortLang">
                                             <template v-for="(field, name) in fields">
                                                 <lavakit-form-filed
                                                         v-model="formData[shortLang][name]"
-                                                        :locale="shortLang" :name-field="name" :info-field="field" />
+                                                        :locale="shortLang" :name-field="name" :info-field="field">
+                                                </lavakit-form-filed>
                                             </template>
                                         </el-tab-pane>
                                     </template>
@@ -179,7 +180,7 @@
                 loading: true,
                 message: this.$t(`${'base::base'}['${'notify.message.error.form'}']`),
                 settings: {},
-                activeTranslatable: CURRENT_LOCALE,
+                activeTranslatable: {},
                 activeNonTranslatable: 'first',
 
                 form: new Form(),
@@ -229,11 +230,12 @@
             setSettings(data) {
                 this.settings = data.data.settings;
                 this.filterData = data.data.filterData;
+                this.activeTranslatable = {...data.data.activeTranslatable}
             },
 
             setFilterData() {
                 this.formData = {...this.filterData};
-            }
+            },
         },
 
         mounted () {

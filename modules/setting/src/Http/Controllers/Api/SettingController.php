@@ -51,7 +51,11 @@ class SettingController extends BaseApiController
         return response()->json([
             'success' => JsonResponse::STATUS_SUCCESS,
             'message' => trans('base::base.response.message.success'),
-            'data' => ['settings' => $loadSettings, 'filterData' => $filterData->toArray()]
+            'data' => [
+                'settings' => $loadSettings,
+                'filterData' => $filterData->toArray(),
+                'activeTranslatable' => $filterData->toActiveTranslatable()
+            ]
         ], JsonResponse::HTTP_OK);
     }
     

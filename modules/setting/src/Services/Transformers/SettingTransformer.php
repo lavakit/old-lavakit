@@ -2,6 +2,7 @@
 
 namespace Lavakit\Setting\Services\Transformers;
 
+use Illuminate\Support\Str;
 use Lavakit\Translation\Services\Transformers\Transformer;
 
 /**
@@ -12,9 +13,26 @@ use Lavakit\Translation\Services\Transformers\Transformer;
  */
 class SettingTransformer extends Transformer
 {
+    /**
+     * @param null $request
+     * @return array|mixed
+     */
     public function toArray($request = null)
     {
         return $this->filterValidate();
+    }
+
+    /**
+     * @param array $singularKey
+     * @return array
+     */
+    public function toActiveTranslatable(array $singularKey = [])
+    {
+        array_map(function ($name) use (&$singularKey) {
+            $singularKey[Str::singular($name)] = locale();
+        }, array_keys($this->resource));
+
+        return $singularKey;
     }
 
     /**
