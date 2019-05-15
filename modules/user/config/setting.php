@@ -1,33 +1,16 @@
 <?php
 
 return [
-    'users' => [
-        'username' => [
-            'description' => 'User Name',
-            'view' => 'text',
-            'translatable' => true,
-            'group_name' => 'user',
+    'emails' => [
+        'driver' => [
+            'description' => 'Driver',
+            'view' => 'select',
+            'translatable' => false,
         ],
-        'password' => [
-            'description' => 'Password',
+        'port' => [
+            'description' => 'Port',
             'view' => 'text',
             'translatable' => false,
-            'group_name' => 'user',
-        ],
-    ],
-
-    'roles' => [
-        'role_name' => [
-            'description' => 'Role Name',
-            'view' => 'text',
-            'translatable' => true,
-            'group_name' => 'role',
-        ],
-        'role_group' => [
-            'description' => 'Role Group',
-            'view' => 'text',
-            'translatable' => true,
-            'group_name' => 'role',
         ],
     ],
 ];

@@ -55,7 +55,7 @@
                     {
                         name: 'Home',
                         menuParent: [
-                            {uri: 'admin.dashboards.index', icon: 'ik-bar-chart-2', name: 'Dashboard', active: true, hasSub: false}
+                            {uri: 'admin.dashboards.dashboard', icon: 'ik-bar-chart-2', name: 'Dashboard', active: true, hasSub: false}
                         ]
                     },
 
@@ -132,8 +132,8 @@
                                 active: false,
                                 hasSub: true,
                                 menuChild: [
-                                    {uri: 'admin.settings.setting', name: 'Setting', params: {type: 'setting'}},
-                                    {uri: 'admin.settings.setting', name: 'User', params: {type: 'user'}},
+                                    {uri: 'admin.settings.setting', name: 'General', params: {type: 'setting'}},
+                                    {uri: 'admin.settings.setting', name: 'Email', params: {type: 'user'}},
                                 ]
                             },
 

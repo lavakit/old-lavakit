@@ -12,8 +12,6 @@ import coreLavakit from '@modules/base/resources/assets/js/core';
 
 import BaseRoutes from '@modules/base/resources/assets/js/base';
 import LoginRoutes from '@modules/user/resources/assets/js/auth';
-import DashboardRoutes from '@modules/dashboard/resources/assets/js/dashboard';
-import SettingRoutes from '@modules/setting/resources/assets/js/setting';
 
 Vue.use(ElementUI, {locale});
 Vue.use(VueI18n);
@@ -31,8 +29,6 @@ const router = new VueRouter({
     routes: [
         ...BaseRoutes,
         ...LoginRoutes,
-        ...DashboardRoutes,
-        ...SettingRoutes,
     ],
 });
 

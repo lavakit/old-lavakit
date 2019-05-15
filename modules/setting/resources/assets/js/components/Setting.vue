@@ -17,7 +17,7 @@
         </div>
 
         <div class="row">
-            <div class="col-xl-6 col-md-6" v-for="(setting, nameWidget) in settings">
+            <div :class="widgetClass" v-for="(setting, nameWidget) in settings">
                 <div class="card">
                     <div class="card-header">
                         <h3>{{ trans(`setting::setting.tab.${nameWidget}`) }}</h3>
@@ -179,6 +179,7 @@
             return {
                 loading: true,
                 message: this.$t(`${'base::base'}['${'notify.message.error.form'}']`),
+                widgetClass: null,
                 settings: {},
                 activeTranslatable: {},
                 activeNonTranslatable: 'first',
@@ -231,6 +232,7 @@
                 this.settings = data.data.settings;
                 this.filterData = data.data.filterData;
                 this.activeTranslatable = {...data.data.activeTranslatable}
+                this.widgetClass = _.size(data.data.settings) > 1 ? 'col-md-6' : 'col-md-12';
             },
 
             setFilterData() {

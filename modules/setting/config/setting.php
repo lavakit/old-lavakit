@@ -33,7 +33,6 @@ return [
             'description' => 'setting::setting.language.locale',
             'view' => 'select-locale',
             'translatable' => false,
-            'group_name' => 'language',
         ],
         'hide_locale' => [
             'description' => 'setting::site.language.hie_locale',
