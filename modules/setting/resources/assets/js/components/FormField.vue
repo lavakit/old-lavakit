@@ -48,6 +48,7 @@
                 required: true,
             },
             value: [String, Number, Array],
+            group: {default: '', String},
         },
 
         data() {
@@ -70,10 +71,10 @@
         computed: {
             name() {
                 if (this.locale === null) {
-                    return `${this.setGroupConfig(this.infoField.group_name)}::${this.nameField}`;
+                    return `${this.setGroupConfig(this.group)}::${this.nameField}`;
                 }
 
-                return `${this.setGroupConfig(this.infoField.group_name)}::${this.nameField}[${this.locale}]`;
+                return `${this.setGroupConfig(this.group)}::${this.nameField}[${this.locale}]`;
             },
 
             nativeInputValue() {

@@ -48,9 +48,9 @@ class SettingTransformer extends Transformer
             foreach ($configures as $configure) {
                 foreach ($configure as $name => $value) {
                     if ($value['translatable']) {
-                        $filter[$data][$name] = null;
+                        $filter[$data][$name] = $this->setValue($value);
                     } else {
-                        $filter[$name] = null;
+                        $filter[$name] = $this->setValue($value);
                     }
                 }
 
@@ -59,5 +59,31 @@ class SettingTransformer extends Transformer
 
 
         return $filter;
+    }
+
+    /**
+     * @param array $value
+     * @return array|null
+     */
+    protected function setValue(array $value)
+    {
+        if (!$this->isMultiple($value)) {
+            return null;
+        }
+
+        return [];
+    }
+
+    /**
+     * @param array $value
+     * @return bool
+     */
+    protected function isMultiple(array $value)
+    {
+        if (!isset($value['multiple']) || !$value['multiple']) {
+            return false;
+        }
+
+        return true;
     }
 }

@@ -31,6 +31,7 @@
                                             <template v-for="(field, name) in fields">
                                                 <lavakit-form-filed
                                                         v-model="formData[shortLang][name]"
+                                                        :group="nameWidget"
                                                         :locale="shortLang" :name-field="name" :info-field="field">
                                                 </lavakit-form-filed>
                                             </template>
@@ -46,8 +47,9 @@
                                         <template v-for="(field, name) in fields">
 
                                             <el-select v-if="field.view === 'select-locale'"
-                                                       v-model="optionLocale"
+                                                       v-model="formData[name]"
                                                        multiple
+                                                       filterable
                                                        size="larg"
                                                        placeholder="Select">
                                                 <el-option
@@ -58,7 +60,11 @@
                                                 </el-option>
                                             </el-select>
 
-                                            <lavakit-form-filed v-else :name-field="name" :info-field="field" />
+                                            <lavakit-form-filed v-else v-model="formData[name]"
+                                                                :group="nameWidget"
+                                                                :name-field="name"
+                                                                :info-field="field">
+                                            </lavakit-form-filed>
                                         </template>
                                     </el-tab-pane>
                                 </el-tabs>
@@ -189,9 +195,9 @@
                 filterData: {},
 
                 options: [
-                    {value: 'Option1', label: 'Option1'},
-                    {value: 'Option2', label: 'Option2'},
-                    {value: 'Option3', label: 'Option3'},
+                    {value: 'en', label: 'English'},
+                    {value: 'vi', label: 'Vietnamese'},
+                    {value: 'fr', label: 'Frant'},
                 ],
                 optionLocale: [],
             };
@@ -212,7 +218,6 @@
                                 message: response.message
                             });
                         }
-
                     })
                     .catch((error) => {
                         this.loading = false;
