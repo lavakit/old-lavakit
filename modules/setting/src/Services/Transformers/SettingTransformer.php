@@ -3,6 +3,7 @@
 namespace Lavakit\Setting\Services\Transformers;
 
 use Illuminate\Support\Str;
+use Lavakit\Setting\Models\Setting;
 use Lavakit\Translation\Services\Transformers\Transformer;
 
 /**
@@ -13,6 +14,16 @@ use Lavakit\Translation\Services\Transformers\Transformer;
  */
 class SettingTransformer extends Transformer
 {
+    /** @var Setting */
+    protected $dbSettings = [];
+
+    public function __construct(array $resource = [], array $dbSettings = [])
+    {
+        parent::__construct($resource);
+
+        $this->dbSettings = $dbSettings;
+    }
+
     /**
      * @param null $request
      * @return array|mixed
@@ -45,20 +56,36 @@ class SettingTransformer extends Transformer
         $configures = $this->resource;
 
         array_map(function ($data) use (&$filter, $configures) {
-            foreach ($configures as $configure) {
+            foreach ($configures as $tabName => $configure) {
                 foreach ($configure as $name => $value) {
                     if ($value['translatable']) {
-                        $filter[$data][$name] = $this->setValue($value);
+                        $filter[$data][$this->makeNameField($tabName, $name)] = $this->setValue($value);
                     } else {
-                        $filter[$name] = $this->setValue($value);
+                        $filter[$this->makeNameField($tabName, $name)] = $this->setValue($value);
                     }
                 }
 
             }
         }, array_keys(getSupportedLocales()));
 
+        echo'<pre>';
+            print_r($filter);
+        echo'</pre>';
+        die;
 
         return $filter;
+    }
+
+    /**
+     * @param string $prefix
+     * @param string|null $name
+     * @return string
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    protected function makeNameField(string $prefix = 'global', string $name = null)
+    {
+        return Str::finish(Str::singular($prefix), '::') . $name;
     }
 
     /**

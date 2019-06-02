@@ -7,7 +7,26 @@ return [
         'seo_title' => 'Seo Title',
         'seo_keyword' => 'Seo keyword',
         'seo_description' => 'Seo description',
-        'site_frontend_template' => 'Frontend template'
+        'frontend_template' => [
+            'name' => 'Default frontend template',
+            'description' => 'Default frontend template',
+        ],
+    ],
+
+    'languages' => [
+        'locale' => 'Choose a language',
+        'hide_at_url' => 'Hide default language from URL.',
+        'display' => [
+            'description' => 'Language display',
+            'full' => 'Full name and image',
+            'flag' => 'Flag only',
+            'name' => 'Name only',
+        ],
+        'type' => [
+            'description' => 'Language display style',
+            'dropdown' => 'Drop down',
+            'list' => 'List',
+        ],
     ],
     
     'emails' => [

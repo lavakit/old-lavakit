@@ -1,7 +1,7 @@
 <template>
     <div class="form-group">
         <label :for="name">
-            {{ trans(`setting::setting.generals.${nameField}`) }}
+            {{ trans(`${infoField.name}`) }}
         </label>
 
         <input v-if="infoField.view === 'text'"
@@ -18,21 +18,10 @@
                   :name="name"
                   :placeholder="trans(infoField.description)">
         </textarea>
-
-        <select v-else-if="infoField.view === 'select-frontend-template'"
-                class="form-control"
-                :id="name"
-                :name="name">
-            <option v-for="name in frontendTheme" :value="name">
-                {{ name }}
-            </option>
-        </select>
     </div>
 </template>
 
 <script>
-    import { ALL_FRONTEND_THEME } from "@modules/base/resources/assets/js/config";
-
     export default {
         name: "lavakit-form-field",
 
@@ -54,12 +43,7 @@
         data() {
             return {
                 configName: {default: 'global', String},
-                frontendTheme: {default: null, Array},
             }
-        },
-
-        created() {
-            this.frontendTheme = ALL_FRONTEND_THEME;
         },
 
         watch: {

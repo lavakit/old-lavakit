@@ -46,19 +46,78 @@
                                                  name="first">
                                         <template v-for="(field, name) in fields">
 
-                                            <el-select v-if="field.view === 'select-locale'"
-                                                       v-model="formData[name]"
-                                                       multiple
-                                                       filterable
-                                                       size="larg"
-                                                       placeholder="Select">
-                                                <el-option
-                                                        v-for="item in options"
-                                                        :key="item.value"
-                                                        :label="item.label"
-                                                        :value="item.value">
-                                                </el-option>
-                                            </el-select>
+                                            <div class="form-group" v-if="field.view === 'select-locale'">
+                                                <label :for="setNameField(nameWidget, name)">
+                                                    {{ trans(`${field.name}`) }}
+                                                </label>
+                                                <el-select
+                                                        v-model="formData[name]"
+                                                        multiple
+                                                        filterable
+                                                        size="larg"
+                                                        placeholder="Select">
+                                                    <el-option
+                                                            v-for="item in options"
+                                                            :key="item.value"
+                                                            :label="item.label"
+                                                            :value="item.value">
+                                                    </el-option>
+                                                </el-select>
+                                            </div>
+
+                                            <div class="form-group" v-else-if="field.view === 'checkbox'">
+                                                <div class="checkbox-fade fade-in-success">
+                                                    <label :for="setNameField(name, nameWidget)">
+                                                        <input type="checkbox"
+                                                               :name="setNameField(name, nameWidget)"
+                                                               :id="setNameField(name, nameWidget)"
+                                                               value="1"
+                                                               v-model="formData[name]">
+                                                        <span class="cr">
+                                                            <i class="cr-icon ik ik-check txt-success"></i>
+                                                        </span>
+                                                        <span>{{ trans(`${field.name}`) }}</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group" v-else-if="field.view === 'radio'">
+                                                <label :for="setNameField(nameWidget, name)">
+                                                    {{ trans(`${field.name}`) }}
+                                                </label>
+                                                <div class="form-radio">
+                                                    <div v-for="(label, value) in field.options"
+                                                         class="radio radio-outline radio-success radio-inline">
+                                                        <label>
+                                                            <input type="radio"
+                                                                   :id="setNameField(nameWidget, name)"
+                                                                   :name="setNameField(nameWidget, name)"
+                                                                   :value="value"
+                                                                   v-model="formData[name]">
+                                                            <i class="helper"></i>
+                                                            {{ trans(`${label}`) }}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group" v-else-if="field.view === 'select-frontend-template'">
+                                                <label :for="setNameField(nameWidget, name)">
+                                                    {{ trans(`${field.name}`) }}
+                                                </label>
+                                                <el-select
+                                                        v-model="formData[name]"
+                                                        filterable
+                                                        size="larg"
+                                                        :placeholder="trans(`${field.description}`)">
+                                                    <el-option
+                                                            v-for="val in frontendTheme"
+                                                            :key="val"
+                                                            :label="val"
+                                                            :value="val">
+                                                    </el-option>
+                                                </el-select>
+                                            </div>
 
                                             <lavakit-form-filed v-else v-model="formData[name]"
                                                                 :group="nameWidget"
@@ -129,7 +188,7 @@
 </template>
 
 <script>
-    import { CURRENT_LOCALE } from "@modules/base/resources/assets/js/config";
+    import { CURRENT_LOCALE, ALL_FRONTEND_THEME } from "@modules/base/resources/assets/js/config";
     import SettingApi from '@modules/setting/resources/assets/js/api/setting.js';
     import LavakitBreadcrumb from '@modules/base/resources/assets/js/components/Breadcrumb';
     import LavakitFormFiled from './FormField';
@@ -179,6 +238,7 @@
 
         created () {
             this.setPageTitle(this.trans(this.pageTitle));
+            this.frontendTheme = ALL_FRONTEND_THEME;
         },
 
         data () {
@@ -189,6 +249,7 @@
                 settings: {},
                 activeTranslatable: {},
                 activeNonTranslatable: 'first',
+                configName: {default: 'global', String},
 
                 form: new Form(),
                 formData: {},
@@ -200,6 +261,8 @@
                     {value: 'fr', label: 'Frant'},
                 ],
                 optionLocale: [],
+
+                frontendTheme: {default: null, Array},
             };
         },
 
@@ -242,6 +305,22 @@
 
             setFilterData() {
                 this.formData = {...this.filterData};
+            },
+
+            setNameField(group, name, locale = null) {
+                if (locale === null) {
+                    return `${this.setGroupConfig(group)}::${name}`;
+                }
+
+                return `${this.setGroupConfig(group)}::${name}[${locale}]`;
+            },
+
+            setGroupConfig(groupName) {
+                if (typeof groupName === 'undefined') {
+                    return this.configName;
+                }
+
+                return groupName;
             },
         },
 

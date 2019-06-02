@@ -42,7 +42,7 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
      */
     public function findBySetting($name)
     {
-        return $this->model->where('name', 'LIKE', $name . '::%')->get();
+        return $this->model->where('group', $name)->get();
     }
 
     /**
