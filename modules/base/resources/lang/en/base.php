@@ -24,4 +24,11 @@ return [
     'forms' => [
         'data_invalid' => 'The given data is invalid',
     ],
+
+    'response' => [
+        'message' => [
+            'success' => 'Succeed',
+            'fail' => 'Failed',
+        ],
+    ],
 ];

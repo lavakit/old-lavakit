@@ -42,29 +42,46 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
      */
     public function findBySetting($name)
     {
-        return $this->model->where('name', 'LIKE', $name . '::%')->get();
+        return $this->model->where('group', $name)->get();
     }
 
     /**
      * Return all modules that have settings
      *
-     * @param $modules
-     * @param $name
+     * @param string | array $modules
+     * @param bool $translatable
      * @return mixed
      * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function loadSettings($modules, $name = null)
+    public function loadSettings($modules, $translatable = true)
     {
-        if (!is_null($name)) {
-            $name = '.' . Str::plural($name);
+        $settings = $this->getConfigures($modules);
+
+        if (!$translatable) {
+            return $settings;
         }
+
+
+
+        return $this->separateWidget($settings);
+    }
+
+    /**
+     * Get configures
+     *
+     * @param $modules
+     * @return array|\Illuminate\Config\Repository|mixed
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    private function getConfigures($modules)
+    {
+        $settings = [];
 
         if (is_string($modules)) {
-            return config(Str::finish(strtolower($modules), '.') . self::NAME_FILE . $name);
+            return config(Str::finish(strtolower($modules), '.') . self::NAME_FILE);
         }
-
-        $settings = [];
 
         foreach ($modules as $module) {
             if ($config = config(Str::finish(strtolower($module), '.') . self::NAME_FILE)) {
@@ -74,29 +91,7 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
 
         return $settings;
     }
-    
-    /**
-     * Return all module that have settings with view separate between non translatable and translatable
-     *
-     * @param $module
-     * @param null $name
-     * @return mixed
-     * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com>
-     */
-    public function separateViewSettings($module, $name = null)
-    {
-        $loadSettings = $this->loadSettings($module, $name);
-        $configs = [];
-        
-        foreach ($loadSettings as $name => $setting) {
-            $configs[$name][self::IS_TRANSLATABLE] = $this->loadTranslatable($setting);
-            $configs[$name][self::NON_TRANSLATABLE] = $this->loadOriginal($setting);
-        }
-        
-        return $configs;
-    }
-    
+
     /**
      * Return the saved settings with name
      *
@@ -156,6 +151,37 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
         }
     
         return $configs;
+    }
+
+    /**
+     * Return all module that have settings with view separate between non translatable and translatable
+     *
+     * @param $configures
+     * @param array $translations
+     * @return mixed
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    private function separateWidget(array $configures = [], &$translations = [])
+    {
+        if (empty($configures)) {
+            return $configures;
+        }
+
+        foreach ($configures as $name => $setting) {
+            $translations[Str::singular($name)][self::IS_TRANSLATABLE] = $this->loadTranslatable($setting);
+            $translations[Str::singular($name)][self::NON_TRANSLATABLE] = $this->loadOriginal($setting);
+        }
+
+        return array_map(function ($data) {
+            foreach ($data as $key => $value) {
+                if (empty($value)) {
+                    unset($data[$key]);
+                }
+            }
+
+            return $data;
+        }, $translations);
     }
     
     /**

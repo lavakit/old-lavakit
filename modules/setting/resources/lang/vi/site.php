@@ -20,12 +20,4 @@ return [
             'vietnamese' => 'Việt Nam'
         ],
     ],
-
-    'generals' => [
-        'site_name' => 'Tên website',
-        'seo_title' => 'Tiêu đề Seo',
-        'seo_keyword' => 'Từ khó Seo',
-        'seo_description' => 'Mô tả Seo',
-        'site_frontend_template' => 'Giao diện'
-    ],
 ];

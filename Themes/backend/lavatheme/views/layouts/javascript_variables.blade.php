@@ -8,5 +8,6 @@
         allowRegister: '{{ config('user.user.allow_register') }}',
         created: '{{ crafted() }}',
         version: '{{ config('base.base.version') }}',
+        allFrontendTheme: {!! json_encode(\ThemeFrontend::allThemeName()) !!}
     }
 </script>

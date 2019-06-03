@@ -3,12 +3,13 @@ import { ApiClient } from '@modules/base/resources/assets/js/client.js';
 const client = new ApiClient();
 
 export default {
+
     /**
-     * Get data email setting
+     * Get data setting
      *
-     * GET /api/setting/email
+     * GET /api/settings/setting/setting
      */
-    getSettingEmail: function() {
-        return client.get(route('api.settings.email'));
-    }
+    getSetting: function(type) {
+        return client.get(route('api.settings.setting', {type: type}));
+    },
 }

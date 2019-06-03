@@ -35,24 +35,13 @@ interface SettingRepository extends BaseRepository
     /**
      * Return all modules that have settings
      *
-     * @param $modules
-     * @param $name
+     * @param string | array $modules
+     * @param bool $translatable
      * @return mixed
      * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function loadSettings($modules, $name = null);
-    
-    /**
-     * Return all module that have settings with view separate between non translatable and translatable
-     *
-     * @param $module
-     * @param null $name
-     * @return mixed
-     * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com>
-     */
-    public function separateViewSettings($module, $name = null);
+    public function loadSettings($modules, bool $translatable = true);
 
     /**
      * Return the saved settings
