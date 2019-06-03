@@ -55,7 +55,8 @@ class SettingController extends BaseApiController
             'data' => [
                 'settings' => $loadSettings,
                 'filterData' => $filterData->toArray(),
-                'activeTranslatable' => $filterData->toActiveTranslatable()
+                'activeTranslatable' => $filterData->toActiveTranslatable(),
+                'availableLocales' => config('base.available_locales'),
             ]
         ], JsonResponse::HTTP_OK);
     }

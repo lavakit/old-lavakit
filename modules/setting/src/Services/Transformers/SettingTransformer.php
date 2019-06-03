@@ -16,7 +16,12 @@ class SettingTransformer extends Transformer
 {
     /** @var Setting */
     protected $dbSettings = [];
-
+    
+    /**
+     * SettingTransformer constructor.
+     * @param array $resource
+     * @param array $dbSettings
+     */
     public function __construct(array $resource = [], array $dbSettings = [])
     {
         parent::__construct($resource);
@@ -52,27 +57,23 @@ class SettingTransformer extends Transformer
     protected function filterValidate()
     {
         $filter = [];
-
         $configures = $this->resource;
-
-        array_map(function ($data) use (&$filter, $configures) {
+        
+        array_map(function ($locale) use (&$filter, $configures) {
             foreach ($configures as $tabName => $configure) {
                 foreach ($configure as $name => $value) {
+                    $nameField = $this->makeNameField($tabName, $name);
+                    
                     if ($value['translatable']) {
-                        $filter[$data][$this->makeNameField($tabName, $name)] = $this->setValue($value);
+                        $filter[$nameField][$locale] = $this->setValue($value, $nameField, $locale);
                     } else {
-                        $filter[$this->makeNameField($tabName, $name)] = $this->setValue($value);
+                        $filter[$nameField] = $this->setPlainValue($value, $nameField);
                     }
                 }
 
             }
         }, array_keys(getSupportedLocales()));
-
-        echo'<pre>';
-            print_r($filter);
-        echo'</pre>';
-        die;
-
+        
         return $filter;
     }
 
@@ -87,17 +88,53 @@ class SettingTransformer extends Transformer
     {
         return Str::finish(Str::singular($prefix), '::') . $name;
     }
-
+    
     /**
      * @param array $value
+     * @param string $name
+     * @param string $locale
      * @return array|null
+     * @copyright 2019 LUCY VN
+     * @author Pencii Team <hoatq@lucy.ne.jp>
      */
-    protected function setValue(array $value)
+    protected function setValue(array $value, string $name, string $locale)
     {
         if (!$this->isMultiple($value)) {
+            if (isset($this->dbSettings[$name])) {
+                return $this->dbSettings[$name]->translate($locale)->value;
+            }
+    
             return null;
         }
-
+    
+        if (isset($this->dbSettings[$name])) {
+            return json_decode($this->dbSettings[$name]->translate($locale)->value);
+        }
+        
+        return [];
+    }
+    
+    /**
+     * @param array $value
+     * @param string $name
+     * @return array|mixed|null
+     * @copyright 2019 LUCY VN
+     * @author Pencii Team <hoatq@lucy.ne.jp>
+     */
+    protected function setPlainValue(array $value, string $name)
+    {
+        if (!$this->isMultiple($value)) {
+            if (isset($this->dbSettings[$name])) {
+                return $this->dbSettings[$name]->plain_value;
+            }
+            
+            return null;
+        }
+    
+        if (isset($this->dbSettings[$name])) {
+            return json_decode($this->dbSettings[$name]->plain_value);
+        }
+        
         return [];
     }
 

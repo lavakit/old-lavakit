@@ -30,7 +30,7 @@
                                         <el-tab-pane :label="trans(`setting::setting.tab.locales.${locale.name}`)" :name="shortLang">
                                             <template v-for="(field, name) in fields">
                                                 <lavakit-form-filed
-                                                        v-model="formData[shortLang][name]"
+                                                        v-model="formData[setNameField(nameWidget, name)][shortLang]"
                                                         :group="nameWidget"
                                                         :locale="shortLang" :name-field="name" :info-field="field">
                                                 </lavakit-form-filed>
@@ -51,16 +51,16 @@
                                                     {{ trans(`${field.name}`) }}
                                                 </label>
                                                 <el-select
-                                                        v-model="formData[name]"
+                                                        v-model="formData[setNameField(nameWidget, name)]"
                                                         multiple
                                                         filterable
                                                         size="larg"
                                                         placeholder="Select">
                                                     <el-option
-                                                            v-for="item in options"
-                                                            :key="item.value"
-                                                            :label="item.label"
-                                                            :value="item.value">
+                                                            v-for="(item, locale) in availableLocales"
+                                                            :key="locale"
+                                                            :label="item.name"
+                                                            :value="locale">
                                                     </el-option>
                                                 </el-select>
                                             </div>
@@ -72,7 +72,7 @@
                                                                :name="setNameField(name, nameWidget)"
                                                                :id="setNameField(name, nameWidget)"
                                                                value="1"
-                                                               v-model="formData[name]">
+                                                               v-model="formData[setNameField(nameWidget, name)]">
                                                         <span class="cr">
                                                             <i class="cr-icon ik ik-check txt-success"></i>
                                                         </span>
@@ -93,7 +93,7 @@
                                                                    :id="setNameField(nameWidget, name)"
                                                                    :name="setNameField(nameWidget, name)"
                                                                    :value="value"
-                                                                   v-model="formData[name]">
+                                                                   v-model="formData[setNameField(nameWidget, name)]">
                                                             <i class="helper"></i>
                                                             {{ trans(`${label}`) }}
                                                         </label>
@@ -106,7 +106,7 @@
                                                     {{ trans(`${field.name}`) }}
                                                 </label>
                                                 <el-select
-                                                        v-model="formData[name]"
+                                                        v-model="formData[setNameField(nameWidget, name)]"
                                                         filterable
                                                         size="larg"
                                                         :placeholder="trans(`${field.description}`)">
@@ -119,7 +119,7 @@
                                                 </el-select>
                                             </div>
 
-                                            <lavakit-form-filed v-else v-model="formData[name]"
+                                            <lavakit-form-filed v-else v-model="formData[setNameField(nameWidget, name)]"
                                                                 :group="nameWidget"
                                                                 :name-field="name"
                                                                 :info-field="field">
@@ -137,52 +137,6 @@
                     </div>
                 </div>
             </div>
-
-            <!--<div class="col-xl-6 col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Language</h3>
-                    </div>
-                    <div class="card-block">
-                        <div class="form-group">
-                            <label> Site locales</label>
-                            <input type="text" class="form-control" id="locale" name="locale" placeholder="Locale">
-                        </div>
-                        <div class="form-group">
-                            <div class="checkbox-fade fade-in-success">
-                                <label>
-                                    <input type="checkbox" name="hide_locale" value="1">
-                                    <span class="cr">
-                                        <i class="cr-icon ik ik-check txt-success"></i>
-                                    </span>
-                                    <span>Hide default locale in Uri</span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="checkbox-fade fade-in-success">
-                                <label>
-                                    <input type="checkbox" name="use_icon" value="1">
-                                    <span class="cr">
-                                        <i class="cr-icon ik ik-check txt-success"></i>
-                                    </span>
-                                    <span>Show icon</span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Text Position</label>
-                            <input type="text" class="form-control" id="position" name="position" placeholder="Text position">
-                        </div>
-                        <button type="submit" class="btn btn-danger mr-2 float-right">
-                            <i class="ik ik-check-circle"></i>
-                            Save
-                        </button>
-                    </div>
-                </div>
-            </div>
-            -->
-
         </div>
     </div>
 </template>
@@ -255,14 +209,8 @@
                 formData: {},
                 filterData: {},
 
-                options: [
-                    {value: 'en', label: 'English'},
-                    {value: 'vi', label: 'Vietnamese'},
-                    {value: 'fr', label: 'Frant'},
-                ],
-                optionLocale: [],
-
                 frontendTheme: {default: null, Array},
+                availableLocales: {default: null, Array},
             };
         },
 
@@ -300,6 +248,7 @@
                 this.settings = data.data.settings;
                 this.filterData = data.data.filterData;
                 this.activeTranslatable = {...data.data.activeTranslatable}
+                this.availableLocales = data.data.availableLocales;
                 this.widgetClass = _.size(data.data.settings) > 1 ? 'col-md-6' : 'col-md-12';
             },
 
