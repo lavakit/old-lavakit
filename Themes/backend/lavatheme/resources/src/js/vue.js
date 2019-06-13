@@ -25,6 +25,7 @@ require('./mixins/error-reponse-helper');
 
 const router = new VueRouter({
     mode: 'history',
+    linkActiveClass: 'active',
     base: coreLavakit.makeBaseUrl(),
     routes: [
         ...BaseRoutes,
