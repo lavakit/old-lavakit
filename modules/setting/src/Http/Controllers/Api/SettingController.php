@@ -46,7 +46,7 @@ class SettingController extends BaseApiController
         }
 
         $loadDbSettings = $this->repository->loadDbSetting($type);
-        $filterData = new SettingTransformer($this->repository->loadSettings($type, false), $loadDbSettings);
+        $filterData = new SettingTransformer($this->repository->loadSettings($type, false), $loadDbSettings, $type);
         $loadSettings = $this->repository->loadSettings($type);
 
         return response()->json([

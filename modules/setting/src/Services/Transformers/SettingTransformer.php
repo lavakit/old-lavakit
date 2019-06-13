@@ -2,6 +2,7 @@
 
 namespace Lavakit\Setting\Services\Transformers;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Lavakit\Setting\Models\Setting;
 use Lavakit\Translation\Services\Transformers\Transformer;
@@ -17,16 +18,21 @@ class SettingTransformer extends Transformer
     /** @var Setting */
     protected $dbSettings = [];
     
+    /** @var array $group */
+    protected $group;
+    
     /**
      * SettingTransformer constructor.
      * @param array $resource
      * @param array $dbSettings
+     * @param string $typeGroup
      */
-    public function __construct(array $resource = [], array $dbSettings = [])
+    public function __construct(array $resource = [], array $dbSettings = [], string $typeGroup = 'setting')
     {
         parent::__construct($resource);
 
         $this->dbSettings = $dbSettings;
+        $this->group = $typeGroup;
     }
 
     /**
@@ -74,7 +80,7 @@ class SettingTransformer extends Transformer
             }
         }, array_keys(getSupportedLocales()));
         
-        return $filter;
+        return Arr::add($filter, 'group', $this->group);
     }
 
     /**

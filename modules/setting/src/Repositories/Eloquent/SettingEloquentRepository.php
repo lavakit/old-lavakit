@@ -5,6 +5,9 @@ namespace Lavakit\Setting\Repositories\Eloquent;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Lavakit\Base\Repositories\Eloquent\BaseEloquentRepository;
+use Lavakit\Setting\Events\SettingCreating;
+use Lavakit\Setting\Events\SettingUpdating;
+use Lavakit\Setting\Models\Setting;
 use Lavakit\Setting\Repositories\SettingRepository;
 
 /**
@@ -18,6 +21,9 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
     const NAME_FILE = 'setting';
     const IS_TRANSLATABLE = 'is_translatable';
     const NON_TRANSLATABLE = 'non_translatable';
+    
+    /** @var string $group */
+    protected $group = 'setting';
     
     /**
      * Find a setting by it's array name field and value
@@ -208,5 +214,122 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
         return array_filter($settings, function ($setting) {
             return !isset($setting['translatable']) || $setting['translatable'] === false;
         });
+    }
+    
+    /**
+     * Create or update the settings
+     *
+     * @param array $settings
+     * @return mixed
+     */
+    public function createOrUpdateSetting(array $settings)
+    {
+        if (!$settings) {
+            return;
+        }
+        
+        foreach ($settings as $name => $values) {
+            if ($setting = $this->findByField(['name' => $name])) {
+                $this->updateSetting($setting, $values);
+                
+                continue;
+            }
+    
+            $this->createForName($name, $values);
+        }
+    }
+    
+    /**
+     * Remove the group setting key
+     *
+     * @param $settings
+     */
+    private function removeGroupKey($settings)
+    {
+        if (!key_exists('group', $settings)) {
+            return;
+        }
+        
+        $this->group = $settings['group'];
+        
+        unset($settings['group']);
+    }
+    
+    private function createForName($name, $values)
+    {
+        event($event = new SettingCreating($name, $values));
+        
+        $setting = $this->getModel();
+        $setting->name = $name;
+    }
+    
+    /**
+     * Update the given Setting
+     *
+     * @param Setting $setting
+     * @param $settingValues
+     */
+    private function updateSetting(Setting $setting, $settingValues)
+    {
+        $name = $setting->name;
+        event($event = new SettingUpdating($setting, $name, $settingValues));
+        
+        if ($this->isTranslatable($name)) {
+            $this->setTranslatedAttributes($event->values, $setting);
+        } else {
+            $setting->plain_value = $this->getSettingPlainValue($event->values);
+        }
+        
+        $setting->save();
+    }
+    
+    /**
+     * @param $values
+     * @param Setting $setting
+     */
+    private function setTranslatedAttributes($values, Setting $setting)
+    {
+        foreach ($values as $lang => $value) {
+            $setting->translateOrNew($lang)->value = $value;
+        }
+    }
+    
+    /**
+     * @param string $name
+     * @return bool
+     */
+    private function isTranslatable(string $name)
+    {
+        $settingConfigName = $this->getConfigSettingName($name);
+        
+        $setting = config("$settingConfigName");
+        
+        return isset($setting['translatable']) && $setting['translatable'] === true;
+    }
+    
+    /**
+     * @param string $name
+     * @return string
+     */
+    private function getConfigSettingName(string $name)
+    {
+        [$tabPrefix, $name] = explode('::', $name);
+        
+        return "{$this->group}.setting.{$tabPrefix}.{$name}";
+    }
+    
+    /**
+     * Return the setting value(s). If values are ann array, json_encode them
+     *
+     * @param $value
+     * @return false|string
+     */
+    private function getSettingPlainValue($value)
+    {
+        if (is_array($value)) {
+            return json_encode($value);
+        }
+        
+        return $value;
     }
 }
