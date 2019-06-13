@@ -55,7 +55,7 @@
                     {
                         name: 'Home',
                         menuParent: [
-                            {uri: 'admin.dashboards.dashboard', icon: 'ik-bar-chart-2', name: 'Dashboard', active: true, hasSub: false}
+                            {uri: 'admin.dashboards.dashboard', icon: 'ik-bar-chart-2', name: 'Dashboard', active: false, hasSub: false}
                         ]
                     },
 
