@@ -17,6 +17,7 @@ class CreateSettingsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name', 200);
+            $table->string('group', 200)->nullable();
             $table->text('plain_value')->nullable();
             $table->boolean('is_translatable');
             $table->timestamps();
