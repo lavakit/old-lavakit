@@ -227,6 +227,8 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
         if (!$settings) {
             return;
         }
+    
+        $settings = $this->removeGroupKey($settings);
         
         foreach ($settings as $name => $values) {
             if ($setting = $this->findByField(['name' => $name])) {
@@ -253,14 +255,29 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
         $this->group = $settings['group'];
         
         unset($settings['group']);
+        
+        return $settings;
     }
     
     private function createForName($name, $values)
     {
         event($event = new SettingCreating($name, $values));
         
-        $setting = $this->getModel();
+        $setting = new Setting();
         $setting->name = $name;
+        $setting->group = $this->group;
+        
+        if ($this->isTranslatable($name)) {
+            $setting->is_translatable = true;
+            //$this->setTranslatedAttributes($event->values, $setting);
+        } else {
+            $setting->is_translatable = false;
+            $setting->plain_value = $this->getSettingPlainValue($event->values);
+        }
+        
+        $setting->save();
+        die;
+        
     }
     
     /**
@@ -301,7 +318,6 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
     private function isTranslatable(string $name)
     {
         $settingConfigName = $this->getConfigSettingName($name);
-        
         $setting = config("$settingConfigName");
         
         return isset($setting['translatable']) && $setting['translatable'] === true;
@@ -314,8 +330,10 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
     private function getConfigSettingName(string $name)
     {
         [$tabPrefix, $name] = explode('::', $name);
+        $tabPrefix = Str::plural($tabPrefix);
+        $nameFile = self::NAME_FILE;
         
-        return "{$this->group}.setting.{$tabPrefix}.{$name}";
+        return "{$this->group}.{$nameFile}.{$tabPrefix}.{$name}";
     }
     
     /**

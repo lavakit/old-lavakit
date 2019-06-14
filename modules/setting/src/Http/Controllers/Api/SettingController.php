@@ -68,9 +68,8 @@ class SettingController extends BaseApiController
      */
     public function postSetting(Request $request)
     {
-        echo'<pre>';
-            print_r($request->all());
-        echo'</pre>';
+        $this->repository->createOrUpdateSetting($request->all());
+        
         die;
     }
 }

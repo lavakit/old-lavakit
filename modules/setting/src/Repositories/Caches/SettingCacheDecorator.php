@@ -90,7 +90,6 @@ class SettingCacheDecorator extends CacheDecorator implements SettingRepository
         return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
     }
     
-    
     /**
      * Return the saved settings
      *
@@ -128,6 +127,19 @@ class SettingCacheDecorator extends CacheDecorator implements SettingRepository
      * @author hoatq <tqhoa8th@gmail.com>
      */
     public function getSettingOriginal($module, $name = null)
+    {
+        return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
+    }
+    
+    /**
+     * Create or update the settings
+     *
+     * @param array $setting
+     * @return mixed
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    public function createOrUpdateSetting(array $setting)
     {
         return $this->getDataIfExistCache(__FUNCTION__, func_get_args());
     }
