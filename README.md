@@ -1,7 +1,6 @@
 # Lavakit
 
-**[A Cms panel](http://lavakit.info)** boilerplate built from [Laravel](https://laravel.com/) and [VueJS](http://vuejs
-.org/) that can be 
+**[A Cms panel](http://lavakit.info)** boilerplate built from [Laravel](https://laravel.com/) and [VueJS](http://vuejs.org/) that can be 
 used 
 for starting any new
  app.
@@ -24,8 +23,6 @@ for starting any new
 
 **Skype**: 
 - tqhoa_agu
-- nnddominic
-- live:phamminhthinh9x_2
 
 ## Donation
 If this project help you reduce time to develop, you can give me a cup of coffee :)
