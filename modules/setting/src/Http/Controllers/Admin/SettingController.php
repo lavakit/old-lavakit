@@ -30,7 +30,7 @@ class SettingController extends BaseAdminController
      * @copyright 2019 LUCY VN
      * @author Pencii Team <hoatq@lucy.ne.jp>
      */
-    public function setting($type = null)
+    public function show($type = null)
     {
         title()->set(Str::finish('Settings', '-') . $type);
     

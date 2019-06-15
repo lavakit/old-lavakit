@@ -219,7 +219,7 @@
                 this.form = new Form(this.formData);
                 this.loading = true;
 
-                this.form.post(route('api.settings.post_setting'))
+                this.form.post(route('api.settings.store'))
                     .then((response) => {
                         this.loading = false;
 

@@ -39,7 +39,7 @@ class SettingController extends BaseApiController
      * @copyright 2019 LUCY VN
      * @author Pencii Team <hoatq@lucy.ne.jp>
      */
-    public function setting($type = null)
+    public function show($type = null)
     {
         if (is_null($type)) {
             $type = $this->module;
@@ -60,16 +60,20 @@ class SettingController extends BaseApiController
             ]
         ], JsonResponse::HTTP_OK);
     }
-    
+
     /**
      * @param Request $request
-     * @copyright 2019 LUCY VN
-     * @author Pencii Team <hoatq@lucy.ne.jp>
+     * @return \Illuminate\Http\JsonResponse
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function postSetting(Request $request)
+    public function store(Request $request)
     {
         $this->repository->createOrUpdateSetting($request->all());
-        
-        die;
+
+        return response()->json([
+            'success' => JsonResponse::STATUS_SUCCESS,
+            'message' => trans('base::base.response.message.success')
+        ], JsonResponse::HTTP_OK);
     }
 }

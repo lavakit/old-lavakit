@@ -68,8 +68,6 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
             return $settings;
         }
 
-
-
         return $this->separateWidget($settings);
     }
 
@@ -228,7 +226,7 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
             return;
         }
     
-        $settings = $this->removeGroupKey($settings);
+        $this->removeGroupKey($settings);
         
         foreach ($settings as $name => $values) {
             if ($setting = $this->findByField(['name' => $name])) {
@@ -246,7 +244,7 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
      *
      * @param $settings
      */
-    private function removeGroupKey($settings)
+    private function removeGroupKey(&$settings)
     {
         if (!key_exists('group', $settings)) {
             return;
@@ -255,8 +253,6 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
         $this->group = $settings['group'];
         
         unset($settings['group']);
-        
-        return $settings;
     }
     
     private function createForName($name, $values)
@@ -269,15 +265,13 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
         
         if ($this->isTranslatable($name)) {
             $setting->is_translatable = true;
-            //$this->setTranslatedAttributes($event->values, $setting);
+            $this->setTranslatedAttributes($event->values, $setting);
         } else {
             $setting->is_translatable = false;
             $setting->plain_value = $this->getSettingPlainValue($event->values);
         }
         
         $setting->save();
-        die;
-        
     }
     
     /**
