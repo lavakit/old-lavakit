@@ -3,8 +3,8 @@ import LavakitSetting from './components/Setting';
 
 export default [
     {
-        path: 'settings/setting/:type',
-        name: 'admin.settings.setting',
+        path: 'settings/show/:type',
+        name: 'admin.settings.show',
         component: LavakitSetting,
         props: {
             locales: LOCALES,

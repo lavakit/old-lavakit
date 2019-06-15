@@ -2,6 +2,7 @@
 
 namespace Lavakit\Setting\Repositories;
 
+use Illuminate\Database\Eloquent\Model;
 use Lavakit\Base\Repositories\BaseRepository;
 
 /**
@@ -74,4 +75,14 @@ interface SettingRepository extends BaseRepository
      * @author hoatq <tqhoa8th@gmail.com>
      */
     public function getSettingOriginal($module, $name = null);
+    
+    /**
+     * Create or update the settings
+     *
+     * @param array $setting
+     * @return mixed
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    public function createOrUpdateSetting(array $setting);
 }
