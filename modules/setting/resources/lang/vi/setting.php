@@ -34,8 +34,11 @@ return [
         'locales' => [
             'is_translatable' => 'Có thể dịch',
             'non_translatable' => 'Không thể dịch',
-            'English' => 'English',
-            'Vietnamese' => 'Việt Nam'
+            'en' => 'English',
+            'vi' => 'Việt Nam',
+            'fr' => 'Pháp',
+            'zh' => 'Trung Quốc',
+            'ja' => 'Nhật Bản',
         ],
         'login_social' => 'Đăng nhập bằng mạng xã hội',
     ],

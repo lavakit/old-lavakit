@@ -107,6 +107,10 @@ class SettingTransformer extends Transformer
     {
         if (!$this->isMultiple($value)) {
             if (isset($this->dbSettings[$name])) {
+                if (!$this->dbSettings[$name]->hasTranslation($locale)) {
+                    return null;
+                }
+
                 return $this->dbSettings[$name]->translate($locale)->value;
             }
     
