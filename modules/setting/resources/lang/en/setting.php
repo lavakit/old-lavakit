@@ -34,8 +34,11 @@ return [
         'locales' => [
             'is_translatable' => 'Translatable fields',
             'non_translatable' => 'Non translatable fields',
-            'English' => 'English',
-            'Vietnamese' => 'Vietnamese'
+            'en' => 'English',
+            'vi' => 'Vietnamese',
+            'fr' => 'French',
+            'zh' => 'Chinese',
+            'ja' => 'Japanese',
         ],
         'login_social' => 'Social Login settings',
     ],

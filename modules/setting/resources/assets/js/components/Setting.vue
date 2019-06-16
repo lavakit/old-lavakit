@@ -27,7 +27,7 @@
                             <template v-if="translatable === 'is_translatable'">
                                 <el-tabs v-model="activeTranslatable[nameWidget]">
                                     <template v-for="(locale, shortLang) in locales">
-                                        <el-tab-pane :label="trans(`setting::setting.tab.locales.${locale.name}`)" :name="shortLang">
+                                        <el-tab-pane :label="trans(`setting::setting.tab.locales.${shortLang}`)" :name="shortLang">
                                             <template v-for="(field, name) in fields">
                                                 <lavakit-form-filed
                                                         v-model="formData[setNameField(nameWidget, name)][shortLang]"
@@ -130,7 +130,7 @@
                             </template>
                         </template>
 
-                        <button type="button" class="btn btn-danger mr-2 float-right" @click="onSubmitGeneral()">
+                        <button type="button" class="btn btn-danger float-right" @click="onSubmitGeneral()">
                             <i class="ik ik-check-circle"></i>
                             Save
                         </button>
@@ -253,7 +253,7 @@
                 this.filterData = data.data.filterData;
                 this.activeTranslatable = {...data.data.activeTranslatable};
                 this.availableLocales = data.data.availableLocales;
-                this.widgetClass = _.size(data.data.settings) > 1 ? 'col-md-6' : 'col-md-12';
+                this.widgetClass = _.size(data.data.settings) > 1 ? 'col-md-12' : 'col-md-12';
             },
 
             setFilterData() {

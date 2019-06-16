@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
-use Lavakit\Base\Composers\TranslationsAuthComposer;
 use Lavakit\Base\Composers\TranslationsBackendComposer;
 use Lavakit\Base\Console\InstallCommand;
 use Lavakit\Base\Exceptions\Handler;
@@ -24,6 +23,7 @@ use Lavakit\Theme\Providers\ThemeServiceProvider;
 use Lavakit\Translation\Providers\TranslationServiceProvider;
 use Lavakit\User\Providers\UserServiceProvider;
 use Lavakit\Notification\Providers\NotificationServiceProvider;
+use DB;
 
 /**
  * Class BaseServiceProvider
@@ -235,7 +235,7 @@ class BaseServiceProvider extends ServiceProvider
         $localeConfig = $this->app['cache']
             ->tags(['settings', 'global'])
             ->remember('lavakit.locales', config('base.cache.cache_remember_time'), function () {
-                return \DB::table('settings')->whereName('locale::locales')->first();
+                return DB::table('settings')->whereName('language::locale')->first();
         });
         
         if ($localeConfig) {
@@ -246,7 +246,7 @@ class BaseServiceProvider extends ServiceProvider
             foreach ($locales as $locale) {
                 $availableLocales = array_merge($availableLocales, [$locale => config('base.available_locales.' .$locale)]);
             }
-            
+
             $availableKeyLocales = array_keys($availableLocales);
             
             if (!in_array($defaultLocale, $availableKeyLocales)) {
