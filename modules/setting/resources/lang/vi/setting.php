@@ -2,7 +2,6 @@
 
 return [
     'generals' => [
-        'page_title' => 'Cấu Hình Chung',
         'site_name' => 'Tên website',
         'seo_title' => 'Tiêu đề Seo',
         'seo_keyword' => 'Từ khóa Seo',
@@ -29,10 +28,6 @@ return [
         ],
     ],
 
-    'emails' => [
-        'page_title' => 'Cấu Hình Email',
-    ],
-
     'tab' => [
         'generals' => 'Thông tin chung',
         'languages' => 'Ngôn ngữ',
@@ -42,5 +37,11 @@ return [
             'English' => 'English',
             'Vietnamese' => 'Việt Nam'
         ],
+        'login_social' => 'Đăng nhập bằng mạng xã hội',
+    ],
+
+    'page_title' => [
+        'general' => 'Cấu Hình Chung',
+        'user' => 'Cấu hình tài khoản'
     ],
 ];
