@@ -23,7 +23,7 @@ use Lavakit\Theme\Providers\ThemeServiceProvider;
 use Lavakit\Translation\Providers\TranslationServiceProvider;
 use Lavakit\User\Providers\UserServiceProvider;
 use Lavakit\Notification\Providers\NotificationServiceProvider;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class BaseServiceProvider
@@ -94,6 +94,7 @@ class BaseServiceProvider extends ServiceProvider
         $this->app->register(TranslationServiceProvider::class);
         $this->app->register(UserServiceProvider::class);
         $this->setLocalesConfigurations();
+        $this->setHideLocaleAtUrl();
         
         /*Load translations*/
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'base');
@@ -219,6 +220,28 @@ class BaseServiceProvider extends ServiceProvider
     private function isInstalled()
     {
         return true === config('base.base.is_installed');
+    }
+
+    /**
+     * Set the hidden locale configuration for
+     * - laravel localization
+     * - laravel translatable
+     */
+    private function setHideLocaleAtUrl()
+    {
+        if ($this->app['lavakit.isInstalled'] === false || $this->app->runningInConsole() === true) {
+            return;
+        }
+
+        $hideLocale = $this->app['cache']
+            ->tags(['settings', 'global'])
+            ->remember('lavakit.hide_locale', config('base.cache.cache_remember_time'), function () {
+                return DB::table('settings')->whereName('language::hide_locale')->first();
+            });
+
+        if ($hideLocale) {
+            $this->app['config']->set('laravellocalization.hideDefaultLocaleInURL', (boolean)$hideLocale->plain_value);
+        }
     }
     
     /**
