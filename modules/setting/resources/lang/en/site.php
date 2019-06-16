@@ -1,14 +1,6 @@
 <?php
 
 return [
-    'emails' => [
-        'title' => 'Easy SMTP Settings',
-        'tab' => [
-            'config' => 'SMTP configuration settings',
-            'test' => 'Test email',
-        ]
-    ],
-
     'general' => 'General',
     'language' => 'Language',
     'is_translatable' => 'Translatable fields',

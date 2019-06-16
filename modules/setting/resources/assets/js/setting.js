@@ -8,10 +8,9 @@ export default [
         component: LavakitSetting,
         props: {
             locales: LOCALES,
-            pageTitle: 'setting::setting.generals.page_title',
         },
         meta: {
-            breadcrumb: 'setting::setting.generals.page_title'
+            breadcrumb: 'setting::setting.page_title.setting'
         }
     },
 ];

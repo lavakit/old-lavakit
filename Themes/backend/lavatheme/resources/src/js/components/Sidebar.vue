@@ -133,7 +133,7 @@
                                 hasSub: true,
                                 menuChild: [
                                     {uri: 'admin.settings.show', name: 'General', params: {type: 'setting'}},
-                                    {uri: 'admin.settings.show', name: 'Email', params: {type: 'user'}},
+                                    {uri: 'admin.settings.show', name: 'User', params: {type: 'user'}},
                                 ]
                             },
 

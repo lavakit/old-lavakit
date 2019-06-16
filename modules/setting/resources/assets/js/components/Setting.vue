@@ -157,10 +157,11 @@
 
         props: {
             locales: {default: null},
-            pageTitle: {default: null, String}
         },
 
         beforeRouteEnter(to, from, next) {
+            to.meta.breadcrumb = `setting::setting.page_title.${to.params.type}`;
+
             SettingApi.getSetting(to.params.type)
                 .then((response) => {
                     next(app => {
@@ -177,6 +178,9 @@
 
         beforeRouteUpdate(to, from, next) {
             this.loading = true;
+            to.meta.breadcrumb = `setting::setting.page_title.${to.params.type}`;
+            this.setTitle(to.params.type);
+
             SettingApi.getSetting(to.params.type)
                 .then((response) => {
                     this.loading = false;
@@ -191,7 +195,6 @@
         },
 
         created () {
-            this.setPageTitle(this.trans(this.pageTitle));
             this.frontendTheme = ALL_FRONTEND_THEME;
         },
 
@@ -211,6 +214,7 @@
 
                 frontendTheme: {default: null, Array},
                 availableLocales: {default: null, Array},
+                pageTitle: 'setting::setting.page_title.setting',
             };
         },
 
@@ -247,7 +251,7 @@
             setSettings(data) {
                 this.settings = data.data.settings;
                 this.filterData = data.data.filterData;
-                this.activeTranslatable = {...data.data.activeTranslatable}
+                this.activeTranslatable = {...data.data.activeTranslatable};
                 this.availableLocales = data.data.availableLocales;
                 this.widgetClass = _.size(data.data.settings) > 1 ? 'col-md-6' : 'col-md-12';
             },
@@ -271,12 +275,17 @@
 
                 return groupName;
             },
+
+            setTitle(type) {
+                this.pageTitle = `setting::setting.page_title.${type}`;
+                this.setPageTitle(this.trans(this.pageTitle));
+            }
         },
 
         mounted () {
             setTimeout(() => {
                 this.loading = false;
-            }, 2000)
+            }, 2000);
         },
 
         computed: {

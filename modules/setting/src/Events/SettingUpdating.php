@@ -23,7 +23,6 @@ class SettingUpdating
      * SettingUpdated constructor.
      * @param Setting $setting
      * @param $name
-     * @param $group
      * @param $values
      */
     public function __construct(Setting $setting, $name, $values)

@@ -32,7 +32,7 @@ class SettingController extends BaseAdminController
      */
     public function show($type = null)
     {
-        title()->set(Str::finish('Settings', '-') . $type);
+        title()->set(trans("setting::setting.page_title.{$type}"));
     
         return view('setting::admins.setting');
     }

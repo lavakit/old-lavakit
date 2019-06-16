@@ -2,7 +2,6 @@
 
 return [
     'generals' => [
-        'page_title' => 'Setting General',
         'site_name' => 'Site name',
         'seo_title' => 'Seo Title',
         'seo_keyword' => 'Seo keyword',
@@ -28,10 +27,6 @@ return [
             'list' => 'List',
         ],
     ],
-    
-    'emails' => [
-        'page_title' => 'Setting Email',
-    ],
 
     'tab' => [
         'general' => 'General',
@@ -42,5 +37,11 @@ return [
             'English' => 'English',
             'Vietnamese' => 'Vietnamese'
         ],
+        'login_social' => 'Social Login settings',
+    ],
+
+    'page_title' => [
+        'setting' => 'Setting General',
+        'user' => 'Setting User'
     ],
 ];

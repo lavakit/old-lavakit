@@ -17,7 +17,6 @@ class SettingCreating
     /**
      * SettingUpdated constructor.
      * @param $name
-     * @param $group
      * @param $values
      */
     public function __construct($name, $values)
