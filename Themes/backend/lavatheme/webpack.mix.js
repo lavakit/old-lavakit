@@ -36,7 +36,7 @@ mix.js('resources/src/js/lavatheme.js', 'assets/js/lavakit.js').extract(['vue'])
     .sass('resources/src/sass/style.scss', 'assets/css/style.css').options({
         processCssUrls: false,
 
-    });
+    }).sourceMaps(true, 'source-map');
 
 /** Copy vendor */
 mix.copy('node_modules/icon-kit/dist/fonts', 'assets/fonts');

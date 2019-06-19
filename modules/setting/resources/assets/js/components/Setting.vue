@@ -67,10 +67,10 @@
 
                                             <div class="form-group" v-else-if="field.view === 'checkbox'">
                                                 <div class="checkbox-fade fade-in-success">
-                                                    <label :for="setNameField(name, nameWidget)">
+                                                    <label :for="setNameField(nameWidget, name)">
                                                         <input type="checkbox"
-                                                               :name="setNameField(name, nameWidget)"
-                                                               :id="setNameField(name, nameWidget)"
+                                                               :name="setNameField(nameWidget, name)"
+                                                               :id="setNameField(nameWidget, name)"
                                                                value="1"
                                                                v-model="formData[setNameField(nameWidget, name)]">
                                                         <span class="cr">
@@ -129,14 +129,16 @@
                                 </el-tabs>
                             </template>
                         </template>
-
-                        <button type="button" class="btn btn-danger float-right" @click="onSubmitGeneral()">
-                            <i class="ik ik-check-circle"></i>
-                            Save
-                        </button>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div>
+            <button type="button" class="btn btn-danger btn-floating-right float-right" @click="onSubmitGeneral()">
+                <i class="ik ik-check-circle"></i>
+                Save
+            </button>
         </div>
     </div>
 </template>
