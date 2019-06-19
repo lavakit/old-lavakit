@@ -1025,3 +1025,11 @@ $background-checkbox-bg-color: $primary, $warning, $default, $danger, $success, 
 .help-block {
 	color: $warning;
 }
+
+.btn-floating-right {
+	position: fixed;
+	bottom: 20px;
+	right: 30px;
+	z-index: 2;
+	@include box-shadow(0 2px 12px -3px rgba(0,0,0,0.5));
+}
