@@ -341,6 +341,10 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
         if (is_array($value)) {
             return json_encode($value);
         }
+
+        if (is_bool($value) && !$value) {
+            return null;
+        }
         
         return $value;
     }

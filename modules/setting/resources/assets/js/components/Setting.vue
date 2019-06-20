@@ -71,7 +71,6 @@
                                                         <input type="checkbox"
                                                                :name="setNameField(nameWidget, name)"
                                                                :id="setNameField(nameWidget, name)"
-                                                               value="1"
                                                                v-model="formData[setNameField(nameWidget, name)]">
                                                         <span class="cr">
                                                             <i class="cr-icon ik ik-check txt-success"></i>
