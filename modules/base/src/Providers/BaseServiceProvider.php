@@ -263,7 +263,11 @@ class BaseServiceProvider extends ServiceProvider
         
         if ($localeConfig) {
             $locales = json_decode($localeConfig->plain_value);
-    
+
+            if (empty($locales)) {
+                return;
+            }
+
             $defaultLocale = config('app.locale');
             $availableLocales = [];
             foreach ($locales as $locale) {
