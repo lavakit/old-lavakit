@@ -90,4 +90,11 @@ return [
         'confirmed' => 'The :attribute confirmation does not match',
         'password_regex' => 'The Password may have alpha-numeric characters, as well as symbols (only . - _)',
     ],
+
+    'page_title' => [
+        'login' => 'Login Authenticate',
+        'register' => 'Register Authenticate',
+        'forgot' => 'Forgot Password',
+        'reset' => 'Reset Password',
+    ],
 ];

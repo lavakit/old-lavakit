@@ -10,25 +10,26 @@ import store from '@modules/user/resources/assets/js/store';
 import { APP_CONFIG } from "@modules/base/resources/assets/js/config";
 import coreLavakit from '@modules/base/resources/assets/js/core';
 
+import BaseRoutes from '@modules/base/resources/assets/js/base';
 import LoginRoutes from '@modules/user/resources/assets/js/auth';
-import DashboardRoutes from '@modules/dashboard/resources/assets/js/dashboard';
-import SettingRoutes from '@modules/setting/resources/assets/js/setting';
 
 Vue.use(ElementUI, {locale});
 Vue.use(VueI18n);
 Vue.use(VueRouter);
 Vue.use(VueEvents);
 Vue.use(VueSimplemde);
-require('./mixins/translation-helper');
-require('./mixins/assets-helper');
+require('./mixins/translation-helper.js');
+require('./mixins/assets-helper.js');
+require('./mixins/pagetitle-helper.js');
+require('./mixins/error-reponse-helper');
 
 const router = new VueRouter({
     mode: 'history',
+    linkActiveClass: 'active',
     base: coreLavakit.makeBaseUrl(),
     routes: [
+        ...BaseRoutes,
         ...LoginRoutes,
-        ...DashboardRoutes,
-        ...SettingRoutes,
     ],
 });
 
@@ -51,7 +52,7 @@ const app = new Vue({
 });
 
 window.axios.interceptors.response.use(null, (error) => {
-    if (error.response === undefined) {
+    if (typeof error.response === undefined) {
         console.log(error);
         return;
     }

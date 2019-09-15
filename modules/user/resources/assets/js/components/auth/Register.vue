@@ -110,7 +110,13 @@
     import Form from '@packages/form-backend-validation';
 
     export default {
-        name: "vue-register",
+        name: "lavakit-register",
+        props: {
+            pageTitle: {default: null, String},
+        },
+        created () {
+            this.setPageTitle(this.trans(this.pageTitle));
+        },
         data () {
             return {
                 auth: {

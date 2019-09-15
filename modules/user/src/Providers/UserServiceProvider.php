@@ -57,12 +57,14 @@ class UserServiceProvider extends ServiceProvider
     public function register()
     {
         $this->publishConfig('user', 'user');
+        $this->publishConfig('user', 'setting');
 
         //Load helpers
         $this->loadHelpers();
 
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(RepositoryServiceProvider::class);
+        $this->app->register(EventServiceProvider::class);
 
         $this->app->bind(AuthorizationContract::class, AuthorizationServices::class);
     }

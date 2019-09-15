@@ -2,10 +2,8 @@
 
 namespace Lavakit\Setting\Http\Controllers\Admin;
 
-use Dimsav\Translatable\Translatable;
-use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Lavakit\Base\Http\Controllers\Admin\BaseAdminController;
-use Lavakit\Setting\Repositories\SettingRepository;
 
 /**
  * Class SettingController
@@ -18,40 +16,24 @@ class SettingController extends BaseAdminController
     /** @var string */
     protected $module = 'setting';
 
-    /** @var SettingRepository */
-    protected $repository;
-
     /**
      * SettingController constructor.
-     * @param SettingRepository $repository
      */
-    public function __construct(SettingRepository $repository)
+    public function __construct()
     {
         parent::__construct();
-
-        $this->repository = $repository;
     }
-
-    public function general(Request $request)
+    
+    /**
+     * @param null $type
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @copyright 2019 LUCY VN
+     * @author Pencii Team <hoatq@lucy.ne.jp>
+     */
+    public function show($type = null)
     {
-        $settings = $this->repository->separateViewSettings($this->module, __FUNCTION__);
-        $dbSettings = $this->repository->loadDbSetting('locale');
-
-        if ($request->isMethod('get')) {
-            title()->set('Setting General');
-            
-            return view('setting::admins.general')->with(compact('settings', 'dbSettings'));
-        }
-
-        $dataRequest = $request->all();
-    }
-
-    public function email(Request $request)
-    {
-        if ($request->isMethod('get')) {
-            title()->set('Setting Email');
-
-            return view('setting::admins.email');
-        }
+        title()->set(trans("setting::setting.page_title.{$type}"));
+    
+        return view('setting::admins.setting');
     }
 }

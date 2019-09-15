@@ -24,4 +24,11 @@ return [
     'forms' => [
         'data_invalid' => 'Dữ liệu đã cho không hợp lệ',
     ],
+
+    'response' => [
+        'message' => [
+            'success' => 'Thành công',
+            'fail' => 'Thất bại',
+        ],
+    ],
 ];

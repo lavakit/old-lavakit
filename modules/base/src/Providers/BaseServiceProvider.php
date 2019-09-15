@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
-use Lavakit\Base\Composers\TranslationsAuthComposer;
 use Lavakit\Base\Composers\TranslationsBackendComposer;
+use Lavakit\Base\Console\InstallCommand;
 use Lavakit\Base\Exceptions\Handler;
 use Lavakit\Base\Facades\EmailFacade;
 use Lavakit\Base\Facades\TitleFacade;
@@ -23,6 +23,7 @@ use Lavakit\Theme\Providers\ThemeServiceProvider;
 use Lavakit\Translation\Providers\TranslationServiceProvider;
 use Lavakit\User\Providers\UserServiceProvider;
 use Lavakit\Notification\Providers\NotificationServiceProvider;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class BaseServiceProvider
@@ -93,6 +94,7 @@ class BaseServiceProvider extends ServiceProvider
         $this->app->register(TranslationServiceProvider::class);
         $this->app->register(UserServiceProvider::class);
         $this->setLocalesConfigurations();
+        $this->setHideLocaleAtUrl();
         
         /*Load translations*/
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'base');
@@ -126,6 +128,8 @@ class BaseServiceProvider extends ServiceProvider
         $this->app->singleton('lavakit.isInstalled', function () {
             return $this->isInstalled();
         });
+    
+        $this->registerCommands();
         
         //Load helpers
         $this->loadHelpers();
@@ -137,6 +141,13 @@ class BaseServiceProvider extends ServiceProvider
         
         $this->app->register(EventServiceProvider::class);
         $this->app->register(ComposerServiceProvider::class);
+    }
+    
+    private function registerCommands()
+    {
+        $this->commands([
+            InstallCommand::class
+        ]);
     }
     
     /**
@@ -210,6 +221,28 @@ class BaseServiceProvider extends ServiceProvider
     {
         return true === config('base.base.is_installed');
     }
+
+    /**
+     * Set the hidden locale configuration for
+     * - laravel localization
+     * - laravel translatable
+     */
+    private function setHideLocaleAtUrl()
+    {
+        if ($this->app['lavakit.isInstalled'] === false || $this->app->runningInConsole() === true) {
+            return;
+        }
+
+        $hideLocale = $this->app['cache']
+            ->tags(['settings', 'global'])
+            ->remember('lavakit.hide_locale', config('base.cache.cache_remember_time'), function () {
+                return DB::table('settings')->whereName('language::hide_locale')->first();
+            });
+
+        if ($hideLocale) {
+            $this->app['config']->set('laravellocalization.hideDefaultLocaleInURL', (boolean)$hideLocale->plain_value);
+        }
+    }
     
     /**
      * Set the locale configuration for
@@ -225,18 +258,22 @@ class BaseServiceProvider extends ServiceProvider
         $localeConfig = $this->app['cache']
             ->tags(['settings', 'global'])
             ->remember('lavakit.locales', config('base.cache.cache_remember_time'), function () {
-                return \DB::table('settings')->whereName('locale::locales')->first();
+                return DB::table('settings')->whereName('language::locale')->first();
         });
         
         if ($localeConfig) {
             $locales = json_decode($localeConfig->plain_value);
-    
+
+            if (empty($locales)) {
+                return;
+            }
+
             $defaultLocale = config('app.locale');
             $availableLocales = [];
             foreach ($locales as $locale) {
                 $availableLocales = array_merge($availableLocales, [$locale => config('base.available_locales.' .$locale)]);
             }
-            
+
             $availableKeyLocales = array_keys($availableLocales);
             
             if (!in_array($defaultLocale, $availableKeyLocales)) {

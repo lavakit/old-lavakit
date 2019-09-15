@@ -630,7 +630,7 @@ p {
 		.main-content {
 		    padding: 15px 0;
 		    background-color: #F6F7FB;
-		    min-height: calc(100vh - 120px);
+		    min-height: calc(100vh - 85px);
 		    margin-top: 60px;
 		    padding-right: 15px;
 		    padding-left: 255px;
@@ -792,9 +792,9 @@ p {
 		    }
 		}
 		.footer {
-		    background: $white;
-		    padding: 20px 30px;
-		    border-top: 1px solid rgba(0, 0, 0, 0.04);
+		    background: #F6F7FB;
+		    padding: 2px 30px;
+		    //border-top: 1px solid rgba(0, 0, 0, 0.04);
 		    font-size: calc(0.875rem - 0.05rem);
 		    @include transition(all 0.25s ease);
 		    @include mq('tablet-wide') {

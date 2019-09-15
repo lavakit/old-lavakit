@@ -4,6 +4,8 @@ namespace Lavakit\Translation\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Lavakit\Base\Traits\CanPublishConfiguration;
+use Lavakit\Translation\Contracts\Transformer as TransformerContract;
+use Lavakit\Translation\Services\Transformers\Transformer;
 
 /**
  * Class TranslationServiceProvider

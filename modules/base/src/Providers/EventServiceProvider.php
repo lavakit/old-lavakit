@@ -25,16 +25,14 @@ class EventServiceProvider extends ServiceProvider
         ],
     ];
 
-    /***
+    /**
      * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com
+     * @author hoatq <tqhoa8th@gmail.com>
      */
     public function register()
     {
         $this->app['events']->listen(LoadBackendTranslation::class, function (LoadBackendTranslation $event) {
             $event->load('base::base', Arr::dot(trans('base::base')));
-            $event->load('user::auth', Arr::dot(trans('user::auth')));
-            $event->load('user::email', Arr::dot(trans('user::email')));
         });
     }
 }

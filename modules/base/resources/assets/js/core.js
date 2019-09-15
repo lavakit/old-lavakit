@@ -51,5 +51,5 @@ export default {
     makeBaseUrl,
     requireAdmin,
     requireAuth,
-    requireNonAuth
+    requireNonAuth,
 };

@@ -2,75 +2,72 @@
 
 return [
     'generals' => [
-        'general' => [
-            'site_name' => [
-                'description' => 'setting::site.generals.site_name',
-                'view' => 'text',
-                'translatable' => true,
-            ],
-            'seo_title' => [
-                'description' => 'setting::site.generals.seo_title',
-                'view' => 'text',
-                'translatable' => true,
-            ],
-            'seo_keyword' => [
-                'description' => 'setting::site.generals.seo_keyword',
-                'view' => 'text',
-                'translatable' => true,
-            ],
-            'seo_description' => [
-                'description' => 'setting::site.generals.seo_description',
-                'view' => 'textarea',
-                'translatable' => true,
-            ],
-            'site_frontend_template' => [
-                'description' => 'setting::site.generals.site_frontend_template',
-                'view' => 'setting::admins.fields.originals.select_frontend_template',
-                'translatable' => false,
-            ]
+        'site_name' => [
+            'name' => 'setting::setting.generals.site_name',
+            'description' => 'setting::setting.generals.site_name',
+            'view' => 'text',
+            'translatable' => true,
         ],
-
-        'language' => [
-            'locales' => [
-                'description' => 'setting::site.language.locale',
-                'view' => 'setting::admins.fields.originals.select_locale',
-                'translatable' => false,
-            ],
-//            'hide_locale' => [
-//                'description' => 'setting::site.language.hie_locale',
-//                'view' => 'checkbox',
-//                'translatable' => false,
-//            ],
-//            'show_icon' => [
-//                'description' => 'setting::site.language.show_icon',
-//                'view' => 'checkbox',
-//                'translatable' => false,
-//            ],
-//            'position' => [
-//                'description' => 'setting::site.language.position',
-//                'view' => 'select',
-//                'translatable' => false,
-//            ]
+        'seo_title' => [
+            'name' => 'setting::setting.generals.seo_title',
+            'description' => 'setting::setting.generals.seo_title',
+            'view' => 'text',
+            'translatable' => true,
         ],
+        'seo_keyword' => [
+            'name' => 'setting::setting.generals.seo_keyword',
+            'description' => 'setting::setting.generals.seo_keyword',
+            'view' => 'text',
+            'translatable' => true,
+        ],
+        'seo_description' => [
+            'name' => 'setting::setting.generals.seo_description',
+            'description' => 'setting::setting.generals.seo_description',
+            'view' => 'textarea',
+            'translatable' => true,
+        ],
+        'frontend_template' => [
+            'name' => 'setting::setting.generals.frontend_template.name',
+            'description' => 'setting::setting.generals.frontend_template.description',
+            'view' => 'select-frontend-template',
+            'translatable' => false,
+        ]
     ],
 
-    'emails' => [
-        [
-            'package' => 'Main',
-            'module' => 'setting',
-            'control' => 'text',
-            'key' => 'smtp_from_name',
-            'name' => trans('setting::form.emails.smtp.from_email'),
-            'value' => '',
+    'languages' => [
+        'locale' => [
+            'name' => 'setting::setting.languages.locale',
+            'description' => 'setting::setting.languages.locale',
+            'view' => 'select-locale',
+            'translatable' => false,
+            'multiple' => true,
+        ],
+        'hide_locale' => [
+            'name' => 'setting::setting.languages.hide_at_url',
+            'description' => 'setting::setting.languages.hide_at_url',
+            'view' => 'checkbox',
+            'translatable' => false,
+        ],
+        'display' => [
+            'name' => 'setting::setting.languages.display.description',
+            'description' => 'setting::setting.languages.display.description',
+            'view' => 'radio',
+            'translatable' => false,
             'options' => [
-                'class' => 'form-control',
-                'placeholder' => 'info@example.info',
-                'description' => trans('setting::form.email.smtp.description.from_email')
+                'full' => 'setting::setting.languages.display.full',
+                'flag' => 'setting::setting.languages.display.flag',
+                'name' => 'setting::setting.languages.display.name',
             ],
-            'is_admin' => false
         ],
-    ],
-    'medias' => [
-
+        'type' => [
+            'name' => 'setting::setting.languages.type.description',
+            'description' => 'setting::setting.languages.type.description',
+            'view' => 'radio',
+            'translatable' => false,
+            'options' => [
+                'dropdown' => 'setting::setting.languages.type.dropdown',
+                'list' => 'setting::setting.languages.type.list',
+            ],
+        ]
     ],
 ];

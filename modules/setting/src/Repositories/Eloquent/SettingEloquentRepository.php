@@ -5,6 +5,9 @@ namespace Lavakit\Setting\Repositories\Eloquent;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Lavakit\Base\Repositories\Eloquent\BaseEloquentRepository;
+use Lavakit\Setting\Events\SettingCreating;
+use Lavakit\Setting\Events\SettingUpdating;
+use Lavakit\Setting\Models\Setting;
 use Lavakit\Setting\Repositories\SettingRepository;
 
 /**
@@ -18,6 +21,9 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
     const NAME_FILE = 'setting';
     const IS_TRANSLATABLE = 'is_translatable';
     const NON_TRANSLATABLE = 'non_translatable';
+    
+    /** @var string $group */
+    protected $group = 'setting';
     
     /**
      * Find a setting by it's array name field and value
@@ -42,29 +48,44 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
      */
     public function findBySetting($name)
     {
-        return $this->model->where('name', 'LIKE', $name . '::%')->get();
+        return $this->model->where('group', $name)->get();
     }
 
     /**
      * Return all modules that have settings
      *
-     * @param $modules
-     * @param $name
+     * @param string | array $modules
+     * @param bool $translatable
      * @return mixed
      * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function loadSettings($modules, $name = null)
+    public function loadSettings($modules, $translatable = true)
     {
-        if (!is_null($name)) {
-            $name = '.' . Str::plural($name);
+        $settings = $this->getConfigures($modules);
+
+        if (!$translatable) {
+            return $settings;
         }
+
+        return $this->separateWidget($settings);
+    }
+
+    /**
+     * Get configures
+     *
+     * @param $modules
+     * @return array|\Illuminate\Config\Repository|mixed
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    private function getConfigures($modules)
+    {
+        $settings = [];
 
         if (is_string($modules)) {
-            return config(Str::finish(strtolower($modules), '.') . self::NAME_FILE . $name);
+            return config(Str::finish(strtolower($modules), '.') . self::NAME_FILE);
         }
-
-        $settings = [];
 
         foreach ($modules as $module) {
             if ($config = config(Str::finish(strtolower($module), '.') . self::NAME_FILE)) {
@@ -74,29 +95,7 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
 
         return $settings;
     }
-    
-    /**
-     * Return all module that have settings with view separate between non translatable and translatable
-     *
-     * @param $module
-     * @param null $name
-     * @return mixed
-     * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com>
-     */
-    public function separateViewSettings($module, $name = null)
-    {
-        $loadSettings = $this->loadSettings($module, $name);
-        $configs = [];
-        
-        foreach ($loadSettings as $name => $setting) {
-            $configs[$name][self::IS_TRANSLATABLE] = $this->loadTranslatable($setting);
-            $configs[$name][self::NON_TRANSLATABLE] = $this->loadOriginal($setting);
-        }
-        
-        return $configs;
-    }
-    
+
     /**
      * Return the saved settings with name
      *
@@ -157,6 +156,37 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
     
         return $configs;
     }
+
+    /**
+     * Return all module that have settings with view separate between non translatable and translatable
+     *
+     * @param $configures
+     * @param array $translations
+     * @return mixed
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    private function separateWidget(array $configures = [], &$translations = [])
+    {
+        if (empty($configures)) {
+            return $configures;
+        }
+
+        foreach ($configures as $name => $setting) {
+            $translations[Str::singular($name)][self::IS_TRANSLATABLE] = $this->loadTranslatable($setting);
+            $translations[Str::singular($name)][self::NON_TRANSLATABLE] = $this->loadOriginal($setting);
+        }
+
+        return array_map(function ($data) {
+            foreach ($data as $key => $value) {
+                if (empty($value)) {
+                    unset($data[$key]);
+                }
+            }
+
+            return $data;
+        }, $translations);
+    }
     
     /**
      * @param $settings
@@ -182,5 +212,140 @@ class SettingEloquentRepository extends BaseEloquentRepository implements Settin
         return array_filter($settings, function ($setting) {
             return !isset($setting['translatable']) || $setting['translatable'] === false;
         });
+    }
+    
+    /**
+     * Create or update the settings
+     *
+     * @param array $settings
+     * @return mixed
+     */
+    public function createOrUpdateSetting(array $settings)
+    {
+        if (!$settings) {
+            return;
+        }
+    
+        $this->removeGroupKey($settings);
+        
+        foreach ($settings as $name => $values) {
+            if ($setting = $this->findByField(['name' => $name])) {
+                $this->updateSetting($setting, $values);
+                
+                continue;
+            }
+    
+            $this->createForName($name, $values);
+        }
+    }
+    
+    /**
+     * Remove the group setting key
+     *
+     * @param $settings
+     */
+    private function removeGroupKey(&$settings)
+    {
+        if (!key_exists('group', $settings)) {
+            return;
+        }
+        
+        $this->group = $settings['group'];
+        
+        unset($settings['group']);
+    }
+    
+    private function createForName($name, $values)
+    {
+        event($event = new SettingCreating($name, $values));
+        
+        $setting = new Setting();
+        $setting->name = $name;
+        $setting->group = $this->group;
+        
+        if ($this->isTranslatable($name)) {
+            $setting->is_translatable = true;
+            $this->setTranslatedAttributes($event->values, $setting);
+        } else {
+            $setting->is_translatable = false;
+            $setting->plain_value = $this->getSettingPlainValue($event->values);
+        }
+        
+        $setting->save();
+    }
+    
+    /**
+     * Update the given Setting
+     *
+     * @param Setting $setting
+     * @param $settingValues
+     */
+    private function updateSetting(Setting $setting, $settingValues)
+    {
+        $name = $setting->name;
+        event($event = new SettingUpdating($setting, $name, $settingValues));
+        
+        if ($this->isTranslatable($name)) {
+            $this->setTranslatedAttributes($event->values, $setting);
+        } else {
+            $setting->plain_value = $this->getSettingPlainValue($event->values);
+        }
+        
+        $setting->save();
+    }
+    
+    /**
+     * @param $values
+     * @param Setting $setting
+     */
+    private function setTranslatedAttributes($values, Setting $setting)
+    {
+        foreach ($values as $lang => $value) {
+            $setting->translateOrNew($lang)->value = $value;
+        }
+    }
+    
+    /**
+     * @param string $name
+     * @return bool
+     */
+    private function isTranslatable(string $name)
+    {
+        $settingConfigName = $this->getConfigSettingName($name);
+        $setting = config("$settingConfigName");
+        
+        return isset($setting['translatable']) && $setting['translatable'] === true;
+    }
+    
+    /**
+     * @param string $name
+     * @return string
+     */
+    private function getConfigSettingName(string $name)
+    {
+        [$tabPrefix, $name] = explode('::', $name);
+        $tabPrefix = Str::plural($tabPrefix);
+        $nameFile = self::NAME_FILE;
+        
+        return "{$this->group}.{$nameFile}.{$tabPrefix}.{$name}";
+    }
+    
+    /**
+     * Return the setting value(s). If values are ann array, json_encode them
+     *
+     * @param $value
+     * @return false|string
+     */
+    private function getSettingPlainValue($value)
+    {
+        if (is_array($value)) {
+            return json_encode($value);
+        }
+
+        if (is_bool($value) && !$value) {
+            return null;
+        }
+        
+        return $value;
     }
 }

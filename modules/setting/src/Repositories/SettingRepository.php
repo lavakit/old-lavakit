@@ -2,6 +2,7 @@
 
 namespace Lavakit\Setting\Repositories;
 
+use Illuminate\Database\Eloquent\Model;
 use Lavakit\Base\Repositories\BaseRepository;
 
 /**
@@ -35,24 +36,13 @@ interface SettingRepository extends BaseRepository
     /**
      * Return all modules that have settings
      *
-     * @param $modules
-     * @param $name
+     * @param string | array $modules
+     * @param bool $translatable
      * @return mixed
      * @copyright 2019 Lavakit Group
      * @author hoatq <tqhoa8th@gmail.com>
      */
-    public function loadSettings($modules, $name = null);
-    
-    /**
-     * Return all module that have settings with view separate between non translatable and translatable
-     *
-     * @param $module
-     * @param null $name
-     * @return mixed
-     * @copyright 2019 Lavakit Group
-     * @author hoatq <tqhoa8th@gmail.com>
-     */
-    public function separateViewSettings($module, $name = null);
+    public function loadSettings($modules, bool $translatable = true);
 
     /**
      * Return the saved settings
@@ -85,4 +75,14 @@ interface SettingRepository extends BaseRepository
      * @author hoatq <tqhoa8th@gmail.com>
      */
     public function getSettingOriginal($module, $name = null);
+    
+    /**
+     * Create or update the settings
+     *
+     * @param array $setting
+     * @return mixed
+     * @copyright 2019 Lavakit Group
+     * @author hoatq <tqhoa8th@gmail.com>
+     */
+    public function createOrUpdateSetting(array $setting);
 }
