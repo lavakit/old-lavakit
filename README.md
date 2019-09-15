@@ -13,7 +13,8 @@ for starting any new
 
 ## Installing
 
-- Run "composer install"
+- Run command: composer install
+- Run command: php artisan lavakit:install
 
 **Enjoy!**
 

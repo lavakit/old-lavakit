@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.2 - 2019-09-15
+
+### Added
+
+- Fix run command php artisan lavakit:install
+
 ## 1.0.1 - 2019-04-24
 
 ### Added
