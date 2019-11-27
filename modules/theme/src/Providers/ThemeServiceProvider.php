@@ -83,8 +83,9 @@ class ThemeServiceProvider extends ServiceProvider
         if (config('theme.theme.types.enable')) {
             $themeTypes = config('theme.theme.types.middleware');
             foreach ($themeTypes as $middleware => $themeName) {
+                $ucFirst = ucfirst($middleware);
                 /** Register Middleware */
-                $this->app['router']->aliasMiddleware($middleware, "Lavakit\\Theme\\Middleware\\Route{$middleware}Middleware");
+                $this->app['router']->aliasMiddleware($middleware, "Lavakit\\Theme\\Middleware\\Route{$ucFirst}Middleware");
 
                 /** Push Config middleware theme */
                 Config::push('base.base.middleware.' . $middleware, $middleware . ':' . $themeName);
