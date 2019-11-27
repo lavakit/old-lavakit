@@ -2,7 +2,10 @@
 
 namespace Lavakit\Base\Providers;
 
+use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
+use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Passport\Passport;
 use Lavakit\Base\Traits\CanRegisterFacadeAliases;
 
 /**
@@ -27,7 +30,24 @@ class VendorProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        /*
+         |--------------------------------------------------------------------------------------------
+         | Import when environment local
+         |--------------------------------------------------------------------------------------------
+        */
+        if ($this->app->environment() == 'local') {
+            $this->app->register(IdeHelperServiceProvider::class);
+        }
+
+        /*
+         |--------------------------------------------------------------------------------------------
+         | Password passport
+         |--------------------------------------------------------------------------------------------
+        */
+        Passport::routes();
+        Passport::tokensExpireIn(Carbon::now()->addDay(15));
+        Passport::refreshTokensExpireIn(Carbon::now()->addDay(30));
+        Passport::pruneRevokedTokens();
     }
 
     /**
