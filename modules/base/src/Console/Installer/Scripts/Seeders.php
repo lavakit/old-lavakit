@@ -14,8 +14,8 @@ use Lavakit\Base\Contracts\Console\SetupScript;
 class Seeders implements SetupScript
 {
     /** @var array */
-    protected $modules = [
-        'user'
+    protected $className = [
+        'UserTableSeeder'
     ];
 
     /**
@@ -32,8 +32,8 @@ class Seeders implements SetupScript
         $command->info('Starting the module seeder ...');
         $command->line('');
 
-        foreach ($this->modules as $module) {
-            $command->call('module:db:seed', ['alias' => $module]);
+        foreach ($this->className as $className) {
+            $command->call('db:seed', ['--class' => $className]);
         }
     }
 }
