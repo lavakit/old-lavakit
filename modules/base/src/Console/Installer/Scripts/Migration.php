@@ -26,7 +26,7 @@ class Migration implements SetupScript
         $command->line('');
         $command->info('Starting the migrations ...');
         $command->line('');
-        
-        $command->call('migrate');
+
+        $command->call('migrate:refresh');
     }
 }
