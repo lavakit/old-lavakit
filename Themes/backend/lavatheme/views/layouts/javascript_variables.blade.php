@@ -1,6 +1,6 @@
 <script>
     window.Lavakit = {
-        locales: {!! json_encode(LaravelLocalization::getSupportedLocales()) !!},
+        locales: {!! json_encode(getSupportedLocales()) !!},
         currentLocale: '{{ locale() }}',
         adminPrefix: '{{ config('base.base.admin-prefix') }}',
         hideDefaultLocale: '{{ config('laravellocalization.hideDefaultLocaleInURL') }}',
