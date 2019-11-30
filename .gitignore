@@ -3,6 +3,7 @@
 /public/storage
 /public/report
 /storage/*.key
+/storage/api-docs
 /vendor
 /.idea
 /.vscode

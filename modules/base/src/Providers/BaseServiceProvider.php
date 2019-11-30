@@ -11,6 +11,7 @@ use Lavakit\Base\Console\InstallCommand;
 use Lavakit\Base\Exceptions\Handler;
 use Lavakit\Base\Facades\EmailFacade;
 use Lavakit\Base\Facades\TitleFacade;
+use Lavakit\Base\Traits\CanOverrideConfigurationPackages;
 use Lavakit\Base\Traits\CanPublishConfiguration;
 use Lavakit\Base\Traits\CanRegisterFacadeAliases;
 use Lavakit\Base\Traits\CanRegisterViewComposer;
@@ -33,15 +34,18 @@ use Illuminate\Support\Facades\DB;
  */
 class BaseServiceProvider extends ServiceProvider
 {
-    use CanPublishConfiguration, CanRegisterFacadeAliases, CanRegisterViewComposer;
-    
+    use CanPublishConfiguration,
+        CanRegisterFacadeAliases,
+        CanRegisterViewComposer,
+        CanOverrideConfigurationPackages;
+
     /**
      * Indicates if loading of the provider is deferred.
      *
      * @var bool
      */
     protected $defer = false;
-    
+
     /**
      * @var array Facade Aliases
      */
@@ -49,7 +53,7 @@ class BaseServiceProvider extends ServiceProvider
         'Title' => TitleFacade::class,
         'Email' => EmailFacade::class,
     ];
-    
+
     /**
      * The filters base class name
      * @var array
@@ -60,7 +64,7 @@ class BaseServiceProvider extends ServiceProvider
             'SessionTimeout' => 'SessionTimeoutMiddleware',
         ]
     ];
-    
+
     /**
      * Bootstrap the application services.
      *
@@ -73,16 +77,18 @@ class BaseServiceProvider extends ServiceProvider
         $this->publishConfig('base', 'cache');
         $this->publishConfig('base', 'mail');
         $this->publishConfig('base', 'available_locales');
-        
+
+        $this->overwriteConfigurationPackages();
+
         /*Load view composer*/
         $this->registerViewComposer(['layouts.master'], TranslationsBackendComposer::class);
-        
+
         /*Register middleware*/
         $this->registerMiddleware();
-        
+
         /*Load Service on Vendor*/
         $this->app->register(VendorProvider::class);
-        
+
         /*Load Services on Lucky*/
         $this->app->register(DashboardServiceProvider::class);
         $this->app->register(MenuServiceProvider::class);
@@ -95,21 +101,21 @@ class BaseServiceProvider extends ServiceProvider
         $this->app->register(UserServiceProvider::class);
         $this->setLocalesConfigurations();
         $this->setHideLocaleAtUrl();
-        
+
         /*Load translations*/
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'base');
-        
+
         if (app()->runningInConsole()) {
             /*Load migrations*/
             $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
-            
+
             $this->publishes([__DIR__ . '/../../resources/assets' => resource_path('assets')], 'assets');
             $this->publishes([__DIR__ . '/../../resources/views' => config('view.paths')[0] . '/vendor/base'], 'views');
             $this->publishes([__DIR__ . '/../../resources/lang' => base_path('resources/lang/vendor/base')], 'lang');
             $this->publishes([__DIR__ . '/../../database' => base_path('database'),], 'migrations');
         }
     }
-    
+
     /**
      * Register the application services.
      *
@@ -120,36 +126,36 @@ class BaseServiceProvider extends ServiceProvider
         $this->app->singleton('lavakit.isBackend', function () {
             return $this->isBackend();
         });
-    
+
         $this->app->singleton('lavakit.isPageAuth', function () {
             return $this->isPageAuth();
         });
-        
+
         $this->app->singleton('lavakit.isInstalled', function () {
             return $this->isInstalled();
         });
-    
+
         $this->registerCommands();
-        
+
         //Load helpers
         $this->loadHelpers();
-        
+
         $this->app->singleton(ExceptionHandler::class, Handler::class);
-        
+
         //Register aliases
         $this->registerFacadeAliases($this->facadeAliases);
-        
+
         $this->app->register(EventServiceProvider::class);
         $this->app->register(ComposerServiceProvider::class);
     }
-    
+
     private function registerCommands()
     {
         $this->commands([
             InstallCommand::class
         ]);
     }
-    
+
     /**
      * Load helper
      *
@@ -162,7 +168,7 @@ class BaseServiceProvider extends ServiceProvider
             require_once $helper;
         }
     }
-    
+
     /**
      * Register the filters
      *
@@ -177,7 +183,7 @@ class BaseServiceProvider extends ServiceProvider
             }
         }
     }
-    
+
     /**
      * Check if the current URL matches the configured backend uri
      *
@@ -188,14 +194,14 @@ class BaseServiceProvider extends ServiceProvider
     private function isBackend()
     {
         $url = app(Request::class)->path();
-        
+
         if (Str::contains($url, config('base.base.admin-prefix'))) {
             return true;
         }
-        
+
         return false;
     }
-    
+
     /**
      * Check if the current URL matches the configured Authentication uri
      *
@@ -206,14 +212,14 @@ class BaseServiceProvider extends ServiceProvider
     private function isPageAuth()
     {
         $url = app(Request::class)->path();
-    
+
         if (Str::contains($url, config('user.user.auth-prefix'))) {
             return true;
         }
-    
+
         return false;
     }
-    
+
     /**
      * @return bool
      */
@@ -243,7 +249,7 @@ class BaseServiceProvider extends ServiceProvider
             $this->app['config']->set('laravellocalization.hideDefaultLocaleInURL', (boolean)$hideLocale->plain_value);
         }
     }
-    
+
     /**
      * Set the locale configuration for
      * - laravel localization
@@ -254,13 +260,13 @@ class BaseServiceProvider extends ServiceProvider
         if ($this->app['lavakit.isInstalled'] === false || $this->app->runningInConsole() === true) {
             return;
         }
-        
+
         $localeConfig = $this->app['cache']
             ->tags(['settings', 'global'])
             ->remember('lavakit.locales', config('base.cache.cache_remember_time'), function () {
                 return DB::table('settings')->whereName('language::locale')->first();
         });
-        
+
         if ($localeConfig) {
             $locales = json_decode($localeConfig->plain_value);
 
@@ -275,16 +281,16 @@ class BaseServiceProvider extends ServiceProvider
             }
 
             $availableKeyLocales = array_keys($availableLocales);
-            
+
             if (!in_array($defaultLocale, $availableKeyLocales)) {
                 $this->app->config->set('app.locale', $availableKeyLocales[0]);
             }
-    
+
             $this->app->config->set('laravellocalization.supportedLocales', $availableLocales);
             $this->app->config->set('translatable.locales', $locales);
         }
     }
-    
+
     /**
      * Get the services provided by the provider.
      *
